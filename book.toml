@@ -6,6 +6,7 @@ src = "src"
 title = "Crypto Book (Work in Progress)"
 
 [output.html]
+site-url = "/crypto-book/"
 no-section-label = true
 additional-css = ["./assets/custom.css"]
 additional-js = ["./assets/mermaid.min.js", "./assets/mermaid-init.js"]

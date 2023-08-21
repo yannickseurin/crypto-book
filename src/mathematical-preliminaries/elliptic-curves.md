@@ -50,7 +50,7 @@ From the addition law we can define *scalar multiplication*: for $m \in \ZZ$ and
 \]
 
 The group structure of $E(\FF)$ is either cyclic or "almost" cyclic.
-Namely, a general theorem establishes that $E(\FF)$ has at most two [invariant factors](./mathematical-preliminaries/groups.md#th:finite_abelian_groups).
+Namely, a general theorem establishes that $E(\FF)$ has at most two [invariant factors](/mathematical-preliminaries/groups.md#th:finite_abelian_groups).
 In other words, $E(\FF)$ is isomorphic to either the cyclic group $\ZZ_n$ or a direct product of cyclic groups $\ZZ_{n_1} \times \ZZ_{n_2}$ with $n_1 \divides n_2$.
 
 ## Affine versus Projective Coordinates
