@@ -228,7 +228,7 @@ You can keep digging from here and inspect how <a href="https://docs.rs/ark-ec/0
 <p>Note that the <code>product_of_pairings</code> function <a href="https://github.com/arkworks-rs/algebra/blob/master/CHANGELOG.md?plain=1#L104">has been replaced</a> in version 0.4.0 of the <code>ark-ec</code> crate by the <a href="https://docs.rs/ark-ec/0.4.2/ark_ec/pairing/trait.Pairing.html#method.multi_pairing"><code>multi_pairing</code></a> function.</p>
 <p>Next, we will see what the <code>into</code> method applied to curve points does.</p>
 <h3 id="affine-versus-projective-coordinates"><a class="header" href="#affine-versus-projective-coordinates">Affine versus Projective Coordinates</a></h3>
-<p>The <code>ark-ec</code> library allows you to work both with <a href="/mathematical-preliminaries/elliptic-curves.html#affine-versus-projective-coordinates">affine and projective coordinates</a> and to easily switch between them.
+<p>The <code>ark-ec</code> library allows you to work both with <a href="../../mathematical-preliminaries/elliptic-curves.html#affine-versus-projective-coordinates">affine and projective coordinates</a> and to easily switch between them.
 For short Weierstrass curves, the affine representation corresponds to the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/short_weierstrass_jacobian/struct.GroupAffine.html"><code>GroupAffine</code></a> struct implementing the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.AffineCurve.html"><code>AffineCurve</code></a> trait:</p>
 <pre><code class="language-rust">pub struct GroupAffine&lt;P: Parameters&gt; {
     pub x: P::BaseField,
