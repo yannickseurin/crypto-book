@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exploring the arkworks Libraries - Crypto Book (Work in Progress)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././assets/custom.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Mathematical Preliminaries</li><li class="chapter-item "><a href="../../mathematical-preliminaries/groups.html">Groups</a></li><li class="chapter-item "><div>Rings</div></li><li class="chapter-item "><div>Fields</div></li><li class="chapter-item "><a href="../../mathematical-preliminaries/polynomials.html">Polynomials</a></li><li class="chapter-item "><div>Fast Fourier Transform</div></li><li class="chapter-item "><a href="../../mathematical-preliminaries/elliptic-curves.html">Elliptic Curves</a></li><li class="chapter-item "><a href="../../mathematical-preliminaries/pairings.html">Pairings</a></li><li class="chapter-item "><div>Languages and Complexity</div></li><li class="chapter-item affix "><li class="part-title">Cryptographic Notions</li><li class="chapter-item "><a href="../../cryptographic-notions/games-models-and-assumptions.html">Games, Models, and Assumptions</a></li><li class="chapter-item "><a href="../../cryptographic-notions/bls-signatures.html">BLS Signatures</a></li><li class="chapter-item "><a href="../../cryptographic-notions/commitment-schemes.html">Commitment Schemes</a></li><li class="chapter-item "><div>Polynomial Commitment Schemes</div></li><li class="chapter-item "><div>Zero-Knowledge Proof Systems</div></li><li class="chapter-item "><div>Proofs of Knowledge</div></li><li class="chapter-item affix "><li class="part-title">ZK Hack Puzzles</li><li class="chapter-item "><a href="../../zk-hack-puzzles/before-starting.html">Before Starting</a></li><li class="chapter-item expanded "><a href="../../zk-hack-puzzles/puzzle-01/intro.html">Puzzle 1: Let's Hash it Out</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/initial-inspection.html">Initial Inspection</a></li><li class="chapter-item expanded "><a href="../../zk-hack-puzzles/puzzle-01/exploring-the-arkworks-libraries.html" class="active">Exploring the arkworks Libraries</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/understanding-the-hash-to-curve-function.html">Understanding the hash-to-curve Function</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/gathering-the-pieces.html">Gathering the Pieces</a></li></ol></li><li class="chapter-item "><div>Puzzle 2: Group Dynamics</div></li><li class="chapter-item "><div>Puzzle 3: Double Trouble</div></li><li class="chapter-item "><div>Puzzle 4: Hidden in Plain Sight</div></li><li class="chapter-item "><div>Puzzle 5: To be Adaptive is to be Strong</div></li><li class="chapter-item "><div>Puzzle 6: Soundness of Music</div></li><li class="chapter-item "><div>Puzzle 7: There’s something in the AIR</div></li><li class="chapter-item "><div>Puzzle 8: Can you turn up the heat?</div></li><li class="chapter-item "><div>Puzzle 9: Zero-Sum Game</div></li><li class="chapter-item "><div>Puzzle 10: Power Corrupts</div></li><li class="chapter-item "><div>Puzzle 11: Bigger is Better</div></li><li class="chapter-item affix "><a href="../../references.html">References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Crypto Book (Work in Progress)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yannickseurin/crypto-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h2 id="exploring-the-arkworks-libraries"><a class="header" href="#exploring-the-arkworks-libraries">Exploring the <code>arkworks</code> Libraries</a></h2>
+<p>As explained in the introduction, the ZK Hack puzzles are a great opportunity to explore the <code>arkworks</code> libraries.
+Although we have a reasonable understanding of what <code>verify</code> does, let us pause a moment and explain how to find its way in all the crates <code>arkworks</code> provides.
+Say we want to understand what the function <code>Bls12_381::product_of_pairings</code> does exactly.
+First, we check the path used to bring <code>Bls12_381</code> into scope in the <em>src/bls.rs</em> module:</p>
+<pre><code class="language-rust">use ark_bls12_381::{Bls12_381, G1Affine, G2Affine};</code></pre>
+<p>This tells us that we need to look into the <code>ark-bls12-381</code> crate.<sup class="footnote-reference"><a href="#crate_names">1</a></sup></p>
+<p>The first thing to know is that there are two possible places where to look for information: <a href="https://docs.rs/">Docs.rs</a>, the documentation host for Rust crates hosted at <a href="https://crates.io">crates.io</a>, and the <a href="https://github.com/arkworks-rs">arkworks GitHub repositories</a>.<sup class="footnote-reference"><a href="#crates_vs_github">2</a></sup></p>
+<p>Second, one has to be careful about which version of the crate the puzzle requires.
+For this, we must inspect the <em>Cargo.toml</em> file which lists the package dependencies:</p>
+<pre><code class="language-toml">[dependencies]
+ark-std = &quot;0.3&quot;
+ark-ff = &quot;0.3&quot;
+ark-ec = &quot;0.3&quot;
+ark-serialize = &quot;0.3&quot;
+ark-bls12-381 = &quot;0.3&quot;
+ark-crypto-primitives = &quot;0.3&quot;
+rand = &quot;0.8&quot;
+rand_chacha = &quot;0.3&quot;
+hex = &quot;0.4&quot;
+prompt = { git = &quot;https://github.com/kobigurk/zkhack-prompt&quot; }
+blake2s_simd = &quot;0.5.11&quot;
+</code></pre>
+<p>We can see that the puzzle requires version 0.3 of the <code>ark-bls12-381</code> crate.
+Hence, we select to <a href="https://docs.rs/ark-bls12-381/0.3.0/ark_bls12_381/index.html">correct version</a> of the <code>ark-bls12-381</code> crate on <a href="https://docs.rs/">Docs.rs</a> as starting point of our exploration.</p>
+<p>If you prefer to browse libraries on GitHub or locally, be careful to check out the correct commit: the <code>ark-ec</code> crate is part of the <em>algebra</em> repository, the releases of which are listed <a href="https://github.com/arkworks-rs/algebra/releases">here</a>.</p>
+<p>When entering <code>product_of_pairings</code> in the search bar on top of the documentation page of the <code>ark-bls12-381</code> crate, we don't get any hit.
+This probably means that this function is part of a trait that the type <code>Bls12_381</code> implements using the default implementation.
+Hence, we search for this type instead, which leads us <a href="https://docs.rs/ark-bls12-381/0.3.0/ark_bls12_381/type.Bls12_381.html">to its definition</a>:</p>
+<pre><code class="language-rust">type Bls12_381 = Bls12&lt;Parameters&gt;;</code></pre>
+<p>Following the link to the definition of the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/bls12/struct.Bls12.html"><code>Bls12</code></a> type, we see that it is defined in the <code>models::bls12</code> submodule of the <code>ark-ec</code> crate, which contains all the generic code for curves of the BLS family with embedding degree 12:</p>
+<pre><code class="language-rust">pub struct Bls12&lt;P: Bls12Parameters&gt;(_);</code></pre>
+<p>This illustrates how <code>arkworks</code> uses traits to abstract common behaviour of various curves.
+<code>Bls12</code> is an empty struct parameterized by a generic type <code>P</code> that must satisfy the trait bound <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/bls12/trait.Bls12Parameters.html"><code>Bls12Parameters</code></a>.
+A specific curve of the BLS-12 family, such as BLS12-381, is then instantiated by defining an empty struct <code>Parameters</code> implementing the <code>Bls12Parameters</code> trait <a href="https://docs.rs/ark-bls12-381/0.3.0/src/ark_bls12_381/curves/mod.rs.html#20-30">in a specific way</a>.</p>
+<p>We can now search for <code>product_of_pairings</code> in the <code>ark-ec</code> crate.
+We are more lucky this time as we <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.PairingEngine.html#method.product_of_pairings">find out</a> that it is part of the <code>PairingEngine</code> trait.
+Let's take a look at the code:</p>
+<pre><code class="language-rust">pub trait PairingEngine: Sized + 'static + Copy + Debug + Sync + Send + Eq + PartialEq {
+    // ...
+
+    /// Computes a product of pairings.
+    #[must_use]
+    fn product_of_pairings&lt;'a, I&gt;(i: I) -&gt; Self::Fqk
+    where
+        I: IntoIterator&lt;Item = &amp;'a (Self::G1Prepared, Self::G2Prepared)&gt;,
+    {
+        Self::final_exponentiation(&amp;Self::miller_loop(i)).unwrap()
+    }
+
+    // ...
+}</code></pre>
+<p>We can see that a default implementation is indeed provided, computing a product of Miller loops followed by a single final exponentiation.
+You can keep digging from here and inspect how <a href="https://docs.rs/ark-ec/0.3.0/src/ark_ec/models/bls12/mod.rs.html#132-188"><code>miller_loop</code></a> and <a href="https://docs.rs/ark-ec/0.3.0/src/ark_ec/models/bls12/mod.rs.html#190-256"><code>final_exponentiation</code></a> are implemented for the BLS-12 family.</p>
+<p>Note that the <code>product_of_pairings</code> function <a href="https://github.com/arkworks-rs/algebra/blob/master/CHANGELOG.md?plain=1#L104">has been replaced</a> in version 0.4.0 of the <code>ark-ec</code> crate by the <a href="https://docs.rs/ark-ec/0.4.2/ark_ec/pairing/trait.Pairing.html#method.multi_pairing"><code>multi_pairing</code></a> function.</p>
+<p>Next, we will see what the <code>into</code> method applied to curve points does.</p>
+<h3 id="affine-versus-projective-coordinates"><a class="header" href="#affine-versus-projective-coordinates">Affine versus Projective Coordinates</a></h3>
+<p>The <code>ark-ec</code> library allows you to work both with <a href="/mathematical-preliminaries/elliptic-curves.html#affine-versus-projective-coordinates">affine and projective coordinates</a> and to easily switch between them.
+For short Weierstrass curves, the affine representation corresponds to the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/short_weierstrass_jacobian/struct.GroupAffine.html"><code>GroupAffine</code></a> struct implementing the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.AffineCurve.html"><code>AffineCurve</code></a> trait:</p>
+<pre><code class="language-rust">pub struct GroupAffine&lt;P: Parameters&gt; {
+    pub x: P::BaseField,
+    pub y: P::BaseField,
+    pub infinity: bool,
+    // some fields omitted
+}</code></pre>
+<p>The projective representation uses Jacobian (not homogeneous) coordinates and corresponds to the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/short_weierstrass_jacobian/struct.GroupProjective.html"><code>GroupProjective</code></a> struct implementing the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.ProjectiveCurve.html"><code>ProjectiveCurve</code></a> trait:</p>
+<pre><code class="language-rust">pub struct GroupProjective&lt;P: Parameters&gt; {
+    pub x: P::BaseField,
+    pub y: P::BaseField,
+    pub z: P::BaseField,
+    // some fields omitted
+}</code></pre>
+<p>Note in particular how the <code>GroupAffine</code> struct needs to hold a boolean field <code>infinity</code> indicating whether an instance is the point at infinity or not, whereas <code>GroupProjective</code> needs not.</p>
+<p>The trait <code>Parameters</code>, an alias for <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/trait.SWModelParameters.html"><code>ark_ec::models::SWModelParameters</code></a>, contains all parameters specifying a prime-order subgroup of an elliptic curve in short Weierstrass form:</p>
+<pre><code class="language-rust">pub trait SWModelParameters: ModelParameters {
+    const COEFF_A: Self::BaseField;
+    const COEFF_B: Self::BaseField;
+    const COFACTOR: &amp;'static [u64];
+    const COFACTOR_INV: Self::ScalarField;
+    const AFFINE_GENERATOR_COEFFS: (Self::BaseField, Self::BaseField);
+    fn mul_by_a(elem: &amp;Self::BaseField) -&gt; Self::BaseField { ... }
+    fn add_b(elem: &amp;Self::BaseField) -&gt; Self::BaseField { ... }
+}</code></pre>
+<p>What about types <code>G1Affine</code> and <code>G2Affine</code>?
+Recall that in order to define a pairing one needs two prime-order subgroups <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbb">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbb">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> of elliptic curves defined on respectively <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.975em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathbb">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> and some field extension <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.975em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathbb">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2655em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5935em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>.
+Types <code>G1Affine</code> and <code>G2Affine</code> correspond to the affine representation of these two subgroups and are defined for curves of the BLS-12 family respectively <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/bls12/g1/type.G1Affine.html">here</a> and <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/bls12/g2/type.G2Affine.html">there</a> as:</p>
+<pre><code class="language-rust">type G1Affine&lt;P&gt; = GroupAffine&lt;&lt;P as Bls12Parameters&gt;::G1Parameters&gt;;
+type G2Affine&lt;P&gt; = GroupAffine&lt;&lt;P as Bls12Parameters&gt;::G2Parameters&gt;;</code></pre>
+<p>Type <code>P</code> must implement the <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/models/bls12/trait.Bls12Parameters.html"><code>Bls12Parameters</code></a> trait:</p>
+<pre><code class="language-rust">pub trait Bls12Parameters: 'static {
+    type Fp: PrimeField + SquareRootField + Into&lt;&lt;Self::Fp as PrimeField&gt;::BigInt&gt;;
+    type Fp2Params: Fp2Parameters&lt;Fp = Self::Fp&gt;;
+    type Fp6Params: Fp6Parameters&lt;Fp2Params = Self::Fp2Params&gt;;
+    type Fp12Params: Fp12Parameters&lt;Fp6Params = Self::Fp6Params&gt;;
+    type G1Parameters: SWModelParameters&lt;BaseField = Self::Fp&gt;;
+    type G2Parameters: SWModelParameters&lt;BaseField = Fp2&lt;Self::Fp2Params&gt;, ScalarField = &lt;Self::G1Parameters as ModelParameters&gt;::ScalarField&gt;;
+
+    const X: &amp;'static [u64];
+    const X_IS_NEGATIVE: bool;
+    const TWIST_TYPE: TwistType;
+}</code></pre>
+<p>As expected, types <code>G1Parameters</code> and <code>G2Parameters</code> must both implement the <code>SWModelParameters</code> trait with a prime base field for <code>G1Parameters</code> and a quadratic extension field for <code>G2Parameters</code>.</p>
+<h3 id="conversion"><a class="header" href="#conversion">Conversion</a></h3>
+<p>Conversion between affine and projective coordinates is handled by the <a href="https://doc.rust-lang.org/std/convert/trait.From.html"><code>From</code></a> and <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><code>Into</code></a> traits.
+These are very general and useful traits that you can read about <a href="https://www.lurklurk.org/effective-rust/casts.html">here</a> and <a href="https://doc.rust-lang.org/rust-by-example/conversion/from_into.html">here</a>.
+They provide respectively an associated function <code>from</code> and a method <code>into</code>, the latter one being generally derived from the former.</p>
+<p>The function <code>from</code> for creating a point in projective coordinates from a point in affine coordinates is implemented <a href="https://docs.rs/ark-ec/0.3.0/src/ark_ec/models/short_weierstrass_jacobian.rs.html#721-731">here</a>:</p>
+<pre><code class="language-rust">impl&lt;P: Parameters&gt; From&lt;GroupAffine&lt;P&gt;&gt; for GroupProjective&lt;P&gt; {
+    #[inline]
+    fn from(p: GroupAffine&lt;P&gt;) -&gt; GroupProjective&lt;P&gt; {
+        if p.is_zero() {
+            Self::zero()
+        } else {
+            Self::new(p.x, p.y, P::BaseField::one())
+        }
+    }
+}</code></pre>
+<p>The converse function, creating a point in affine coordinates from a point in projective coordinates, is implemented <a href="https://docs.rs/ark-ec/0.3.0/src/ark_ec/models/short_weierstrass_jacobian.rs.html#734-758">here</a>:</p>
+<pre><code class="language-rust">impl&lt;P: Parameters&gt; From&lt;GroupProjective&lt;P&gt;&gt; for GroupAffine&lt;P&gt; {
+    #[inline]
+    fn from(p: GroupProjective&lt;P&gt;) -&gt; GroupAffine&lt;P&gt; {
+        if p.is_zero() {
+            GroupAffine::zero()
+        } else if p.z.is_one() {
+            // If Z is one, the point is already normalized.
+            GroupAffine::new(p.x, p.y, false)
+        } else {
+            // Z is nonzero, so it must have an inverse in a field.
+            let zinv = p.z.inverse().unwrap();
+            let zinv_squared = zinv.square();
+
+            // X/Z^2
+            let x = p.x * &amp;zinv_squared;
+
+            // Y/Z^3
+            let y = p.y * &amp;(zinv_squared * &amp;zinv);
+
+            GroupAffine::new(x, y, false)
+        }
+    }
+}</code></pre>
+<p>Note that there are also more explicit <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.ProjectiveCurve.html#method.into_affine"><code>into_affine</code></a> and <a href="https://docs.rs/ark-ec/0.3.0/ark_ec/trait.AffineCurve.html#method.into_projective"><code>into_projective</code></a> methods which simply call <code>into</code>.</p>
+<p>All what we just said was for version 0.3 of the crate.
+The structs and traits <a href="https://github.com/arkworks-rs/algebra/blob/master/CHANGELOG.md?plain=1#L77-L78">have been</a> <a href="https://github.com/arkworks-rs/algebra/blob/master/CHANGELOG.md?plain=1#L99-L115">renamed</a> in version 0.4 as follows:</p>
+<ul>
+<li>struct <code>GroupAffine</code> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>Affine</code></li>
+<li>trait <code>AffineCurve</code> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>AffineRepr</code></li>
+<li>struct <code>GroupProjective</code> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>Projective</code></li>
+<li>trait <code>ProjectiveCurve</code> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>CurveGroup: Group</code>.</li>
+</ul>
+<p>Hopefully the code of the <code>verify</code> function should now make completely sense.
+Note in particular how elliptic curve points are converted from affine coordinates to projective coordinates using method <code>into</code> before being passed to <code>product_of_pairings</code>.</p>
+<p>It's now time to see what the <code>hash_to_curve</code> function does exactly.</p>
+<hr />
+<div class="footnote-definition" id="crate_names"><sup class="footnote-definition-label">1</sup>
+<p>Note that hyphens are not valid characters in Rust identifiers, however it is possible (and idiomatic) to use them in package and crate names. Cargo automatically converts them to underscores. See <a href="https://stackoverflow.com/questions/60794905/why-is-changing-hyphenated-crate-names-to-underscored-names-possible-and-what-ar">here</a>.</p>
+</div>
+<div class="footnote-definition" id="crates_vs_github"><sup class="footnote-definition-label">2</sup>
+<p>If you're curious about what guarantees we have that the source codes on github.com and crates.io are really the same, I recommend <a href="https://codeandbitters.com/published-crate-analysis/">this interesting blog post</a> by Eric Seppanen.</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../zk-hack-puzzles/puzzle-01/initial-inspection.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../zk-hack-puzzles/puzzle-01/understanding-the-hash-to-curve-function.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../zk-hack-puzzles/puzzle-01/initial-inspection.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../zk-hack-puzzles/puzzle-01/understanding-the-hash-to-curve-function.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../.././assets/mermaid.min.js"></script>
+        <script src="../.././assets/mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
