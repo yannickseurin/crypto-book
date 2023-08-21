@@ -1,2 +1,8 @@
 book
 draft
+SUMMARY_draft.md
+Cargo.lock
+target
+*.sage.py
+puzzles/zkhack-bls-pedersen/sage/coeffs.txt
+puzzles/zkhack-bls-pedersen/sage/data.sage
