@@ -100,8 +100,8 @@ The key takeaway of this puzzle is that ***Pedersen hashing does not behave as a
 
 Which hash-to-curve function should be used to make BLS secure then?
 The easy solution is to hash the message together with a counter into the base field of the elliptic curve until the result is the x-coordinate of a point on the curve.[^hash]
-The drawback is that it is not possible to implement it in constant time and that security of this construction is not known to hold in the strong sense of being indifferentiable from a random oracle [[BCI+10](/references.md#BCI+10)].
-For the specific case of BLS12-381, an efficient solution based on isogenies was recently proposed by Wahby and Boneh [[WB19](/references.md#WB19)].
+The drawback is that it is not possible to implement it in constant time and that security of this construction is not known to hold in the strong sense of being indifferentiable from a random oracle [[BCI+10](../../references.md#BCI+10)].
+For the specific case of BLS12-381, an efficient solution based on isogenies was recently proposed by Wahby and Boneh [[WB19](../../references.md#WB19)].
 There is also an [IETF draft](https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve/) specifying various hash-to-curve constructions.
 
 ----

@@ -84,7 +84,7 @@ Next, we will see what the `into` method applied to curve points does.
 
 ### Affine versus Projective Coordinates
 
-The `ark-ec` library allows you to work both with [affine and projective coordinates](/mathematical-preliminaries/elliptic-curves.md#affine-versus-projective-coordinates) and to easily switch between them.
+The `ark-ec` library allows you to work both with [affine and projective coordinates](../../mathematical-preliminaries/elliptic-curves.md#affine-versus-projective-coordinates) and to easily switch between them.
 For short Weierstrass curves, the affine representation corresponds to the [`GroupAffine`](https://docs.rs/ark-ec/0.3.0/ark_ec/models/short_weierstrass_jacobian/struct.GroupAffine.html) struct implementing the [`AffineCurve`](https://docs.rs/ark-ec/0.3.0/ark_ec/trait.AffineCurve.html) trait:
 
 ```rust

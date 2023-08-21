@@ -5,8 +5,8 @@
 # Pairings
 
 Pairings have allowed a great number of new applications in cryptography.
-They were first used by Menezes, Okamoto, and Vanstone [[MOV91](/references.md#MOV91)] to break the discrete logarithm problem in supersingular elliptic curves (this is the so-called MOV attack).
-Later, they were used constructively by Joux [[Jou00]](/references.md#Jou00) to obtain a tripartite Diffie-Hellman protocol and by Boneh and Franklin [[BF03](/references.md#BF03)] to obtain an identity-based encryption scheme.
+They were first used by Menezes, Okamoto, and Vanstone [[MOV91](../references.md#MOV91)] to break the discrete logarithm problem in supersingular elliptic curves (this is the so-called MOV attack).
+Later, they were used constructively by Joux [[Jou00]](../references.md#Jou00) to obtain a tripartite Diffie-Hellman protocol and by Boneh and Franklin [[BF03](../references.md#BF03)] to obtain an identity-based encryption scheme.
 This got the three of them the [Gödel prize in 2013](https://www.eatcs.org/index.php/component/content/article/1-news/1584-goedel-prize-2013).
 
 We will start with the abstract definition of pairing groups and then we will see how to construct such groups from specific elliptic curves.

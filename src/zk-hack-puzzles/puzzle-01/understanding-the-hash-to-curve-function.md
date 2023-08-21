@@ -122,7 +122,7 @@ Hence, if we let $(B_0, \dots, B_{255})$ denote the 256 group elements returned 
  H(m) \defeq \sum_{j=0}^{255} h_j B_j.
 \]
 
-Hence, $H$ can be seen as the composition of BLAKE2s and an instance of [Pedersen hashing](/cryptographic-notions/commitment-schemes.md#commitments-and-hash-functions).
+Hence, $H$ can be seen as the composition of BLAKE2s and an instance of [Pedersen hashing](../../cryptographic-notions/commitment-schemes.md#commitments-and-hash-functions).
 Since both BLAKE2s and Pedersen hashing are collision-resistant (assuming hardness of the discrete logarithm problem for Pedersen hashing), $H$ is collision-resistant as well.
 Is it sufficient to make BLS signatures secure though?
 

@@ -83,7 +83,7 @@ The `main` function then runs a loop which checks the validity of all message/si
 If you don't understand the syntax of the loop, read about [iterators](https://doc.rust-lang.org/stable/book/ch13-02-iterators.html) and the [`zip` method](https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.zip) as this will come up quite often.
 
 The `verify` function is defined in the `bls` module, as indicated by the path used to bring it into scope.
-In order to understand what this function does, make sure to read the chapters about [pairings](/mathematical-preliminaries/pairings.md) and [BLS signatures](/cryptographic-notions/bls-signatures.md).
+In order to understand what this function does, make sure to read the chapters about [pairings](../../mathematical-preliminaries/pairings.md) and [BLS signatures](../../cryptographic-notions/bls-signatures.md).
 Here is the code:
 
 ```rust
@@ -94,7 +94,7 @@ Just from the names of the functions, we can guess that it first hashes the mess
 Ignoring the `into` method for now, we can see that the arguments for the first pairing are the signature $S \cong$ `sig` and the opposite of the generator $G_2$ of group $\GG_2$.
 The arguments for the second pairing are the hash $H(m) \cong$ `h` and the public key $X \cong$ `pk`.
 
-Hence, what `verify` is asserting is whether (using our notation from the [BLS signatures](/cryptographic-notions/bls-signatures.md) chapter)
+Hence, what `verify` is asserting is whether (using our notation from the [BLS signatures](../../cryptographic-notions/bls-signatures.md) chapter)
 \[
  e(S, -G_2) \cdot e(H(m), X) = 1_{\GG_t} \label{1} \tag{1}
 \]
@@ -105,13 +105,13 @@ which is equivalent to the verification equation we gave when describing BLS sin
 \end{aligned}\]
 
 So `verify` is indeed checking a BLS signature.
-Ccomputing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](/mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. $\eqref{1}$ is often preferable.
+Ccomputing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](../../mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. $\eqref{1}$ is often preferable.
 
 
 What pairing-friendly curve does the signature scheme use?
 The arkworks libraries implement many such curves (see [the list here](https://github.com/arkworks-rs/curves)).
 From the *Cargo.toml* file listing dependencies of the package, we can see that it includes the `ark-bls12-381` library crate, where the `Bls12_381` type prefixing the call to `product_of_pairings` is defined.
-Hence, the puzzle uses the [BLS12-381 curve](/mathematical-preliminaries/pairings.md).
+Hence, the puzzle uses the [BLS12-381 curve](../../mathematical-preliminaries/pairings.md).
 
 Our next task is to understand what the `hash_to_curve` function does exactly.
 Before that, we take a moment to explore some of the `arkworks` crates used in the puzzle.

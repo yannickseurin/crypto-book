@@ -81,9 +81,9 @@ We say that a game $\game$ is *statistically hard* (or *information-theoreticall
 \[
  \advantage{\adv}{GAME}(\secpar) = \negl(\secpar).
 \]
-In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](crypto-book/cryptographic-notions/commitment-schemes.md) that can be perfectly hiding or perfectly binding).
+In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](./commitment-schemes.md) that can be perfectly hiding or perfectly binding).
 
-When we simply say that a game is hard, it usually means computationally hard (but this should always be clear form the context).
+When we simply say that a game is hard, it usually means computationally hard (but this should always be clear from the context).
 
 Hence, for a computationally, resp. statistically hard game, every ppt, resp. unbounded adversary "wins" with probability negligible close to 0 for a computational game and with probability negligibly close to $1/2$ for a decisional game.
 
@@ -269,11 +269,11 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
 - type: computational
 - interactive: no
 - falsifiable: yes
-- references: [[BLS04](/references.md#BLS04)]
+- references: [[BLS04](../references.md#BLS04)]
 - notes:
     - co-CDH $\leqq$ DL in $\GG_2$
     - co-CDH $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings
-    - co-CDH $\leqq$ CDH in $\GG_1$ for type-2 pairings (see [BLS Signatures, Proposition](/cryptographic-notions/bls-signatures.md#prop:cocdh_implies_cdh_in_g1))
+    - co-CDH $\leqq$ CDH in $\GG_1$ for type-2 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdh_implies_cdh_in_g1))
 
 \[
  \def\arraystretch{\myarraystretch}
@@ -296,14 +296,14 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
 - type: computational
 - interactive: no
 - falsifiable: yes
-- references: [[CHKM10](/references.md#CHKM10)]
+- references: [[CHKM10](../references.md#CHKM10)]
 - notes:
-    - sometimes simply called (confusingly) co-CDH (e.g. [[BDN18](/references.md#BDN18)])
+    - sometimes simply called (confusingly) co-CDH (e.g. [[BDN18](../references.md#BDN18)])
     - co-CDH$^*$ $\leqq$ CDH in $\GG_1$
     - co-CDH$^*$ $\leqq$ DL in $\GG_2$
     - co-CDH$^*$ $\leqq$ co-CDH
-    - co-CDH$^*$ $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings (see [BLS Signatures, Proposition](/cryptographic-notions/bls-signatures.md#prop:cocdhstar_equiv_cdh))
-    - co-CDH$^*$ $\equiv$ co-CDH for type-2 pairings (see [BLS Signatures, Proposition](/cryptographic-notions/bls-signatures.md#prop:cocdhstar_equiv_cocdh))
+    - co-CDH$^*$ $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdhstar_equiv_cdh))
+    - co-CDH$^*$ $\equiv$ co-CDH for type-2 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdhstar_equiv_cocdh))
 
 \[
  \def\arraystretch{\myarraystretch}
@@ -327,7 +327,7 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
 - type: computational
 - interactive: yes
 - falsifiable: no (for type-3 pairings)
-- references: [[SV07](/references.md#SV07)], [[BDN18](/references.md#BDN18)]
+- references: [[SV07](../references.md#SV07)], [[BDN18](../references.md#BDN18)]
 - notes:
     - $\psi$-co-CDH $\leqq$ CDH in $\GG_1$
     - $\psi$-co-CDH $\leqq$ DL in $\GG_2$
@@ -356,9 +356,10 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
 - type: computational
 - interactive: no
 - falsifiable: yes
-- references: [[BB08](/references.md#BB08)]
+- references: [[BB08](../references.md#BB08)]
 - notes:
-    - not to be confused with another assumption named SDH introduced in [[ABR01](/references.md#ABR01)]
+    - not to be confused with another assumption named SDH introduced in [[ABR01](../references.md#ABR01)]
+    - $(q+1)$-SDH $\leqq$ $q$-SDH
 
 \[
  \def\arraystretch{\myarraystretch}

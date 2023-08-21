@@ -6,8 +6,8 @@
 
 # BLS Signatures
 
-The BLS signature scheme was proposed by Boneh, Lynn, and Shacham [[BLS01](/references.md#BLS01)] (see also the corresponding journal paper [[BLS04](/references.md#BLS04)] and the [IETF draft](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05)) and was one of the first applications of pairings to cryptography (shortly after tripartite Diffie-Hellman and identity-based encryption).
-Note that the BLS initialism can refer to two different things in cryptography: Boneh-Lynn-Shacham signatures discussed in this chapter and Barreto-Lynn-Scott curves, a family of [pairing-friendly elliptic curves](/mathematical-preliminaries/pairings.md).
+The BLS signature scheme was proposed by Boneh, Lynn, and Shacham [[BLS01](../references.md#BLS01)] (see also the corresponding journal paper [[BLS04](../references.md#BLS04)] and the [IETF draft](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05)) and was one of the first applications of pairings to cryptography (shortly after tripartite Diffie-Hellman and identity-based encryption).
+Note that the BLS initialism can refer to two different things in cryptography: Boneh-Lynn-Shacham signatures discussed in this chapter and Barreto-Lynn-Scott curves, a family of [pairing-friendly elliptic curves](../mathematical-preliminaries/pairings.md).
 It is possible to implement BLS (signatures) on BLS (curves).
 
 ## Contents
@@ -55,7 +55,7 @@ This is formally captured by the following security game:
 ## Description of BLS
 
 With these definitions, let's see how BLS signatures work.
-Let $\pairingsetup$ be a [pairing group setup algorithm](/cryptographic-notions/games-models-and-assumptions.md#group-setup-algorithms).
+Let $\pairingsetup$ be a [pairing group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).
 The four algorithms specifying a signature scheme are defined as follows:
 
 - The $\setup$ algorithm, on input the security parameter $\secparam$, runs
@@ -77,7 +77,7 @@ The public parameters consist of the tuple
 otherwise it returns 0 (invalid signature).
 
 A good way to think of BLS signatures is as follows: given a message $m$ with corresponding point $H(m)$ in $\GG_1$, the signature of $m$ is the point $S$ such that the discrete logarithm of $S$ in base $H(m)$ is equal to the discrete logarithm of $X$ in base $G_2$ (that is, the secret key $x$).
-This is reminiscent of the Chaum-Antwerpen undeniable signature scheme [[CA89](/references.md#CA89)].
+This is reminiscent of the Chaum-Antwerpen undeniable signature scheme [[CA89](../references.md#CA89)].
 Checking discrete logarithm equality is exactly what the pairing $e$ enables to do efficiently.
 
 Note that the signature algorithm is deterministic and hence always returns the same signature for a given secret key/message pair; this is called a *unique signature scheme*.
@@ -96,7 +96,7 @@ Indeed,
 
 ### Security Proof
 
-Regarding security, the BLS scheme is provably EUF-CMA-secure assuming the so-called [co-CDH$^*$ problem](/cryptographic-notions/games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh-1) is hard for $(\GG_1, \GG_2)$ and modeling the hash function $H$ as a random oracle.
+Regarding security, the BLS scheme is provably EUF-CMA-secure assuming the so-called [co-CDH$^*$ problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh-1) is hard for $(\GG_1, \GG_2)$ and modeling the hash function $H$ as a random oracle.
 The co-CDH$^*$ problem for two groups $\GG_1$ and $\GG_2$ of order $r$ is as follows: given random generators $G_1$ and $G_2$ of $\GG_1$ and $\GG_2$ respectively, $X_1 = xG_1$ and $X_2 = xG_2$ for $x \sample \ZZ_r$, and a random group element $Y \in \GG_1$, compute $xY$.
 This might be thought of as CDH in $\GG_1$ with additional "hint" $(G_2, X_2=x G_2) \in \GG_2^2$.
 
@@ -142,9 +142,9 @@ One can obtain a better reduction losing a factor $\qs$ by using a slightly more
 
 The various statements and proofs of the security of BLS signatures in the literature can be confusing.
 The security theorem that we just proved holds for any pairing group setup algorithm.
-However, depending on the [pairing type](/cryptographic-notions/games-models-and-assumptions.md#group-setup-algorithms), it can be rephrased slightly differently.
+However, depending on the [pairing type](./games-models-and-assumptions.md#group-setup-algorithms), it can be rephrased slightly differently.
 
-The original conference paper [[BLS01](/references.md#BLS01)] was only considering symmetric (a.k.a. type-1) pairings (i.e., $\GG_1 = \GG_2 = \GG$) and proved EUF-CMA security assuming the CDH problem in $\GG$ is hard.
+The original conference paper [[BLS01](../references.md#BLS01)] was only considering symmetric (a.k.a. type-1) pairings (i.e., $\GG_1 = \GG_2 = \GG$) and proved EUF-CMA security assuming the CDH problem in $\GG$ is hard.
 [Theorem 1](#th:BLS_security) implies this specific case since for type-1 pairings, hardness of co-CDH$^*$ is equivalent to hardness of CDH in $\GG$, as we prove now.
 
 <a name="prop:cocdhstar_equiv_cdh"></a>
@@ -163,7 +163,7 @@ Then co-CDH$^*$ $\equiv$ CDH.*
 > The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original CDH instance.
 > Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
-Later, the journal paper [[BLS04](/references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](/cryptographic-notions/games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh)[^coCDH] is hard.
+Later, the journal paper [[BLS04](../references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh)[^coCDH] is hard.
 The co-CDH problem is similar to the co-CDH$^*$ problem except the adversary is only given $G_2 \in \GG_2$, $X_2 = xG_2$, and $Y \in \GG_1$, and must compute $xY$.
 Again, [Theorem 1](#th:BLS_security) implies this specific case since for type-2 pairings, co-CDH$^*$ is equivalent to co-CDH.
 
@@ -183,7 +183,7 @@ Then co-CDH$^*$ $\equiv$ co-CDH.*
 > The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original co-CDH instance.
 > Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
-Interestingly, [[BLS04](/references.md#BLS04)] gives an example of type-3 pairing group setup algorithm (no efficiently computable isomorphism from $\GG_2$ to $\GG_1$ is known) such that co-CDH is conjectured to be hard but BLS over this pairing group setup algorithm is insecure.
+Interestingly, [[BLS04](../references.md#BLS04)] gives an example of type-3 pairing group setup algorithm (no efficiently computable isomorphism from $\GG_2$ to $\GG_1$ is known) such that co-CDH is conjectured to be hard but BLS over this pairing group setup algorithm is insecure.
 Let $\GG_2 = \GG_t$ be a subgroup of order $r$ of the multiplicative group $\ZZ_p^*$, let $\GG_1$ be the additive group $\ZZ_r$, and let $e \colon \GG_1 \times \GG_2 \to \GG_2$ be defined as $e(x,y) = y^x$.
 Note that DL is easy in $\GG_1$, hence co-CDH is at least as hard as DL in $\GG_2$ (which is conjectured hard for sufficiently large $p$ and $r$).
 Hence, maybe counter-intuitively, hardness of co-CDH does not necessarily imply hardness of DL in $\GG_1$!
@@ -215,7 +215,7 @@ It runs $\adv$ on input $(G_1,X_1,G_2,X_2,Y)$ which is a correctly distributed c
 If $\adv$ returns the correct answer $S^* = xY$ to this co-CDH$^*$ challenge, then $(m^*,S^* )$ is a valid forgery.
 
 This equivalence holds because we considered the "random generator" variant of co-CDH$^*$ where $G_1$ and $G_2$ are drawn at random.
-As noted in [[CHKM10]](/references.md#CHKM10), for type-3 pairings, it is not known whether breaking EUF-CMA-security of BLS reduces to the "fixed generator" variant of co-CDH$^*$ where $G_1$ and $G_2$ are fixed (the previous reduction does not work anymore since there is only a negligible chance to "hit" the fixed generator $G_1$ when making queries $\orcl{H}(m)$).
+As noted in [[CHKM10]](../references.md#CHKM10), for type-3 pairings, it is not known whether breaking EUF-CMA-security of BLS reduces to the "fixed generator" variant of co-CDH$^*$ where $G_1$ and $G_2$ are fixed (the previous reduction does not work anymore since there is only a negligible chance to "hit" the fixed generator $G_1$ when making queries $\orcl{H}(m)$).
 
 The following figure summarizes the above results:
 
@@ -226,13 +226,13 @@ graph TD;
     C <-- type-1/2/3 -->D(EUF-CMA-sec of BLS);
 ```
 
-Note that the notion of type-1/2/3 pairing was only introduced in 2008 [[GPS08](/references.md#GPS08)], a few years after the journal version of the BLS paper [[BLS04](/references.md#BLS04)].
-For more discussion about type-2/type-3 pairings and the role of $\Psi$, see [[SV07]](/references.md#07), [[CHKM10]](/references.md#CHKM10), and [[CM09]](/references.md#CM09).
+Note that the notion of type-1/2/3 pairing was only introduced in 2008 [[GPS08](../references.md#GPS08)], a few years after the journal version of the BLS paper [[BLS04](../references.md#BLS04)].
+For more discussion about type-2/type-3 pairings and the role of $\Psi$, see [[SV07]](../references.md#07), [[CHKM10]](../references.md#CHKM10), and [[CM09]](../references.md#CM09).
 
 
 ## Signature Aggregation
 
-BLS signatures have a handy property: they can be aggregated non-interactively [[BGLS03](/references.md#BGLS03)].
+BLS signatures have a handy property: they can be aggregated non-interactively [[BGLS03](../references.md#BGLS03)].
 This means that given $n$ signature $\sigma_i$ for respective public key/message pairs $(pk_i, m_i)$, $0 \le i \le n-1$, it is possible to compute a compact aggregate signature $\sigma$ (of size similar to the one of a single signature) that proves that message $m_i$ was signed by the owner of public key $pk_i$ for every $i \in \{0, \dots, n-1\}$ (exactly as the tuple $(\sigma_0, \dots, \sigma_{n-1})$ would).
 
 To turn BLS into an aggregate signature scheme, the aggregate signature for a tuple $(S_0, \dots, S_{n-1}) \in \GG_1^n$ of $n$ signatures is simply defined as the sum of all signatures $S_i$:
@@ -259,7 +259,7 @@ The EUF-CMA security notion can easily be adapted to aggregate signature schemes
 
 Note that the adversary can choose extra public keys $pk_j$ as it wishes, in particular as a function of the target public key $pk^*$.
 
-BLS aggregate signatures are provably EUF-CMA-secure assuming hardness of the [$\psi$-co-CDH problem](/cryptographic-notions/games-models-and-assumptions.md#computational-%CF%88-co-diffie-hellman-%CF%88-co-cdh) and modeling the hash function $H$ as a random oracle.
+BLS aggregate signatures are provably EUF-CMA-secure assuming hardness of the [$\psi$-co-CDH problem](./games-models-and-assumptions.md#computational-%CF%88-co-diffie-hellman-%CF%88-co-cdh) and modeling the hash function $H$ as a random oracle.
 There is one caveat though: messages must be distinct, otherwise a so-called *rogue key attack* is possible.
 To see why, say the adversary is given a target public key $X^* \in \GG_2$.
 Then it can draw $y \sample \ZZ_r$ and compute a second public key $X' \defeq y G_2 - X^*$.
@@ -279,7 +279,7 @@ A simple fix against this attack is simply to prepend the public key to the mess
 \[
  S \defeq x H(X \Vert m).
 \]
-Then, the condition that messages should be different can safely be lifted [[BNN07](/references.md#BNN07)].
+Then, the condition that messages should be different can safely be lifted [[BNN07](../references.md#BNN07)].
 
 This, however, precludes an interesting optimization of the verification in case all messages are equal.[^multi]
 Indeed, when $m_0 = m_1 = \cdots = m_{n-1} = m$, Eq. $\eqref{1}$ simplifies to
@@ -294,7 +294,7 @@ The notion of PoP is somewhat informal as, to the best of my knowledge, there is
 The idea is that it should demonstrate that the user has access to the functionality associated with his public key, namely signing.
 Hence, a simple PoP consists of the user signing its own public key, $\pi \defeq x H'(X)$.
 Intuitively, this makes sense since in a rogue key attack, the adversary cannot compute the secret key associated with the rogue public key (which it computes as a function of the target public key).
-This solution was proved secure assuming the hash function used for the PoP is different from the hash function used for actual message signing, which can be achieved from a single hash function by enforcing domain separation [[RY07](/references.md#RY07)].
+This solution was proved secure assuming the hash function used for the PoP is different from the hash function used for actual message signing, which can be achieved from a single hash function by enforcing domain separation [[RY07](../references.md#RY07)].
 
 ## A Note about Non-Repudiation
 
@@ -307,7 +307,7 @@ Then, confronted by the judge with a valid signature $\sigma$ for message $m$, A
 Hence, non-repudiation should rather be seen as the combination of existential unforgeability with a second security notion, often called *message biding* in the literature, which demands that no malicious user be able to generate a public key $pk$, two messages $m$ and $m'$, and a signature $\sigma$ such that $m \neq m'$ and $\eqref{3}$ holds.
 
 It is easy to see that standard BLS signatures are message binding if $H$ is collision-resistant.
-Things are more subtle though when considering aggregate signatures [[Qua21](/references.md#Qua21)].
+Things are more subtle though when considering aggregate signatures [[Qua21](../references.md#Qua21)].
 In particular, if $t \ge 2$ users collide (or if a single malicious user controls $t \ge 2$ public keys), they can arrange to choose their public keys $X_0, \dots, X_{t-1}$ such that
 \[
  X_0 + \dots X_{t-1} = 0.
@@ -317,8 +317,8 @@ Note that checking that $S \neq 0$ in the verification algorithm does not thwart
 
 ## Further Topics to Cover
 
-- BLS multi-signatures [[BDN18](/references.md#BDN18)]
-- BLS threshold signatures [[BL22](/references.md#BL22)]
+- BLS multi-signatures [[BDN18](../references.md#BDN18)]
+- BLS threshold signatures [[BL22](../references.md#BL22)]
 - use of BLS signatures in the Ethereum beacon chain
 
 ----

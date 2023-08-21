@@ -80,13 +80,13 @@ Binding is defined by the following game:
  }
 \]
 
-For some commitment schemes, one of these two properties holds [statistically](/cryptographic-notions/games-models-and-assumptions.md#advantage) (i.e., cannot be broken with non-negligible advantage even by a computationally unbounded adversary) or even perfectly.
+For some commitment schemes, one of these two properties holds [statistically](./games-models-and-assumptions.md#advantage) (i.e., cannot be broken with non-negligible advantage even by a computationally unbounded adversary) or even perfectly.
 However, a commitment scheme cannot be *both* statistically hiding and statistically binding at the same time.
 Hence, at best, a commitment scheme can be either statistically hiding and computationally binding or computationally hiding and statistically binding.
 
 ### Homomorphic Commitments
 
-Informally, a commitment scheme is homomorphic if the message space $\cM$ equipped with some binary operation $\star$ forms a [group](/mathematical-preliminaries/groups.md) and given two commitments $C_1$ and $C_2$ to respectively $m_1$ and $m_2$, anyone can compute a commitment $C$ that the committer can open to $m_1 \star m_2$.
+Informally, a commitment scheme is homomorphic if the message space $\cM$ equipped with some binary operation $\star$ forms a [group](../mathematical-preliminaries/groups.md) and given two commitments $C_1$ and $C_2$ to respectively $m_1$ and $m_2$, anyone can compute a commitment $C$ that the committer can open to $m_1 \star m_2$.
 
 More formally, a commitment scheme is homomorphic (with respect to group operation $\star$) if there exists two algorithms $\homcom$ and $\homdecom$ such that
 
@@ -108,9 +108,9 @@ Algorithms $\homcom$ and $\homdecom$ are often quite simple (e.g., when the comm
 
 ## Pedersen Commitments
 
-The Pedersen commitment scheme, initially introduced in [[Ped91](/references.md#Ped91)], is widely used, in particular to build zero-knowledge proof systems.
+The Pedersen commitment scheme, initially introduced in [[Ped91](../references.md#Ped91)], is widely used, in particular to build zero-knowledge proof systems.
 It is specified as follows.
-Let $\groupsetup$ be a [group setup algorithm](/cryptographic-notions/games-models-and-assumptions.md#group-setup-algorithms).
+Let $\groupsetup$ be a [group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).
 Then:
 
 - the setup algorithm $\setup$, on input $\secparam$, runs $(\GG,p) \gets \groupsetup(\secparam)$, draws two random generators $G$ and $H$ of $\GG$, and returns parameters $par = (\GG,p,G,H)$; the message space is $\cM = \ZZ_p$;
@@ -142,7 +142,7 @@ Say the committer knows $h$ such that $H = hG$. Then it can send $C = cG$ as com
 
 For this reason, Pedersen's scheme is sometimes referred to as a *trapdoor* (or *equivocal*) commitment scheme, which can be useful in security proofs but should also make us wary.
 However, there are secure ways to select the commitment key without a trusted third party, such as using a hash-to-group function (a.k.a. hash-to-curve function in case $\GG$ is based on an elliptic curve) applied to some NUMS ([nothing-up-my-sleeve](https://en.wikipedia.org/wiki/Nothing-up-my-sleeve_number)) input.
-For a real-world example where this trapdoor property could have been used, see Section VI of [[HLPT20](/references.md#HLPT20)] about the Scytl/SwissPost e-voting system.
+For a real-world example where this trapdoor property could have been used, see Section VI of [[HLPT20](../references.md#HLPT20)] about the Scytl/SwissPost e-voting system.
 
 ## ElGamal Commitments
 
