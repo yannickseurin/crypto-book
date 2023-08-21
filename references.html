@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>References - Crypto Book (Work in Progress)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./assets/custom.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="intro.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Mathematical Preliminaries</li><li class="chapter-item "><a href="mathematical-preliminaries/groups.html">Groups</a></li><li class="chapter-item "><div>Rings</div></li><li class="chapter-item "><div>Fields</div></li><li class="chapter-item "><a href="mathematical-preliminaries/polynomials.html">Polynomials</a></li><li class="chapter-item "><div>Fast Fourier Transform</div></li><li class="chapter-item "><a href="mathematical-preliminaries/elliptic-curves.html">Elliptic Curves</a></li><li class="chapter-item "><a href="mathematical-preliminaries/pairings.html">Pairings</a></li><li class="chapter-item "><div>Languages and Complexity</div></li><li class="chapter-item affix "><li class="part-title">Cryptographic Notions</li><li class="chapter-item "><a href="cryptographic-notions/games-models-and-assumptions.html">Games, Models, and Assumptions</a></li><li class="chapter-item "><a href="cryptographic-notions/bls-signatures.html">BLS Signatures</a></li><li class="chapter-item "><a href="cryptographic-notions/commitment-schemes.html">Commitment Schemes</a></li><li class="chapter-item "><div>Polynomial Commitment Schemes</div></li><li class="chapter-item "><div>Zero-Knowledge Proof Systems</div></li><li class="chapter-item "><div>Proofs of Knowledge</div></li><li class="chapter-item affix "><li class="part-title">ZK Hack Puzzles</li><li class="chapter-item "><a href="zk-hack-puzzles/before-starting.html">Before Starting</a></li><li class="chapter-item "><div>Puzzle 1: Let's Hash it Out</div></li><li class="chapter-item "><div>Puzzle 2: Group Dynamics</div></li><li class="chapter-item "><div>Puzzle 3: Double Trouble</div></li><li class="chapter-item "><div>Puzzle 4: Hidden in Plain Sight</div></li><li class="chapter-item "><div>Puzzle 5: To be Adaptive is to be Strong</div></li><li class="chapter-item "><div>Puzzle 6: Soundness of Music</div></li><li class="chapter-item "><div>Puzzle 7: There’s something in the AIR</div></li><li class="chapter-item "><div>Puzzle 8: Can you turn up the heat?</div></li><li class="chapter-item "><div>Puzzle 9: Zero-Sum Game</div></li><li class="chapter-item "><div>Puzzle 10: Power Corrupts</div></li><li class="chapter-item "><div>Puzzle 11: Bigger is Better</div></li><li class="chapter-item affix "><a href="references.html" class="active">References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Crypto Book (Work in Progress)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yannickseurin/crypto-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="references"><a class="header" href="#references">References</a></h1>
+<p><a id="ABR01">[ABR01]</a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. <a href="https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf"><em>DHIES: An encryption scheme based on the Diffie-Hellman Problem</em></a>. Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).</p>
+<p><a id="BB08">[BB08]</a> Dan Boneh and Xavier Boyen. <a href="https://crypto.stanford.edu/~dabo/pubs/papers/bbsigs.pdf"><em>Short Signatures Without Random Oracles and the SDH Assumption in Bilinear Groups</em></a>. In Journal of Cryptology, 2008.</p>
+<p><a id="BCI+10">[BCI+10]</a> Eric Brier, Jean-Sébastien Coron, Thomas Icart, David Madore, Hugues Randriam, and Mehdi Tibouchi. <a href="https://eprint.iacr.org/2009/340.pdf"><em>Efficient Indifferentiable Hashing into Ordinary Elliptic Curves</em></a>. In proceedings of CRYPTO 2010.</p>
+<p><a id="BCM+15">[BCM+15]</a> Paulo S. L. M. Barreto, Craig Costello, Rafael Misoczki, Michael Naehrig, Geovandro C. C. F. Pereira, and Gustavo Zanon. <a href="https://eprint.iacr.org/2015/247.pdf"><em>Subgroup Security in Pairing-Based Cryptography</em></a>. In proceedings of Latincrypt 2015.</p>
+<p><a id="BDN18">[BDN18]</a> Dan Boneh, Manu Drijvers, and Gregory Neven. <a href="https://eprint.iacr.org/2018/483.pdf"><em>Compact Multi-signatures for Smaller Blockchains</em></a>. In proceedings of ASIACRYPT 2018.</p>
+<p><a id="BF03">[BF03]</a> Dan Boneh and Matthew K. Franklin. <a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf"><em>Identity-Based Encryption from the Weil Pairing</em></a>. In SIAM Journal on Computing, 2003.</p>
+<p><a id="BGLS03">[BGLS03]</a> Dan Boneh, Craig Gentry, Ben Lynn, and Hovav Shacham. <a href="https://crypto.stanford.edu/~dabo/pubs/papers/aggreg.pdf"><em>Aggregate and Verifiably Encrypted Signatures from Bilinear Maps</em></a>. In proceedings of EUROCRYPT 2003.</p>
+<p><a id="BL22">[BL22]</a> Renas Bacho and Julian Loss. <a href="https://eprint.iacr.org/2022/534.pdf"><em>On the Adaptive Security of the Threshold BLS Signature Scheme</em></a>. In proceedings of ACM CCS 2022.</p>
+<p><a id="BLS01">[BLS01]</a> Dan Boneh, Ben Lynn, and Hovav Shacham. <a href="https://www.iacr.org/archive/asiacrypt2001/22480516.pdf"><em>Short Signatures from the Weil Pairing</em></a>. In proceedings of ASIACRYPT 2001.</p>
+<p><a id="BLS04">[BLS04]</a> Dan Boneh, Ben Lynn, and Hovav Shacham. <a href="https://hovav.net/ucsd/dist/sigs.pdf"><em>Short Signatures from the Weil Pairing</em></a>. In Journal of Cryptology, 2004.</p>
+<p><a id="BN05">[BN05]</a> Paulo S. L. M. Barreto and Michael Naehrig. <a href="https://eprint.iacr.org/2005/133.pdf"><em>Pairing-Friendly Elliptic Curves of Prime Order</em></a>. In proceedings of SAC 2005.</p>
+<p><a id="BN19">[BN19]</a> Eli Biham and Lior Neumann. <a href="https://eprint.iacr.org/2019/1043.pdf"><em>Breaking the Bluetooth Pairing - The Fixed Coordinate Invalid Curve Attack</em></a>. In proceedings of SAC 2019.</p>
+<p><a id="BNN07">[BNN07]</a> Mihir Bellare, Chanathip Namprempre, and Gregory Neven. <a href="https://eprint.iacr.org/2006/285.pdf"><em>Unrestricted Aggregate Signatures</em></a>. In proceedings of ICALP 2007.</p>
+<p><a id="CA89">[CA89]</a> David Chaum and Hans Van Antwerpen. <a href="https://chaum.com/wp-content/uploads/2022/01/Chaum-Antwerpen-1990-Chapter-Undeniable-Signatures.pdf"><em>Undeniable Signatures</em></a>. In proceedings of CRYPTO 1989.</p>
+<p><a id="Che10">[Che10]</a> Jung Hee Cheon. <a href="https://link.springer.com/content/pdf/10.1007/s00145-009-9047-0.pdf"><em>Discrete Logarithm Problems with Auxiliary Inputs</em></a>. In Journal of Cryptology, 2010.</p>
+<p><a id="CHKM10">[CHKM10]</a> Sanjit Chatterjee, Darrel Hankerson, Edward Knapp, and Alfred Menezes. <a href="https://eprint.iacr.org/2009/060.pdf"><em>Comparing two pairing-based aggregate signature schemes</em></a>. In Designs, Codes and Cryptography, 2010.</p>
+<p><a id="CJ19">[CJ19]</a> Cas Cremers and Dennis Jackson. <a href="https://eprint.iacr.org/2019/526.pdf"><em>Prime, Order Please! Revisiting Small Subgroup and Invalid Curve Attacks on Protocols using Diffie-Hellman</em></a>. In proceedings of IEEE CSF 2019.</p>
+<p><a id="CM09">[CM09]</a> Sanjit Chatterjee and Alfred Menezes. <a href="https://eprint.iacr.org/2009/480.pdf"><em>On Cryptographic Protocols Employing Asymmetric Pairings - The Role of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Ψ</span></span></span></span> Revisited</em></a>. IACR ePrint report 2009/480, 2009.</p>
+<p><a id="FKL18">[FKL18]</a> Georg Fuchsbauer, Eike Kiltz, and Julian Loss. <a href="https://eprint.iacr.org/2017/620.pdf"><em>The Algebraic Group Model and its Applications</em></a>. In proceedings of CRYPTO 2018.</p>
+<p><a id="GPS08">[GPS08]</a> Steven D. Galbraith, Kenneth G. Paterson, and Nigel P. Smart. <a href="https://eprint.iacr.org/2006/165.pdf"><em>Pairings for cryptographers</em></a>. In Discrete Applied Mathematics, 2008.</p>
+<p><a id="Gro16">[Gro16]</a> Jens Groth. <a href="https://eprint.iacr.org/2016/260.pdf"><em>On the Size of Pairing-Based Non-interactive Arguments</em></a>. In proceedings of EUROCRYPT 2016.</p>
+<p><a id="Ham15">[Ham15]</a> Mike Hamburg. <a href="https://eprint.iacr.org/2015/673.pdf"><em>Decaf: Eliminating Cofactors Through Point Compression</em></a>. In proceedings of CRYPTO 2015.</p>
+<p><a id="HGP22">[HGP22]</a> Youssef El Housni, Aurore Guillevic, and Thomas Piellard. <a href="https://eprint.iacr.org/2022/352.pdf"><em>Co-factor Clearing and Subgroup Membership Testing on Pairing-Friendly Curves</em></a>. In proceedings of AFRICACRYPT 2022.</p>
+<p><a id="HLPT20">[HLPT20]</a> Thomas Haines, and Sarah Jamie Lewis, and Olivier Pereira, and Vanessa Teague. <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=9152765"><em>How not to prove your election outcome</em></a>. In proceedings of IEEE SP 2020.</p>
+<p><a id="Jou00">[Jou00]</a> Antoine Joux. <a href="https://cgi.di.uoa.gr/~aggelos/crypto/page4/assets/joux-tripartite.pdf"><em>A One Round Protocol for Tripartite Diffie-Hellman</em></a>. In proceedings of ANTS 2000.</p>
+<p><a id="JSS15">[JSS15]</a> Tibor Jager, Jörg Schwenk, and Juraj Somorovsky. <a href="https://www.nds.rub.de/media/nds/veroeffentlichungen/2015/09/14/main-full.pdf"><em>Practical Invalid Curve Attacks on TLS-ECDH</em></a>. In proceedings of ESORICS 2015.</p>
+<p><a id="KZG10a">[KZG10a]</a> Aniket Kate, Gregory M. Zaverucha, and Ian Goldberg. <a href="https://www.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf"><em>Constant-Size Commitments to Polynomials and Their Applications</em></a>. In proceedings of ASIACRYPT 2010.</p>
+<p><a id="KZG10b">[KZG10b]</a> Aniket Kate, Gregory M. Zaverucha, and Ian Goldberg. <a href="https://cacr.uwaterloo.ca/techreports/2010/cacr2010-10.pdf"><em>Polynomial Commitments</em></a>. Full version of [KZG10a].</p>
+<p><a id="LL97">[LL97]</a> Chae Hoon Lim and Pil Joong Lee. <a href="https://link.springer.com/content/pdf/10.1007/BFb0052240.pdf"><em>A Key Recovery Attack on Discrete Log-based Schemes Using a Prime Order Subgroup</em></a>. In proceedings of CRYPTO 1997.</p>
+<p><a id="MOV91">[MOV91]</a> Alfred Menezes, Tatsuaki Okamoto, and Scott A. Vanstone. <a href="https://dl.acm.org/doi/pdf/10.1145/103418.103434"><em>Reducing Elliptic Curve Logarithms to Logarithms in a Finite Field</em></a>. In proceedings of STOC 1991.</p>
+<p><a id="Ped91">[Ped91]</a> Torben P. Pedersen. <a href="https://link.springer.com/content/pdf/10.1007/3-540-46766-1_9.pdf"><em>Non-Interactive and Information-Theoretic Secure Verifiable Secret Sharing</em></a>. In proceedings of CRYPTO 1991.</p>
+<p><a id="Qua21">[Qua21]</a> Nguyen Thoi Minh Quan. <a href="https://eprint.iacr.org/2021/323.pdf"><em>0</em></a>. IACR ePrint report 2021/323, 2021.</p>
+<p><a id="RY07">[RY07]</a> Thomas Ristenpart and Scott Yilek. <a href="https://eprint.iacr.org/2007/264.pdf"><em>The Power of Proofs-of-Possession: Securing Multiparty Signatures against Rogue-Key Attacks</em></a>. In proceedings of EUROCRYPT 2007.</p>
+<p><a id="SV07">[SV07]</a> Nigel P. Smart and Frederik Vercauteren. <a href="https://eprint.iacr.org/2005/116.pdf"><em>On computable isomorphisms in efficient asymmetric pairing-based systems</em></a>. In Discrete Applied Mathematics, 2007.</p>
+<p><a id="VAS+17">[VAS+17]</a> Luke Valenta, David Adrian, Antonio Sanso, Shaanan Cohney, Joshua Fried, Marcella Hastings, J. Alex Halderman, and Nadia Heninger. <a href="https://eprint.iacr.org/2016/995.pdf"><em>Measuring small subgroup attacks against Diffie-Hellman</em></a>. In proceedings of NDSS 2017.</p>
+<p><a id="WB19">[WB19]</a> Riad S. Wahby and Dan Boneh. <a href="https://eprint.iacr.org/2019/403.pdf"><em>Fast and simple constant-time hashing to the BLS12-381 elliptic curve</em></a>. IACR ePrint report 2019/403, 2019.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="zk-hack-puzzles/before-starting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="zk-hack-puzzles/before-starting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./assets/mermaid.min.js"></script>
+        <script src="./assets/mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
