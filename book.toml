@@ -1,0 +1,34 @@
+[book]
+authors = ["Yannick Seurin"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Crypto Book (Work in Progress)"
+
+[output.html]
+no-section-label = true
+additional-css = ["./assets/custom.css"]
+additional-js = ["./assets/mermaid.min.js", "./assets/mermaid-init.js"]
+git-repository-url = "https://github.com/yannickseurin/crypto-book"
+default-theme = "rust"
+preferred-dark-theme = "ayu"
+
+[output.html.fold]
+enable = true
+level = 0
+
+[output.html.playground]
+runnable = false
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
+[preprocessor.katex]
+after = ["links"]
+macros = "src/macros.txt"
+block-delimiter = {left = "\\[", right = "\\]"}
+trust = true
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
