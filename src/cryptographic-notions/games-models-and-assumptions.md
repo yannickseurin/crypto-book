@@ -81,7 +81,7 @@ We say that a game $\game$ is *statistically hard* (or *information-theoreticall
 \[
  \advantage{\adv}{GAME}(\secpar) = \negl(\secpar).
 \]
-In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](/cryptographic-notions/commitment-schemes.md) that can be perfectly hiding or perfectly binding).
+In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](crypto-book/cryptographic-notions/commitment-schemes.md) that can be perfectly hiding or perfectly binding).
 
 When we simply say that a game is hard, it usually means computationally hard (but this should always be clear form the context).
 
@@ -148,7 +148,7 @@ A *pairing group setup algorithm* is an algorithm $\pairingsetup$ which on input
 We adopt the convention that group/pairing setup algorithms do not return generators of the groups.
 They will be explicitly sampled in the games.
 
-One usually distinguishes three types of pairing group setup algorithms [[GPS08](/references.md#GPS08)]:
+One usually distinguishes three types of pairing group setup algorithms [[GPS08](../references.md#GPS08)]:
 
 - a type-1 pairing group setup algorithm (also called *symmetric* pairing setup algorithm) is such that $\GG_1 = \GG_2$;
 - a type-2 pairing group setup algorithm is such that $\GG_1 \neq \GG_2$ and there exists an efficiently computable isomorphism $\psi \colon \GG_2 \to \GG_1$;
