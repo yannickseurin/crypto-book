@@ -29,9 +29,11 @@ Assume that we can write $\bfh^*$ as a linear combination of vectors $\bfh_0, \d
  \bfh^* = \sum_{i=0}^{255} c_i \bfh_i. \label{1} \tag{1}
 \]
 Then we can compute $S^*$ as
-\[
- \sum_{i=0}^{255} c_i S_i = \sum_{i=0}^{255} \sum_{j=0}^{255} c_i h_{i,j} (x B_j) = \sum_{j=0}^{255} \underbrace{\left( \sum_{i=0}^{255} c_i h_{i,j} \right)}_{h^*_j} (x B_{j}) = S^*.
-\]
+\[\begin{aligned}
+ \sum_{i=0}^{255} c_i S_i & = \sum_{i=0}^{255} \sum_{j=0}^{255} c_i h_{i,j} (x B_j) \\
+ & = \sum_{j=0}^{255} \underbrace{\left( \sum_{i=0}^{255} c_i h_{i,j} \right)}_{h^*_j} (x B_{j}) \\
+ & = S^*.
+\end{aligned}\]
 How do we compute $\bfc$? Letting $\bfM$ denote the $256 \times 256$ matrix whose rows are $\bfh_0, \dots, \bfh_{255}$, then Eq. $\eqref{1}$ is equivalent to
 \[
  \bfh^* = \bfc \cdot \bfM.

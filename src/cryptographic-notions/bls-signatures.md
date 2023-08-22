@@ -87,9 +87,12 @@ In that case, the hash function must have outputs in $\GG_2$ and hence this is n
 
 The scheme is correct, meaning that for every key pair $(x, X)$ possibly output by the key generation algorithm and every message $m$, the signature $S$ computed by the signature algorithm is declared valid by the verification algorithm.
 Indeed,
-\[
- e(S, G_2) = e(x H(m), G_2) = e(H(m), G_2)^x = e(H(m), x G_2) = e(H(m), X).
-\]
+\[\begin{aligned}
+ e(S, G_2) & = e(x H(m), G_2) \\
+ & = e(H(m), G_2)^x \\
+ & = e(H(m), x G_2) \\
+ & = e(H(m), X).
+\end{aligned}\]
 
 
 ## Security of BLS
