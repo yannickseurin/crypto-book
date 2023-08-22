@@ -43,7 +43,7 @@ For elliptic curves, although it is possible to construct secure curves with a p
 
 When using such groups of composite order $n$, a "base" point $G$ of prime order $r$ is usually specified.
 As long as group elements used in a protocol are computed as multiples of $G$, one never "gets out" of the prime-order subgroup $\langle G \rangle$.
-The [index of subgroup $\langle G \rangle$](/mathematical-preliminaries/groups.md#subgroups), i.e., the ratio $h \defeq n/r$, is often called the *cofactor* of $G$ in a cryptographic context.
+The [index](../../mathematical-preliminaries/groups.md#subgroups) of subgroup $\langle G \rangle$, i.e., the ratio $h \defeq n/r$, is often called the *cofactor* of $G$ in a cryptographic context.
 
 However, what happens if Alice, holding some secret value $x$, is tricked by an attacker into computing $Q \defeq x P$ where $P$ is not in subgroup $\langle G \rangle$?
 If $Q$ is made available to the attacker, then it can use the Pohlig-Hellman algorithm to compute $x \bmod k$ where $k$ is the "smooth" part of $P$'s order (meaning, informally, the product of all "small" prime factors of $P$'s order), which might be somewhere between a few bits (if $h$ is $4$ or $8$) to enough to retrieve $x$ entirely.
