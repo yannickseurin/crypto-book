@@ -54,9 +54,8 @@ This is formally captured by the following security game:
 
 ## Description of BLS
 
-With these definitions, let's see how BLS signatures work.
 Let $\pairingsetup$ be a [pairing group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).
-The four algorithms specifying a signature scheme are defined as follows:
+The BLS signature scheme is defined as follows:
 
 - The $\setup$ algorithm, on input the security parameter $\secparam$, runs
 \[
@@ -99,8 +98,8 @@ Indeed,
 
 ### Security Proof
 
-Regarding security, the BLS scheme is provably EUF-CMA-secure assuming the so-called [co-CDH$^*$ problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh-1) is hard for $(\GG_1, \GG_2)$ and modeling the hash function $H$ as a random oracle.
-The co-CDH$^*$ problem for two groups $\GG_1$ and $\GG_2$ of order $r$ is as follows: given random generators $G_1$ and $G_2$ of $\GG_1$ and $\GG_2$ respectively, $X_1 = xG_1$ and $X_2 = xG_2$ for $x \sample \ZZ_r$, and a random group element $Y \in \GG_1$, compute $xY$.
+The BLS scheme is provably EUF-CMA-secure assuming the so-called [co-CDH$^*$ problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh-1) is hard for $(\GG_1, \GG_2)$ and modeling the hash function $H$ as a random oracle.
+The co-CDH$^*$ problem for two groups $\GG_1$ and $\GG_2$ of order $r$ is defined as follows: given random generators $G_1$ and $G_2$ of $\GG_1$ and $\GG_2$ respectively, $X_1 = xG_1$ and $X_2 = xG_2$ for $x \sample \ZZ_r$, and a random group element $Y \in \GG_1$, compute $xY$.
 This might be thought of as CDH in $\GG_1$ with additional "hint" $(G_2, X_2=x G_2) \in \GG_2^2$.
 
 <a name="th:BLS_security"></a>
@@ -186,9 +185,10 @@ Then co-CDH$^*$ $\equiv$ co-CDH.*
 > The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original co-CDH instance.
 > Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
-Interestingly, [[BLS04](../references.md#BLS04)] gives an example of type-3 pairing group setup algorithm (no efficiently computable isomorphism from $\GG_2$ to $\GG_1$ is known) such that co-CDH is conjectured to be hard but BLS over this pairing group setup algorithm is insecure.
+Interestingly, [[BLS04](../references.md#BLS04)] gives an example of type-3 pairing group setup algorithm (i.e., such that no efficiently computable isomorphism from $\GG_2$ to $\GG_1$ is known) for which co-CDH is conjectured to be hard but BLS over this pairing group setup algorithm is insecure.
 Let $\GG_2 = \GG_t$ be a subgroup of order $r$ of the multiplicative group $\ZZ_p^*$, let $\GG_1$ be the additive group $\ZZ_r$, and let $e \colon \GG_1 \times \GG_2 \to \GG_2$ be defined as $e(x,y) = y^x$.
-Note that DL is easy in $\GG_1$, hence co-CDH is at least as hard as DL in $\GG_2$ (which is conjectured hard for sufficiently large $p$ and $r$).
+Note that DL is easy in $\GG_1$, which implies that DL in $\GG_2$ reduces to co-CDH (an algorithm solving co-CDH returns $xY$, which allows to solve for $x$ by computing the discrete log of $xY$ in base $Y$ in $\GG_1$).
+As DL in $\GG_2$ is conjectured hard for sufficiently large $p$ and $r$, co-CDH is conjectured hard for $(\GG_1,\GG_2)$ for such parameters as well.
 Hence, maybe counter-intuitively, hardness of co-CDH does not necessarily imply hardness of DL in $\GG_1$!
 On the other hand, DL being easy in $\GG_1$ implies that BLS is not EUF-CMA-secure.
 This shows the necessity of the stronger co-CDH$^*$ assumption for proving the security of BLS for type-3 pairings.
@@ -220,7 +220,7 @@ If $\adv$ returns the correct answer $S^* = xY$ to this co-CDH$^*$ challenge, th
 This equivalence holds because we considered the "random generator" variant of co-CDH$^*$ where $G_1$ and $G_2$ are drawn at random.
 As noted in [[CHKM10]](../references.md#CHKM10), for type-3 pairings, it is not known whether breaking EUF-CMA-security of BLS reduces to the "fixed generator" variant of co-CDH$^*$ where $G_1$ and $G_2$ are fixed (the previous reduction does not work anymore since there is only a negligible chance to "hit" the fixed generator $G_1$ when making queries $\orcl{H}(m)$).
 
-The following figure summarizes the above results:
+The following figure summarizes the above results (a double-arrow between two problems meaning equivalence):
 
 ```mermaid
 graph TD;
@@ -230,7 +230,7 @@ graph TD;
 ```
 
 Note that the notion of type-1/2/3 pairing was only introduced in 2008 [[GPS08](../references.md#GPS08)], a few years after the journal version of the BLS paper [[BLS04](../references.md#BLS04)].
-For more discussion about type-2/type-3 pairings and the role of $\Psi$, see [[SV07]](../references.md#07), [[CHKM10]](../references.md#CHKM10), and [[CM09]](../references.md#CM09).
+For more discussion about type-2/type-3 pairings and the consequences of an efficiently computable isomorphism $\psi \colon \GG_2 \to \GG_1$ in security proofs of pairing-based schemes, see [[SV07]](../references.md#07), [[CHKM10]](../references.md#CHKM10), and [[CM09]](../references.md#CM09).
 
 
 ## Signature Aggregation
