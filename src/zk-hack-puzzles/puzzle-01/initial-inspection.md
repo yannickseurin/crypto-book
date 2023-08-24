@@ -55,7 +55,7 @@ fn main() {
 ```
 
 It first brings some items from the library crate into scope with the `use` keyword.
-Note that when a package contains both a library and a binary crate, any public items from the library crate can be used in the binary crate by starting paths with the name of the package (which is specified in the *Cargo.toml* file; in this case, it is `bls_pedersen`).
+Note that when a package contains both a library and a binary crate, any public item from the library crate can be used in the binary crate by starting paths with the name of the package (which is specified in the *Cargo.toml* file; in this case, it is `bls_pedersen`).
 It also brings into scope two functions called `welcome` and `puzzle` defined in the [`prompt` external crate](https://github.com/kobigurk/zkhack-prompt/blob/master/src/lib.rs).
 
 The `main` function first calls `welcome` and `puzzle` which respectively display some nice ASCII art and the puzzle description.
@@ -105,7 +105,7 @@ which is equivalent to the verification equation we gave when describing BLS sin
 \end{aligned}\]
 
 So `verify` is indeed checking a BLS signature.
-Ccomputing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](../../mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. $\eqref{1}$ is often preferable.
+Computing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](../../mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. $\eqref{1}$ is often preferable.
 
 
 What pairing-friendly curve does the signature scheme use?
