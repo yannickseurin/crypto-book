@@ -32,13 +32,13 @@ There exists more complex commitment schemes where committing requires some inte
 
 Correctness requires that for every security parameter $\secpar$, the following game capturing the nominal execution of algorithms returns true with probability 1:
 
-\[\begin{aligned}
+\[\boxed{\begin{aligned}
  & par \gets \setup(\secparam) \\
  & m \sample \cM \\
  & (C,D) \gets \commit(par, m) \\
  & b \gets \verif(par, C, m, D) \\
- & \pcreturn (b=1)
-\end{aligned}\]
+ & \pcassert (b=1)
+\end{aligned}}\]
 
 ### Security
 
@@ -57,7 +57,7 @@ Let us formalize these two properties more precisely, starting with hiding, defi
   b \sample \bin & \qquad \pcassert (m_0 \in \cM) \wedge (m_1 \in \cM) \\
   par \gets \setup(\secparam) & \qquad (C,D) \defeq \commit(par,m_b) \\
   b' \gets \adv^{\text{Commit}}(par) & \qquad \pcreturn C\\
-  \pcreturn (b=b')
+  \pcassert (b=b')
  \end{array}
  }
 \]
@@ -75,7 +75,9 @@ Binding is defined by the following game:
   (C,m,D,m',D') \gets \adv(par) \\
   b \gets \verif(par,C,m,D) \\
   b' \gets \verif(par,C,m',D') \\
-  \pcreturn (b = 1) \wedge (b' = 1) \wedge (m \neq m')
+  \pcassert (m \neq m') \\
+  \pcassert (b = 1) \\
+  \pcassert (b' = 1)
  \end{array}
  }
 \]
@@ -93,7 +95,7 @@ More formally, a commitment scheme is homomorphic (with respect to group operati
 - $\homcom$ takes parameters $par$ and two commitments $C_1$ and $C_2$ and returns a commitment $C$;
 - $\homdecom$ takes two decommitments $D_1$ and $D_2$ and returns a decommitment $D$;
 - for any security parameter $\secpar$, the following game returns true with probability 1:
-\[\begin{aligned}
+\[\boxed{\begin{aligned}
  & par \gets \setup(\secparam) \\
  & m_1, m_2 \sample \cM \\
  & (C_1,D_1) \gets \commit(par, m_1) \\
@@ -101,8 +103,8 @@ More formally, a commitment scheme is homomorphic (with respect to group operati
  & C \gets \homcom(par,C_1,C_2) \\
  & D \gets \homdecom(par,D_1,D_2) \\
  & b \gets \verif(par, C, m_1 \star m_2, D) \\
- & \pcreturn (b=1)
-\end{aligned}\]
+ & \pcassert (b=1)
+\end{aligned}}\]
 
 Algorithms $\homcom$ and $\homdecom$ are often quite simple (e.g., when the commitment and decommitment spaces also have a group structure, they simply consist in applying the corresponding group operation to $C_1$ and $C_2$ or $D_1$ and $D_2$ respectively).
 

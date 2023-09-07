@@ -27,13 +27,13 @@ A signature scheme consists of four algorithms:
 
 The scheme is correct if for every security parameter $\secpar$ and every message $m$, the following game capturing the nominal execution of algorithms returns true with probability 1:
 
-\[\begin{aligned}
+\[\boxed{\begin{aligned}
  & par \gets \setup(\secparam) \\
  & (sk,pk) \gets \keygen(par) \\
  & \sigma \gets \sign(par,sk,m) \\
  & b \gets \verif(par,pk,m,\sigma) \\
- & \pcreturn (b=1)
-\end{aligned}\]
+ & \pcassert (b=1)
+\end{aligned}}\]
 
 The standard security notion for a signature scheme is *existential unforgeability against chosen message attacks* (EUF-CMA): no polynomial-time adversary, being given a target public key $pk^*$ and having access to a signature oracle for the corresponding secret key $sk^*$, should be able to compute a valid signature for a message it has not queried to the signature oracle, except with negligible probability.
 This is formally captured by the following security game:
@@ -47,7 +47,8 @@ This is formally captured by the following security game:
   (sk^*,pk^*) \gets \keygen(par) & \qquad \cQ \gets \cQ \cup \{m\} \\
   \cQ \defeq \emptyset & \qquad \pcreturn \sigma \\
   (m^*, \sigma^*) \gets \adv^{\orcl{Sign}}(par,pk^*) & \\
-  \pcreturn (m^* \notin \cQ) \wedge (\verif( par,pk^*,m^*,\sigma^* )=1) &
+  \pcassert (m^* \notin \cQ) & \\
+  \pcassert (\verif( par,pk^*,m^*,\sigma^* )=1) &
  \end{array}
  }
 \]
