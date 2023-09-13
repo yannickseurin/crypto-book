@@ -116,7 +116,9 @@ Let $\groupsetup$ be a [group setup algorithm](./games-models-and-assumptions.md
 Then:
 
 - the setup algorithm $\setup$, on input $\secparam$, runs $(\GG,p) \gets \groupsetup(\secparam)$, draws two random generators $G$ and $H$ of $\GG$, and returns parameters $par = (\GG,p,G,H)$; the message space is $\cM = \ZZ_p$;
+
 - the commitment algorithm $\commit$, on input parameters $par = (\GG,p,G,H)$ and a message $m \in \ZZ_p$, draws $r \sample \ZZ_p$ and returns a commitment $C = mG + rH$ and a decommitment $D = r$;
+
 - the verification algorithm $\verif$, on input parameters $par = (\GG,p,G,H)$, a commitment $C \in \GG$, a message $m \in \ZZ_p$, and a decommitment $D = r \in \ZZ_p$, returns 1 if $mG + rH = C$ and 0 otherwise.
 
 The Pedersen commitment scheme can be generalized to messages which are vectors $\bfm = (m_0, \dots, m_{n-1}) \in (\ZZ_p)^n$: the parameters are extended to $par = (\GG, p, G_0, \dots, G_{n-1}, H)$ and the commitment for message $\bfm = (m_0, \dots, m_{n-1})$ with randomness $r$ is
@@ -128,14 +130,13 @@ The Pedersen commitment scheme can be generalized to messages which are vectors 
 *The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$ (or over $(\ZZ_p)^n$ for the vector variant).*
 
 > *Proof.*
-> Let us sketch the proof of each property in the case where the message space is $\ZZ_p$ (this can easily be extended to the case where the message space is $(\ZZ_p)^n$):
->
+Let us sketch the proof of each property in the case where the message space is $\ZZ_p$ (this can easily be extended to the case where the message space is $(\ZZ_p)^n$):
 > - *perfectly hiding*: as $r$ is uniformly random in $\ZZ_p$, for any message $m$, $C$ is uniformly random in $\GG$ and hence does not reveal any information about $m$;
 > - *computationally binding*: assume an adversary can output two message/decommitment pairs $(m,r)$ and $(m',r')$ with $m \neq m'$ for the same commitment $C$; then
-> \[
-   (m-m') G = (r'-r) H,
-  \]
-> which yields the discrete logarithm of $H$ in base $G$ (note that $m - m' \neq 0$ implies $r'-r \neq 0$ as $G$ and $H$ are generators of $\GG$);
+\[
+ (m-m') G = (r'-r) H,
+\]
+which yields the discrete logarithm of $H$ in base $G$ (note that $m - m' \neq 0$ implies $r'-r \neq 0$ as $G$ and $H$ are generators of $\GG$);
 > - *additively homomorphic*: given two commitments $C_1 = m_1 G + r_1 H$ and $C_2 = m_2 G + r_2 H$, then $C_1 + C_2= (m_1 + m_2) G + (r_1+r_2) H$.
 
 A note about the setup algorithm: it should ensure that nobody knows the discrete logarithm of $H$ in base $G$.
@@ -182,9 +183,9 @@ If $\Pi$ is strongly binding, then the function family
 is collision-resistant.*
 
 > *Proof.*
-> Assume that $H$ is not collision-resistant and that there is an adversary which on input $par$ returns $(m,r) \neq (m',r')$ such that $H_{par}(m,r) = H_{par}(m',r')$.
-> Let $C \defeq H_{par}(m,r) = H_{par}(m',r')$.
-> Then $\verif(par,C,m,r) = \verif(par,C,m',r') = 1$, hence this adversary can be used to break strong binding of $\Pi$.
+Assume that $H$ is not collision-resistant and that there is an adversary which on input $par$ returns $(m,r) \neq (m',r')$ such that $H_{par}(m,r) = H_{par}(m',r')$.
+Let $C \defeq H_{par}(m,r) = H_{par}(m',r')$.
+Then $\verif(par,C,m,r) = \verif(par,C,m',r') = 1$, hence this adversary can be used to break strong binding of $\Pi$.
 
 Note that the assumption that $\Pi$ is binding is not sufficient: it could be easy to find $(m,r) \neq (m',r')$ such that $\commit(par,m;r) = \commit(par,m';r')$ but with $m=m'$, which would break collision-resistance but not binding.
 
