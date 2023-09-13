@@ -68,8 +68,11 @@ The public parameters consist of the tuple
 \[
  par = (\GG_1, \GG_2, \GG_t, r, e, G_2, H).
 \]
+
 - The key generation algorithm $\keygen$ draws a random scalar $x \sample \ZZ_r$ and computes the point $X = x G_2$ on curve $\GG_2$; the secret key is $x$ and the public key is $X$.
+
 - The signature algorithm $\sign$, on input a secret key $x$ and a message $m$, computes the point $S = x H(m)$ on curve $\GG_1$; the signature is $S$.
+
 - The verification algorithm, on input a public key $X$, a message $m$, and a signature $S$, returns 1 (i.e., declares the signature valid) if
 \[
  e(S, G_2) = e(H(m), X),
@@ -109,20 +112,20 @@ This might be thought of as CDH in $\GG_1$ with additional "hint" $(G_2, X_2=x G
 Then the BLS signature scheme is EUF-CMA-secure in the random oracle model for $H$.
 More precisely, for any adversary $\adv$ against the EUF-CMA security of BLS making at most $\qh$ random oracle queries and $\qs$ signature queries, there exists an adversary $\bdv$ for the co-CDH$^*$ problem running in time similar to the time of $\adv$ and such that*
 \[
- \advantage{\bdv}{co-cdh$^*$}(\secpar) = \frac{1}{\qh+1} \advantage{\adv}{euf-cma}(\secpar).
+ \advantage{\adv}{euf-cma}(\secpar) = (\qh+1) \advantage{\bdv}{co-cdh$^*$}(\secpar).
 \]
 
 > *Proof.*
-> Let $\adv$ be an adversary against the EUF-CMA security of BLS making at most $\qh$ random oracle queries and $\qs$ signature queries.
-> From $\adv$, one can easily construct an adversary $\adv'$ having the same advantage as $\adv$ and such that (i) $\adv'$ always makes the random oracle query $\orcl{H}(m^*)$ before returning its forgery $(m^*,S^* )$ and (ii) $\adv'$ makes exactly $\qh+1$ random oracle queries.
-> From now one, we assume that $\adv$ satisfies properties (i) and (ii).
+Let $\adv$ be an adversary against the EUF-CMA security of BLS making at most $\qh$ random oracle queries and $\qs$ signature queries.
+From $\adv$, one can easily construct an adversary $\adv'$ having the same advantage as $\adv$ and such that (i) $\adv'$ always makes the random oracle query $\orcl{H}(m^*)$ before returning its forgery $(m^*,S^* )$ and (ii) $\adv'$ makes exactly $\qh+1$ random oracle queries.
+From now one, we assume that $\adv$ satisfies properties (i) and (ii).
 >
 > We construct an adversary $\bdv$ for the co-CDH$^*$ problem as follows.
-> $\bdv$ takes as input pairing group parameters $pgpar = (\GG_1,\GG_2,\GG_t,r,e)$ and a co-CDH$^*$ instance $(G_1,X_1,G_2,X_2,Y)$ with $X_1 = xG_1$ and $X_2 = xG_2$.
-> It runs $\adv$ on input BLS parameters $(\GG_1,\GG_2,\GG_t,r,e,G_2,\orcl{H})$ where $\orcl{H}$ is the interface to the random oracle (that $\bdv$ will simulate) and public key $X_2$.
-> At the beginning of the simulation, $\bdv$ draws a random integer $i^* \sample \{1,\dots,\qh+1\}$ and initializes a table $T$ for storing answers of the simulated random oracle $\orcl{H}$.
-> When $\adv$ makes a random oracle query $\orcl{H}(m)$ such that $T(m)$ has not been defined yet, $\bdv$ either draws $\rho_i \sample \ZZ_r$ and returns $T(m) \defeq \rho_i G_1$ if this is the $i$-th query, $i \neq i^*$, or returns $T(m) \defeq Y$ if this is the $i^*$-th query.
-> When $\adv$ makes a signing query $\orcl{Sign}(m)$, then:
+$\bdv$ takes as input pairing group parameters $pgpar = (\GG_1,\GG_2,\GG_t,r,e)$ and a co-CDH$^*$ instance $(G_1,X_1,G_2,X_2,Y)$ with $X_1 = xG_1$ and $X_2 = xG_2$.
+It runs $\adv$ on input BLS parameters $(\GG_1,\GG_2,\GG_t,r,e,G_2,\orcl{H})$ where $\orcl{H}$ is the interface to the random oracle (that $\bdv$ will simulate) and public key $X_2$.
+At the beginning of the simulation, $\bdv$ draws a random integer $i^* \sample \{1,\dots,\qh+1\}$ and initializes a table $T$ for storing answers of the simulated random oracle $\orcl{H}$.
+When $\adv$ makes a random oracle query $\orcl{H}(m)$ such that $T(m)$ has not been defined yet, $\bdv$ either draws $\rho_i \sample \ZZ_r$ and returns $T(m) \defeq \rho_i G_1$ if this is the $i$-th query, $i \neq i^*$, or returns $T(m) \defeq Y$ if this is the $i^*$-th query.
+When $\adv$ makes a signing query $\orcl{Sign}(m)$, then:
 > - if $T(m)$ is undefined, then $\bdv$ draws $\rho \sample \ZZ_r$, sets $T(m) \defeq \rho G_1$, and returns the signature $S \defeq \rho X_1$; note that this signature is valid since $S = \rho x G_1 = x T(m)$;
 > - if $T(m)$ has already been defined, this was necessarily during the query $\orcl{H}(m)$ made by $\adv$; if this was the $i$-th query, $i \neq i^*$, then $\bdv$ returns the signature $S \defeq \rho_i X_1$; again, this signature is valid since $S = \rho_i x G_1 = x T(m)$; otherwise, if $T(m)$ was defined by the $i^*$-th query, then $\bdv$ aborts the simulation of the game and returns $\bot$.
 >
@@ -132,11 +135,11 @@ More precisely, for any adversary $\adv$ against the EUF-CMA security of BLS mak
 > - if $(m^*,S^*)$ is a valid forgery and $T(m^*)$ was defined during the $i^*$-th query to the random oracle, then $\bdv$ returns $S^*$ as solution to the co-CDH$^*$ instance.
 >
 > In the third case, one can easily check that $S^*$ is the correct solution since $T(m^*)$ was defined as $Y$ so that $S^* = xT(m^*) = xY$.
-> Moreover, conditioned on $\adv$ being successful, the view of $\adv$ is independent from $i^*$ and hence the third case occurs with probability $1/(\qh+1)$.
-> Hence,
-> \[
-   \advantage{\bdv}{co-cdh$^*$}(\secpar) = \frac{1}{\qh+1} \advantage{\adv}{euf-cma}(\secpar).
-  \]
+Moreover, conditioned on $\adv$ being successful, the view of $\adv$ is independent from $i^*$ and hence the third case occurs with probability $1/(\qh+1)$.
+Hence,
+\[
+ \advantage{\bdv}{co-cdh$^*$}(\secpar) = \frac{1}{\qh+1} \advantage{\adv}{euf-cma}(\secpar).
+\]
 
 This reduction loses a factor roughly $\qh$ in its success probability.
 One can obtain a better reduction losing a factor $\qs$ by using a slightly more careful strategy for "embedding" the challenge $Y$ in the random oracle answers, see [Section 15.5.1 of the Boneh-Shoup textbook](http://toc.cryptobook.us/book.pdf#subsection.15.5.1).
@@ -156,15 +159,15 @@ The original conference paper [[BLS01](../references.md#BLS01)] was only conside
 Then co-CDH$^*$ $\equiv$ CDH.*
 
 > *Proof.*
-> One the one hand, co-CDH$^*$ $\leqq$ CDH is trivial.
-> On the other hand, CDH $\leqq$ co-CDH$^*$ can be proved as follows.
-> Let $\adv$ be an algorithm for the co-CDH$^*$ problem.
-> We construct an algorithm $\bdv$ for solving CDH as follows.
-> On input $(G_1,X_1=xG_1,Y) \in \GG^3$, $\bdv$ draws a random value $\rho \sample \ZZ_r \setm \{0\}$ and computes $G_2 \defeq \rho G_1$ and $X_2 \defeq \rho X_1$.
-> Then $X_2 = \rho xG_1 = x G_2$ and $G_2$ is distributed uniformly in $\GG \setm \{0\}$ and independently from $G_1$.
-> Hence, $(G_1,X_1,G_2,X_2,Y)$ is a correctly distributed instance of co-CDH$^*$ that $\bdv$ can pass as input to $\adv$.
-> The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original CDH instance.
-> Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
+One the one hand, co-CDH$^*$ $\leqq$ CDH is trivial.
+On the other hand, CDH $\leqq$ co-CDH$^*$ can be proved as follows.
+Let $\adv$ be an algorithm for the co-CDH$^*$ problem.
+We construct an algorithm $\bdv$ for solving CDH as follows.
+On input $(G_1,X_1=xG_1,Y) \in \GG^3$, $\bdv$ draws a random value $\rho \sample \ZZ_r \setm \{0\}$ and computes $G_2 \defeq \rho G_1$ and $X_2 \defeq \rho X_1$.
+Then $X_2 = \rho xG_1 = x G_2$ and $G_2$ is distributed uniformly in $\GG \setm \{0\}$ and independently from $G_1$.
+Hence, $(G_1,X_1,G_2,X_2,Y)$ is a correctly distributed instance of co-CDH$^*$ that $\bdv$ can pass as input to $\adv$.
+The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original CDH instance.
+Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
 Later, the journal paper [[BLS04](../references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh)[^coCDH] is hard.
 The co-CDH problem is similar to the co-CDH$^*$ problem except the adversary is only given $G_2 \in \GG_2$, $X_2 = xG_2$, and $Y \in \GG_1$, and must compute $xY$.
@@ -176,15 +179,15 @@ Again, [Theorem 1](#th:BLS_security) implies this specific case since for type-2
 Then co-CDH$^*$ $\equiv$ co-CDH.*
 
 > *Proof.*
-> On the one hand, co-CDH$^*$ $\leqq$ co-CDH is straightforward.
-> Conversely, one can prove that co-CDH $\leqq$ co-CDH$^*$ as follows.
-> Let $\adv$ be an adversary for the co-CDH$^*$ problem.
-> We construct an adversary $\bdv$ for the co-CDH problem as follows.
-> On input $(G_2,X_2=xG_2,Y) \in \GG_2^2 \times \GG_1$, $\bdv$ draws a random value $\rho \sample \ZZ_r \setm \{0\}$ and computes $G_1 \defeq \psi(\rho G_2)$ and $X_1 \defeq \psi(\rho X_2)$.
-> Then $X_1 = \psi(\rho xG_2) = x \psi(\rho G_2) = xG_1$ and $G_1$ is distributed uniformly in $\GG_1 \setm \{0\}$ and independently from $G_2$.
-> Hence, $(G_1,X_1,G_2,X_2,Y)$ is a correctly distributed instance of co-CDH$^*$ that $\bdv$ can pass as input to $\adv$.
-> The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original co-CDH instance.
-> Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
+On the one hand, co-CDH$^*$ $\leqq$ co-CDH is straightforward.
+Conversely, one can prove that co-CDH $\leqq$ co-CDH$^*$ as follows.
+Let $\adv$ be an adversary for the co-CDH$^*$ problem.
+We construct an adversary $\bdv$ for the co-CDH problem as follows.
+On input $(G_2,X_2=xG_2,Y) \in \GG_2^2 \times \GG_1$, $\bdv$ draws a random value $\rho \sample \ZZ_r \setm \{0\}$ and computes $G_1 \defeq \psi(\rho G_2)$ and $X_1 \defeq \psi(\rho X_2)$.
+Then $X_1 = \psi(\rho xG_2) = x \psi(\rho G_2) = xG_1$ and $G_1$ is distributed uniformly in $\GG_1 \setm \{0\}$ and independently from $G_2$.
+Hence, $(G_1,X_1,G_2,X_2,Y)$ is a correctly distributed instance of co-CDH$^*$ that $\bdv$ can pass as input to $\adv$.
+The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original co-CDH instance.
+Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
 Interestingly, [[BLS04](../references.md#BLS04)] gives an example of type-3 pairing group setup algorithm (i.e., such that no efficiently computable isomorphism from $\GG_2$ to $\GG_1$ is known) for which co-CDH is conjectured to be hard but BLS over this pairing group setup algorithm is insecure.
 Let $\GG_2 = \GG_t$ be a subgroup of order $r$ of the multiplicative group $\ZZ_p^*$, let $\GG_1$ be the additive group $\ZZ_r$, and let $e \colon \GG_1 \times \GG_2 \to \GG_2$ be defined as $e(x,y) = y^x$.
@@ -198,17 +201,20 @@ For type-2 pairings, hardness of co-CDH does imply hardness of DL in $\GG_2$ (ob
 <a name="prop:cocdh_implies_cdh_in_g1"></a>
 **Proposition.**
 *Let $\pairingsetup$ be a type-2 pairing group setup algorithm.
-Then co-CDH $\leqq$ CDH in $\GG_1$ $\leqq$ DL in $\GG_1$.*
+Then*
+\[
+ \text{co-CDH} \leqq \text{CDH}_{\GG_1} \leqq \text{DL}_{\GG_1}.
+\]
 
 > *Proof.*
-> That CDH in $\GG_1$ $\leqq$ DL in $\GG_1$ is clear.
-> Let us show that co-CDH $\leqq$ CDH in $\GG_1$.
-> Let $\adv$ be an algorithm for solving CDH in $\GG_1$.
-> We construct an algorithm $\bdv$ for the co-CDH problem as follows.
-> On input $(G_2,X_2=xG_2,Y) \in \GG_2^2 \times \GG_1$, $\bdv$ computes $G_1 \defeq \psi(G_2)$ and $X_1 \defeq \psi(X_2)$.
-> Then $(G_1,X_1,Y)$ is a correctly distributed CDH instance that $\bdv$ can pass as input to $\adv$.
-> The solution $xY$ of this CDH instance is also a solution of the original co-CDH instance.
-> Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
+That CDH$_{\GG_1}$ $\leqq$ DL$_{\GG_1}$ is clear.
+Let us show that co-CDH $\leqq$ CDH$_{\GG_1}$.
+Let $\adv$ be an algorithm for solving CDH in $\GG_1$.
+We construct an algorithm $\bdv$ for the co-CDH problem as follows.
+On input $(G_2,X_2=xG_2,Y) \in \GG_2^2 \times \GG_1$, $\bdv$ computes $G_1 \defeq \psi(G_2)$ and $X_1 \defeq \psi(X_2)$.
+Then $(G_1,X_1,Y)$ is a correctly distributed CDH instance that $\bdv$ can pass as input to $\adv$.
+The solution $xY$ of this CDH instance is also a solution of the original co-CDH instance.
+Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
 To finish, we note that hardness of co-CDH$^*$ is actually *equivalent* to EUF-CMA-security of BLS (even for a type-3 pairing where no efficiently computable isomorphism $\psi \colon \GG_2 \to \GG_1$ is known).
 Indeed, given an algorithm $\adv$ solving co-CDH$^*$, one can construct an adversary $\bdv$ breaking BLS as follows.
