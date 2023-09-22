@@ -54,10 +54,10 @@ Let us formalize these two properties more precisely, starting with hiding, defi
  \boxed{
  \begin{array}{ll}
   \text{\underline{Game HIDING:}} & \qquad \text{\underline{Oracle $\orcl{Commit}(m_0, m_1)$:}} \\
-  b \sample \bin & \qquad \pcassert (m_0 \in \cM) \wedge (m_1 \in \cM) \\
-  par \gets \setup(\secparam) & \qquad (C,D) \defeq \commit(par,m_b) \\
-  b' \gets \adv^{\text{Commit}}(par) & \qquad \pcreturn C\\
-  \pcassert (b=b')
+  b \sample \bin & \qquad \pcassert (m_0 \in \cM) \\
+  par \gets \setup(\secparam) & \qquad \pcassert (m_1 \in \cM) \\
+  b' \gets \adv^{\text{Commit}}(par) & \qquad (C,D) \gets \commit(par,m_b) \\
+  \pcassert (b=b') & \qquad \pcreturn C
  \end{array}
  }
 \]
