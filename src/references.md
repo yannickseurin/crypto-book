@@ -2,6 +2,8 @@
 
 <a id="ABR01">**[ABR01]**</a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. [*DHIES: An encryption scheme based on the Diffie-Hellman Problem*](https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf). Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).
 
+<a id="BB04">**[BB04]**</a> Dan Boneh and Xavier Boyen. [*Efficient Selective-ID Secure Identity Based Encryption Without Random Oracles*](https://eprint.iacr.org/2004/172.pdf). In proceedings of EUROCRYPT 2004.
+
 <a id="BB08">**[BB08]**</a> Dan Boneh and Xavier Boyen. [*Short Signatures Without Random Oracles and the SDH Assumption in Bilinear Groups*](https://crypto.stanford.edu/~dabo/pubs/papers/bbsigs.pdf). In Journal of Cryptology, 2008.
 
 <a id="BCI+10">**[BCI+10]**</a> Eric Brier, Jean-Sébastien Coron, Thomas Icart, David Madore, Hugues Randriam, and Mehdi Tibouchi. [*Efficient Indifferentiable Hashing into Ordinary Elliptic Curves*](https://eprint.iacr.org/2009/340.pdf). In proceedings of CRYPTO 2010.
@@ -25,6 +27,8 @@
 <a id="BN19">**[BN19]**</a> Eli Biham and Lior Neumann. [*Breaking the Bluetooth Pairing - The Fixed Coordinate Invalid Curve Attack*](https://eprint.iacr.org/2019/1043.pdf). In proceedings of SAC 2019.
 
 <a id="BNN07">**[BNN07]**</a> Mihir Bellare, Chanathip Namprempre, and Gregory Neven. [*Unrestricted Aggregate Signatures*](https://eprint.iacr.org/2006/285.pdf). In proceedings of ICALP 2007.
+
+<a id="BT04">**[BT04]**</a> Jean-Paul Berrut and Lloyd N. Trefethen. [*Barycentric Lagrange Interpolation*](https://people.maths.ox.ac.uk/trefethen/barycentric.pdf). In SIAM Review, 2004.
 
 <a id="CA89">**[CA89]**</a> David Chaum and Hans Van Antwerpen. [*Undeniable Signatures*](https://chaum.com/wp-content/uploads/2022/01/Chaum-Antwerpen-1990-Chapter-Undeniable-Signatures.pdf). In proceedings of CRYPTO 1989.
 
@@ -56,6 +60,8 @@
 
 <a id="KZG10b">**[KZG10b]**</a> Aniket Kate, Gregory M. Zaverucha, and Ian Goldberg. [*Polynomial Commitments*](https://cacr.uwaterloo.ca/techreports/2010/cacr2010-10.pdf). Full version of [KZG10a].
 
+<a id="Lip10">**[Lip10]**</a> Helger Lipmaa. [*Progression-Free Sets and Sublinear Pairing-Based Non-Interactive Zero-Knowledge Arguments*](https://eprint.iacr.org/2011/009.pdf). In proceedings of TCC 2012.
+
 <a id="LL97">**[LL97]**</a> Chae Hoon Lim and Pil Joong Lee. [*A Key Recovery Attack on Discrete Log-based Schemes Using a Prime Order Subgroup*](https://link.springer.com/content/pdf/10.1007/BFb0052240.pdf). In proceedings of CRYPTO 1997.
 
 <a id="MOV91">**[MOV91]**</a> Alfred Menezes, Tatsuaki Okamoto, and Scott A. Vanstone. [*Reducing Elliptic Curve Logarithms to Logarithms in a Finite Field*](https://dl.acm.org/doi/pdf/10.1145/103418.103434). In proceedings of STOC 1991.
@@ -65,6 +71,8 @@
 <a id="Ped91">**[Ped91]**</a> Torben P. Pedersen. [*Non-Interactive and Information-Theoretic Secure Verifiable Secret Sharing*](https://link.springer.com/content/pdf/10.1007/3-540-46766-1_9.pdf). In proceedings of CRYPTO 1991.
 
 <a id="Qua21">**[Qua21]**</a> Nguyen Thoi Minh Quan. [*0*](https://eprint.iacr.org/2021/323.pdf). IACR ePrint report 2021/323, 2021.
+
+<a id="Rot22">**[Rot22]**</a> Lior Rotem . [*Revisiting the Uber Assumption in the Algebraic Group Model: Fine-Grained Bounds in Hidden-Order Groups and Improved Reductions in Bilinear Groups*](https://eprint.iacr.org/2022/584.pdf). In proceedings of ITC 2022.
 
 <a id="RY07">**[RY07]**</a> Thomas Ristenpart and Scott Yilek. [*The Power of Proofs-of-Possession: Securing Multiparty Signatures against Rogue-Key Attacks*](https://eprint.iacr.org/2007/264.pdf). In proceedings of EUROCRYPT 2007.
 
