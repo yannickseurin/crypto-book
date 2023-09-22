@@ -9,6 +9,7 @@
 \GG:\mathbb{G}
 \HH:\mathbb{H}
 \ZZ:\mathbb{Z}
+\AA:\mathbb{A}
 \NN:\mathbb{N}
 \RR:\mathbb{R}
 \FF:\mathbb{F}
@@ -28,13 +29,14 @@
 \im:\mathrm{im}
 \deg:\mathrm{deg}
 \lcm:\operatorname{lcm}
-\PR:\FF^{(\le #1)}[X]
+\PR:\FF_{#1}^{(\le #2)}[X]
 
 \secpar:\lambda
 \secparam:1^{\secpar}
 \negl:\mathrm{negl}
 \poly:\mathrm{poly}
 \game:\mathrm{GAME}
+\Grm:\mathrm{G}
 \orcl:\text{#1}
 \adv:\mathsf{A}
 \bdv:\mathsf{B}
@@ -51,6 +53,8 @@
 \pcthen:\ \mathbf{then}
 \pcassert:\mathbf{assert}\ 
 \pclinecomment:{/\!\!/ \text{\scriptsize #1}}
+\pctrue:\mathbf{true}
+\pcfalse:\mathbf{false}
 
 \bfh:\mathbf{h}
 \bfa:\mathbf{a}
@@ -69,6 +73,8 @@
 \cO:\mathcal{O}
 \cM:\mathcal{M}
 \cQ:\mathcal{Q}
+\cU:\mathcal{U}
+\cE:\mathcal{E}
 
 \stat:\sigma
 \wit:\omega
@@ -85,4 +91,7 @@
 \homcom:\mathsf{HomCom}
 \homdecom:\mathsf{HomDecom}
 \polyverif:\mathsf{PolyVerif}
+\evalprove:\mathsf{EvalProve}
 \evalverif:\mathsf{EvalVerif}
+\multiprove:\mathsf{MultiProve}
+\multiverif:\mathsf{MultiVerif}
