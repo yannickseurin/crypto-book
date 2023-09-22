@@ -320,7 +320,7 @@ It is easy to see that standard BLS signatures are message binding if $H$ is col
 Things are more subtle though when considering aggregate signatures [[Qua21](../references.md#Qua21)].
 In particular, if $t \ge 2$ users collide (or if a single malicious user controls $t \ge 2$ public keys), they can arrange to choose their public keys $X_0, \dots, X_{t-1}$ such that
 \[
- X_0 + \dots X_{t-1} = 0.
+ X_0 + \cdots + X_{t-1} = 0.
 \]
 Then, in the PoP-based variant of the scheme where Eq. $\eqref{2}$ is used for verification, $S=0$ is a valid signature for any message $m$: the scheme is not message binding.
 Note that checking that $S \neq 0$ in the verification algorithm does not thwart the attack as $S$ can be further aggregated with other valid signatures $S_t, \dots, S_{n-1}$ for arbitrary public key/message pairs $(X_t, m_t), \dots, (X_{n-1}, m_{n-1})$, resulting in an aggregate signature $S' \neq 0$ which still does not bound signers $0,\dots t-1$ to a specific message.
