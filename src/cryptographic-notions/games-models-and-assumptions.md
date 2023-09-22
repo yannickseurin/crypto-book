@@ -1,8 +1,12 @@
 > **Chapter status:** in progress
 >
 > **TODO:**
+> - modify advantage notation to display the scheme
 
 # Games, Models, and Assumptions
+
+This section presents how security assumptions and security properties of cryptographic schemes are formalized.
+It also gives a list of cryptographic assumptions relevant for this book (see also the [ECRYPT II MAYA report](https://www.ecrypt.eu.org/ecrypt2/documents/D.MAYA.6.pdf)).
 
 ## Contents
 
@@ -37,7 +41,7 @@ To make this definition rigorous, the programming language used to write the gam
 Here, we will content ourselves with specifying games in pseudocode.
 
 
-A very simple game called ADD drawing two random $\secpar$-bit integers and returning true if the adversary successfully adds them would look like this:
+A very simple game called ADD drawing two random $\secpar$-bit integers and returning $\pctrue$ if the adversary successfully adds them would look like this:
 
 \[
  \def\arraystretch{\myarraystretch}
@@ -51,6 +55,19 @@ A very simple game called ADD drawing two random $\secpar$-bit integers and retu
  }
 \]
 
+### Notation and Conventions for Writing Games
+
+- Given a predicate $A$, we use $\pcassert A$ as a shorthand for $\pcif \neg A \pcthen\ \pcreturn \pcfalse$
+- Games return $\pctrue$ by default, meaning if the end of the game code is reached and the game has not returned yet, then it returns $\pctrue$. Finalization often consists in returning the truth vale of $A \wedge B \wedge C \wedge \cdots$. Under this convention, the following finalization code
+\[
+ \pcreturn A \wedge B \wedge C
+\]
+is equivalent to
+\[\begin{aligned}
+ & \pcassert A \\
+ & \pcassert B \\
+ & \pcassert C \\
+\end{aligned}\]
 
 ### Advantage
 
@@ -58,28 +75,29 @@ For each security parameter $\secpar$, a game together with an adversary define 
 This allows to define the probability of various events related to the execution of the game with a specific adversary.
 
 In particular, given a game $\game$ and an adversary $\adv$, we write $\game^{\adv}(\secparam) \Rightarrow b$, or simply $\game \Rightarrow b$ when the context is clear, for the event that an execution of $\game$ with adversary $\adv$ for security parameter $\secpar$ returns $b$.
-When the game returns true we also say that the adversary "wins".
+When the game returns $\pctrue$ we also say that the adversary "wins".
 
 
 A game can be *computational* or *decisional* depending on how a quantity called *advantage*, measuring how well an adversary performs at winning the game, is defined.
 
 The advantage of an adversary $\adv$ against a game $\game$ is a function of the security parameter $\secpar \in \NN^*$ into $[0,1]$ defined as
 \[
- \advantage{\adv}{GAME}(\secpar) \defeq \pr{\game \Rightarrow \mathrm{true}}
+ \advantage{\adv}{game}(\secpar) \defeq \pr{\game \Rightarrow \pctrue}
 \]
 if the game is computational and
 \[
- \advantage{\adv}{GAME}(\secpar) \defeq \abs{2\pr{\game \Rightarrow \mathrm{true}}-1}
+ \advantage{\adv}{game}(\secpar) \defeq \abs{2\pr{\game \Rightarrow \pctrue}-1}
 \]
 if the game is decisional.
+(We write the name of the game in small caps in the advantage superscript to lighten notation.)
 
 We say that a game $\game$ is *computationally hard* if for every probabilistic polynomial-time (ppt) algorithm $\adv$,
 \[
- \advantage{\adv}{GAME}(\secpar) = \negl(\secpar).
+ \advantage{\adv}{game}(\secpar) = \negl(\secpar).
 \]
-We say that a game $\game$ is *statistically hard* (or *information-theoretically hard*) if for every algorithm $\adv$ (not necessarily polynomial-time),
+We say that a game $\game$ is *statistically hard* (or *information-theoretically hard* or *unconditionally hard*) if for every algorithm $\adv$ (not necessarily polynomial-time),
 \[
- \advantage{\adv}{GAME}(\secpar) = \negl(\secpar).
+ \advantage{\adv}{game}(\secpar) = \negl(\secpar).
 \]
 In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](./commitment-schemes.md) that can be perfectly hiding or perfectly binding).
 
@@ -99,17 +117,17 @@ If $X$ reduces to $Y$ and $Y$ reduces to $X$, we say that $X$ and $Y$ are *equiv
 Then $X$ being hard implies $Y$ being hard.*
 
 > *Proof.*
-> Contraposing, assume that $Y$ is not hard, which by definition means that there exists a ppt algorithm $\adv$ such that
-> \[
-   \advantage{\adv}{Y}(\secpar) \neq \negl(\secpar).
-  \]
-> Consider the reduction $\bdv$ from $X$ to $Y$.
-> Since $\adv$ and $\bdv$ both run in polynomial time, $\bdv^\adv$ runs in polynomial time as well.
-> Moreover, by definition of a reduction,
-> \[
-   \advantage{\bdv^{\adv}}{X}(\secpar) \neq \negl(\secpar).
-  \]
-> Hence, $X$ is not hard.
+Contraposing, assume that $Y$ is not hard, which by definition means that there exists a ppt algorithm $\adv$ such that
+\[
+ \advantage{\adv}{Y}(\secpar) \neq \negl(\secpar).
+\]
+Consider the reduction $\bdv$ from $X$ to $Y$.
+Since $\adv$ and $\bdv$ both run in polynomial time, $\bdv^\adv$ runs in polynomial time as well.
+Moreover, by definition of a reduction,
+\[
+ \advantage{\bdv^{\adv}}{X}(\secpar) \neq \negl(\secpar).
+\]
+Hence, $X$ is not hard.
 
 Thus, $X \leqq Y$ can be read as "$X$ is not harder than $Y$" or $Y$ is at least as hard as $X$".
 
@@ -178,7 +196,7 @@ In all the following, we simply talk about "type-1/2/3 pairings" rather than "ty
   G \sample \GG \setm \{0\} \\
   X \sample \GG \\
   x \gets \adv(par, G, X) \\
-  \pcreturn (X = xG)
+  \pcassert (X = xG)
  \end{array}
  }
 \]
@@ -202,7 +220,7 @@ In all the following, we simply talk about "type-1/2/3 pairings" rather than "ty
   x \sample \ZZ_p; X \defeq xG \\
   Y \sample \GG \\
   Z \gets \adv(par, G, X, Y) \\
-  \pcreturn (Z = xY)
+  \pcassert (Z = xY)
  \end{array}
  }
 \]
@@ -228,7 +246,7 @@ In all the following, we simply talk about "type-1/2/3 pairings" rather than "ty
   Y \sample \GG \\
   Z_0 \defeq xY; Z_1 \sample \GG \\
   b' \gets \adv(par, G, X, Y, Z_b) \\
-  \pcreturn (b = b')
+  \pcassert (b = b')
  \end{array}
  }
 \]
@@ -238,7 +256,7 @@ In all the following, we simply talk about "type-1/2/3 pairings" rather than "ty
 - type: computational
 - interactive: no
 - falsifiable: yes
-- references:
+- references: [[Che10](../references.md#Che10), [Lip10](../references.md#Lip10), [FKL18](../references.md#FKL18), [Rot22](../references.md#Rot22)]
 - notes:
     - sometimes called *$q$-strong DL* or *DL with $q$ auxiliary inputs*
     - 1-Dl = DL
@@ -254,15 +272,40 @@ In all the following, we simply talk about "type-1/2/3 pairings" rather than "ty
   G \sample \GG \setm \{0\} \\
   x \sample \ZZ_p \\
   x' \gets \adv(par, G, x G, x^2 G, \dots, x^q G) \\
-  \pcreturn (x=x')
+  \pcassert (x=x')
  \end{array}
  }
 \]
 
-### Assumptions in Pairing Groups
+### Assumptions in Product Groups
 
-Some assumptions below don't rely on the group $\GG_t$ and the pairing $e$ returned by $\pairingsetup$.
-In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ when parsing the parameters $par$ returned by $\pairingsetup$.
+The assumptions listed in this section are defined for a pair of groups $(\GG_1,\GG_2)$ of equal order $r$.
+They are usually applied to groups returned by a pairing group setup algorithm $\pairingsetup$ but don't make use of the group $\GG_t$ nor the pairing $e$.
+For this reason, we simply write $(\GG_1,\GG_2,r) \parse par$ when parsing the parameters $par$ returned by $\pairingsetup$.
+
+#### $(q_1,q_2)$-co-Discrete Logarithm ($(q_1,q_2)$-co-DL)
+
+- type: computational
+- interactive: no
+- falsifiable: yes
+- references: [[Che10](../references.md#Che10), [Lip10](../references.md#Lip10), [FKL18](../references.md#FKL18), [Rot22](../references.md#Rot22)]
+- notes:
+
+\[
+ \def\arraystretch{\myarraystretch}
+ \boxed{
+ \begin{array}{l}
+  \text{\underline{Game $(q_1,q_2)$-co-DL:}} \\
+  par \gets \pairingsetup(\secparam) \\
+  (\GG_1, \GG_2, r) \parse par \\
+  G_1 \sample \GG_1 \setm \{0\} \\
+  G_2 \sample \GG_2 \setm \{0\} \\
+  x \sample \ZZ_r \\
+  x' \gets \adv(par, G_1, x G_1, \dots, x^{q_1} G_1, G_2, x G_2, \dots, x^{q_2} G_2) \\
+  \pcassert (x = x')
+ \end{array}
+ }
+\]
 
 #### Computational co-Diffie-Hellman (co-CDH)
 
@@ -286,7 +329,7 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
   x \sample \ZZ_r; X \defeq xG_2 \\
   Y \sample \GG_1 \\
   Z \gets \adv(par, G_2, X, Y) \\
-  \pcreturn (Z = xY)
+  \pcassert (Z = xY)
  \end{array}
  }
 \]
@@ -317,7 +360,7 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
   x \sample \ZZ_r; X_1 \defeq xG_1; X_2 \defeq xG_2 \\
   Y \sample \GG_1 \\
   Z \gets \adv(par, G_1, X_1, G_2, X_2, Y) \\
-  \pcreturn (Z = xY)
+  \pcassert (Z = xY)
  \end{array}
  }
 \]
@@ -327,7 +370,7 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
 - type: computational
 - interactive: yes
 - falsifiable: no (for type-3 pairings)
-- references: [[SV07](../references.md#SV07)], [[BDN18](../references.md#BDN18)]
+- references: [[SV07](../references.md#SV07), [BDN18](../references.md#BDN18)]
 - notes:
     - $\psi$-co-CDH $\leqq$ CDH in $\GG_1$
     - $\psi$-co-CDH $\leqq$ DL in $\GG_2$
@@ -346,33 +389,92 @@ In that case, to make it explicit, we simply write $(\GG_1,\GG_2,r) \parse par$ 
   x \sample \ZZ_r; X_1 \defeq xG_1; X_2 \defeq xG_2 & \qquad \t\t \pcreturn uG_1 \\
   Y \sample \GG_1 & \\
   Z \gets \adv^{\orcl{SolveCoCDH}}(par, G_1, X_1, G_2, X_2, Y) & \\
-  \pcreturn (Z = xY) &
+  \pcassert (Z = xY) &
  \end{array}
  }
 \]
 
-#### $q$-strong Diffie-Hellman ($q$-SDH)
+#### $(q_1,q_2)$-Strong Diffie-Hellman ($(q_1,q_2)$-SDH)
 
 - type: computational
 - interactive: no
 - falsifiable: yes
 - references: [[BB08](../references.md#BB08)]
 - notes:
+    - $(q,1)$-SDH usually called $q$-SDH
     - not to be confused with another assumption named SDH introduced in [[ABR01](../references.md#ABR01)]
-    - $(q+1)$-SDH $\leqq$ $q$-SDH
+    - $(q_1+1,q_2)$-SDH $\leqq$ $(q_1,q_2)$-SDH
+    - $(q_1,q_2+1)$-SDH $\leqq$ $(q_1,q_2)$-SDH
 
 \[
  \def\arraystretch{\myarraystretch}
  \boxed{
  \begin{array}{l}
-  \text{\underline{Game $q$-SDH:}} \\
+  \text{\underline{Game $(q_1,q_2)$-SDH:}} \\
   par \gets \pairingsetup(\secparam) \\
   (\GG_1, \GG_2, r) \parse par \\
   G_1 \sample \GG_1 \setm \{0\} \\
   G_2 \sample \GG_2 \setm \{0\} \\
   x \sample \ZZ_r \\
-  (z,Y) \gets \adv(par, G_1, x G_1, \dots, x^q G_1, G_2, xG_2) \\
-  \pcreturn (Y = \frac{1}{x+z} G_1)
+  (a,Y) \gets \adv(par, G_1, x G_1, \dots, x^{q_1} G_1, G_2, x G_2, \dots, x^{q_2} G_2) \\
+  \pcassert (Y = \frac{1}{x+a} G_1)
+ \end{array}
+ }
+\]
+
+### Assumptions in Pairing Groups
+
+#### $(q_1,q_2)$-Bilinear Diffie-Hellman Inversion ($(q_1,q_2)$-BDHI)
+
+- type: computational
+- interactive: no
+- falsifiable: yes
+- references: [[BB04](../references.md#BB04)]
+- notes:
+    - $(q_1+1,q_2)$-BDHI $\leqq$ $(q_1,q_2)$-BDHI
+    - $(q_1,q_2+1)$-BDHI $\leqq$ $(q_1,q_2)$-BDHI
+
+\[
+ \def\arraystretch{\myarraystretch}
+ \boxed{
+ \begin{array}{l}
+  \text{\underline{Game $(q_1,q_2)$-BSDH:}} \\
+  par \gets \pairingsetup(\secparam) \\
+  (\GG_1, \GG_2, \GG_t, r, e) \parse par \\
+  G_1 \sample \GG_1 \setm \{0\} \\
+  G_2 \sample \GG_2 \setm \{0\} \\
+  x \sample \ZZ_r \\
+  Y \gets \adv(par, G_1, x G_1, \dots, x^{q_1} G_1, G_2, x G_2, \dots, x^{q_2} G_2) \\
+  \pcassert (Y = e(G_1,G_2)^\frac{1}{x})
+ \end{array}
+ }
+\]
+
+#### $(q_1,q_2)$-Bilinear Strong Diffie-Hellman ($(q_1,q_2)$-BSDH)
+
+- type: computational
+- interactive: no
+- falsifiable: yes
+- references: [[KZG10a](../references.md#KZG10a)]
+- notes:
+    - $(q,1)$-BSDH is usually simply called $q$-BSDH
+    - $(q_1+1,q_2)$-BSDH $\leqq$ $(q_1,q_2)$-BSDH
+    - $(q_1,q_2+1)$-BSDH $\leqq$ $(q_1,q_2)$-BSDH
+    - $(q_1,q_2)$-BSDH $\leqq$ $(q_1,q_2)$-SDH
+    - $(q_1,q_2)$-BSDH $\leqq$ $(q_1,q_2)$-BDHI
+
+\[
+ \def\arraystretch{\myarraystretch}
+ \boxed{
+ \begin{array}{l}
+  \text{\underline{Game $(q_1,q_2)$-BSDH:}} \\
+  par \gets \pairingsetup(\secparam) \\
+  (\GG_1, \GG_2, \GG_t, r, e) \parse par \\
+  G_1 \sample \GG_1 \setm \{0\} \\
+  G_2 \sample \GG_2 \setm \{0\} \\
+  x \sample \ZZ_r \\
+  (a,Y) \gets \adv(par, G_1, x G_1, \dots, x^{q_1} G_1, G_2, x G_2, \dots, x^{q_2} G_2) \\
+  \pcassert (Y = e(G_1,G_2)^\frac{1}{x+a})
  \end{array}
  }
 \]
