@@ -41,22 +41,6 @@ If the binary operation is commutative, i.e., for every $a,b \in \GG$, $a \star 
 If $\GG$ is finite, the number of elements of $\GG$ is called the ***order*** of $\GG$ and denoted $\abs{\GG}$.
 If $\GG$ is infinite, $\GG$ is said to have infinite order.
 
-## Direct Product
-
-Let $(\GG,\star)$ and $(\HH,\bullet)$ be two groups.
-The ***direct product*** of $\GG$ and $\HH$ is the Cartesian product
-\[
- \GG \times \HH \defeq \{(a,b) \mid a \in \GG, b \in \HH \}
-\]
-equipped with the binary operation $\diamond$ defined component-wise:
-\[
- (a,b) \diamond (c,d) = (a \star c, b \bullet d).
-\]
-It is a group with identity element $(e_{\GG},e_{\HH})$, where $e_{\GG}$ and $e_{\HH}$ are respectively the identity element of $\GG$ and $\HH$.
-The inverse of $(a,b)$ is $(\bar{a},\bar{b})$, where $\bar{a}$ and $\bar{b}$ are respectively the inverse of $a$ and $b$.
-
-For abelian groups, the direct product is sometimes called ***direct sum*** and denoted $\GG \oplus \HH$.[^sum]
-
 ## Additive/Multiplicative Notation
 
 There are two standard notation types for the group operation:
@@ -84,6 +68,25 @@ In the case of multiplicative notation, the operation symbol might be omitted an
 By convention, for an "abstract" group, additive notation is restricted to abelian groups (meaning multiplicative notation is used either when the group is known to be non-abelian, or when the abelian/non-abelian character of the group is unspecified).
 
 *For the rest of this chapter, unless specified otherwise, the group operation will be denoted multiplicatively but the identity element will be denoted $e$ for clarity.*
+
+## Direct Product
+
+Let $(\GG,\star)$ and $(\HH,\bullet)$ be two groups.
+The ***direct product*** of $\GG$ and $\HH$ is the Cartesian product
+\[
+ \GG \times \HH \defeq \{(a,b) \mid a \in \GG, b \in \HH \}
+\]
+equipped with the binary operation $\diamond$ defined component-wise:
+\[
+ (a,b) \diamond (c,d) = (a \star c, b \bullet d).
+\]
+
+**Proposition.**
+*The direct product as defined above is a group.
+Its identity element is $(e_{\GG},e_{\HH})$, where $e_{\GG}$ and $e_{\HH}$ are respectively the identity element of $\GG$ and $\HH$.
+The inverse of $(a,b) \in \GG \times \HH$ is $(a^{-1},b^{-1})$.*
+
+For abelian groups, the direct product is sometimes called ***direct sum*** and denoted $\GG \oplus \HH$.[^sum]
 
 ## Subgroups
 
@@ -301,6 +304,8 @@ A group $\GG$ is said ***cyclic*** (or *monogenous*[^cyclic]) if there exists $g
 The ***order*** of an element $a \in \GG$ is the order of the subgroup $\langle a \rangle$.
 If $\GG$ has infinite order, the order of an element $a \in \GG$ can be finite or infinite.
 
+Below we list a number of properties of the order of an element.
+
 **Proposition.**
 *Let $\GG$ be a group and $a \in \GG$ be a group element.
 Then $a$ has finite order if and only if there exists $k \in \NN^*$ such that $a^k = e$.
@@ -321,7 +326,7 @@ Then $a^n = a^{dm} = (a^m)^d = e^d = e$.
 
 <a name="prop:order_divides_killer"></a>
 **Proposition.**
-*Let $\GG$ be some group and $a \in \GG$ be an element of order $n$.
+*Let $\GG$ be a group and $a \in \GG$ be an element of order $n$.
 Then for every $k \in \ZZ$, $a^k = e$ if and only if $n$ divides $k$.*
 
 > *Proof.*
@@ -331,6 +336,20 @@ By Euclid's division lemma, there exists $q,r \in \ZZ$ such that $k = qn+r$ and 
 Then $a^k = a^{qn+r} = (a^n)^q a^r = a^r$ and consequently $a^r =e$.
 This implies that $r=0$ as otherwise $a$ would have order $r < n$.
 Hence, $k = qn$ and $n$ divides $k$.
+
+<a name="prop:order_of_gk"></a>
+**Proposition.**
+*Let $\GG$ be a group, $a \in \GG$ be an element of order $n$, and $k \in \ZZ$.
+Then the order of $g^k$ is $n/\gcd(n,k)$.*
+
+> *Proof.*
+Let $d = \gcd(k,n)$ and let $\ell$ be the order of $g^k$.
+Then $(g^k)^{\ell} = g^{k\ell} = e$ and hence by [Proposition](#prop:order_divides_killer), $n \divides k\ell$, which implies $(\frac{n}{d}) \divides (\frac{k}{d})\ell$.
+Since $\gcd(\frac{n}{d},\frac{k}{d}) = 1$, this implies $\frac{n}{d} \divides \ell$.
+>
+> On the other hand, $(g^{k})^{\frac{n}{d}} = (g^n)^{\frac{k}{d}} = e^{\frac{k}{d}} = e$, and hence by [Proposition](#prop:order_divides_killer), $\ell \divides \frac{n}{d}$.
+We conclude that $\ell = n/d$.
+
 
 ## Properties of Cyclic Groups
 
@@ -379,20 +398,6 @@ Let $\GG$ be a group of prime order $p$.
 Let $a \in \GG$ be an element different from the identity element and let $n$ be the order of $a$.
 Since the order of an element divides the order of the group by [Proposition](#prop:el_order_divides_group_order), one has either $n=1$ or $n=p$.
 Since $a \neq e$, one cannot have $n=1$, hence $n=p$ and $a$ generates $\GG$.
-
-<a name="prop:order_of_gk"></a>
-**Proposition.**
-*Let $\GG$ be a cyclic group of order $n$ , $g$ be a generator of $\GG$, and $k \in \ZZ$.
-Then the order of $g^k$ is $n/\gcd(n,k)$.*
-
-> *Proof.*
-Let $d = \gcd(k,n)$ and let $\ell$ be the order of $g^k$.
-Then $(g^k)^{\ell} = g^{k\ell} = e$ and hence by [Proposition](#prop:order_divides_killer), $n \divides k\ell$, which implies $(\frac{n}{d}) \divides (\frac{k}{d})\ell$.
-Since $\gcd(\frac{n}{d},\frac{k}{d}) = 1$, this implies $\frac{n}{d} \divides \ell$.
->
-> On the other hand, $(g^{k})^{\frac{n}{d}} = (g^n)^{\frac{k}{d}} = e^{\frac{k}{d}} = e$, and hence by [Proposition](#prop:order_divides_killer), $\ell \divides \frac{n}{d}$.
-We conclude that $\ell = n/d$.
-
 
 <a name="prop:cyclic_generators"></a>
 **Proposition.**
