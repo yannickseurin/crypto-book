@@ -93,7 +93,7 @@ Informally, a commitment scheme is homomorphic if the message space $\cM$ equipp
 More formally, a commitment scheme is homomorphic (with respect to group operation $\star$) if there exists two algorithms $\homcom$ and $\homdecom$ such that
 
 - $\homcom$ takes parameters $par$ and two commitments $C_1$ and $C_2$ and returns a commitment $C$;
-- $\homdecom$ takes two decommitments $D_1$ and $D_2$ and returns a decommitment $D$;
+- $\homdecom$ takes parameters $par$ and two decommitments $D_1$ and $D_2$ and returns a decommitment $D$;
 - for any security parameter $\secpar$, the following game returns true with probability 1:
 \[\boxed{\begin{aligned}
  & par \gets \setup(\secparam) \\

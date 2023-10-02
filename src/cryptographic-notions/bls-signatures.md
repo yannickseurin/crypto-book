@@ -277,7 +277,7 @@ Now, for any message $m$, the adversary can compute a forgery for the pair $\big
 This forgery satisfies the verification equation as
 \[\begin{aligned}
  e(H(m), X^*) \cdot e(H(m), X') & = e(H(m), X^*) \cdot e(H(m), y G_2 - X^*) \\
- & = e(H(m), X^*) \cdot e(H(m), y G_2) \cdot e(H(m),X^* )^{-1} \\
+ & = e(H(m), X^* + y G_2 - X^* ) \\
  & = e(H(m), y G_2) \\
  & = e(yH(m), G_2) \\
  & = e(S, G_2).
