@@ -276,6 +276,9 @@ Moreover, it is injective since $\bar{f}([a]) = \bar{f}([b]) \Leftrightarrow f(a
 It is also surjective since any element in $h \in \im(f)$ is of the form $f(a)$ for some $a \in \GG$ and hence $h = \bar{f}([a])$.
 Hence, $\bar{f}$ is a group isomorphism.
 
+> *Remark.*
+There are three other isomorphism theorems but they are not as useful as the first one.
+
 ## Group Generation
 
 Let $\GG$ be a group and $A$ be a subset of $\GG$.
