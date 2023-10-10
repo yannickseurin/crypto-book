@@ -1,5 +1,7 @@
 > **Chapter status:** in good shape
 >
+> **Related puzzles:** [Puzzle 1](../zk-hack-puzzles/puzzle-01/intro.md)
+>
 > **TODO:**
 > - write a more rigorous game-based proof for BLS
 > - write the security proof for aggregate BLS signatures
