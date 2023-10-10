@@ -1,5 +1,7 @@
 > **Chapter status:** in good shape
 >
+> **Related puzzles:** [Puzzle 1](../zk-hack-puzzles/puzzle-01/intro.md)
+>
 > **TODO:**
 
 # Commitment Schemes
@@ -110,6 +112,8 @@ Algorithms $\homcom$ and $\homdecom$ are often quite simple (e.g., when the comm
 
 ## Pedersen Commitments
 
+### Description and Security
+
 The Pedersen commitment scheme, initially introduced in [[Ped91](../references.md#Ped91)], is widely used, in particular to build zero-knowledge proof systems.
 It is specified as follows.
 Let $\groupsetup$ be a [group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).
@@ -127,25 +131,45 @@ The Pedersen commitment scheme can be generalized to messages which are vectors 
 \]
 
 **Theorem.**
-*The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$ (or over $(\ZZ_p)^n$ for the vector variant).*
+*The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$.*
 
 > *Proof.*
-Let us sketch the proof of each property in the case where the message space is $\ZZ_p$ (this can easily be extended to the case where the message space is $(\ZZ_p)^n$):
+Let us sketch the proof of each property:
 > - *perfectly hiding*: as $r$ is uniformly random in $\ZZ_p$, for any message $m$, $C$ is uniformly random in $\GG$ and hence does not reveal any information about $m$;
 > - *computationally binding*: assume an adversary can output two message/decommitment pairs $(m,r)$ and $(m',r')$ with $m \neq m'$ for the same commitment $C$; then
 \[
  (m-m') G = (r'-r) H,
 \]
 which yields the discrete logarithm of $H$ in base $G$ (note that $m - m' \neq 0$ implies $r'-r \neq 0$ as $G$ and $H$ are generators of $\GG$);
-> - *additively homomorphic*: given two commitments $C_1 = m_1 G + r_1 H$ and $C_2 = m_2 G + r_2 H$, then $C_1 + C_2= (m_1 + m_2) G + (r_1+r_2) H$.
+> - *additively homomorphic*: given two commitments $C_1 = m_1 G + r_1 H$ and $C_2 = m_2 G + r_2 H$, anyone can compute $C \defeq C_1 + C_2= (m_1 + m_2) G + (r_1+r_2) H$, and the committer can compute $r_1+r_2$ which is a valid decommitment for $C$ and message $m_1+m_2$.
 
-A note about the setup algorithm: it should ensure that nobody knows the discrete logarithm of $H$ in base $G$.
+### A Note About the Setup
+
+Importantly, the setup algorithm should ensure that nobody knows the discrete logarithm of $H$ in base $G$.
 In particular, it is not safe to allow the committer to choose the public parameters: if the committer knows the discrete logarithm of $H$ in base $G$, then the scheme is not binding anymore.
 Say the committer knows $h$ such that $H = hG$. Then it can send $C = cG$ as commitment; later, it can open this commitment to *any* value $m \in \ZZ_p$ it wants by computing $r = h^{-1}(c-m) \bmod p$ and sending decommitment $D = (m,r)$: it satisfies $mG + rH = (m+rh)G = cG = C$.
 
 For this reason, Pedersen's scheme is sometimes referred to as a *trapdoor* (or *equivocal*) commitment scheme, which can be useful in security proofs but should also make us wary.
 However, there are secure ways to select the commitment key without a trusted third party, such as using a hash-to-group function (a.k.a. hash-to-curve function in case $\GG$ is based on an elliptic curve) applied to some NUMS ([nothing-up-my-sleeve](https://en.wikipedia.org/wiki/Nothing-up-my-sleeve_number)) input.
+Hence, even though Pedersen commitments do not require a *trusted setup*, one should always *verify* that parameters were correctly generated.
 For a real-world example where this trapdoor property could have been used, see Section VI of [[HLPT20](../references.md#HLPT20)] about the Scytl/SwissPost e-voting system.
+
+### Variants
+
+The Pedersen commitment scheme can be generalized to messages which are vectors $\bfm = (m_0, \dots, m_{n-1}) \in (\ZZ_p)^n$: the parameters are extended to $par = (\GG, p, G_0, \dots, G_{n-1}, H)$ where $G_0, \dots, G_{n-1},$ and $H$ are uniformly random and independent generators of $\GG$, and the commitment for message $\bfm = (m_0, \dots, m_{n-1})$ with randomness $r$ is
+\[
+ C \defeq \sum_{i=0}^{n-1} m_i G_i + r H.
+\]
+This is usually called the *generalized Pedersen commitment scheme*, or sometimes the *Pedersen vector commitment scheme*, although this is somehow a misnomer as it does not have all the properties required from a *vector commitment scheme* [[CF13](../references.md#CF13)].
+As for the basic variant, it can be shown to be perfectly hiding, computationally binding under the DL assumption, and homomorphic with respect to addition over $(\ZZ_p)^n$.
+
+The "random" part of the commitment $rH$ is sometimes omitted, in which case the commitment algorithm becomes deterministic and the commitment is simply
+\[
+ C \defeq \sum_{i=0}^{n-1} m_i G_i.
+\]
+In that case, the scheme is still computationally binding under the DL assumption (and even perfectly binding for $n=1$ as the commitment function is bijective), but it is not hiding anymore (given two messages $\bfm_0$ and $\bfm_1$ and a commitment $C$ to $\bfm_b$ for some random bit $b$, one can recover $b$ by simply computing the commitments corresponding to respectively $\bfm_0$ and $\bfm_1$ and comparing with $C$).
+For this reason, it is sometimes referred to as the *non-hiding Pedersen commitment scheme*.
+It is however *preimage-resistant* under the DL assumption, meaning that given a random commitment $C \in \GG$, it is hard to compute a message $\bfm$ such that $\commit(par,\bfm) = C$.
 
 ## ElGamal Commitments
 
