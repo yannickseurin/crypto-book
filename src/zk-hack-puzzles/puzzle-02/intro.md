@@ -21,4 +21,6 @@ Heads-up: although the puzzle description refers to the Groth16 zk-SNARK [[Gro16
 Suffice it to say, Groth16 uses a so-called *structured reference string* (or *common reference string*) generated during a *trusted setup* which has a form similar to the one of the puzzle data, meaning it consists of points on some pairing-friendly pair of curves computed somehow similarly to what is described in the puzzle instructions.
 Anyone able to retrieve the secret values $(s, \alpha, \beta)$ (the *simulation trapdoor*, sometimes referred to as "toxic waste" as it must absolutely be discarded after the trusted setup) would be able to break the soundness of the proof system, meaning it could produce valid proofs for false statements.
 
+Another important scheme where such structured parameters show up is the [KZG polynomial commitment scheme](../../cryptographic-notions/polynomial-commitment-schemes.md).
+
 Let's take a look at the code to see what this is about.
