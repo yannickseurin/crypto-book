@@ -10,6 +10,8 @@
 
 <a id="BCM+15">**[BCM+15]**</a> Paulo S. L. M. Barreto, Craig Costello, Rafael Misoczki, Michael Naehrig, Geovandro C. C. F. Pereira, and Gustavo Zanon. [*Subgroup Security in Pairing-Based Cryptography*](https://eprint.iacr.org/2015/247.pdf). In proceedings of Latincrypt 2015.
 
+<a id="BDFG20">**[BDFG20]**</a> Dan Boneh, Justin Drake, Ben Fisch, and Ariel Gabizon. [*Efficient polynomial commitment schemes for multiple points and polynomials*](https://eprint.iacr.org/2020/081.pdf). IACR ePrint report 2020/081, 2020.
+
 <a id="BDN18">**[BDN18]**</a> Dan Boneh, Manu Drijvers, and Gregory Neven. [*Compact Multi-signatures for Smaller Blockchains*](https://eprint.iacr.org/2018/483.pdf). In proceedings of ASIACRYPT 2018.
 
 <a id="BF03">**[BF03]**</a> Dan Boneh and Matthew K. Franklin. [*Identity-Based Encryption from the Weil Pairing*](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf). In SIAM Journal on Computing, 2003.
@@ -32,6 +34,8 @@
 
 <a id="CA89">**[CA89]**</a> David Chaum and Hans Van Antwerpen. [*Undeniable Signatures*](https://chaum.com/wp-content/uploads/2022/01/Chaum-Antwerpen-1990-Chapter-Undeniable-Signatures.pdf). In proceedings of CRYPTO 1989.
 
+<a id="CF13">**[CF13]**</a> Dario Catalano and Dario Fiore. [*Vector Commitments and Their Applications*](https://eprint.iacr.org/2011/495.pdf). In proceedings of PKC 2013.
+
 <a id="Che10">**[Che10]**</a> Jung Hee Cheon. [*Discrete Logarithm Problems with Auxiliary Inputs*](https://link.springer.com/content/pdf/10.1007/s00145-009-9047-0.pdf). In Journal of Cryptology, 2010.
 
 <a id="CHKM10">**[CHKM10]**</a> Sanjit Chatterjee, Darrel Hankerson, Edward Knapp, and Alfred Menezes. [*Comparing two pairing-based aggregate signature schemes*](https://eprint.iacr.org/2009/060.pdf). In Designs, Codes and Cryptography, 2010.
@@ -45,6 +49,8 @@
 <a id="GPS08">**[GPS08]**</a> Steven D. Galbraith, Kenneth G. Paterson, and Nigel P. Smart. [*Pairings for cryptographers*](https://eprint.iacr.org/2006/165.pdf). In Discrete Applied Mathematics, 2008.
 
 <a id="Gro16">**[Gro16]**</a> Jens Groth. [*On the Size of Pairing-Based Non-interactive Arguments*](https://eprint.iacr.org/2016/260.pdf). In proceedings of EUROCRYPT 2016.
+
+<a id="GWC19">**[GWC19]**</a> Ariel Gabizon, Zachary J. Williamson, and Oana Ciobotaru. [*PLONK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge*](https://eprint.iacr.org/2019/953.pdf). IACR ePrint report 2019/953, 2019.
 
 <a id="Ham15">**[Ham15]**</a> Mike Hamburg. [*Decaf: Eliminating Cofactors Through Point Compression*](https://eprint.iacr.org/2015/673.pdf). In proceedings of CRYPTO 2015.
 
@@ -69,6 +75,8 @@
 <a id="NRBB22">**[NRBB22]**</a> Valeria Nikolaenko, Sam Ragsdale, Joseph Bonneau, and Dan Boneh. [*Powers-of-Tau to the People: Decentralizing Setup Ceremonies*](https://eprint.iacr.org/2022/1592.pdf). IACR ePrint report 2022/1592, 2022.
 
 <a id="Ped91">**[Ped91]**</a> Torben P. Pedersen. [*Non-Interactive and Information-Theoretic Secure Verifiable Secret Sharing*](https://link.springer.com/content/pdf/10.1007/3-540-46766-1_9.pdf). In proceedings of CRYPTO 1991.
+
+<a id="PST13">**[PST13]**</a> Charalampos Papamanthou, Elaine Shi, and Roberto Tamassia. [*Signatures of Correct Computation*](https://eprint.iacr.org/2011/587.pdf). In proceedings of TCC 2013.
 
 <a id="Qua21">**[Qua21]**</a> Nguyen Thoi Minh Quan. [*0*](https://eprint.iacr.org/2021/323.pdf). IACR ePrint report 2021/323, 2021.
 
