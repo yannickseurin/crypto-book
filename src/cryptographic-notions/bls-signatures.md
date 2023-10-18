@@ -234,8 +234,8 @@ The following figure summarizes the above results (a double-arrow between two pr
 ```mermaid
 graph TD;
     A(CDH) <-- type-1 --> C(co-CDH*);
-    B(co-CDH) <-- type-2 -->C;
-    C <-- type-1/2/3 -->D(EUF-CMA-sec of BLS);
+    B(co-CDH) <-- type-2 --> C;
+    C <-- type-1/2/3 --> D(EUF-CMA-sec of BLS);
 ```
 
 Note that the notion of type-1/2/3 pairing was only introduced in 2008 [[GPS08](../references.md#GPS08)], a few years after the journal version of the BLS paper [[BLS04](../references.md#BLS04)].
