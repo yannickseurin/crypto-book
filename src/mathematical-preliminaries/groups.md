@@ -11,6 +11,8 @@
 
 ## Basic Definitions
 
+A ***binary operation*** over a set $S$ is a function $\star \colon S \times S \to S$ usually denoted in infix notation, meaning the image of $(a,b) \in S \times S$ is written $a \star b$.
+
 A ***group*** is a non-empty set $\GG$ equipped with a binary operation $\star$ satisfying the following properties:
 
 - *associativity*: for every $a,b,c \in \GG$, $(a \star b) \star c = a \star (b \star c)$;
@@ -93,8 +95,15 @@ For abelian groups, the direct product is sometimes called ***direct sum*** and 
 Let $\GG$ be a group and $\HH$ be a non-empty subset of $\GG$.
 The subset $\HH$ is a ***subgroup*** of $\GG$ if $\HH$ equipped with the binary operation of $\GG$ is a group.
 
-The following proposition gives a handy subgroup criterion.
+<a name="prop:subgroup_crit"></a>
+**Proposition.**
+*Let $\GG$ be a group and $\HH$ be subset of $\GG$.
+Then $\HH$ is a subgroup of $\GG$ if and only if (i) $e \in \HH$, (ii) for every $a,b \in \HH$, $ab \in \HH$, and (iii) for every $a \in \HH$, $a^{-1} \in \HH$.*
 
+
+The following proposition gives a slightly more compact subgroup criterion.
+
+<a name="prop:simple_subgroup_crit"></a>
 **Proposition.**
 *Let $\GG$ be a group and $\HH$ be subset of $\GG$.
 Then $\HH$ is a subgroup of $\GG$ if and only if $e \in \HH$ and for every $a,b \in \HH$, $a b^{-1} \in \HH$.*
@@ -116,12 +125,54 @@ It follows that $\HH$ is a subgroup.
 
 ## Cosets and Lagrange Theorem
 
-Let $\HH$ be a subgroup of $\GG$ and $g \in \GG$.
-The ***left coset*** , resp. ***right coset*** of $\HH$ associated with $g$ is the subset of $\GG$ defined as
+Let $\HH$ be a subgroup of a group $\GG$.
+Consider the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$ and the dual one defined by $a \sim b$ if and only if $b^{-1}a \in \HH$.
+The following proposition show that these are equivalence relations.
+
+<a name="prop:subgroup_equiv_rel"></a>
+**Proposition.**
+*Let $\GG$ be a group.
+Let $\HH$ be a subgroup of $\GG$.
+Then the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$ is an equivalence relation.
+The proposition also holds by replacing $ab^{-1} \in \HH$ by $b^{-1}a \in \HH$.*
+
+> *Proof.*
+Let $\HH$ be a subgroup of $\GG$ and $\sim$ be relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$.
+Let us show that $\sim$ is reflexive, symmetric, and transitive.
+> - reflexivity: $e \in \HH$ implies that for every $a \in \GG$, $aa^{-1} \in \HH$ and hence $a \sim a$;
+> - symmetry: $\HH$ being closed under under inverses implies that for every $a,b \in \GG$,
 \[\begin{aligned}
- g \HH & \defeq \{g h \mid h \in \HH\} \\
- \HH g & \defeq \{h g \mid h \in\ \HH\}.
+ a \sim b & \Rightarrow ab^{-1} \in \HH \\
+ & \Rightarrow (ab^{-1})^{-1} \in \HH \\
+ & \Rightarrow ba^{-1} \in \HH \\
+ & \Rightarrow b \sim a;
 \end{aligned}\]
+> - transitivity: $\HH$ being closed under the binary operation implies that for every $a,b,c \in \GG$,
+\[\begin{aligned}
+ (a \sim b) \wedge (b \sim c) & \Rightarrow (ab^{-1} \in \HH) \wedge (bc^{-1} \in \HH) \\
+ & \Rightarrow ab^{-1}bc^{-1} \in \HH \\
+ & \Rightarrow ac^{-1} \in \HH \\
+ & \Rightarrow a \sim c.
+\end{aligned}\]
+The proof is similar for the relation defined by $b^{-1}a \in \HH$.
+
+Let $\HH$ be a subgroup of $\GG$ and $\sim$ be the equivalence relation $a \sim b \Leftrightarrow ab^{-1} \in \HH$.
+An equivalence class for $\sim$ is called a ***right coset*** of $\HH$.
+Being equivalence classes, right cosets form a partition of $\GG$.
+For $g \in \GG$, the right coset to which $g$ belongs is easily seen to be
+\[
+ \HH g \defeq \{h g \mid h \in \HH\}.
+\]
+Similarly, an equivalence class for the relation relation $a \sim b \Leftrightarrow b^{-1}a \in \HH$ is called a ***left coset*** of $\HH$.
+Left cosets form a partition of $\GG$ and for $g \in \GG$, the left coset to which $g$ belongs is
+\[
+ g \HH \defeq \{g h \mid h \in \HH\}.
+\]
+
+When $\GG$ is abelian, the set of right cosets and the set of left cosets are the same, but when $\GG$ is non-abelian this is not necessarily the case.
+Note that $\HH$ itself is both a right and a left coset.
+
+A cornerstone of group theory is Lagrange's theorem, which essentially follows from the fact that right cosets (as well as left cosets) all have the same size.
 
 <a name="th:lagrange"></a>
 **Lagrange's Theorem.**
@@ -129,21 +180,25 @@ The ***left coset*** , resp. ***right coset*** of $\HH$ associated with $g$ is t
 Then the order of any subgroup $\HH$ of $\GG$ divides the order of $\GG$.*
 
 > *Proof.*
-Consider the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$.
-One can easily check that this is an equivalence relation and that the equivalence class of $g \in \GG$ is the right coset of $\HH$ associated with $g$.
-For any $g \in \GG$, the mapping $h \mapsto hg$ is a bijection from $\HH$ to $\HH g$: it is obviously surjective and $hg=h'g \Rightarrow hgg^{-1} = h'gg^{-1} \Rightarrow h=h'$, hence it is injective.
+Let $\HH$ be a subgroup of $\GG$.
+For every $g \in \GG$, the mapping $h \mapsto hg$ is a bijection from $\HH$ to the right coset $\HH g$: it is obviously surjective and $hg=h'g \Rightarrow hgg^{-1} = h'gg^{-1} \Rightarrow h=h'$, hence it is injective.
 Hence, all right cosets have $|\HH|$ elements.
 Since right cosets form a partition of $\GG$, we have
 \[ |\GG| = n |\HH|\]
 where $n$ is the number of right cosets.
+>
+> A similar reasoning with left cosets shows that the number of left cosets is equal to the number of right cosets.
 
-The number of right cosets of $\HH$ (which is equal to the number of left cosets) is called the ***index*** of $\HH$ in $\GG$ and denoted $[\GG:\HH]$.
+The number of right (or left) cosets of $\HH$ is called the ***index*** of $\HH$ in $\GG$ and denoted $[\GG:\HH]$.
 Hence, Lagrange theorem states that
 \[
  |\GG| = [\GG:\HH] |\HH|.
 \]
 
 ## Normal Subgroups and Quotient Groups
+
+Having defined an equivalence relation associated with a subgroup, one may ask whether the set of right (or left) cosets can be equipped with a group structure.
+This is where the notion of normal subgroup comes into play.
 
 Let $\GG$ be a group.
 A subgroup $\HH$ of $\GG$ is said to be ***normal*** if for every $g \in \GG$, $g \HH = \HH g$ (i.e., left and right cosets are equal).
@@ -165,25 +220,33 @@ By the previous proposition, this implies that $\HH$ is normal.
 
 Let $\GG$ be a group and let $\sim$ be an equivalence relation on $\GG$.
 We say that $\sim$ is *compatible with the group structure of $\GG$* if $a \sim b$ and $c \sim d$ implies $ac \sim bd$.
-If $\sim$ is compatible with the group structure, then one can equip the quotient set $\GG/\!\!\sim$ (the set of all equivalence classes) with a binary operation defined as $[a][b] = [ab]$, where $[a]$ denotes the equivalence class of $a \in \GG$.
+If $\sim$ is compatible with the group structure of $\GG$, then one can equip the quotient set $\GG/\!\!\sim$ (the set of all equivalence classes) with a binary operation defined as $[a][b] = [ab]$, where $[a]$ denotes the equivalence class of $a \in \GG$.
 This is well defined as compatibility of $\sim$ with the group structure ensures that this binary operation does not depend on the specific representatives $a$ and $b$ of each equivalence class.
-Moreover, one can easily check that $\GG/\!\!\sim$ equipped with this binary operation is a group with identity element $[e]$ and where $[a]^{-1} = [a^{-1}]$.
+The following proposition states that normal subgroups completely characterize the equivalence relations $\sim$ which are compatible with the group structure of $\GG$.
 
+<a name="prop:equiv_rel_comp_group_struct"></a>
 **Proposition.**
-*Let $\GG$ be a group and let $\sim$ be an equivalence relation on $\GG$.
-Then $\sim$ is compatible with the group structure of $\GG$ if and only if there exists a normal subgroup $\HH$ such that $a \sim b \Leftrightarrow ab^{-1} \in \HH$.*
+*Let $\GG$ be a group and $\HH$ be a normal subgroup of $\GG$.
+Then the equivalence relation defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$ is compatible with the group structure of $\GG$.
+Conversely, let $\sim$ be an equivalence relation compatible with the group structure of $\GG$.
+Then $\HH \defeq [e]$ is a normal subgroup of $\GG$ and $a \sim b \Leftrightarrow ab^{-1} \in \HH$.*
 
 > *Proof.*
-Assume that there exists a normal subgroup $\HH$ such that $a \sim b \Leftrightarrow ab^{-1} \in \HH$.
-Let us show that $\sim$ is compatible with the group structure of $\GG$.
+Let $\HH$ be a normal subgroup of $\GG$.
+Let us show that $\sim$ defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$ (which is an equivalence relation by [Proposition](#prop:subgroup_equiv_rel)) is compatible with the group structure of $\GG$.
 Let $a,b,c,d \in \GG$ such that $a \sim b$ and $c \sim d$.
-Then $ac(bd)^{-1} = acd^{-1}b^{-1} = acd^{-1}a^{-1}ab^{-1}$.
-We have $cd^{-1} \in \HH$ because $c \sim d$, which implies that $acd^{-1}a^{-1} \in \HH$ because $\HH$ is normal.
-We also have $ab^{-1} \in \HH$ because $a \sim b$, hence $ac(bd)^{-1} = acd^{-1}a^{-1}ab^{-1} \in \HH$ and $ac \sim bd$.
+We want to show that $ac \sim bd$, i.e., $ac(bd)^{-1} \in\ \HH$.
+Note that
+\[
+ ac(bd)^{-1} = acd^{-1}b^{-1} = acd^{-1}a^{-1}ab^{-1}.
+\]
+We have $cd^{-1} \in \HH$ because $c \sim d$, which implies that $g \defeq a(cd^{-1})a^{-1} \in \HH$ because $\HH$ is normal.
+We also have $ab^{-1} \in \HH$ because $a \sim b$, hence $g(ab^{-1}) = acd^{-1}a^{-1}ab^{-1} = ac(bd)^{-1} \in \HH$ and $ac \sim bd$.
 >
-> Conversely, assume that $\sim$ is compatible with the group structure of $\GG$.
-Define $\HH$ as $[e]$, the class of the identity element.
+> Conversely, assume that $\sim$ is an equivalence relation which is compatible with the group structure of $\GG$.
+Define $\HH$ as $[e]$, the equivalence class of the identity element.
 Let us first show that $\HH$ is a normal subgroup.
+Clearly, $e \in \HH$.
 Let $a,b \in \HH$, i.e., $a \sim e$ and $b \sim e$.
 Then, by compatibility of $\sim$ with the group structure, we have
 \[\begin{aligned}
@@ -191,7 +254,7 @@ Then, by compatibility of $\sim$ with the group structure, we have
  & \Rightarrow ab^{-1}e \sim b^{-1}b & & (e \sim b) \\
  & \Rightarrow ab^{-1} \sim e. &
 \end{aligned}\]
-Hence $ab^{-1} \in \HH$ and $\HH$ is a subgroup.
+Hence $ab^{-1} \in \HH$ and by [Proposition](#prop:simple_subgroup_crit), $\HH$ is a subgroup.
 >
 > To show that $\HH$ is normal, let us show that for every $g \in \GG$, $g\HH g^{-1} \subseteq \HH$.
 Let $g \in \GG$ and $h \in \HH$. Then
@@ -206,11 +269,18 @@ Hence $ghg^{-1} \in \HH$ and $\HH$ is normal.
 By compatibility of $\sim$ with the group structure, we have $a \sim b \Rightarrow ab^{-1} \sim bb^{-1} \Rightarrow ab^{-1} \sim e$ and $ab^{-1} \sim e \Rightarrow ab^{-1}b \sim b \Rightarrow a \sim b$.
 Hence $a \sim b \Leftrightarrow ab^{-1} \sim e \Leftrightarrow ab^{-1} \in \HH$, which concludes the proof.
 
-Hence, normal subgroups completely characterize the equivalence relations $\sim$ for which the quotient set $\GG/\!\!\sim$ can be naturally equipped with a group structure.
-
 Let $\HH$ be a normal subgroup of $\GG$ and let $\sim$ be the equivalence relation defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$.
-Then the quotient set $\GG/\!\!\sim$ equipped with the binary operation defined by $[a][b] = [ab]$ is called the ***quotient group*** associated with $\HH$ and denoted $\GG/\HH$.
+Then the quotient set $\GG/\!\!\sim$ equipped with the binary operation defined by $[a][b] = [ab]$ is a group (as shown in the proposition below) called the ***quotient group*** associated with $\HH$ and denoted $\GG/\HH$.
 Note that the order of $\GG/\HH$ is $[\GG:\HH]$, the index of $\HH$.
+
+**Proposition.**
+*Let $\GG$ be a group and $\HH$ be a normal subgroup of $\GG$.
+Then $\GG/\HH$ is a group.
+Its identity element is $[e]$ and the inverse of $[a]$ is $[a]^{-1} \defeq [a^{-1}]$.
+If $\GG$ is abelian then so is $\GG/\HH$.*
+
+> *Proof.*
+> This follows straightforwardly from the definition of the binary operation $[a][b] = [ab]$.
 
 ## Homomorphisms and Isomorphisms
 
@@ -276,7 +346,6 @@ Moreover, it is injective since $\bar{f}([a]) = \bar{f}([b]) \Leftrightarrow f(a
 It is also surjective since any element in $h \in \im(f)$ is of the form $f(a)$ for some $a \in \GG$ and hence $h = \bar{f}([a])$.
 Hence, $\bar{f}$ is a group isomorphism.
 
-> *Remark.*
 There are three other isomorphism theorems but they are not as useful as the first one.
 
 ## Group Generation
