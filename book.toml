@@ -7,7 +7,7 @@ title = "Crypto Book (Work in Progress)"
 
 [output.html]
 site-url = "/crypto-book/"
-no-section-label = true
+no-section-label = false
 additional-css = ["./assets/custom.css"]
 additional-js = ["./assets/mermaid.min.js", "./assets/mermaid-init.js"]
 git-repository-url = "https://github.com/yannickseurin/crypto-book"
