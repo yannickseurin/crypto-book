@@ -18,7 +18,7 @@
 - [Games, Models, and Assumptions](cryptographic-notions/games-models-and-assumptions.md)
 - [BLS Signatures](cryptographic-notions/bls-signatures.md)
 - [Commitment Schemes](cryptographic-notions/commitment-schemes.md)
-- [Polynomial Commitment Schemes]()
+- [Polynomial Commitment Schemes](cryptographic-notions/polynomial-commitment-schemes.md)
 - [Zero-Knowledge Proof Systems]()
 - [Proofs of Knowledge]()
 
