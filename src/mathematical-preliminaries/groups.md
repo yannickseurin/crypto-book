@@ -19,6 +19,8 @@ A ***group*** is a non-empty set $\GG$ equipped with a binary operation $\star$ 
 - *identity element*: there exists $e \in \GG$ such that for every $a \in \GG$, $e \star a = a \star e =a$; $e$ is called the *identity element* of $\GG$;
 - *inverse element*: for every $a \in \GG$, there exists $b \in \GG$ such that $a \star b = b \star a =e$; $b$ is called the *inverse* of $a$.
 
+The use of determiner *the* for the identity element and the inverse of an element $a$ is justified by the following proposition.
+
 <a name="prop:unique_identity_inverse"></a>
 **Proposition.**
 *Let $\GG$ be a group. Then $\GG$ has a unique identity element and every element $a \in \GG$ has a unique inverse.*

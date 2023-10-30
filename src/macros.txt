@@ -16,6 +16,27 @@
 \SS:\mathbb{S}
 \ZZ:\mathbb{Z}
 
+\bfh:\mathbf{h}
+\bfa:\mathbf{a}
+\bfb:\mathbf{b}
+\bfc:\mathbf{c}
+\bfm:\mathbf{m}
+\bfr:\mathbf{r}
+\bfs:\mathbf{s}
+\bfM:\mathbf{M}
+\bfG:\mathbf{G}
+
+\cR:\mathcal{R}
+\cRdl:\mathcal{R}_{\mathrm{dlog}}
+\cL:\mathcal{L}
+\cD:\mathcal{D}
+\cO:\mathcal{O}
+\cM:\mathcal{M}
+\cQ:\mathcal{Q}
+\cU:\mathcal{U}
+\cE:\mathcal{E}
+\cF:\mathcal{F}
+
 \Pcl:\mathsf{P}
 \NPcl:\mathsf{NP}
 
@@ -59,26 +80,6 @@
 \pclinecomment:{/\!\!/ \text{\scriptsize #1}}
 \pctrue:\mathbf{true}
 \pcfalse:\mathbf{false}
-
-\bfh:\mathbf{h}
-\bfa:\mathbf{a}
-\bfb:\mathbf{b}
-\bfc:\mathbf{c}
-\bfm:\mathbf{m}
-\bfr:\mathbf{r}
-\bfs:\mathbf{s}
-\bfM:\mathbf{M}
-\bfG:\mathbf{G}
-
-\cR:\mathcal{R}
-\cRdl:\mathcal{R}_{\mathrm{dlog}}
-\cL:\mathcal{L}
-\cD:\mathcal{D}
-\cO:\mathcal{O}
-\cM:\mathcal{M}
-\cQ:\mathcal{Q}
-\cU:\mathcal{U}
-\cE:\mathcal{E}
 
 \stat:\sigma
 \wit:\omega
