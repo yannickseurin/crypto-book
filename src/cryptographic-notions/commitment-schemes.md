@@ -125,11 +125,6 @@ Then:
 
 - the verification algorithm $\verif$, on input parameters $par = (\GG,p,G,H)$, a commitment $C \in \GG$, a message $m \in \ZZ_p$, and a decommitment $D = r \in \ZZ_p$, returns 1 if $mG + rH = C$ and 0 otherwise.
 
-The Pedersen commitment scheme can be generalized to messages which are vectors $\bfm = (m_0, \dots, m_{n-1}) \in (\ZZ_p)^n$: the parameters are extended to $par = (\GG, p, G_0, \dots, G_{n-1}, H)$ and the commitment for message $\bfm = (m_0, \dots, m_{n-1})$ with randomness $r$ is
-\[
- C \defeq \sum_{i=0}^{n-1} m_i G_i + r H.
-\]
-
 **Theorem.**
 *The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$.*
 
