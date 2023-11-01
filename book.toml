@@ -25,6 +25,10 @@ runnable = false
 command = "mdbook-toc"
 renderer = ["html"]
 
+[preprocessor.mathpunc]
+command = "mdbook-mathpunc"
+before = ["katex"]
+
 [preprocessor.katex]
 after = ["links"]
 macros = "src/macros.txt"

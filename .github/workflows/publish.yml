@@ -13,6 +13,9 @@ jobs:
       - name: Install mdbook, mdbook-katex, mdbook-toc, mdbook-mermaid
         run: cargo install mdbook mdbook-katex mdbook-toc mdbook-mermaid
 
+      - name: Install mdbook-mathpunc
+        run: cargo install --git https://github.com/yannickseurin/mdbook-mathpunc
+
       - name: Build html
         run: mdbook build
 
