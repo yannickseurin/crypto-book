@@ -182,8 +182,8 @@ Although we have a reasonable understanding of what <code>verify</code> does, le
 Say we want to understand what the function <code>Bls12_381::product_of_pairings</code> does exactly.
 First, we check the path used to bring <code>Bls12_381</code> into scope in the <em>src/bls.rs</em> module:</p>
 <pre><code class="language-rust">use ark_bls12_381::{Bls12_381, G1Affine, G2Affine};</code></pre>
-<p>This tells us that we need to look into the <code>ark-bls12-381</code> crate.{{footnote: Note that hyphens are not valid characters in Rust identifiers, however it is possible (and idiomatic) to use them in package and crate names. Cargo automatically converts them to underscores. See <a href="https://stackoverflow.com/questions/60794905/why-is-changing-hyphenated-crate-names-to-underscored-names-possible-and-what-ar">here</a>.}}</p>
-<p>The first thing to know is that there are two possible places where to look for information: <a href="https://docs.rs/">Docs.rs</a>, the documentation host for Rust crates hosted at <a href="https://crates.io">crates.io</a>, and the <a href="https://github.com/arkworks-rs">arkworks GitHub repositories</a>.{{footnote: If you're curious about what guarantees we have that the source codes on github.com and crates.io are really the same, I recommend <a href="https://codeandbitters.com/published-crate-analysis/">this interesting blog post</a> by Eric Seppanen.}}</p>
+<p>This tells us that we need to look into the <code>ark-bls12-381</code> crate.<sup><a name="to-footnote-1"><a href="#footnote-1">1</a></a></sup></p>
+<p>The first thing to know is that there are two possible places where to look for information: <a href="https://docs.rs/">Docs.rs</a>, the documentation host for Rust crates hosted at <a href="https://crates.io">crates.io</a>, and the <a href="https://github.com/arkworks-rs">arkworks GitHub repositories</a>.<sup><a name="to-footnote-2"><a href="#footnote-2">2</a></a></sup></p>
 <p>Second, one has to be careful about which version of the crate the puzzle requires.
 For this, we must inspect the <em>Cargo.toml</em> file which lists the package dependencies:</p>
 <pre><code class="language-toml">[dependencies]
@@ -329,6 +329,9 @@ The structs and traits <a href="https://github.com/arkworks-rs/algebra/blob/mast
 <p>Hopefully the code of the <code>verify</code> function should now make completely sense.
 Note in particular how elliptic curve points are converted from affine coordinates to projective coordinates using method <code>into</code> before being passed to <code>product_of_pairings</code>.</p>
 <p>It's now time to see what the <code>hash_to_curve</code> function does exactly.</p>
+<p><hr/>
+<p><a name="footnote-1"><a href="#to-footnote-1">1</a></a>: Note that hyphens are not valid characters in Rust identifiers, however it is possible (and idiomatic) to use them in package and crate names. Cargo automatically converts them to underscores. See <a href="https://stackoverflow.com/questions/60794905/why-is-changing-hyphenated-crate-names-to-underscored-names-possible-and-what-ar">here</a>.</p>
+<p><a name="footnote-2"><a href="#to-footnote-2">2</a></a>: If you're curious about what guarantees we have that the source codes on github.com and crates.io are really the same, I recommend <a href="https://codeandbitters.com/published-crate-analysis/">this interesting blog post</a> by Eric Seppanen.</p>
 
                     </main>
 
