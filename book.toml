@@ -22,11 +22,11 @@ level = 0
 runnable = false
 
 [preprocessor.toc]
-command = "mdbook-toc"
 renderer = ["html"]
 
+[preprocessor.footnote]
+
 [preprocessor.mathpunc]
-command = "mdbook-mathpunc"
 before = ["katex"]
 
 [preprocessor.katex]
@@ -36,4 +36,3 @@ block-delimiter = {left = "\\[", right = "\\]"}
 trust = true
 
 [preprocessor.mermaid]
-command = "mdbook-mermaid"

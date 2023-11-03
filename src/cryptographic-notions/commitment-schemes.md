@@ -22,8 +22,8 @@ The commitment $C$ should not reveal any information about the message $m$ (hidi
 
 More formally, a commitment scheme consists of three algorithms (the exact syntax can vary slightly in the literature):
 
-- a probabilistic setup algorithm $\setup$ which on input the security parameter $\secparam$ returns public parameters[^par] $par$ which in particular specify a message space $\cM_{par}$ (in the following, we simply denote the message space $\cM$, leaving the dependency on $par$ implicit);
-- a probabilistic commitment algorithm $\commit$ which on input parameters $par$ and a message $m \in \cM$ returns a commitment $C$ and a decommitment[^decommit] $D$;
+- a probabilistic setup algorithm $\setup$ which on input the security parameter $\secparam$ returns public parameters{{footnote: The name can vary; these parameters are sometimes called a *commitment key* or a *public key*.}} $par$ which in particular specify a message space $\cM_{par}$ (in the following, we simply denote the message space $\cM$, leaving the dependency on $par$ implicit);
+- a probabilistic commitment algorithm $\commit$ which on input parameters $par$ and a message $m \in \cM$ returns a commitment $C$ and a decommitment{{footnote: Again, the name can vary and it is sometimes called an *opening* or a *hint*.}} $D$;
 - a deterministic verification algorithm $\verif$ which on input parameters $par$, a commitment $C$, a message $m \in \cM$, and a decommitment $D$, return 1 if the decommitment is valid for $(par,C,m)$ and 0 otherwise.
 
 Quite often, the decommitment $D$ simply consists of the random coins $r$ used by the commitment algorithm, and the verification algorithm simply recomputes the commitment given $m$ and $r$ and compares with $C$.
@@ -223,9 +223,3 @@ Variants are possible: for example, if inputs are bit strings of length exactly 
 ## Further Resources
 
 For more background on commitment schemes, see for example [this article](https://homepages.cwi.nl/~schaffne/courses/crypto/2014/papers/ComZK08.pdf) by Damgård and Nielsen and [this lecture](https://piazza.com/class_profile/get_resource/iiauye4zvj2hu/inhhhsyt9x74kl) by Dodis.
-
-----
-
-[^par]: The name can vary; these parameters are sometimes called a *commitment key* or a *public key*.
-
-[^decommit]: Again, the name can vary and it is sometimes called an *opening* or a *hint*.

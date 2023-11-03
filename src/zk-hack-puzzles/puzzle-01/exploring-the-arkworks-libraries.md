@@ -9,9 +9,9 @@ First, we check the path used to bring `Bls12_381` into scope in the *src/bls.rs
 use ark_bls12_381::{Bls12_381, G1Affine, G2Affine};
 ```
 
-This tells us that we need to look into the `ark-bls12-381` crate.[^crate_names]
+This tells us that we need to look into the `ark-bls12-381` crate.{{footnote: Note that hyphens are not valid characters in Rust identifiers, however it is possible (and idiomatic) to use them in package and crate names. Cargo automatically converts them to underscores. See [here](https://stackoverflow.com/questions/60794905/why-is-changing-hyphenated-crate-names-to-underscored-names-possible-and-what-ar).}}
 
-The first thing to know is that there are two possible places where to look for information: [Docs.rs](https://docs.rs/), the documentation host for Rust crates hosted at [crates.io](https://crates.io), and the [arkworks GitHub repositories](https://github.com/arkworks-rs).[^crates_vs_github]
+The first thing to know is that there are two possible places where to look for information: [Docs.rs](https://docs.rs/), the documentation host for Rust crates hosted at [crates.io](https://crates.io), and the [arkworks GitHub repositories](https://github.com/arkworks-rs).{{footnote: If you're curious about what guarantees we have that the source codes on github.com and crates.io are really the same, I recommend [this interesting blog post](https://codeandbitters.com/published-crate-analysis/) by Eric Seppanen.}}
 
 Second, one has to be careful about which version of the crate the puzzle requires.
 For this, we must inspect the *Cargo.toml* file which lists the package dependencies:
@@ -214,9 +214,3 @@ Hopefully the code of the `verify` function should now make completely sense.
 Note in particular how elliptic curve points are converted from affine coordinates to projective coordinates using method `into` before being passed to `product_of_pairings`.
 
 It's now time to see what the `hash_to_curve` function does exactly.
-
-----
-
-[^crate_names]: Note that hyphens are not valid characters in Rust identifiers, however it is possible (and idiomatic) to use them in package and crate names. Cargo automatically converts them to underscores. See [here](https://stackoverflow.com/questions/60794905/why-is-changing-hyphenated-crate-names-to-underscored-names-possible-and-what-ar).
-
-[^crates_vs_github]: If you're curious about what guarantees we have that the source codes on github.com and crates.io are really the same, I recommend [this interesting blog post](https://codeandbitters.com/published-crate-analysis/) by Eric Seppanen.

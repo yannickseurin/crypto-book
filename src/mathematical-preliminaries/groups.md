@@ -90,7 +90,7 @@ equipped with the binary operation $\diamond$ defined component-wise:
 Its identity element is $(e_{\GG},e_{\HH})$, where $e_{\GG}$ and $e_{\HH}$ are respectively the identity element of $\GG$ and $\HH$.
 The inverse of $(a,b) \in \GG \times \HH$ is $(a^{-1},b^{-1})$.*
 
-For abelian groups, the direct product is sometimes called ***direct sum*** and denoted $\GG \oplus \HH$.[^sum]
+For abelian groups, the direct product is sometimes called ***direct sum*** and denoted $\GG \oplus \HH$.{{footnote: While the direct sum is the same as the direct product for a finite number of groups, this is not the case for a infinite number of groups. See [this StackExchange question](https://math.stackexchange.com/questions/39895/the-direct-sum-oplus-versus-the-cartesian-product-times).}}
 
 ## Subgroups
 
@@ -373,7 +373,7 @@ When $\GG$ is abelian, then
 
 A group $\GG$ is said to be ***finitely generated*** is there exists a finite number of elements $g_1, \dots g_k \in \GG$ such that $\GG = \langle g_1, \dots, g_k \rangle$, in which case $\{g_1,\dots,g_k\}$ is called a ***generating set*** of $\GG$.
 
-A group $\GG$ is said ***cyclic*** (or *monogenous*[^cyclic]) if there exists $g \in \GG$ such that $\GG = \langle g \rangle$, in which case $g$ is called a ***generator*** of $\GG$.
+A group $\GG$ is said ***cyclic*** (or *monogenous*{{footnote: Sometimes *cyclic* is used for groups which are both monogenous and finite, which makes sense since for an infinite monogenous group such as $\ZZ$ one never "cycles back" when computing $g, g^2, \dots$}}) if there exists $g \in \GG$ such that $\GG = \langle g \rangle$, in which case $g$ is called a ***generator*** of $\GG$.
 
 The ***order*** of an element $a \in \GG$ is the order of the subgroup $\langle a \rangle$.
 If $\GG$ has infinite order, the order of an element $a \in \GG$ can be finite or infinite.
@@ -871,9 +871,3 @@ Integers $r$ and $n_1,\dots,n_{\ell}$ are unique.*
 
 > *Proof.*
 > TODO
-
-----
-
-[^sum]: While the direct sum is the same as the direct product for a finite number of groups, this is not the case for a infinite number of groups. See [this StackExchange question](https://math.stackexchange.com/questions/39895/the-direct-sum-oplus-versus-the-cartesian-product-times).
-
-[^cyclic]: Sometimes *cyclic* is used for groups which are both monogenous and finite, which makes sense since for an infinite monogenous group such as $\ZZ$ one never "cycles back" when computing $g, g^2, \dots$

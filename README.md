@@ -10,7 +10,9 @@ The book is built using the following tools:
 - [mdbook](https://github.com/rust-lang/mdBook)
 - [mdBook-KaTeX](https://github.com/lzanini/mdbook-katex)
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
+- [mdbook-footnote](https://github.com/daviddrysdale/mdbook-footnote)
 - [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-mathpunc](https://github.com/yannickseurin/mdbook-mathpunc)
 
 First clone the repository:
 
@@ -28,7 +30,9 @@ Then install the tools with:
 cargo install mdbook
 cargo install mdbook-katex
 cargo install mdbook-toc
+cargo install mdbook-footnote
 cargo install mdbook-mermaid
+cargo install --git https://github.com/yannickseurin/mdbook-mathpunc
 ```
 
 Run

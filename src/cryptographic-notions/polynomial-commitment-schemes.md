@@ -40,7 +40,7 @@ Other assertions one may want to prove when designing SNARKs are, for example, t
 
 More formally, a PC scheme is parameterized by a maximal degree $d \in \NN$ (one can think of $d$ as being given as input to all algorithms) and consists of the five following algorithms (the exact syntax can vary slightly in the literature, here we adhere to the syntax of standard commitment schemes):
 
-- a setup algorithm $\setup$ which on input the security parameter $\secparam$ returns public parameters[^par] $par$; these parameters implicitly specify some finite field $\FF$;
+- a setup algorithm $\setup$ which on input the security parameter $\secparam$ returns public parameters{{footnote: As for standard commitment schemes, the name can vary and this is sometimes called a *common reference string (crs)* or *structured reference string (srs)* when it does not consist of random bits and has a specific "shape", as it is the case for KZG.}} $par$; these parameters implicitly specify some finite field $\FF$;
 
 - a commitment algorithm $\commit$ which on input parameters $par$ and a polynomial $p \in \PR{}{d}$ returns a commitment $C$ and a decommitment $D$;
 
@@ -107,7 +107,7 @@ Let us the recall the corresponding games, that we call POLY-HIDING and POLY-BIN
 \]
 
 It turns out that some PC schemes (such as the DL-KZG scheme) do not satisfy the poly-hiding notion (in general, when used to construct SNARKs, poly-hiding matters only if one cares about the SNARK being zero-knowledge).
-However, they satisfy what we call here *evaluation hiding*,[^hiding] which informally means that for a random polynomial $p$ of degree at most $d$, given a commitment to $p$ and at most $d$ evaluations of $p$ together with the corresponding proofs, no adversary should be able to guess the value of $p(u)$ for a new input $u$.
+However, they satisfy what we call here *evaluation hiding*,{{footnote: In the seminal paper introducing polynomial commitment schemes [[KZG10a](../references.md#KZG10a)], evaluation hiding is simply called hiding.}} which informally means that for a random polynomial $p$ of degree at most $d$, given a commitment to $p$ and at most $d$ evaluations of $p$ together with the corresponding proofs, no adversary should be able to guess the value of $p(u)$ for a new input $u$.
 This is formalized by the following game:
 
 \[
@@ -223,7 +223,7 @@ We now give a detailed description and analysis of the properties of the DL-KZG 
 
 ### Description
 
-Let $\pairingsetup$ be an asymmetric [pairing group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).[^asym]
+Let $\pairingsetup$ be an asymmetric [pairing group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).{{footnote: KZG polynomial commitments are often described with a symmetric pairing (i.e., $\GG_1 = \GG_2$), but we define them for an asymmetric pairing as this is the preferred option in practice.}}
 The DL-KZG scheme for a maximal degree $d$ is defined as follows:
 
 - The $\setup$ algorithm, on input the security parameter $\secparam$, runs
@@ -234,7 +234,7 @@ draws random generators $G_1$ and $G_2$ of respectively $\GG_1$ and $\GG_2$, dra
 \[
  par \defeq (G_1, \tau G_1, \dots, \tau^d G_1, G_2, \tau G_2) \in \GG_1^{d+1} \times \GG_2^2.
 \]
-Here we assume that pairing parameters $(\GG_1,\GG_2,\GG_t,r,e)$ are implicitly specified in $par$.[^gen]
+Here we assume that pairing parameters $(\GG_1,\GG_2,\GG_t,r,e)$ are implicitly specified in $par$.{{footnote: Quite often, generators $G_1$ and $G_2$ are standard and specified in public parameters alongside $\GG_1$ and $\GG_2$.}}
 The field over which polynomials are defined is $\FF_r$.
 The public parameters can be split into a commitment key
 \[
@@ -253,7 +253,7 @@ and an empty decommitment $D = \bot$.
 
 - The $\polyverif$ algorithm, on input a commitment key $ck = (G_1, \tau G_1, \dots, \tau^d G_1)$, a commitment $C \in \GG_1$, and a polynomial $p \in \PR{r}{d}$ where $p(X) = \sum_{i=0}^d a_i X^i$, returns 1 if $C = \sum_{i=0}^d a_i (\tau^i G_1)$ and 0 otherwise.
 
-- The $\evalprove$ algorithm, on input a commitment key $ck= (G_1, \tau G_1, \dots, \tau^d G_1)$, a polynomial $p \in \PR{r}{d}$, and $u \in \FF_r$, computes the polynomial[^pol_div]
+- The $\evalprove$ algorithm, on input a commitment key $ck= (G_1, \tau G_1, \dots, \tau^d G_1)$, a polynomial $p \in \PR{r}{d}$, and $u \in \FF_r$, computes the polynomial{{footnote: The polynomial $q(X)$ is well-defined by the [polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:polynomial_remainder).}}
 \[
  q(X) \defeq \frac{p(X)-p(u)}{X-u} = \sum_{i=0}^d b_i X^i,
 \]
@@ -947,15 +947,3 @@ There are many resources explaining KZG out there, here are a few:
 - [this other one](https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html) by Dankrad Feist
 - [yet another one](https://alinush.github.io/2020/05/06/kzg-polynomial-commitments.html) by Alin Tomescu
 - or [this video](https://www.youtube.com/watch?v=J4pVTamUBvU) by Dan Boneh.
-
-----
-
-[^par]: As for standard commitment schemes, the name can vary and this is sometimes called a *common reference string (crs)* or *structured reference string (srs)* when it does not consist of random bits and has a specific "shape", as it is the case for KZG.
-
-[^hiding]: In the seminal paper introducing polynomial commitment schemes [[KZG10a](../references.md#KZG10a)], evaluation hiding is simply called hiding.
-
-[^asym]: KZG polynomial commitments are often described with a symmetric pairing (i.e., $\GG_1 = \GG_2$), but we define them for an asymmetric pairing as this is the preferred option in practice.
-
-[^gen]: Quite often, generators $G_1$ and $G_2$ are standard and specified in public parameters alongside $\GG_1$ and $\GG_2$.
-
-[^pol_div]: The polynomial $q(X)$ is well-defined by the [polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:polynomial_remainder).

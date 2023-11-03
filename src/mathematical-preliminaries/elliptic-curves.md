@@ -10,7 +10,7 @@
 
 ## Generalities
 
-Let $\FF$ be a field of characteristic $p>3$.[^char]
+Let $\FF$ be a field of characteristic $p>3$.{{footnote: It is possible to define elliptic curves over fields of characteristic 2 or 3 but equations are more complicated.}}
 Let $a,b \in \FF$ be two field elements such that
 \[
  4a^3 + 27b^2 \neq 0.
@@ -135,6 +135,3 @@ The point at infinity ($Z=0$) is the equivalence class $(1 \colon 1 \colon 0) = 
 
 See <http://www.hyperelliptic.org/EFD/> for a list of various other possible coordinates systems.
 
-----
-
-[^char]: It is possible to define elliptic curves over fields of characteristic 2 or 3 but equations are more complicated.

@@ -171,7 +171,7 @@ Hence, $(G_1,X_1,G_2,X_2,Y)$ is a correctly distributed instance of co-CDH$^*$ t
 The solution $xY$ of this co-CDH$^*$ instance is also the solution to the original CDH instance.
 Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
-Later, the journal paper [[BLS04](../references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh)[^coCDH] is hard.
+Later, the journal paper [[BLS04](../references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh) is hard.{{footnote: Somehow confusingly, recent papers tend to use the name co-CDH for what we call co-CDH$^*$ here.}}
 The co-CDH problem is similar to the co-CDH$^*$ problem except the adversary is only given $G_2 \in \GG_2$, $X_2 = xG_2$, and $Y \in \GG_1$, and must compute $xY$.
 Again, [Theorem 1](#th:BLS_security) implies this specific case since for type-2 pairings, co-CDH$^*$ is equivalent to co-CDH.
 
@@ -293,7 +293,7 @@ A simple fix against this attack is simply to prepend the public key to the mess
 \]
 Then, the condition that messages should be different can safely be lifted [[BNN07](../references.md#BNN07)].
 
-This, however, precludes an interesting optimization of the verification in case all messages are equal.[^multi]
+This, however, precludes an interesting optimization of the verification in case all messages are equal.{{footnote: The setting where all users sign the exact same message requires a primitive slightly different from an aggregate signature scheme called a *multisignature* scheme.}}
 Indeed, when $m_0 = m_1 = \cdots = m_{n-1} = m$, Eq. $\eqref{1}$ simplifies to
 \[
  e(S, G_2) = e(H(m), {\textstyle \sum_{i=0}^{n-1}} X_i). \label{2} \tag{2}
@@ -332,9 +332,3 @@ Note that checking that $S \neq 0$ in the verification algorithm does not thwart
 - BLS multi-signatures [[BDN18](../references.md#BDN18)]
 - BLS threshold signatures [[BL22](../references.md#BL22)]
 - use of BLS signatures in the Ethereum beacon chain
-
-----
-
-[^coCDH]: Somehow confusingly, recent papers tend to use the name co-CDH for what we call co-CDH$^*$ here.
-
-[^multi]: The setting where all users sign the exact same message requires a primitive slightly different from an aggregate signature scheme called a *multisignature* scheme.
