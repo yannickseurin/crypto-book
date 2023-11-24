@@ -21,11 +21,6 @@ level = 0
 [output.html.playground]
 runnable = false
 
-[preprocessor.toc]
-renderer = ["html"]
-
-[preprocessor.footnote]
-
 [preprocessor.mathpunc]
 before = ["katex"]
 
@@ -35,4 +30,15 @@ macros = "src/macros.txt"
 block-delimiter = {left = "\\[", right = "\\]"}
 trust = true
 
+[preprocessor.toc]
+renderer = ["html"]
+
+[preprocessor.footnote]
+
 [preprocessor.mermaid]
+
+[preprocessor.numthm]
+prefix = true
+
+[preprocessor.numeq]
+prefix = true
