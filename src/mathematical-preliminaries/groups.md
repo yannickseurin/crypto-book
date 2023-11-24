@@ -1,7 +1,6 @@
 > **Chapter status:** almost final, some proofs missing
 >
 > **TODO:**
-> - number propositions
 
 # Groups
 
@@ -21,8 +20,7 @@ A ***group*** is a non-empty set $\GG$ equipped with a binary operation $\star$ 
 
 The use of determiner *the* for the identity element and the inverse of an element $a$ is justified by the following proposition.
 
-<a name="prop:unique_identity_inverse"></a>
-**Proposition.**
+{{prop}}{prop:unique_identity_inverse}
 *Let $\GG$ be a group. Then $\GG$ has a unique identity element and every element $a \in \GG$ has a unique inverse.*
 
 > *Proof.*
@@ -85,7 +83,7 @@ equipped with the binary operation $\diamond$ defined component-wise:
  (a,b) \diamond (c,d) = (a \star c, b \bullet d).
 \]
 
-**Proposition.**
+{{prop}}
 *The direct product as defined above is a group.
 Its identity element is $(e_{\GG},e_{\HH})$, where $e_{\GG}$ and $e_{\HH}$ are respectively the identity element of $\GG$ and $\HH$.
 The inverse of $(a,b) \in \GG \times \HH$ is $(a^{-1},b^{-1})$.*
@@ -97,24 +95,21 @@ For abelian groups, the direct product is sometimes called ***direct sum*** and 
 Let $\GG$ be a group and $\HH$ be a non-empty subset of $\GG$.
 The subset $\HH$ is a ***subgroup*** of $\GG$ if $\HH$ equipped with the binary operation of $\GG$ is a group.
 
-<a name="prop:subgroup_crit"></a>
-**Proposition.**
+{{prop}}{prop:subgroup_crit}
 *Let $\GG$ be a group and $\HH$ be subset of $\GG$.
 Then $\HH$ is a subgroup of $\GG$ if and only if (i) $e \in \HH$, (ii) for every $a,b \in \HH$, $ab \in \HH$, and (iii) for every $a \in \HH$, $a^{-1} \in \HH$.*
 
 
 The following proposition gives a slightly more compact subgroup criterion.
 
-<a name="prop:simple_subgroup_crit"></a>
-**Proposition.**
+{{prop}}{prop:simple_subgroup_crit}
 *Let $\GG$ be a group and $\HH$ be subset of $\GG$.
 Then $\HH$ is a subgroup of $\GG$ if and only if $e \in \HH$ and for every $a,b \in \HH$, $a b^{-1} \in \HH$.*
 
 A subgroup of $\GG$ is said to be ***proper*** if it is different from $\GG$.
 Any non-trivial group has at least one proper subgroup, namely $\{e\}$, called the ***trivial subgroup***.
 
-<a name="prop:intersection_of_subgroups"></a>
-**Proposition.**
+{{prop}}{prop:intersection_of_subgroups}
 *The intersection of a (finite or infinite) set of subgroups is a subgroup.*
 
 > *Proof.*
@@ -131,8 +126,7 @@ Let $\HH$ be a subgroup of a group $\GG$.
 Consider the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$ and the dual one defined by $a \sim b$ if and only if $b^{-1}a \in \HH$.
 The following proposition show that these are equivalence relations.
 
-<a name="prop:subgroup_equiv_rel"></a>
-**Proposition.**
+{{prop}}{prop:subgroup_equiv_rel}
 *Let $\GG$ be a group.
 Let $\HH$ be a subgroup of $\GG$.
 Then the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$ is an equivalence relation.
@@ -176,8 +170,7 @@ Note that $\HH$ itself is both a right and a left coset.
 
 A cornerstone of group theory is Lagrange's theorem, which essentially follows from the fact that right cosets (as well as left cosets) all have the same size.
 
-<a name="th:lagrange"></a>
-**Lagrange's Theorem.**
+{{thm}}{thm:lagrange}[Lagrange's Theorem]
 *Let $\GG$ be a finite group.
 Then the order of any subgroup $\HH$ of $\GG$ divides the order of $\GG$.*
 
@@ -208,12 +201,12 @@ A subgroup $\HH$ of $\GG$ is said to be ***normal*** if for every $g \in \GG$, $
 Normality can be characterized by a number of other equivalent conditions.
 The easiest to check is often the following one.
 
-**Proposition.**
+{{prop}}
 *A subgroup $\HH$ of $\GG$ is normal if and only if for every $g \in \GG$, $g \HH g^{-1} \subseteq \HH$.*
 
 For abelian groups, the situation is pretty simple.
 
-**Proposition.**
+{{prop}}
 *Every subgroup of an abelian group is normal.*
 
 > *Proof.*
@@ -226,8 +219,7 @@ If $\sim$ is compatible with the group structure of $\GG$, then one can equip th
 This is well defined as compatibility of $\sim$ with the group structure ensures that this binary operation does not depend on the specific representatives $a$ and $b$ of each equivalence class.
 The following proposition states that normal subgroups completely characterize the equivalence relations $\sim$ which are compatible with the group structure of $\GG$.
 
-<a name="prop:equiv_rel_comp_group_struct"></a>
-**Proposition.**
+{{prop}}{prop:equiv_rel_comp_group_struct}
 *Let $\GG$ be a group and $\HH$ be a normal subgroup of $\GG$.
 Then the equivalence relation defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$ is compatible with the group structure of $\GG$.
 Conversely, let $\sim$ be an equivalence relation compatible with the group structure of $\GG$.
@@ -235,7 +227,7 @@ Then $\HH \defeq [e]$ is a normal subgroup of $\GG$ and $a \sim b \Leftrightarro
 
 > *Proof.*
 Let $\HH$ be a normal subgroup of $\GG$.
-Let us show that $\sim$ defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$ (which is an equivalence relation by [Proposition](#prop:subgroup_equiv_rel)) is compatible with the group structure of $\GG$.
+Let us show that $\sim$ defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$ (which is an equivalence relation by {{ref: prop:subgroup_equiv_rel}}) is compatible with the group structure of $\GG$.
 Let $a,b,c,d \in \GG$ such that $a \sim b$ and $c \sim d$.
 We want to show that $ac \sim bd$, i.e., $ac(bd)^{-1} \in\ \HH$.
 Note that
@@ -256,7 +248,7 @@ Then, by compatibility of $\sim$ with the group structure, we have
  & \Rightarrow ab^{-1}e \sim b^{-1}b & & (e \sim b) \\
  & \Rightarrow ab^{-1} \sim e. &
 \end{aligned}\]
-Hence $ab^{-1} \in \HH$ and by [Proposition](#prop:simple_subgroup_crit), $\HH$ is a subgroup.
+Hence $ab^{-1} \in \HH$ and by {{ref: prop:simple_subgroup_crit}}, $\HH$ is a subgroup.
 >
 > To show that $\HH$ is normal, let us show that for every $g \in \GG$, $g\HH g^{-1} \subseteq \HH$.
 Let $g \in \GG$ and $h \in \HH$. Then
@@ -275,7 +267,7 @@ Let $\HH$ be a normal subgroup of $\GG$ and let $\sim$ be the equivalence relati
 Then the quotient set $\GG/\!\!\sim$ equipped with the binary operation defined by $[a][b] = [ab]$ is a group (as shown in the proposition below) called the ***quotient group*** associated with $\HH$ and denoted $\GG/\HH$.
 Note that the order of $\GG/\HH$ is $[\GG:\HH]$, the index of $\HH$.
 
-**Proposition.**
+{{prop}}
 *Let $\GG$ be a group and $\HH$ be a normal subgroup of $\GG$.
 Then $\GG/\HH$ is a group.
 Its identity element is $[e]$ and the inverse of $[a]$ is $[a]^{-1} \defeq [a^{-1}]$.
@@ -291,7 +283,7 @@ A ***group homomorphism*** is a function $f$ from $\GG$ to $\GG'$ such that for 
 If $f$ is bijective, then $f$ is called a ***group isomorphism*** and groups $\GG$ and $\GG'$ are said ***isomorphic***, denoted $\GG \cong \GG'$.
 If moreover $\GG= \GG'$, $f$ is called a ***group automorphism***.
 
-**Proposition.**
+{{prop}}
 *Let $\GG$ and $\GG'$ be two groups and $f \colon \GG \to \GG'$ be a group homomorphism. Then:*
 - *$f(e_{\GG}) = e_{\GG'}$,*
 - *for every $a \in \GG$, $f(a^{-1}) = f(a)^{-1}$,*
@@ -310,8 +302,7 @@ The ***image*** of $f$ is the subset of $\GG'$ defined as
 
 By the previous proposition, $\ker(f)$ is a subgroup of $\GG$ since it is equal to $f^{-1}(\{e_{\GG'}\})$ and $\im(f)$ is a subgroup of $\GG'$ since it is equal to $f(\GG)$.
 
-<a name="th:first_isomorphism"></a>
-**First Isomorphism Theorem.**
+{{thm}}{thm:first_group_isomorphism}[First Isomorphism Theorem]
 *Let $f \colon \GG \to \GG'$ be a group homomorphism.
 Then $\ker(f)$ is a normal subgroup of $\GG$ and $\GG/\!\ker(f) \cong \im(f)$.*
 
@@ -354,12 +345,12 @@ There are three other isomorphism theorems but they are not as useful as the fir
 
 Let $\GG$ be a group and $A$ be a subset of $\GG$.
 The ***subgroup generated by $A$***, denoted $\langle A \rangle$, is the intersection of all subgroups of $\GG$ containing $A$.
-(Recall that by [Proposition](#prop:intersection_of_subgroups), an intersection of subgroups is a subgroup.)
+(Recall that by {{ref: prop:intersection_of_subgroups}}, an intersection of subgroups is a subgroup.)
 Informally, it is the "smallest" (for inclusion) subgroup of $\GG$ which contains $A$: any subgroup containing $A$ contains $\langle A \rangle$.
 
 The following proposition gives a more explicit characterization.
 
-**Proposition.**
+{{prop}}
 *Let $\GG$ be a group and $A$ be a subset of $\GG$.
 Then $\langle A \rangle$ is the subgroup of all elements of $\GG$ that can be expressed as the finite product of elements of $A$ and inverse of elements of $A$.*
 
@@ -380,7 +371,7 @@ If $\GG$ has infinite order, the order of an element $a \in \GG$ can be finite o
 
 Below we list a number of properties of the order of an element.
 
-**Proposition.**
+{{prop}}
 *Let $\GG$ be a group and $a \in \GG$ be a group element.
 Then $a$ has finite order if and only if there exists $k \in \NN^*$ such that $a^k = e$.
 In that case, $a$'s order is the smallest integer $n \ge 1$ such that $a^n = e$ and one has*
@@ -388,18 +379,16 @@ In that case, $a$'s order is the smallest integer $n \ge 1$ such that $a^n = e$ 
  \langle a \rangle = \{e, a, a^2, \dots, a^{n-1}\}.
 \]
 
-<a name="prop:el_order_divides_group_order"></a>
-**Proposition.**
+{{prop}}{prop:el_order_divides_group_order}
 *If $\GG$ has finite order $n$, then the order of any element $a \in \GG$ divides $n$.
 In particular, for any $a \in \GG$, $a^n = e$.*
 
 > *Proof.*
-The first part is a direct consequence of [Lagrange's theorem](#th:lagrange).
+The first part is a direct consequence of {{tref: thm:lagrange}}.
 For the second part, let $m$ be the order of $a$ and write $n=dm$.
 Then $a^n = a^{dm} = (a^m)^d = e^d = e$.
 
-<a name="prop:order_divides_killer"></a>
-**Proposition.**
+{{prop}}{prop:order_divides_killer}
 *Let $\GG$ be a group and $a \in \GG$ be an element of order $n$.
 Then for every $k \in \ZZ$, $a^k = e$ if and only if $n$ divides $k$.*
 
@@ -411,23 +400,21 @@ Then $a^k = a^{qn+r} = (a^n)^q a^r = a^r$ and consequently $a^r =e$.
 This implies that $r=0$ as otherwise $a$ would have order $r < n$.
 Hence, $k = qn$ and $n$ divides $k$.
 
-<a name="prop:order_of_gk"></a>
-**Proposition.**
+{{prop}}{prop:order_of_gk}
 *Let $\GG$ be a group, $a \in \GG$ be an element of order $n$, and $k \in \ZZ$.
 Then the order of $g^k$ is $n/\gcd(n,k)$.*
 
 > *Proof.*
 Let $d = \gcd(k,n)$ and let $\ell$ be the order of $g^k$.
-Then $(g^k)^{\ell} = g^{k\ell} = e$ and hence by [Proposition](#prop:order_divides_killer), $n \divides k\ell$, which implies $(\frac{n}{d}) \divides (\frac{k}{d})\ell$.
+Then $(g^k)^{\ell} = g^{k\ell} = e$ and hence by {{ref: prop:order_divides_killer}}, $n \divides k\ell$, which implies $(\frac{n}{d}) \divides (\frac{k}{d})\ell$.
 Since $\gcd(\frac{n}{d},\frac{k}{d}) = 1$, this implies $\frac{n}{d} \divides \ell$.
 >
-> On the other hand, $(g^{k})^{\frac{n}{d}} = (g^n)^{\frac{k}{d}} = e^{\frac{k}{d}} = e$, and hence by [Proposition](#prop:order_divides_killer), $\ell \divides \frac{n}{d}$.
+> On the other hand, $(g^{k})^{\frac{n}{d}} = (g^n)^{\frac{k}{d}} = e^{\frac{k}{d}} = e$, and hence by {{ref: prop:order_divides_killer}}, $\ell \divides \frac{n}{d}$.
 We conclude that $\ell = n/d$.
-
 
 ## Properties of Cyclic Groups
 
-**Proposition.**
+{{prop}}
 *Any cyclic group is abelian.*
 
 > *Proof.*
@@ -437,8 +424,7 @@ Then there exists $k,\ell \in \ZZ$ such that $a = g^k$ and $b = g^\ell$, which i
  ab = g^k g^\ell = g^{k+ \ell} = g^\ell g^k = ba.
 \]
 
-<a name="prop:subgroup_cyclic"></a>
-**Proposition.**
+{{prop}}{prop:subgroup_cyclic}
 *Let $\GG$ be a cyclic group and $\HH$ be a subgroup of $\GG$.
 Then $\HH$ and $\GG/\HH$ are cyclic.*
 
@@ -464,29 +450,27 @@ Then there exists $k \in \ZZ$ such that $a = g^k$.
 Thus, $[a] = [g^k] = [g]^k$ and hence $[g]$ is a generator of $\GG/\HH$.
 
 
-**Proposition.**
+{{prop}}
 *Any group with prime order is cyclic and any element different from the identity element is a generator of $\GG$.*
 
 > *Proof.*
 Let $\GG$ be a group of prime order $p$.
 Let $a \in \GG$ be an element different from the identity element and let $n$ be the order of $a$.
-Since the order of an element divides the order of the group by [Proposition](#prop:el_order_divides_group_order), one has either $n=1$ or $n=p$.
+Since the order of an element divides the order of the group by {{ref: prop:el_order_divides_group_order}}, one has either $n=1$ or $n=p$.
 Since $a \neq e$, one cannot have $n=1$, hence $n=p$ and $a$ generates $\GG$.
 
-<a name="prop:cyclic_generators"></a>
-**Proposition.**
+{{prop}}{prop:cyclic_generators}
 *Let $\GG$ be a cyclic group of order $n$ , $g$ be a generator of $\GG$, and $k \in \ZZ$.
  Then $\langle g^k \rangle = \GG$ if and only if $\gcd(n,k)=1$.
 In particular, $\GG$ has $\phi(n)$ generators, where $\phi$ is Euler's function.*
 
 > *Proof.*
-We have $\langle g^k \rangle = \GG$ if and only if the order of $g^k$ is $n$, which by [Proposition](#prop:order_of_gk) is equivalent to $\gcd(n,k) = 1$.
+We have $\langle g^k \rangle = \GG$ if and only if the order of $g^k$ is $n$, which by {{ref: prop:order_of_gk}} is equivalent to $\gcd(n,k) = 1$.
 >
 >For the second part of the proposition, write $\GG = \{e, g, \dots, g^{n-1}\}$.
 Then generators of $\GG$ are exactly elements of the form $g^k$ with $\gcd(n,k) = 1$ and hence there are $\phi(n)$ such elements.
 
-<a name="prop:product_cyclic"></a>
-**Proposition.**
+{{prop}}{prop:product_cyclic}
 *Let $\GG_1$ and $\GG_2$ be two cyclic groups of order $n_1$ and $n_2$ respectively.
 Then the direct product $\GG_1 \times \GG_2$ is cyclic if and only if $\gcd(n_1,n_2) = 1$.
 Moreover, $(g_1,g_2)$ is a generator of $\GG_1 \times \GG_2$ if and only if $g_1$ is a generator of $\GG_1$ and $g_2$ is a generator of $\GG_2$.*
@@ -526,8 +510,7 @@ For any integer $n \in \NN$, the set $n\ZZ \defeq \{nz \mid z \in \ZZ\}$ is a su
 It is cyclic and generated by $n$ and $-n$.
 These are in fact the only subgroups of $\ZZ$.
 
-<a name="prop:subgroups_of_z"></a>
-**Proposition.**
+{{prop}}{prop:subgroups_of_z}
 *Let $\GG$ be a subgroup of $\ZZ$.
 Then there exists a unique $n \in \NN$ such that $\GG = n\ZZ$.*
 
@@ -552,7 +535,7 @@ The equivalence class of $a \in \ZZ$ is $[a] = \{a+nz \mid z \in \ZZ\}$, also ca
 There are $n$ distinct classes.
 Hence, the index of $n\ZZ$ is $n$ and $\ZZ/n\ZZ$ has order $n$.
 It is cyclic with generator $[1]$ (and $[-1]$).
-More generally, by [Proposition](#prop:cyclic_generators), the generators of $\ZZ/n\ZZ$ are $[k]$ for $k \in \ZZ$ such that $\gcd(k,n)=1$.
+More generally, by {{ref: prop:cyclic_generators}}, the generators of $\ZZ/n\ZZ$ are $[k]$ for $k \in \ZZ$ such that $\gcd(k,n)=1$.
 
 Another way to think of $\ZZ/n\ZZ$ is as the set $\{0, 1 ,\dots, n-1\}$ equipped with "modulo $n$" addition and inverses.
 More precisely, let $\ZZ_n$ be the set of symbols $\{\cl{0}, \cl{1}, \dots, \cl{n-1}\}$ equipped with the binary operation
@@ -582,7 +565,7 @@ In particular, $m\ZZ_n$ has order $n/d$ and index $d$.
 
 Again, we can show that these are in fact the only subgroups of $\ZZ_n$.
 
-**Proposition.**
+{{prop}}
 *Let $n \in \NN$ and $\GG$ be a subgroup of $\ZZ_n$.
 Then there is a unique $d \in \NN$ such that $d \divides n$ and $\GG = d\ZZ_n$.*
 
@@ -610,12 +593,11 @@ Conversely, $d \divides d'$ and hence $d=d'$ since $d$ and $d'$ are in $\NN$.
 
 We can now prove the following two "structure theorems" stating that, up to isomorphism, $\ZZ$ and $\ZZ_n$ are the only cyclic groups of infinite, resp. finite order $n$.
 
-<a name="th:structure_cyclic_groups"></a>
-**Fundamental Theorem of Cyclic Groups, Infinite Order.**
+{{thm}}{thm:structure_infinite_cyclic_groups}[Fundamental Theorem of Cyclic Groups, Infinite Order]
 *Let $\GG$ be a cyclic group of infinite order.
 Then $\GG$ is isomorphic to $\ZZ$ and the subgroups of $\GG$ are exactly the subsets $\GG^n \defeq \{a^n \mid a \in \GG\}$ for $n \in \NN$.*
 
-**Fundamental Theorem of Cyclic Groups, Finite Order.**
+{{thm}}{thm:structure_finite_cyclic_groups}[Fundamental Theorem of Cyclic Groups, Finite Order]
 *Let $\GG$ be a cyclic group of order $n$.
 Then $\GG$ is isomorphic to $\ZZ_n$ and the subgroups of $\GG$ are exactly the subsets $\GG^d \defeq \{a^d \mid a \in \GG\}$ for $d \in \NN$ such that $d \divides n$.
 In particular, $\GG$ has exactly one subgroup of order $d$ for each divisor $d$ of $n$, namely $\GG^{n/d}$.*
@@ -641,9 +623,9 @@ where the last equality follows from $g$ being a generator and hence $\GG = \{g^
 >
 > Consider now the case where $\GG$ has finite order $n$.
 Let us show that $\ker(f) = n\ZZ$.
-Since $g$ has order $n$, by [Proposition](#prop:order_divides_killer), for every $k \in \ZZ$, $g^k = e \Leftrightarrow k \divides n$, which exactly means that $k \in \ker(f) \Leftrightarrow k \in n\ZZ$.
+Since $g$ has order $n$, by {{ref: prop:order_divides_killer}}, for every $k \in \ZZ$, $g^k = e \Leftrightarrow k \divides n$, which exactly means that $k \in \ker(f) \Leftrightarrow k \in n\ZZ$.
 Hence, $\ker(f) = n\ZZ$.
-By the [first isomorphism theorem](#th:first_isomorphism), $\im(f) = \GG \cong \ZZ/n\ZZ \cong \ZZ_n$.
+By the {{tref: thm:first_group_isomorphism}}, $\im(f) = \GG \cong \ZZ/n\ZZ \cong \ZZ_n$.
 >
 > Let $\bar{f} \colon \ZZ_n \to \GG$ be the isomorphism defined by $\bar{f}(\cl{k}) = g^k$.
 Since the subgroups of $\ZZ_n$ are exactly $d\ZZ_n$ for $d \in \NN$ such that $d \divides n$, the subgroups of $\GG$ are exactly
@@ -667,7 +649,7 @@ Here, we will only prove it in the easier case where $\GG$ is abelian.
 Actually, a more general result (that will follow easily from the fundamental theorem of finite abelian groups) is that any finite abelian group is CLT.
 In other words, for a finite abelian group of order $n$, the existence of a subgroup of order $d$ is guaranteed for any divisor $d$ of $n$, not only for prime divisors.
 
-**Cauchy's Theorem (Abelian Case).**
+{{thm}}{thm:Cauchy_abelian}[Cauchy's Theorem, Abelian Case]
 *Let $\GG$ be an abelian group of finite order $n$.
 Then, for every prime divisor $p$ of $n$, there exists a subgroup of $\GG$ of order $p$ (or, equivalently, there exists an element of $\GG$ of order $p$).*
 
@@ -678,7 +660,7 @@ The equivalence between the two conclusions follows from the fact that a group o
 Consider the mapping $f \colon \langle a_1 \rangle \times \cdots \times \langle a_r \rangle \to \GG$ defined by $f(x_1,\dots,x_r) = x_1 \cdots x_r$.
 Since $\GG$ is abelian, it is a group homomorphism.
 Moreover, since $\{a_1,\dots,a_r\}$ is a generating set, $f$ is surjective (indeed, by definition of a generating set of an abelian group, any element $y \in \GG$ can be written as $y=a_1^{k_1}\cdots a_r^{k_r}$ for some integers $k_1,\dots,k_r \in \ZZ$ and for each $i \in \{1,\dots,r\}$, $a_i^{k_i} \in \langle a_i \rangle$).
-By the [first isomorphism theorem](#th:first_isomorphism), $\GG$ is isomorphic to $(\langle a_1 \rangle \times \cdots \times \langle a_r \rangle)/\ker(f)$, which implies that
+By the {{tref: thm:first_group_isomorphism}}, $\GG$ is isomorphic to $(\langle a_1 \rangle \times \cdots \times \langle a_r \rangle)/\ker(f)$, which implies that
 \[\begin{aligned}
  \abs{\GG} \cdot \abs{\ker(f)} & = \abs{\langle a_1 \rangle \times \cdots \times \langle a_r \rangle} \\
  & = n_1 \cdots n_r,
@@ -687,7 +669,7 @@ and hence $n = \abs{\GG}$ divides $n_1 \cdots n_r$.
 >
 > Let $p$ be a prime divisor of $n$.
 Then $p$ divides $n_1 \cdots n_r$ and hence $p$ divides $n_i$ for some $i \in \{1,\dots,r\}$.
-Then we can write $n_i = kp$ and by [Proposition](#prop:order_of_gk), $a_i^k$ has order $n_i/\gcd(n_i,k)=n_i/k=p$, which concludes the proof.
+Then we can write $n_i = kp$ and by {{ref: prop:order_of_gk}}, $a_i^k$ has order $n_i/\gcd(n_i,k)=n_i/k=p$, which concludes the proof.
 
 ## Exponent of a Group
 
@@ -697,12 +679,12 @@ Consider the subset of $\ZZ$ defined as
  \{k \in \ZZ \mid \forall a \in \GG, a^k = e\}.
 \]
 One can easily check that this is a subgroup of $\ZZ$.
-Hence, by [Proposition](prop:subgroups_of_z), there is a unique integer $m \in \NN$ such that this subgroup is equal to $m\ZZ$.
+Hence, by {{ref: prop:subgroups_of_z}}, there is a unique integer $m \in \NN$ such that this subgroup is equal to $m\ZZ$.
 This integer $m$ is called the ***exponent*** of $\GG$.
 Equivalently, it is defined as the smallest positive integer $m \ge 1$ such that $\forall g \in \GG$, $g^m=e$.
 If no such integer exists, depending on the convention, $\GG$ is said to have exponent 0 or infinite exponent.
-A finite group of order $n$ necessarily has finite exponent $m$ satisfying $m \divides n$ (since by [Proposition](#prop:el_order_divides_group_order), $a^n = e$ for every $a \in \GG$ and hence $n \in m\ZZ$).
-Moreover, the order of any group element divides $m$ by [Proposition](#prop:order_divides_killer).
+A finite group of order $n$ necessarily has finite exponent $m$ satisfying $m \divides n$ (since by {{ref: prop:el_order_divides_group_order}}, $a^n = e$ for every $a \in \GG$ and hence $n \in m\ZZ$).
+Moreover, the order of any group element divides $m$ by {{ref: prop:order_divides_killer}}.
 Conversely, a group with infinite exponent necessarily has infinite order.
 However, a group with finite exponent is not necessarily finite.
 
@@ -710,15 +692,14 @@ In the following, we prove that an abelian group or finite exponent $m$ always c
 This will be a key lemma for proving the fundamental theorem of finite abelian groups.
 Note that none of the three following propositions holds for a non-abelian group.
 
-<a name="prop:order_of_product"></a>
-**Proposition.**
+{{prop}}{prop:order_of_product}
 *Let $\GG$ be an abelian group and $a_1$ and $a_2$ be two elements of respective order $n_1$ and $n_2$ such that $\gcd(n_1,n_2)=1$.
 Then the order of $a_1 a_2$ is $n_1 n_2$.
 More generally, if $a_1,\dots,a_r$ are $r$ group elements of respective orders $n_1,\dots,n_r$ such that $\gcd(n_1,\dots,n_r)=1$, then the order of $a_1 \cdots a_r$ is $n_1 \cdots n_r$.*
 
 > *Proof.*
 Let $n$ be the order of $a_1 a_2$.
-Since $(a_1 a_2)^{n_1 n_2} = (a_1^{n_1})^{n_2} (a_2^{n_2})^{n_1} = e$, by [Proposition](#prop:order_divides_killer), we have $n \divides n_1 n_2$.
+Since $(a_1 a_2)^{n_1 n_2} = (a_1^{n_1})^{n_2} (a_2^{n_2})^{n_1} = e$, by {{ref: prop:order_divides_killer}}, we have $n \divides n_1 n_2$.
 >
 > On the other hand, since $(a_1 a_2)^n = e$, one has $a_1^n = a_2^{-n}$ and hence $a_1^n \in \langle a_2 \rangle$.
 This implies that $(a_1^n)^{n_2} = a_1^{n n_2} = e$, hence $n_1 \divides n n_2$.
@@ -727,8 +708,7 @@ Symmetrically, one also has $n_2 \divides n$.
 Since $\gcd(n_1,n_2) = 1$, this implies $n_1 n_2 \divides n$ and hence $n = n_1 n_2$.
 The generalization can be proved by induction on $r$.
 
-<a name="prop:exists_element_order_lcm"></a>
-**Proposition.**
+{{prop}}{prop:exists_element_order_lcm}
 *Let $\GG$ be an abelian group and $a_1$ and $a_2$ be two elements of respective order $n_1$ and $n_2$.
 Then there exists an element of $\GG$ of order $\lcm(n_1,n_2)$.*
 
@@ -736,22 +716,21 @@ Then there exists an element of $\GG$ of order $\lcm(n_1,n_2)$.*
 Let $p_1^{e_1} \cdots p_r^{e_r}$ be the prime factor decomposition of $\lcm(n_1,n_2)$.
 For each $i \in \{1,\dots,r\}$, $p_i^{r_i}$ divides either $n_1$ or $n_2$.
 Say it divides $n_1$ (the reasoning is similar if it divides $n_2$).
-Then, by [Proposition](#prop:order_of_gk), $a_1^{n_1/p_i^{r_i}}$ has order $n_1/\gcd(n_1,n_1/p_i^{r_i}) = p_i^{r_i}$.
+Then, by {{ref: prop:order_of_gk}}, $a_1^{n_1/p_i^{r_i}}$ has order $n_1/\gcd(n_1,n_1/p_i^{r_i}) = p_i^{r_i}$.
 Hence, for each $i \in \{1,\dots,r\}$, there exists an element $b_i$ of order $p_i^{r_i}$.
-By [Proposition](#prop:order_of_product), $b_1 \cdots b_r$ has order $p_1^{e_1} \cdots p_r^{e_r} = \lcm(n_1,n_2)$.
+By {{ref: prop:order_of_product}}, $b_1 \cdots b_r$ has order $p_1^{e_1} \cdots p_r^{e_r} = \lcm(n_1,n_2)$.
 
-<a name="prop:exists_element_order_exponent"></a>
-**Proposition.**
+{{prop}}{prop:exists_element_order_exponent}
 *Let $\GG$ be an abelian group of finite exponent $m$.
 Then there exists an element of $\GG$ of order $m$.*
 
 > *Proof.*
-By [Proposition](#prop:order_divides_killer), the order of any group element divides $m$.
+By {{ ref: prop:order_divides_killer}}, the order of any group element divides $m$.
 In particular, all group elements have order at most $m$ and hence there exists a group element of maximal order $m' \le m$.
 Assume towards a contradiction that $m' < m$.
 If the order of every group element divides $m'$, then for every $a \in \GG$, $a^{m'} = e$, contradicting the minimality of $m$.
 Otherwise, assume that there is a group element of order $m''$ which does not divide $m'$.
-Then, by [Proposition](#prop:exists_element_order_lcm), there exists an element of order $\lcm(m',m'') > m'$ contradicting the maximality of $m'$.
+Then, by {{ref: prop:exists_element_order_lcm}}, there exists an element of order $\lcm(m',m'') > m'$ contradicting the maximality of $m'$.
 Hence, it must be that $m=m'$, which concludes the proof.
 
 As a direct corollary, we have that a finite abelian group is cyclic if and only if its order is equal to its exponent.
@@ -762,13 +741,12 @@ This section presents the fundamental theorem of finite abelian groups, sometime
 As we will see, finite abelian groups can be "decomposed" in two ways.
 The equivalence between these two decompositions relies on the following theorem.
 
-**Chinese Remainder Theorem for Groups.**
+{{thm}}{thm:crt_groups}[Chinese Remainder Theorem for Groups]
 *Let $n_1$ and $n_2$ be two positive integers.
 Then
 \[
- \ZZ_{n_1} \times \ZZ_{n_2} \cong \ZZ_{n_1 n_2}
-\]
-if and only if $\gcd(n_1,n_2) = 1$.*
+ \ZZ_{n_1} \times \ZZ_{n_2} \cong \ZZ_{n_1 n_2} \iff \gcd(n_1,n_2) = 1.
+\]*
 
 > *Proof.*
 Assume that $\gcd(n_1,n_2) = 1$.
@@ -776,16 +754,15 @@ Consider the mapping $f \colon \ZZ \to \ZZ_{n_1} \times \ZZ_{n_2}$ defined by $f
 One can easily check that $f$ is a group homomorphism.
 Moreover, $z \in \ker(f) \Leftrightarrow (n_1 \divides z) \wedge (n_2 \divides z) \Leftrightarrow n_1 n_2 \divides z$, where the last equivalence follows from $\gcd(n_1,n_2) =1$.
 Hence, $\ker(f) = n_1 n_2 \ZZ$.
-By the [first isomorphism theorem](#th:first_isomorphism), $\ZZ_{n_1n_2} \cong \ZZ/n_1 n_2 \ZZ$ is isomorphic to $\im(f)$.
+By the {{tref: thm:first_group_isomorphism}}, $\ZZ_{n_1n_2} \cong \ZZ/n_1 n_2 \ZZ$ is isomorphic to $\im(f)$.
 In particular, $\abs{\im(f)} = \abs{\ZZ_{n_1n_2}} = n_1 n_2 = \abs{\ZZ_{n_1} \times \ZZ_{n_2}}$, hence $\im(f) = \ZZ_{n_1} \times \ZZ_{n_2}$.
 Thus, $\Z_{n_1n_2} \cong \ZZ_{n_1} \times \ZZ_{n_2}$.
 >
 > Conversely, assume that $\gcd(n_1,n_2) = d > 1$.
-By [Proposition](#prop:product_cyclic), $\ZZ_{n_1} \times \ZZ_{n_2}$ is not cyclic.
+By {{ref: prop:product_cyclic}}, $\ZZ_{n_1} \times \ZZ_{n_2}$ is not cyclic.
 As $\Z_{n_1n_2}$ is cyclic, these two groups cannot be isomorphic.
 
-<a name="th:finite_abelian_groups"></a>
-**Fundamental Theorem of Finite Abelian Groups.**
+{{thm}}{thm:finite_abelian_groups}[Fundamental Theorem of Finite Abelian Groups]
 *Let $\GG$ be a non-trivial finite abelian group. Then:*
 - ***(primary decomposition):*** *$\GG$ is isomorphic to a direct product of cyclic groups
 \[
@@ -817,14 +794,14 @@ The penultimate form is the primary decomposition, while the last form is the in
 
 The smallest abelian non-cyclic group is $\ZZ_2 \times \ZZ_2$ of order 4, usually called the *Klein group*.
 
-**Proposition.**
+{{prop}}
 *A finite abelian group is cyclic if and only if $\ell=1$ in its invariant factor decomposition.*
 
 For an integer $n$, one may ask how many different abelian groups of order $n$ there are, up to isomorphism.
 Let $\pi$ denote the [partition function](https://en.wikipedia.org/wiki/Partition_function_(number_theory)) defined as follows: for an integer $n$, $\pi(n)$ is the number of distinct ways of writing $n$ as a sum of positive integers, where the order of these integers does not matter.
 For example, $\pi(3) = 3$ since $3$ has $3$ partitions: $1+1+1$, $1+2$, and $3$.
 
-**Number of Finite Abelian Groups of Order $n$.**
+{{prop}}[Number of Finite Abelian Groups of Fixed Order]
 *Let $n \ge 1$ be an integer and let its decomposition in prime factors be $n =p_1^{r_1} \cdots p_k^{r_k}$.
 Then the number of abelian groups of order $n$, up to isomorphism, is \[\pi(r_1) \cdots \pi(r_k),\] where $\pi$ is the partition function.
 In particular, there is a unique abelian group of order $n$ up to isomorphism (namely $\ZZ_n$) if and only if $n$ is square-free, i.e., $r_1 = \cdots = r_k =1$.*
@@ -840,7 +817,7 @@ Let $\GG$ be an abelian group.
 For $n \in \NN^*$, an element $a \in \GG$ is said to be an *$n$-torsion element* if $a^n = e$ (or equivalently, if $a$ has finite order $k$ dividing $n$).
 An element $a \in \GG$ is said to be a *torsion element* if it has finite order.
 
-**Proposition.**
+{{prop}}
 *Let $\GG$ be an abelian group.
 Then the set of all $n$-torsion elements of $\GG$, denoted $\GG[n]$, is a subgroup called the $n$-torsion subgroup of $\GG$ and the set of all torsion elements of $\GG$, denoted $\GG_T$, is a subgroup called the torsion subgroup of $\GG$.*
 
@@ -859,7 +836,7 @@ Hence $\GG_T$ is a subgroup of $\GG$.
 If $\GG = \GG_T$ then $\GG$ is called a *torsion group* (or *periodic group*).
 If $\GG = \{0\}$ then $\GG$ is said *torsion-free*.
 
-**Fundamental Theorem of Finitely Generated Abelian Groups.**
+{{thm}}{thm:finitely_generated_abelian_groups}[Fundamental Theorem of Finitely Generated Abelian Groups]
 *Let $\GG$ be a finitely generated abelian group.
 Let $\GG_T$ be the torsion subgroup of $\GG$.
 Then $\GG_T$ is finite and abelian and there exists a free abelian subgroup $\FF$ such that $\GG = \FF \times \GG_T$.
