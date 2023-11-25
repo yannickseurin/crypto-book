@@ -99,7 +99,7 @@ We say that a game $\game$ is *statistically hard* (or *information-theoreticall
 \[
  \advantage{\adv}{game}(\secpar) = \negl(\secpar).
 \]
-In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (this is mostly used for [commitment schemes](./commitment-schemes.md) that can be perfectly hiding or perfectly binding).
+In the special case where the advantage of any algorithm is zero, one says that the game is *perfectly hard* (for example, a [commitment scheme](./commitment-schemes.md) that can be perfectly hiding or perfectly binding).
 
 When we simply say that a game is hard, it usually means computationally hard (but this should always be clear from the context).
 
@@ -111,8 +111,7 @@ Given two games $X$ and $Y$, we say that $X$ *reduces* to $Y$, denoted $X \leqq 
 
 If $X$ reduces to $Y$ and $Y$ reduces to $X$, we say that $X$ and $Y$ are *equivalent*, denoted $X \equiv Y$.
 
-<a name="prop:reduction"></a>
-**Proposition 1.**
+{{prop}}{prop:reduction}
 *Assume that $X$ reduces to $Y$.
 Then $X$ being hard implies $Y$ being hard.*
 
@@ -132,7 +131,7 @@ Hence, $X$ is not hard.
 Thus, $X \leqq Y$ can be read as "$X$ is not harder than $Y$" or $Y$ is at least as hard as $X$".
 
 In cryptography, we are constantly making assumptions of the form "X is hard".
-[Proposition 1](#prop:reduction) can be used to compare the *strength* of various assumptions.
+{{ref: prop:reduction}} can be used to compare the *strength* of various assumptions.
 Indeed, assuming we proved that $X \leqq Y$, then the assumption that $X$ is hard implies that $Y$ is hard too.
 If, in addition, there are some indications that $Y \leqq X$ does not hold, then the assumption that $X$ is hard is *stronger* than the assumption that $Y$ is hard.
 Indeed, if $X \leqq Y$ but $Y \leqq X$ is not known to hold, then it might be that $Y$ is hard yet $X$ is easy.
@@ -142,10 +141,10 @@ One can easily prove that CDH $\leqq$ DL (CDH reduces to DL) by constructing a r
 However, there is no proof that DL $\leqq$ CDH (except in very specific situations).
 Hence, the assumption that CDH is hard is (for most groups) stronger than the assumption that DL is hard.
 
-Another way [Proposition 1](#prop:reduction) is often used in cryptography is for security proofs.
+Another way {{ref: prop:reduction}} is often used in cryptography is for security proofs.
 Here, $X$ is some hardness assumption such as DL and $Y$ is a security game, say unforgeability (in the precise sense of EUF-CMA security in the random oracle model) of Schnorr signatures.
 Then, a security proof for Schnorr signatures consists in proving that $X$ reduces to $Y$, i.e., the DL problem reduces to the EUF-CMA security of Schnorr signatures in the ROM.
-By [Proposition 1](#prop:reduction), if DL is hard, then Schnorr signatures are EUF-CMA secure in the ROM.
+By {{ref: prop:reduction}}, if DL is hard, then Schnorr signatures are EUF-CMA secure in the ROM.
 
 ## Idealized Models
 
@@ -316,7 +315,7 @@ For this reason, we simply write $(\GG_1,\GG_2,r) \parse par$ when parsing the p
 - notes:
     - co-CDH $\leqq$ DL in $\GG_2$
     - co-CDH $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings
-    - co-CDH $\leqq$ CDH in $\GG_1$ for type-2 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdh_implies_cdh_in_g1))
+    - co-CDH $\leqq$ CDH in $\GG_1$ for type-2 pairings (see {{ref: prop:cocdh_implies_cdh_in_g1}})
 
 \[
  \def\arraystretch{\myarraystretch}
@@ -345,8 +344,8 @@ For this reason, we simply write $(\GG_1,\GG_2,r) \parse par$ when parsing the p
     - co-CDH$^*$ $\leqq$ CDH in $\GG_1$
     - co-CDH$^*$ $\leqq$ DL in $\GG_2$
     - co-CDH$^*$ $\leqq$ co-CDH
-    - co-CDH$^*$ $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdhstar_equiv_cdh))
-    - co-CDH$^*$ $\equiv$ co-CDH for type-2 pairings (see [BLS Signatures, Proposition](./bls-signatures.md#prop:cocdhstar_equiv_cocdh))
+    - co-CDH$^*$ $\equiv$ CDH in $\GG_1 = \GG_2$ for type-1 pairings (see {{ref: prop:cocdhstar_equiv_cdh}})
+    - co-CDH$^*$ $\equiv$ co-CDH for type-2 pairings (see {{ref: prop:cocdhstar_equiv_cocdh}})
 
 \[
  \def\arraystretch{\myarraystretch}

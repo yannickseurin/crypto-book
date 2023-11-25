@@ -44,13 +44,13 @@ From the addition law we can define *scalar multiplication*: for $m \in \ZZ$ and
  [m] P \defeq
  \begin{cases}
   \cO & \text{if } m=0 \\
-  \underbrace{P + \cdots + P}_{m \text{ times}} & \text{if } m > 0 \\
-  [-m](-P) & \text{if } m < 0.
+  \underbrace{P + \cdots + P}_ {m \text{ times}} & \text{if } m > 0 \\[3ex]
+  -([-m]P) & \text{if } m < 0.
  \end{cases}
 \]
 
 The group structure of $E(\FF)$ is either cyclic or "almost" cyclic.
-Namely, a general theorem establishes that $E(\FF)$ has at most two [invariant factors](./groups.md#th:finite_abelian_groups).
+Namely, a general theorem establishes that $E(\FF)$ has at most two invariant factors (see {{ref: thm:finite_abelian_groups}} for the definition of an invariant factor).
 In other words, $E(\FF)$ is isomorphic to either the cyclic group $\ZZ_n$ or a direct product of cyclic groups $\ZZ_{n_1} \times \ZZ_{n_2}$ with $n_1 \divides n_2$.
 
 ## Affine versus Projective Coordinates
@@ -101,16 +101,16 @@ In particular, the $q+1$ projective points of the second and third type are inde
 
 To obtain the equation defining an elliptic curve in projective coordinates, we substitute $X/Z$ to $x$ and $Y/Z$ to $y$ in the affine short Weierstrass equation
 \[
- y^2 = x^3 + ax + b \label{1} \tag{1}
+ y^2 = x^3 + ax + b {{numeq}}{affine_weierstrass}
 \]
 and multiply by $Z^3$ to clear the denominators.
 This way, we obtain the *projective short Weierstrass equation*:
 \[
- Y^2 Z = X^3 + a X Z^2 + b Z^3. \label{2} \tag{2}
+ Y^2 Z = X^3 + a X Z^2 + b Z^3. {{numeq}}{proj_weierstrass}
 \]
 
-It is easy to see that a projective point $(X \colon Y \colon Z)$ with $Z \neq 0$ satisfies $\eqref{2}$ if and only if the corresponding affine point $(x,y)$ with $x=X/Z$ and $y=Y/Z$ satisfies $\eqref{1}$.
-Moreover, a projective point $(X \colon Y \colon Z)$ on the line at infinity ($Z=0$) satisfies $\eqref{2}$ if and only $X=0$, meaning the only of the $q+1$ projective points at infinity satisfying $\eqref{2}$ is $(0 \colon 1 \colon 0)$.
+It is easy to see that a projective point $(X \colon Y \colon Z)$ with $Z \neq 0$ satisfies {{eqref: proj_weierstrass}} if and only if the corresponding affine point $(x,y)$ with $x=X/Z$ and $y=Y/Z$ satisfies {{eqref: affine_weierstrass}}.
+Moreover, a projective point $(X \colon Y \colon Z)$ on the line at infinity ($Z=0$) satisfies {{eqref: proj_weierstrass}} if and only $X=0$, meaning the only of the $q+1$ projective points at infinity satisfying {{eqref: proj_weierstrass}} is $(0 \colon 1 \colon 0)$.
 This is the "curve point at infinity", the identity element of the group law, that we denoted $\cO$ when we defined the elliptic curve in affine coordinates.
 
 Hence, one of the main advantages of projective coordinates over affine ones is that it unifies ordinary points and the point at infinity $\cO$, which now has a projective representation as any other point, namely $(0 \colon 1 \colon 0)$.
@@ -118,7 +118,7 @@ Hence, one of the main advantages of projective coordinates over affine ones is 
 Another advantage is that computing the group law is more efficient because it does not require to perform modular division (which is only required to perform projective-to-affine conversion).
 A ballpark estimation is that a modular inversion is 20 to 100 times more costly than a modular multiplication depending on the platform and the implementation.
 
-The projective coordinates obtained with the substitution $x \leftarrow X/Z$, $y \leftarrow Y/Z$ is just one possibility among others, called *homogeneous* projective coordinates because the resulting projective equation $\eqref{2}$ for the curve is homogeneous, meaning all terms have the same total degree, 3 here.
+The projective coordinates obtained with the substitution $x \leftarrow X/Z$, $y \leftarrow Y/Z$ is just one possibility among others, called *homogeneous* projective coordinates because the resulting projective equation {{eqref: proj_weierstrass}} for the curve is homogeneous, meaning all terms have the same total degree, 3 here.
 An very common alternative are *Jacobian coordinates* defined by the substitution
 \[
  x \leftarrow X/Z^2, \quad y \leftarrow Y/Z^3.

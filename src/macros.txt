@@ -1,9 +1,5 @@
 \todo:\textcolor{red}{\textbf{TODO: #1}}
 
-\eqref:\href{###1}{(\text{#1})}
-\ref:\href{###1}{\text{#1}}
-\label:\htmlId{#1}{}
-
 \myarraystretch:1.2
 
 \DD:\mathbb{D}

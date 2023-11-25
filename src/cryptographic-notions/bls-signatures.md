@@ -77,7 +77,7 @@ The public parameters consist of the tuple
 
 - The verification algorithm, on input a public key $X$, a message $m$, and a signature $S$, returns 1 (i.e., declares the signature valid) if
 \[
- e(S, G_2) = e(H(m), X),
+ e(S, G_2) = e(H(m), X), {{numeq}}{bls_verif}
 \]
 otherwise it returns 0 (invalid signature).
 
@@ -96,9 +96,9 @@ Indeed,
  e(S, G_2) & = e(x H(m), G_2) \\
  & = e(H(m), G_2)^x \\
  & = e(H(m), x G_2) \\
- & = e(H(m), X).
+ & = e(H(m), X),
 \end{aligned}\]
-
+hence Eq. {{eqref: bls_verif}} is satisfied.
 
 ## Security of BLS
 
@@ -108,8 +108,7 @@ The BLS scheme is provably EUF-CMA-secure assuming the so-called [co-CDH$^*$ pro
 The co-CDH$^*$ problem for two groups $\GG_1$ and $\GG_2$ of order $r$ is defined as follows: given random generators $G_1$ and $G_2$ of $\GG_1$ and $\GG_2$ respectively, $X_1 = xG_1$ and $X_2 = xG_2$ for $x \sample \ZZ_r$, and a random group element $Y \in \GG_1$, compute $xY$.
 This might be thought of as CDH in $\GG_1$ with additional "hint" $(G_2, X_2=x G_2) \in \GG_2^2$.
 
-<a name="th:BLS_security"></a>
-**Theorem 1.**
+{{thm}}{thm:bls_security}
 *Assume that the co-CDH$^*$ problem is hard for $\pairingsetup$.
 Then the BLS signature scheme is EUF-CMA-secure in the random oracle model for $H$.
 More precisely, for any adversary $\adv$ against the EUF-CMA security of BLS making at most $\qh$ random oracle queries and $\qs$ signature queries, there exists an adversary $\bdv$ for the co-CDH$^*$ problem running in time similar to the time of $\adv$ and such that*
@@ -153,10 +152,9 @@ The security theorem that we just proved holds for any pairing group setup algor
 However, depending on the [pairing type](./games-models-and-assumptions.md#group-setup-algorithms), it can be rephrased slightly differently.
 
 The original conference paper [[BLS01](../references.md#BLS01)] was only considering symmetric (a.k.a. type-1) pairings (i.e., $\GG_1 = \GG_2 = \GG$) and proved EUF-CMA security assuming the CDH problem in $\GG$ is hard.
-[Theorem 1](#th:BLS_security) implies this specific case since for type-1 pairings, hardness of co-CDH$^*$ is equivalent to hardness of CDH in $\GG$, as we prove now.
+{{ref: thm:bls_security}} implies this specific case since for type-1 pairings, hardness of co-CDH$^*$ is equivalent to hardness of CDH in $\GG$, as we prove now.
 
-<a name="prop:cocdhstar_equiv_cdh"></a>
-**Proposition.**
+{{prop}}{prop:cocdhstar_equiv_cdh}
 *Let $\pairingsetup$ be a type-1 pairing group setup algorithm.
 Then co-CDH$^*$ $\equiv$ CDH.*
 
@@ -173,10 +171,9 @@ Hence, the advantage of $\bdv$ is equal to the advantage of $\adv$.
 
 Later, the journal paper [[BLS04](../references.md#BLS04)] considered asymmetric pairings ($\GG_1 \neq \GG_2$) for which an efficiently computable group isomorphism $\psi$ from $\GG_2$ to $\GG_1$ is available (i.e., a type-2 pairing) and proved security assuming the [co-CDH problem](./games-models-and-assumptions.md#computational-co-diffie-hellman-co-cdh) is hard.{{footnote: Somehow confusingly, recent papers tend to use the name co-CDH for what we call co-CDH$^*$ here.}}
 The co-CDH problem is similar to the co-CDH$^*$ problem except the adversary is only given $G_2 \in \GG_2$, $X_2 = xG_2$, and $Y \in \GG_1$, and must compute $xY$.
-Again, [Theorem 1](#th:BLS_security) implies this specific case since for type-2 pairings, co-CDH$^*$ is equivalent to co-CDH.
+Again, {{ref: thm:bls_security}} implies this specific case since for type-2 pairings, co-CDH$^*$ is equivalent to co-CDH.
 
-<a name="prop:cocdhstar_equiv_cocdh"></a>
-**Proposition.**
+{{prop}}{prop:cocdhstar_equiv_cocdh}
 *Let $\pairingsetup$ be a type-2 pairing group setup algorithm.
 Then co-CDH$^*$ $\equiv$ co-CDH.*
 
@@ -200,8 +197,7 @@ On the other hand, DL being easy in $\GG_1$ implies that BLS is not EUF-CMA-secu
 This shows the necessity of the stronger co-CDH$^*$ assumption for proving the security of BLS for type-3 pairings.
 For type-2 pairings, hardness of co-CDH does imply hardness of DL in $\GG_2$ (obviously) but also in $\GG_1$, as shown by the following proposition.
 
-<a name="prop:cocdh_implies_cdh_in_g1"></a>
-**Proposition.**
+{{prop}}{prop:cocdh_implies_cdh_in_g1}
 *Let $\pairingsetup$ be a type-2 pairing group setup algorithm.
 Then*
 \[
@@ -258,7 +254,7 @@ The only requirement is to keep track of all public key/message pairs the signat
 
 Given $n$ public key/message pairs $(X_i, m_i)$, $0 \le i \le n-1$, an aggregate signature $S$ is valid for these $n$ pairs if
 \[
- e(S, G_2) = \prod_{i=0}^{n-1} e(H(m_i), X_i). \label{1} \tag{1}
+ e(S, G_2) = \prod_{i=0}^{n-1} e(H(m_i), X_i). {{numeq}}{agg_verif}
 \]
 Even though the size of the aggregate signature is $O(1)$, the complexity of verification still scales linearly with the number of signatures.
 Correctness of the scheme can be verified similarly to standard BLS signatures.
@@ -294,13 +290,13 @@ A simple fix against this attack is simply to prepend the public key to the mess
 Then, the condition that messages should be different can safely be lifted [[BNN07](../references.md#BNN07)].
 
 This, however, precludes an interesting optimization of the verification in case all messages are equal.{{footnote: The setting where all users sign the exact same message requires a primitive slightly different from an aggregate signature scheme called a *multisignature* scheme.}}
-Indeed, when $m_0 = m_1 = \cdots = m_{n-1} = m$, Eq. $\eqref{1}$ simplifies to
+Indeed, when $m_0 = m_1 = \cdots = m_{n-1} = m$, Eq. {{eqref: agg_verif}} simplifies to
 \[
- e(S, G_2) = e(H(m), {\textstyle \sum_{i=0}^{n-1}} X_i). \label{2} \tag{2}
+ e(S, G_2) = e(H(m), {\textstyle \sum_{i=0}^{n-1}} X_i). {{numeq}}{simple_agg_verif}
 \]
 Hence, on the right hand-side, instead of a product of $n$ pairings, we now have to compute a single pairing applied to a sum of $n$ elliptic curve points, which can be computed more efficiently.
 
-In order to be able to use $\eqref{2}$ for verification when messages are equal, a different fix can be used to thwart rogue key attacks.
+In order to be able to use {{eqref: simple_agg_verif}} for verification when messages are equal, a different fix can be used to thwart rogue key attacks.
 Namely, each user must provide a *proof of possession (PoP)* of the secret key associated with his public key.
 The notion of PoP is somewhat informal as, to the best of my knowledge, there is not rigorous definition of the security properties it should have.
 The idea is that it should demonstrate that the user has access to the functionality associated with his public key, namely signing.
@@ -313,10 +309,10 @@ This solution was proved secure assuming the hash function used for the PoP is d
 Non-repudiation is often presented as a logical consequence of existential unforgeability (if no one except Alice can produce a valid signature on message $m$, and a valid signature on message $m$ is presented to a judge, the judge should conclude that Alice actually *did* sign message $m$).
 But what if Alice was able to choose her secret/public key pair $(sk, pk)$ in a way that allows her to find two messages $m$ and $m'$ and a signature $\sigma$ which is valid for both messages, i.e.,
 \[
- \verif(pk, m, \sigma) = \verif(pk, m', \sigma) = 1. \label{3} \tag{3}
+ \verif(pk, m, \sigma) = \verif(pk, m', \sigma) = 1. {{numeq}}{message_binding}
 \]
 Then, confronted by the judge with a valid signature $\sigma$ for message $m$, Alice could claim that she has in fact signed $m'$ instead.
-Hence, non-repudiation should rather be seen as the combination of existential unforgeability with a second security notion, often called *message biding* in the literature, which demands that no malicious user be able to generate a public key $pk$, two messages $m$ and $m'$, and a signature $\sigma$ such that $m \neq m'$ and $\eqref{3}$ holds.
+Hence, non-repudiation should rather be seen as the combination of existential unforgeability with a second security notion, often called *message biding* in the literature, which demands that no malicious user be able to generate a public key $pk$, two messages $m$ and $m'$, and a signature $\sigma$ such that $m \neq m'$ and {{eqref: message_binding}} holds.
 
 It is easy to see that standard BLS signatures are message binding if $H$ is collision-resistant.
 Things are more subtle though when considering aggregate signatures [[Qua21](../references.md#Qua21)].
@@ -324,7 +320,7 @@ In particular, if $t \ge 2$ users collide (or if a single malicious user control
 \[
  X_0 + \cdots + X_{t-1} = 0.
 \]
-Then, in the PoP-based variant of the scheme where Eq. $\eqref{2}$ is used for verification, $S=0$ is a valid signature for any message $m$: the scheme is not message binding.
+Then, in the PoP-based variant of the scheme where Eq. {{eqref: simple_agg_verif}} is used for verification, $S=0$ is a valid signature for any message $m$: the scheme is not message binding.
 Note that checking that $S \neq 0$ in the verification algorithm does not thwart the attack as $S$ can be further aggregated with other valid signatures $S_t, \dots, S_{n-1}$ for arbitrary public key/message pairs $(X_t, m_t), \dots, (X_{n-1}, m_{n-1})$, resulting in an aggregate signature $S' \neq 0$ which still does not bound signers $0,\dots t-1$ to a specific message.
 
 ## Further Topics to Cover

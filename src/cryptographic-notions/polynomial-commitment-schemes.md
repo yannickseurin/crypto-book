@@ -187,7 +187,7 @@ As a result, the commitment $C$ is actually $p(\tau)$ in disguise:
  C = \sum_{i=0}^d a_i (\tau^i G_1) = \left(\sum_{i=0}^d a_i \tau^i\right) G_1 = p(\tau) G_1.
 \]
 
-Evaluation proving relies on the [polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:polynomial_remainder): a polynomial $p \in \FF[X]$ satisfies $p(u) = v$ if and only if $p(X)-v$ is divisible by $X-u$, i.e., there exists a polynomial $q$ such that
+Evaluation proving relies on the {{tref: thm:polynomial_remainder}}: a polynomial $p \in \FF[X]$ satisfies $p(u) = v$ if and only if $p(X)-v$ is divisible by $X-u$, i.e., there exists a polynomial $q$ such that
 \[
  p(X)-v = (X-u)q(X).
 \]
@@ -253,7 +253,7 @@ and an empty decommitment $D = \bot$.
 
 - The $\polyverif$ algorithm, on input a commitment key $ck = (G_1, \tau G_1, \dots, \tau^d G_1)$, a commitment $C \in \GG_1$, and a polynomial $p \in \PR{r}{d}$ where $p(X) = \sum_{i=0}^d a_i X^i$, returns 1 if $C = \sum_{i=0}^d a_i (\tau^i G_1)$ and 0 otherwise.
 
-- The $\evalprove$ algorithm, on input a commitment key $ck= (G_1, \tau G_1, \dots, \tau^d G_1)$, a polynomial $p \in \PR{r}{d}$, and $u \in \FF_r$, computes the polynomial{{footnote: The polynomial $q(X)$ is well-defined by the [polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:polynomial_remainder).}}
+- The $\evalprove$ algorithm, on input a commitment key $ck= (G_1, \tau G_1, \dots, \tau^d G_1)$, a polynomial $p \in \PR{r}{d}$, and $u \in \FF_r$, computes the polynomial{{footnote: The polynomial $q(X)$ is well-defined by the {{tref: thm:polynomial_remainder}}.}}
 \[
  q(X) \defeq \frac{p(X)-p(u)}{X-u} = \sum_{i=0}^d b_i X^i,
 \]
@@ -265,7 +265,7 @@ and returns $p(u)$ and the proof $\Pi$.
 
 - The $\evalverif$ algorithm, on input a verification key $vk = (G_1, G_2, \tau G_2)$, a commitment $C$, a pair $(u,v) \in \FF_r^2$, and a proof $\Pi$, returns 1 if
 \[
- e(C -v G_1, G_2) = e(\Pi, \tau G_2 - u G_2) \label{1} \tag{1}
+ e(C -v G_1, G_2) = e(\Pi, \tau G_2 - u G_2) {{numeq}}{dlkzg_verif}
 \]
 and 0 otherwise.
 
@@ -282,7 +282,7 @@ then
  & = e(q(\tau) G_1, (\tau-u) G_2) \\
  & = e(\Pi, \tau G_2 - u G_2),
 \end{aligned}\]
-hence Eq. $\eqref{1}$ is satisfied and $\evalverif$ returns 1.
+hence Eq. {{eqref: dlkzg_verif}} is satisfied and $\evalverif$ returns 1.
 
 ### Hiding Security
 
@@ -298,8 +298,7 @@ Hence, the only way an adversary can guess $p(u)$ with non-negligible probabilit
 Together with $d$ queries to the $\orcl{Prove}$ oracle, this yields $d+1$ evaluations of $p$, allowing to compute $p$ with Lagrange interpolation.
 But computing $p(\tau)$ requires to solve the discrete logarithm problem for challenge $C$.
 
-<a name="th:dlkzg_eval_hiding"></a>
-**Theorem.**
+{{thm}}{thm:dlkzg_eval_hiding}
 *Assume that the DL problem is hard in $\GG_1$ for $\pairingsetup$.
 Then the DL-KZG scheme is (computationally) eval-hiding.
 More precisely, for every adversary $\adv$ against the EVAL-HIDING game, there exists an adversary $\bdv$ for the DL problem running in time $t+O(\secpar d^2)$, where $t$ is the running time of $\adv$, and such that*
@@ -345,7 +344,7 @@ The proof is valid because
  e(\Pi, \tau G_2 - u G_2) & = e((\tau-u)^{-1}(C-vG_1), (\tau-u)G_2) \\
  & = e(C - vG_1, G_2)
 \end{aligned}\]
-and hence the verification equation $\eqref{1}$ is satisfied.
+and hence the verification equation {{eqref: dlkzg_verif}} is satisfied.
 Note that $\bdv$ cannot answer this way if $\adv$ queries $\tau$ to $\orcl{Prove}$ since $p(\tau)$ is exactly the solution to its DL challenge.
 In such a case (i.e., when $E$ happens), $\bdv$ simply aborts.
 Conditioned on $E$ not happening, $p$ is sampled through the commitment evaluation $p(\tau) = c$ and the $d$ evaluations $\{(u_1,v_1),\dots,(u_d,v_d)\}$ corresponding to $\orcl{Prove}$ queries made by $\adv$, with $c$ and $v_1,\dots,v_d$ uniformly random and independent.
@@ -374,7 +373,7 @@ Hence, the DL-KZG scheme is certainly not statistically poly-binding: an adversa
 However, for an adversary unable to compute $\tau$ from the public parameters, which is an instance of what we call the [$(d,1)$-co-DL problem](./games-models-and-assumptions.html#qq-co-discrete-logarithm-qq-co-dl), there is only a negligible chance that it can find two polynomials $p$ and $q$ such that $p(\tau) G_1 = q(\tau) G_1 = C$.
 More formally, we have the following result.
 
-**Theorem.**
+{{thm}}
 *Assume that the $(d,1)$-co-DL problem is hard for $\pairingsetup$.
 Then the DL-KZG scheme for maximal degree $d$ is poly-binding.
 More precisely, for any adversary $\adv$ against the poly-binding security of DL-KZG for maximal degree $d$, there exists an adversary $\bdv$ for the $(d,1)$-co-DL problem running in time $t+O(\secpar d^3)$, where $t$ is the running time of $\adv$, and such that*
@@ -407,8 +406,7 @@ This problem is as follows: given
 compute a pair $(a,Y) \in \FF_r \times \GG_1$ such that $Y = \frac{1}{x+a} G_1$.
 The $(q,1)$-SDH problem is usually simply called the $q$-SDH problem.
 
-<a name="th:dlkzg_eval_binding"></a>
-**Theorem.**
+{{thm}}{thm:dlkzg_eval_binding}
 *Assume that the $d$-SDH problem is hard for $\pairingsetup$.
 Then the DL-KZG scheme for maximal degree $d$ is eval-binding.
 More precisely, for any adversary $\adv$ against the eval-binding security of DL-KZG for maximal degree $d$, there exists an adversary $\bdv$ for the $d$-SDH problem running in time similar to the time of $\adv$ and such that*
@@ -503,7 +501,7 @@ and returns $p(u)$ and the proof $(\hat p(u),\Pi)$.
 
 - The $\evalverif$ algorithm, on input a verification key $vk = (G_1, H_1, G_2, \tau G_2)$, a commitment $C$, a pair $(u,v) \in \FF_r^2$, and a proof $(\hat v,\Pi)$, returns 1 if
 \[
- e(C - v G_1 - \hat v H_1, G_2) = e(\Pi, \tau G_2 - u G_2) \label{2} \tag{2}
+ e(C - v G_1 - \hat v H_1, G_2) = e(\Pi, \tau G_2 - u G_2) {{numeq}}{pedkzg_verif}
 \]
 and 0 otherwise.
 
@@ -513,14 +511,14 @@ Correctness can be verified in a similar way to DL-KZG.
 
 Thanks to the commitment randomization, poly-hiding and eval-hiding security both hold statistically for Ped-KZG.
 
-**Theorem.**
+{{thm}}
 *The Ped-KZG scheme is perfectly poly-hiding.*
 
 > *Proof.*
 For any $\tau \in \FF_r$ and any polynomial $p \in \PR{r}{d}$, the commitment $C$ returned by the $\commit$ algorithm is uniformly random in $\GG_1$ due to the addition of the term $\hat p(\tau)$.
 Hence, the $\orcl{Commit}$ oracle in the POLY-HIDING game does not reveal any information about the hidden bit $b$.
 
-**Theorem.**
+{{thm}}
 *The Ped-KZG scheme is statistically eval-hiding.
 More precisely, for any adversary $\adv$, one has*
 \[
@@ -545,7 +543,7 @@ This implies that the probability that $\adv$ guesses $p(u)$ correctly for $u \n
 The poly-binding and eval-binding security properties hold under the same assumptions as for DL-KZG.
 The proofs are slightly more complex and must account for the possibility that the adversary solves the discrete logarithm problem for $H_1$ in base $G_1$.
 
-**Theorem.**
+{{thm}}
 *Assume that the $(d,1)$-co-DL problem is hard for $\pairingsetup$.
 Then the Ped-KZG scheme for maximal degree $d$ is poly-binding.
 More precisely, for any adversary $\adv$ against the poly-binding security of Ped-KZG for maximal degree $d$, there exists an adversary $\bdv$ for the $(d,1)$-co-DL problem running in time $t+O(\secpar d^3)$, where $t$ is the running time of $\adv$, and such that*
@@ -609,8 +607,7 @@ Hence, $\bdv$ can compute
 \]
 The running time of $\bdv$ is at most $t + O(\secpar d^3)$, which concludes the proof.
 
-
-**Theorem.**
+{{thm}}
 *Assume that the $d$-SDH problem is hard for $\pairingsetup$.
 Then the Ped-KZG scheme for maximal degree $d$ is eval-binding.
 More precisely, for any adversary $\adv$ against the eval-binding security of Ped-KZG for maximal degree $d$, there exists an adversary $\bdv$ for the $d$-SDH problem running in time similar to the time of $\adv$ and such that*
@@ -691,7 +688,7 @@ The running time of $\bdv$ is similar to the running time of $\adv$, which concl
 ### Efficiency
 
 DL-KZG commitments are extremely succinct and rather cheap to verify: a commitment and a proof take one elliptic curve point each (e.g., 48 bytes when using BLS12-381) and verifying an opening essentially takes two pairings.
-In case one has to verify many openings for the same commitment, the verification equation $\eqref{1}$ can be equivalently written
+In case one has to verify many openings for the same commitment, the verification equation {{eqref: dlkzg_verif}} can be equivalently written
 \[
  e(C, G_2) = e(G_1, G_2)^v e(\Pi, \tau G_2 - u G_2),
 \]
@@ -702,7 +699,7 @@ On the other hand, the size of the commitment key and the complexity of algorith
 
 The secret value $\tau$ drawn by the $\setup$ algorithm must be securely deleted once the commitment key has been set up as it allows to break the evaluation binding property of the scheme.
 Indeed, knowing $\tau$, given an arbitrary commitment $C \in \GG_1$, one can open this commitment at any point $u \neq \tau$ to any value $v$ by computing the proof as $\Pi = (\tau-u)^{-1}(C-vG_1)$.
-Then the verification equation $\eqref{1}$ is satisfied as
+Then the verification equation {{eqref: dlkzg_verif}} is satisfied as
 \[\begin{aligned}
  e(\Pi, \tau G_2 - u G_2) & = e((\tau-u)^{-1}(C-vG_1), (\tau-u)G_2) \\
  & = e(C - vG_1, G_2).
@@ -756,7 +753,7 @@ A *multi-evaluation* of size $n$ is a subset $\cE = \{(u_1,v_1),\dots,(u_n,v_n)\
 The evaluation domain associated with $\cE =\{(u_1,v_1),\dots,(u_n,v_n)\}$ is $\cU \defeq \{u_1,\dots,u_n\}$.
 We say that a polynomial $p \in \FF[X]$ *satisfies* a multi-evaluation $\cE =\{(u_1,v_1),\dots,(u_n,v_n)\}$ if $p(u_i) = v_i$ for every $i \in \{1,\dots,n\}$.
 
-The idea of multi-evaluation proofs relies on the [generalized polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:generalized_polynomial_remainder) that we restate here.
+The idea of multi-evaluation proofs relies on the {{tref: thm:generalized_polynomial_remainder}} that we restate here.
 Let $p\in \FF[X]$, $\cE = \{(u_1,v_1),\dots,(u_n,v_n)\}$ be a multi-evaluation of size $n \le \deg(p)$, and $\cU \defeq \{u_1,\dots,u_n\}$.
 Let $z(X)$ be the vanishing polynomial for domain $\cU$ and $\ell(X)$ be the Lagrange interpolation polynomial for $\cE$, i.e., the unique polynomial of degree at most $n-1$ such that $\ell(u_i) = v_i$ for every $i \in \{1,\dots,n\}$.
 Then $p$ satisfies $\cE$ if and only if $z(X)$ divides $p(X) - \ell(X)$.
@@ -860,7 +857,7 @@ and a verification key
 
 ### Security Proof
 
-The proof of [Theorem](#th:dlkzg_eval_binding) can be adapted to show that DL-KZG is multi-binding under a slightly different assumption called [$(q_1,q_2)$-bilinear strong Diffie-Hellman](./games-models-and-assumptions.md#q1q2-bilinear-strong-diffie-hellman-q1q2-bsdh) ($(q_1,q_2)$-BSDH).
+The proof of {{ref: thm:dlkzg_eval_binding}} can be adapted to show that DL-KZG is multi-binding under a slightly different assumption called [$(q_1,q_2)$-bilinear strong Diffie-Hellman](./games-models-and-assumptions.md#q1q2-bilinear-strong-diffie-hellman-q1q2-bsdh) ($(q_1,q_2)$-BSDH).
 This problem is as follows: given
 \[
 (G_1,x G_1, \dots x^{q_1} G_1,G_2, x G_2, \dots, x^{q_2} G_2) \in \GG_1^{q_1+1} \times \GG_2^{q_2+1},
@@ -873,7 +870,7 @@ Note that
 Indeed, given a solution $(a,\frac{1}{x+a}G_1)$ for some SDH instance, one can compute a solution $(a,e(\frac{1}{x+a}G_1,G_2))$ for the corresponding BSDH instance.
 The converse, though, is not known to hold, so that BSDH is presumably a stronger assumption than SDH.
 
-**Theorem.**
+{{thm}}
 *Assume that the $(d,N)$-BSDH problem is hard for $\pairingsetup$.
 Then the DL-KZG multi-evaluation scheme for maximal degree $d$ and multi-evaluations of size at most $N$ is multi-binding.
 More precisely, for any adversary $\adv$ against the multi-binding security of DL-KZG, there exists an adversary $\bdv$ for the $(d,N)$-BSDH problem running in time similar to the time of $\adv$ and such that*
@@ -912,7 +909,7 @@ Combining these two equations, we obtain
 We know that $u$ is a root of both $z(X)$ and $z'(X)$.
 Hence, there are polynomials $q$ and $q'$ such that $z(X) = (X-u)q(X)$ and $z'(X) = (X-u)q'(X)$.
 We also know that polynomial $(\ell'-\ell)(X)$ evaluates to $v'-v$ at $u$.
-Hence, by the [polynomial remainder theorem](../mathematical-preliminaries/polynomials.md#th:polynomial_remainder), there is a polynomial $q''$ such that
+Hence, by the {{tref: thm:polynomial_remainder}}, there is a polynomial $q''$ such that
 \[
  (\ell'-\ell)(X) = v'-v + (X-u) q''(X).
 \]
@@ -930,7 +927,7 @@ As a sanity check, observe that for a single evaluation ($n=1$), one has $q(X) =
 \[
  e\left(\frac{1}{\tau-u}G_1, G_2\right) = e\left(\frac{1}{v'-v}(\Pi-\Pi'), G_2\right)
 \]
-which allows to solve the $d$-SDH problem and recover [Theorem](#th:dlkzg_eval_binding).
+which allows to solve the $d$-SDH problem and recover {{ref: thm:dlkzg_eval_binding}}.
 
 ## A Practical Use Case
 

@@ -125,7 +125,7 @@ Then:
 
 - the verification algorithm $\verif$, on input parameters $par = (\GG,p,G,H)$, a commitment $C \in \GG$, a message $m \in \ZZ_p$, and a decommitment $D = r \in \ZZ_p$, returns 1 if $mG + rH = C$ and 0 otherwise.
 
-**Theorem.**
+{{thm}}
 *The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$.*
 
 > *Proof.*
@@ -193,7 +193,7 @@ It is however easily seen to be (computationally) hiding in the random oracle mo
 
 Reciprocally, it is straightforward to derive a collision-resistant hash function family from a strongly binding commitment scheme.
 
-**Proposition.**
+{{prop}}
 *Consider a commitment scheme $\Pi$ with a $\commit$ function taking parameters $par$, a message $m \in \cM$, and explicit random coins $r \in \cR$.
 If $\Pi$ is strongly binding, then the function family
 \[
