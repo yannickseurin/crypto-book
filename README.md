@@ -5,13 +5,14 @@ The latest version of the book is available at <https://yannickseurin.github.io/
 
 ## Building
 
-The book is built using the following tools:
+The book is built with [mdBook](https://rust-lang.github.io/mdBook/) using the following preprocessors:
 
-- [mdbook](https://github.com/rust-lang/mdBook)
 - [mdBook-KaTeX](https://github.com/lzanini/mdbook-katex)
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
 - [mdbook-footnote](https://github.com/daviddrysdale/mdbook-footnote)
 - [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-numthm](https://github.com/yannickseurin/mdbook-numthm)
+- [mdbook-numeq](https://github.com/yannickseurin/mdbook-numeq)
 - [mdbook-mathpunc](https://github.com/yannickseurin/mdbook-mathpunc)
 
 First clone the repository:
@@ -28,11 +29,7 @@ Then install the tools with:
 
 ```shell
 cargo install mdbook
-cargo install mdbook-katex
-cargo install mdbook-toc
-cargo install mdbook-footnote
-cargo install mdbook-mermaid
-cargo install --git https://github.com/yannickseurin/mdbook-mathpunc
+cargo install mdbook-katex mdbook-toc mdbook-footnote mdbook-mermaid mdbook-numthm mdbook-numeq mdbook-mathpunc
 ```
 
 Run

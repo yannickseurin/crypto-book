@@ -28,6 +28,14 @@ Here are a number of freely available textbooks to learn more (we will point to 
 
 ## Acknowledgments
 
-This book was built with [mdBook](https://rust-lang.github.io/mdBook/), [mdBook-KaTeX](https://github.com/lzanini/mdbook-katex), [mdbook-toc](https://github.com/badboy/mdbook-toc), and [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid).
+This book was built with [mdBook](https://rust-lang.github.io/mdBook/) using the following preprocessors:
+
+- [mdBook-KaTeX](https://github.com/lzanini/mdbook-katex)
+- [mdbook-toc](https://github.com/badboy/mdbook-toc)
+- [mdbook-footnote](https://github.com/daviddrysdale/mdbook-footnote)
+- [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-numthm](https://github.com/yannickseurin/mdbook-numthm)
+- [mdbook-numeq](https://github.com/yannickseurin/mdbook-numeq)
+- [mdbook-mathpunc](https://github.com/yannickseurin/mdbook-mathpunc)
 
 If you spot anything off, I'd be happy to get your feedback and acknowledge it here.
