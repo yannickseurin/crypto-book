@@ -96,16 +96,16 @@ The arguments for the second pairing are the hash $H(m) \cong$ `h` and the publi
 
 Hence, what `verify` is asserting is whether (using our notation from the [BLS signatures](../../cryptographic-notions/bls-signatures.md) chapter)
 \[
- e(S, -G_2) \cdot e(H(m), X) = 1_{\GG_t} \label{1} \tag{1}
+ e(S, -G_2) \cdot e(H(m), X) = 1_{\GG_t} {{numeq}}{alt_bls_verif}
 \]
-which is equivalent to the verification equation we gave when describing BLS since
+which is equivalent to the verification equation {{eqref: bls_verif}} we gave when describing BLS since
 \[\begin{aligned}
  e(S, -G_2) \cdot e(H(m), X) = 1_{\GG_t} & \Leftrightarrow e(S, G_2)^{-1} \cdot e(H(m), X) = 1_{\GG_t} \\
  & \Leftrightarrow e(H(m), X) = e(S, G_2).
 \end{aligned}\]
 
 So `verify` is indeed checking a BLS signature.
-Computing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](../../mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. $\eqref{1}$ is often preferable.
+Computing a product of pairings can be done more efficiently than computing the pairings one by one (see [here](../../mathematical-preliminaries/pairings.md)), which explains why performing verification using Eq. {{eqref: alt_bls_verif}} is often preferable.
 
 
 What pairing-friendly curve does the signature scheme use?

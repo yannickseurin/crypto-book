@@ -112,7 +112,7 @@ The closure inside `map` takes a chunk of bits $(b_0,\dots,b_{w-1})$ and a vecto
 where $\beta \defeq \sum_{i=0}^{w-1} b_i 2^i$ is the integer whose bit representation is $(b_0, \dots, b_{w-1})$.
 The final value of `result` is the sum over the $n$ windows of the output of this closure, i.e.,
 \[
- \sum_{j=0}^{n-1} \sum_{i=0}^{w-1} b_{wj+i} 2^i B_j = \sum_{j=0}^{n-1} \beta_j B_j \label{1} \tag{1}
+ \sum_{j=0}^{n-1} \sum_{i=0}^{w-1} b_{wj+i} 2^i B_j = \sum_{j=0}^{n-1} \beta_j B_j
 \]
 where $\beta_j = \sum_{i=0}^{w-1} b_{wj+i} 2^i$ is the integer corresponding to the $j$-th chunk of bits of the input.
 

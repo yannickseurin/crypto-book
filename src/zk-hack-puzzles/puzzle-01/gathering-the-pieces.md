@@ -16,7 +16,7 @@ As we are given 256 signatures, we should be able to forge a new signature with 
 In the following, we let $m^*$ be the message for which we want to forge a signature, and $\bfh^* = (h^*_0, \dots, h^*_{255}) \defeq \mathsf{blakes2s}(m^*)$ denote the output of the BLAKE2s hash function applied to $m^*$, seen as a vector of bits.
 Hence, the signature $S^*$ that we want to forge is
 \[
- S^* = x H(m^*) = \sum_{j=0}^{255} h^*_j (x B_j).
+ S^* = x H(m^\ast) = \sum_{j=0}^{255} h^\ast_j (x B_j).
 \]
 Similarly, let $m_0, \dots, m_{255}$ denote the 256 messages whose signature is given in the puzzle data and let $\bfh_i = (h_{i,j})_{0 \le j \le 255} \defeq \mathsf{blake2s}(m_i)$ denote the hash of $m_i$ with BLAKE2s.
 Then the signature $S_i$ of message $m_i$ is
@@ -26,15 +26,15 @@ Then the signature $S_i$ of message $m_i$ is
 
 Assume that we can write $\bfh^*$ as a linear combination of vectors $\bfh_0, \dots, \bfh_{255}$, i.e., we can find a vector $\bfc = (c_0, \dots, c_{255}) \in (\ZZ_r)^{256}$ such that
 \[
- \bfh^* = \sum_{i=0}^{255} c_i \bfh_i. \label{1} \tag{1}
+ \bfh^* = \sum_{i=0}^{255} c_i \bfh_i. {{numeq}}{hstar}
 \]
 Then we can compute $S^*$ as
 \[\begin{aligned}
  \sum_{i=0}^{255} c_i S_i & = \sum_{i=0}^{255} \sum_{j=0}^{255} c_i h_{i,j} (x B_j) \\
- & = \sum_{j=0}^{255} \underbrace{\left( \sum_{i=0}^{255} c_i h_{i,j} \right)}_{h^*_j} (x B_{j}) \\
- & = S^*.
+ & = \sum_{j=0}^{255} \underbrace{\left( \sum_{i=0}^{255} c_i h_{i,j} \right)}_ {h^\ast_j}(x B_{j}) \\
+ & = S^\ast.
 \end{aligned}\]
-How do we compute $\bfc$? Letting $\bfM$ denote the $256 \times 256$ matrix whose rows are $\bfh_0, \dots, \bfh_{255}$, then Eq. $\eqref{1}$ is equivalent to
+How do we compute $\bfc$? Letting $\bfM$ denote the $256 \times 256$ matrix whose rows are $\bfh_0, \dots, \bfh_{255}$, then Eq. {{eqref: hstar}} is equivalent to
 \[
  \bfh^* = \bfc \cdot \bfM.
 \]
