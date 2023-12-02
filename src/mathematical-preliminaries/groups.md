@@ -593,13 +593,11 @@ Conversely, $d \divides d'$ and hence $d=d'$ since $d$ and $d'$ are in $\NN$.
 
 We can now prove the following two "structure theorems" stating that, up to isomorphism, $\ZZ$ and $\ZZ_n$ are the only cyclic groups of infinite, resp. finite order $n$.
 
-{{thm}}{thm:structure_infinite_cyclic_groups}[Fundamental Theorem of Cyclic Groups, Infinite Order]
-*Let $\GG$ be a cyclic group of infinite order.
-Then $\GG$ is isomorphic to $\ZZ$ and the subgroups of $\GG$ are exactly the subsets $\GG^n \defeq \{a^n \mid a \in \GG\}$ for $n \in \NN$.*
+{{thm}}{thm:structure_cyclic_groups}[Fundamental Theorem of Cyclic Groups]
+*Let $\GG$ be a cyclic group. Then:*
 
-{{thm}}{thm:structure_finite_cyclic_groups}[Fundamental Theorem of Cyclic Groups, Finite Order]
-*Let $\GG$ be a cyclic group of order $n$.
-Then $\GG$ is isomorphic to $\ZZ_n$ and the subgroups of $\GG$ are exactly the subsets $\GG^d \defeq \{a^d \mid a \in \GG\}$ for $d \in \NN$ such that $d \divides n$.
+- *If $\GG$ has infinite order, then it is isomorphic to $\ZZ$ and the subgroups of $\GG$ are exactly the subsets $\GG^n \defeq \{a^n \mid a \in \GG\}$ for $n \in \NN$;*
+- *If $\GG$ has finite order $n$, then it is isomorphic to $\ZZ_n$ and the subgroups of $\GG$ are exactly the subsets $\GG^d \defeq \{a^d \mid a \in \GG\}$ for $d \in \NN$ such that $d \divides n$.
 In particular, $\GG$ has exactly one subgroup of order $d$ for each divisor $d$ of $n$, namely $\GG^{n/d}$.*
 
 > *Proof.*
@@ -818,23 +816,23 @@ For $n \in \NN^*$, an element $a \in \GG$ is said to be an *$n$-torsion element*
 An element $a \in \GG$ is said to be a *torsion element* if it has finite order.
 
 {{prop}}
-*Let $\GG$ be an abelian group.
-Then the set of all $n$-torsion elements of $\GG$, denoted $\GG[n]$, is a subgroup called the $n$-torsion subgroup of $\GG$ and the set of all torsion elements of $\GG$, denoted $\GG_T$, is a subgroup called the torsion subgroup of $\GG$.*
+_Let $\GG$ be an abelian group.
+Then the set of all $n$-torsion elements of $\GG$, denoted $\GG[n]$, is a subgroup called the **$n$-torsion subgroup** of $\GG$ and the set of all torsion elements of $\GG$, denoted $\GG_T$, is a subgroup called the **torsion subgroup** of $\GG$._
 
 > *Proof.*
-Since $e$ is clearly an $n$-torsion element, $\GG[n]$ is non-empty.
+First, $e$ is clearly an $n$-torsion element.
 Let $a$ and $b$ be two $n$-torsion elements.
 Then $(ab^{-1})^n = a^n (b^{n})^{-1} = e e^{-1} = e$, hence $ab^{-1}$ is an $n$-torsion element.
-Hence $\GG[n]$ is a subgroup of $\GG$.
+Hence $\GG[n]$ is a subgroup of $\GG$ by {{ref: prop:simple_subgroup_crit}}.
 >
-> Similarly, $e$ is a torsion element, hence $\GG_T$ is non-empty.
+> Similarly, $e$ is a torsion element.
 Let $a$ and $b$ be two torsion elements of order respectively $k$ and $\ell$.
 Then $(ab^{-1})^{k\ell} = a^{k \ell} (b^{\ell k})^{-1} = e^\ell(e^k)^{-1} = e$.
 Hence $ab^{-1}$ has finite order, i.e., it is a torsion element.
 Hence $\GG_T$ is a subgroup of $\GG$.
 
-If $\GG = \GG_T$ then $\GG$ is called a *torsion group* (or *periodic group*).
-If $\GG = \{0\}$ then $\GG$ is said *torsion-free*.
+If $\GG = \GG_T$ then $\GG$ is called a ***torsion group*** (or ***periodic group***).
+If $\GG = \{0\}$ then $\GG$ is said ***torsion-free***.
 
 {{thm}}{thm:finitely_generated_abelian_groups}[Fundamental Theorem of Finitely Generated Abelian Groups]
 *Let $\GG$ be a finitely generated abelian group.

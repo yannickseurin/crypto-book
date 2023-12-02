@@ -123,7 +123,7 @@ However, one can perform division with remainder for polynomials as soon as the 
 
 {{prop}}{prop:polynomial_division}
 *Let $\DD$ be an integral domain.
-Then for every polynomials $a,b \in \DD[X]$ such that the leading coefficient of $b$ is a unit, there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.
+Then for every polynomials $a,b \in \DD[X]$ such that the leading coefficient of $b$ is in $\DD^*$, there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.
 If $\DD$ is only a UCR, existence of $q$ and $r$ holds but not necessarily uniqueness.*
 
 > *Proof.*
@@ -235,7 +235,7 @@ Let $d \ge 1$ and assume that the result holds for degree $0, \dots, d-1$.
 Let $p \in \DD[X]$ be a polynomial of degree $d$.
 If $p$ has no root then the result holds again.
 Otherwise, assume that $p$ has a root $u \in \DD$.
-Then, by the [factor theorem](thm:factor_polynomial_remainder), $p(X) = (X-u) q(X)$ for some polynomial $q$, where, by {{ref: prop:pol_ring_over_id}}, $q$ has degree $d-1$.
+Then, by the {{tref: thm:factor}}, $p(X) = (X-u) q(X)$ for some polynomial $q$, where, by {{ref: prop:pol_ring_over_id}}, $q$ has degree $d-1$.
 If $u'$ is a root of $p$ distinct from $u$, then $(u'-u) q(u') = 0$ which implies that $q(u') = 0$ since $u'-u \neq 0$ and $\DD$ has no zero divisors.
 Since $q$ has at most $d-1$ distinct roots by the induction hypothesis, $p$ has at most $d$ distinct roots.
 
@@ -336,7 +336,7 @@ It is invertible if and only if the $u_i$'s are distinct, which gives another wa
 
 ### Generalized Polynomial Remainder Theorem
 
-Lagrange interpolation allows us to formulate a generalization of the [polynomial remainder theorem](#thm:factor_polynomial_remainder).
+Lagrange interpolation allows us to formulate a generalization of the {{tref: thm:polynomial_remainder}}.
 Given an evaluation domain $\cU = \{u_1,\dots,u_n\}$, the ***vanishing polynomial*** over $\cU$, denoted $z_{\cU}(X)$, is the polynomial defined by
 \[
  z_{\cU}(X) \defeq \prod_{i=1}^n (X-u_i).
@@ -357,7 +357,7 @@ Since $\FF[X]$ is Euclidean, there exists polynomials $q(X)$ and $r(X)$ such tha
 Evaluating this equality at $u_i$, $i \in \{1,\dots,n\}$, yields $r(u_i) = p(u_i) = v_i$.
 Since $\deg(r) < n$, $r$ is necessarily the Lagrange interpolation polynomial for $\{(u_1,v_1), \dots, (u_n,v_n)\}$.
 
-For $n=1$, one exactly recovers the [polynomial remainder theorem](#thm:factor_polynomial_remainder) since for a single point $(u,v)$ the vanishing polynomial is $X-u$ and the Lagrange interpolation polynomial is simply the constant polynomial $\ell(X) = v$.
+For $n=1$, one exactly recovers the {{tref: thm:polynomial_remainder}} since for a single point $(u,v)$ the vanishing polynomial is $X-u$ and the Lagrange interpolation polynomial is simply the constant polynomial $\ell(X) = v$.
 
 ### Computational Aspects
 

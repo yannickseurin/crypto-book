@@ -10,8 +10,8 @@ Before going into details, we need to recall some basic facts about groups and t
 ### Computing Discrete Logarithms in Groups of Composite Order
 
 Let $\GG$ be a finite group of order $n$.
-Then, by [Lagrange's theorem](../../mathematical-preliminaries/groups.md#th:lagrange), the order of any subgroup of $\GG$ divides $n$.
-Moreover, if $\GG$ is cyclic, then every subgroup of $\GG$ is also cyclic ([Groups, Proposition](../../mathematical-preliminaries/groups.md#prop:subgroup_cyclic)) and by the [fundamental theorem of cyclic groups](../../mathematical-preliminaries/groups.md#th:structure_cyclic_groups), for each divisor $d$ of $n$ there exists a unique subgroup of order $d$.
+Then, by {{tref: thm:lagrange}}, the order of any subgroup of $\GG$ divides $n$.
+Moreover, if $\GG$ is cyclic, then every subgroup of $\GG$ is also cyclic ({{ref: prop:subgroup_cyclic}}) and by the {{tref: thm:structure_cyclic_groups}}, for each divisor $d$ of $n$ there exists a unique subgroup of order $d$.
 
 Small subgroup attacks derive from a simple observation about the discrete logarithm problem in groups of *composite* order.
 Let $\GG$ by a cyclic group of composite order $n = n_1 n_2$ where $n_1$ and $n_2$ are coprime and let $G$ be a generator of $\GG$.
