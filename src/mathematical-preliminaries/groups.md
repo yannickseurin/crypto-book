@@ -686,7 +686,7 @@ Moreover, the order of any group element divides $m$ by {{ref: prop:order_divide
 Conversely, a group with infinite exponent necessarily has infinite order.
 However, a group with finite exponent is not necessarily finite.
 
-In the following, we prove that an abelian group or finite exponent $m$ always contains a element of order $m$.
+In the following, we prove that an abelian group with finite exponent $m$ always contains an element of order $m$.
 This will be a key lemma for proving the fundamental theorem of finite abelian groups.
 Note that none of the three following propositions holds for a non-abelian group.
 
@@ -723,7 +723,7 @@ By {{ref: prop:order_of_product}}, $b_1 \cdots b_r$ has order $p_1^{e_1} \cdots 
 Then there exists an element of $\GG$ of order $m$.*
 
 > *Proof.*
-By {{ ref: prop:order_divides_killer}}, the order of any group element divides $m$.
+By {{ref: prop:order_divides_killer}}, the order of any group element divides $m$.
 In particular, all group elements have order at most $m$ and hence there exists a group element of maximal order $m' \le m$.
 Assume towards a contradiction that $m' < m$.
 If the order of every group element divides $m'$, then for every $a \in \GG$, $a^{m'} = e$, contradicting the minimality of $m$.
@@ -838,7 +838,7 @@ If $\GG = \{0\}$ then $\GG$ is said ***torsion-free***.
 *Let $\GG$ be a finitely generated abelian group.
 Let $\GG_T$ be the torsion subgroup of $\GG$.
 Then $\GG_T$ is finite and abelian and there exists a free abelian subgroup $\FF$ such that $\GG = \FF \times \GG_T$.
-In particular, there exists a integer $r \in \NN$ (called the free rank or simply rank of $\GG$) and integers $n_1, \dots, n_{\ell}$ with $n_1 \divides \cdots \divides n_{\ell}$ such that
+In particular, there exists an integer $r \in \NN$ (called the free rank or simply rank of $\GG$) and integers $n_1, \dots, n_{\ell}$ with $n_1 \divides \cdots \divides n_{\ell}$ such that
 \[
  \GG \cong \ZZ^r \times \ZZ_{n_1} \times \cdots \times \ZZ_{n_{\ell}}.
 \]
