@@ -89,7 +89,7 @@ Conversely, if polynomials $p$ and $q$ are such that $pq = 1$, then (by the seco
 
 ## Divisibility in Polynomial Rings
 
-All definition regarding divisibility that we gave for general rings apply to polynomial rings.
+All definitions regarding divisibility that we gave for general rings apply to polynomial rings.
 We restate these definitions here for convenience.
 
 In all the following, we restrict ourselves to the case where coefficients are in an integral domain $\DD$.

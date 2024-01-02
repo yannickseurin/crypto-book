@@ -124,7 +124,7 @@ It follows that $\HH$ is a subgroup.
 
 Let $\HH$ be a subgroup of a group $\GG$.
 Consider the relation defined by $a \sim b$ if and only if $ab^{-1} \in \HH$ and the dual one defined by $a \sim b$ if and only if $b^{-1}a \in \HH$.
-The following proposition show that these are equivalence relations.
+The following proposition shows that these are equivalence relations.
 
 {{prop}}{prop:subgroup_equiv_rel}
 *Let $\GG$ be a group.

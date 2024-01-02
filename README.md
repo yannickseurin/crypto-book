@@ -22,10 +22,10 @@ git clone https://github.com/yannickseurin/crypto-book/
 cd crypto-book
 ```
 
-You must Rust installed.
+You must have Rust installed.
 Visit [this page](https://doc.rust-lang.org/stable/book/ch01-01-installation.html) for installation instructions.
 
-Then install the tools with:
+Then install mdbook and the preprocessors with:
 
 ```shell
 cargo install mdbook
