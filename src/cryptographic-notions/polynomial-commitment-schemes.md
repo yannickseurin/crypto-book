@@ -1,4 +1,4 @@
-> **Chapter status:** in progress
+> **Chapter status:** ✅ in good shape ✅
 >
 > **Related puzzles:** [Puzzle 2](../zk-hack-puzzles/puzzle-02/intro.md) and [Puzzle 4]()
 >
