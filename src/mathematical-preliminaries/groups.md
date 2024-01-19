@@ -1,6 +1,6 @@
-> **Chapter status:** almost final, some proofs missing
+> **Chapter status:** ✅ in good shape ✅
 >
-> **TODO:**
+> **TODO:** some proofs missing
 
 # Groups
 
@@ -290,28 +290,36 @@ If $\GG$ is abelian then so is $\GG/\HH$.*
 ## Homomorphisms and Isomorphisms
 
 Let $\GG$ and $\GG'$ be two groups.
-A ***group homomorphism*** is a function $f$ from $\GG$ to $\GG'$ such that for every $a,b \in \GG$, $f(ab) = f(a) f(b)$.
-If $f$ is bijective, then $f$ is called a ***group isomorphism*** and groups $\GG$ and $\GG'$ are said ***isomorphic***, denoted $\GG \cong \GG'$.
-If moreover $\GG= \GG'$, $f$ is called a ***group automorphism***.
 
-{{prop}}{prop:group_homomorphism}
+- A ***group homomorphism*** is a function $f$ from $\GG$ to $\GG'$ such that for every $a,b \in \GG$, $f(ab) = f(a) f(b)$.
+- If $\GG = \GG'$, then $f$ is called a ***group endomorphism***.
+- If $f$ is bijective, then $f$ is called a ***group isomorphism*** and groups $\GG$ and $\GG'$ are said ***isomorphic***, denoted $\GG \cong \GG'$.
+- If $\GG= \GG'$ and $f$ is bijective, then $f$ is called a ***group automorphism*** (hence, a group automorphism is both a group endomorphism and a group isomorphism).
+
+The following proposition gives a number of properties of group homomorphisms.
+
+{{prop}}{prop:group_homomorphism_properties}
 *Let $\GG$ and $\GG'$ be two groups and $f \colon \GG \to \GG'$ be a group homomorphism. Then:*
-- *$f(e_{\GG}) = e_{\GG'}$,*
-- *for every $a \in \GG$, $f(a^{-1}) = f(a)^{-1}$,*
-- *for every subgroup $\HH$ of $\GG$, $f(\HH) \defeq \{f(a) \mid a \in \HH\}$ is a subgroup of $\GG'$,*
-- *for every subgroup $\HH'$ of $\GG'$, $f^{-1}(\HH') \defeq \{a \in \GG \mid f(a) \in \HH'\}$ is a subgroup of $\GG$.*
+- *$f(e_{\GG}) = e_{\GG'}$;*
+- *for every $a \in \GG$, $f(a^{-1}) = f(a)^{-1}$;*
+- *for every subgroup $\HH$ of $\GG$, $f(\HH) \defeq \{f(a) \mid a \in \HH\}$ is a subgroup of $\GG'$;*
+- *for every subgroup $\HH'$ of $\GG'$, $f^{-1}(\HH') \defeq \{a \in \GG \mid f(a) \in \HH'\}$ is a subgroup of $\GG$;*
+- *if $f$ is a group isomorphism, then the inverse function $f^{-1} \colon \GG' \to \GG$ is also a group isomorphism;*
+- *if $\GG'$ is another group and $f' \colon \GG' \to \GG''$ is a group homomorphism, then $f' \circ f$ is a group homomorphism from $\GG$ to $\GG''$.*
 
 Let $f \colon \GG \to \GG'$ be a group homomorphism.
-The ***kernel*** of $f$ is the subset of $\GG$ defined as
+Two sets related to $f$ are particularly important:
+
+- The ***kernel*** of $f$ is the subset of $\GG$ defined as
 \[
  \ker(f) \defeq \{a \in \GG \mid f(a) = e_{\GG'}\}.
 \]
-The ***image*** of $f$ is the subset of $\GG'$ defined as
+- The ***image*** of $f$ is the subset of $\GG'$ defined as
 \[
  \im(f) \defeq \{f(a) \mid a \in \GG\}.
 \]
 
-By {{ref: prop:group_homomorphism}}, $\ker(f)$ is a subgroup of $\GG$ since it is equal to $f^{-1}(\{e_{\GG'}\})$ and $\im(f)$ is a subgroup of $\GG'$ since it is equal to $f(\GG)$.
+By {{ref: prop:group_homomorphism_properties}}, $\ker(f)$ is a subgroup of $\GG$ since it is equal to $f^{-1}(\{e_{\GG'}\})$ and $\im(f)$ is a subgroup of $\GG'$ since it is equal to $f(\GG)$.
 
 {{thm}}{thm:first_group_isomorphism}[First Isomorphism Theorem]
 *Let $f \colon \GG \to \GG'$ be a group homomorphism.
