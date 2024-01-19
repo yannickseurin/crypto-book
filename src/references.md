@@ -30,6 +30,8 @@
 
 <a id="BNN07">**[BNN07]**</a> Mihir Bellare, Chanathip Namprempre, and Gregory Neven. [*Unrestricted Aggregate Signatures*](https://eprint.iacr.org/2006/285.pdf). In proceedings of ICALP 2007.
 
+<a id="BPW12">**[BPW12]**</a> David Bernhard, Olivier Pereira, and Bogdan Warinschi. [*How Not to Prove Yourself: Pitfalls of the Fiat-Shamir Heuristic and Applications to Helios*](https://eprint.iacr.org/2016/771.pdf). In proceedings of ASIACRYPT 2012.
+
 <a id="BT04">**[BT04]**</a> Jean-Paul Berrut and Lloyd N. Trefethen. [*Barycentric Lagrange Interpolation*](https://people.maths.ox.ac.uk/trefethen/barycentric.pdf). In SIAM Review, 2004.
 
 <a id="CA89">**[CA89]**</a> David Chaum and Hans Van Antwerpen. [*Undeniable Signatures*](https://chaum.com/wp-content/uploads/2022/01/Chaum-Antwerpen-1990-Chapter-Undeniable-Signatures.pdf). In proceedings of CRYPTO 1989.
@@ -43,6 +45,8 @@
 <a id="CJ19">**[CJ19]**</a> Cas Cremers and Dennis Jackson. [*Prime, Order Please! Revisiting Small Subgroup and Invalid Curve Attacks on Protocols using Diffie-Hellman*](https://eprint.iacr.org/2019/526.pdf). In proceedings of IEEE CSF 2019.
 
 <a id="CM09">**[CM09]**</a> Sanjit Chatterjee and Alfred Menezes. [*On Cryptographic Protocols Employing Asymmetric Pairings - The Role of $\Psi$ Revisited*](https://eprint.iacr.org/2009/480.pdf). IACR ePrint report 2009/480, 2009.
+
+<a id="DMWG23">**[DMWG23]**</a> Quang Dao, Jim Miller, Opal Wright, and Paul Grubbs. [*Weak Fiat-Shamir Attacks on Modern Proof Systems*](https://eprint.iacr.org/2023/691.pdf). In proceedings of IEEE SP 2023.
 
 <a id="FKL18">**[FKL18]**</a> Georg Fuchsbauer, Eike Kiltz, and Julian Loss. [*The Algebraic Group Model and its Applications*](https://eprint.iacr.org/2017/620.pdf). In proceedings of CRYPTO 2018.
 
