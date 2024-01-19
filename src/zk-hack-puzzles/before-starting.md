@@ -24,8 +24,9 @@ The full code of the solutions is available at <https://github.com/yannickseurin
 
 All puzzles use Rust and require some familiarity with this language.
 Visit [this page](https://doc.rust-lang.org/stable/book/ch01-01-installation.html) for installation instructions and go through the first sections of [the Rust Book](https://doc.rust-lang.org/stable/book/) if you're new to Rust.
+You can use any text editor you like, but it is recommended to use [Visual Studio Code](https://code.visualstudio.com/) together with the [rust-analyzer](https://rust-analyzer.github.io/) plugin which provides very helpful functionalities such as inlay hints. See [here](https://code.visualstudio.com/docs/languages/rust) and [there](https://users.rust-lang.org/t/setting-up-rust-with-vs-code/76907) for more advice about using VS Code fur Rust development.
 
-We will also rely on the [Sage](https://www.sagemath.org/) mathematics software system to solve some of the puzzles.
+We will also occasionally rely on the [Sage](https://www.sagemath.org/) mathematics software system to solve some of the puzzles.
 See [here](https://doc.sagemath.org/html/en/installation/index.html) for installation instructions.
 
 The solutions will be given for Linux but should be easily adaptable to other operating systems.
