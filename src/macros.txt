@@ -2,12 +2,16 @@
 
 \myarraystretch:1.2
 
+\AA:\mathbb{A}
+\BB:\mathbb{B}
+\CC:\mathbb{C}
 \DD:\mathbb{D}
 \FF:\mathbb{F}
 \GG:\mathbb{G}
 \HH:\mathbb{H}
 \II:\mathbb{I}
 \NN:\mathbb{N}
+\QQ:\mathbb{Q}
 \RR:\mathbb{R}
 \SS:\mathbb{S}
 \ZZ:\mathbb{Z}
