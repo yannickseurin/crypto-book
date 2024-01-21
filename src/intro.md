@@ -6,6 +6,7 @@ For now it consists of the following parts:
 
 - ***Mathematical Preliminaries***:
 - ***Cryptographic Notions***:
+- ***Proof Systems***:
 - ***ZK Hack Puzzles Walk-through***:
 
 We assume that the reader has some basic knowledge of arithmetic and algebra and of common concepts from cryptography (hash functions, signatures, ...).
@@ -25,6 +26,20 @@ Here are a number of freely available textbooks to learn more (we will point to 
 - Given a set $S$, we let $S^n$ denote the set of strings of length $n$ over $S$, and $S^*$ the set of all strings, i.e., $S^* = \cup_{n \ge 0} S^n$, where $S^0$ denotes the singleton consisting of the empty string; the length of a string $x$ is denoted $|x|$.
 - Given a non-empty finite set $S$, the sampling of a variable $s$ according to the uniform distribution is denoted $s \sample S$.
 - Unless specified otherwise, groups are denoted additively.
+- Main algebraic structures:
+
+| notation | algebraic structure |
+|:------:|:------:|
+| $\GG$, $\HH$ | arbitrary group |
+| $\AA$, $\BB$ | arbitrary ring |
+| $\DD$ | integral domain |
+| $\FF$ | arbitrary field |
+| $\NN$ | natural numbers |
+| $\ZZ$ | integers |
+| $\QQ$ | rational numbers |
+| $\RR$ | real numbers |
+| $\CC$ | complex numbers |
+
 
 ## Acknowledgments
 
