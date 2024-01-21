@@ -18,17 +18,17 @@ We recall some abbreviations from the [chapter about rings](./rings.md):
 
 ## Generalities
 
-Let $\RR$ be a ring.
-A (univariate) ***polynomial*** with coefficients in $\RR$ is an infinite sequence $(a_i)_{i \in \NN}$ such that $a_i=0$ for all but a finite number of indices $i$.
+Let $\AA$ be a ring.
+A (univariate) ***polynomial*** with coefficients in $\AA$ is an infinite sequence $(a_i)_{i \in \NN}$ such that $a_i=0$ for all but a finite number of indices $i$.
 Polynomials are traditionally denoted
 \[
  p(X) = a_0 + a_1 X + a_2 X^2 + \cdots = \sum_{i=0}^{\infty} a_i X^i
 \]
 where $X$ is a symbol called ***indeterminate***.
 
-The set of all univariate polynomials over $\RR$ is denoted $\RR[X]$:
+The set of all univariate polynomials over $\AA$ is denoted $\AA[X]$:
 \[
- \RR[X] \defeq \left\{ \sum_{i=0}^\infty a_i X^i : a_i \in \RR, \exists N \in \NN, \forall i \ge N, a_i = 0 \right\}.
+ \AA[X] \defeq \left\{ \sum_{i=0}^\infty a_i X^i : a_i \in \AA, \exists N \in \NN, \forall i \ge N, a_i = 0 \right\}.
 \]
 
 Polynomials can be added:
@@ -42,23 +42,23 @@ Polynomials can also be multiplied:
 \]
 
 {{prop}}
-*Let $\RR$ be a ring.
-Then $\RR[X]$ equipped with operations $+$ and $\cdot$ as defined above is a ring.
-If $\RR$ is commutative, then so is $\RR[X]$ and if $\RR$ has a unity 1, then the constant polynomial $p(X) = 1$ is the unity of $\RR[X]$.*
+*Let $\AA$ be a ring.
+Then $\AA[X]$ equipped with operations $+$ and $\cdot$ as defined above is a ring.
+If $\AA$ is commutative, then so is $\AA[X]$ and if $\AA$ has a unity 1, then the constant polynomial $p(X) = 1$ is the unity of $\AA[X]$.*
 
-The set $\RR[X]$ is called the ***polynomial ring*** in $X$ over $\RR$.
-If we embed $\RR$ into $\RR[X]$ by identifying $a \in \RR$ with the constant polynomial $p(X) = a$, then $\RR$ is a subring of $\RR[X]$.
+The set $\AA[X]$ is called the ***polynomial ring*** in $X$ over $\AA$.
+If we embed $\AA$ into $\AA[X]$ by identifying $a \in \AA$ with the constant polynomial $p(X) = a$, then $\AA$ is a subring of $\AA[X]$.
 
 The ***degree*** of a polynomial $p(X)$ is the largest power of $X$ occurring in $p(X)$ with a non-zero coefficient, with the convention that polynomial $0$ has degree $-\infty$.
 Hence, $p(X) = \sum_{i=0}^n a_i X^i$ has degree $n$ provided $a_n \neq 0$.
-We let $\deg(p)$ denote the degree of a polynomial $p$ and $\RR^{\le n}[X]$ denote the set of polynomials over $\RR$ of degree at most $n$.
+We let $\deg(p)$ denote the degree of a polynomial $p$ and $\AA^{\le n}[X]$ denote the set of polynomials over $\AA$ of degree at most $n$.
 The ***leading term*** of $p(X)$ is its highest degree term $a_n X^n$ and the ***leading coefficient*** is $a_n$.
 If the leading coefficient is 1 then the polynomial is said to be ***monic***.
 
 We will often drop the indeterminate from the notation, simply writing "polynomial $p$", keeping it mostly when writing the polynomial coefficients explicitly as in $p(X) = \sum_{i=0}^n a_i X^i$.
 
 {{prop}}
-*Let $\RR$ be a ring and let $p$ and $q$ be two polynomials in $\RR[X]$.
+*Let $\AA$ be a ring and let $p$ and $q$ be two polynomials in $\AA[X]$.
 Then
 \[\begin{aligned}
  & \deg(p+q) \le \max \left\{ \deg(p), \deg(q) \right\} \\
@@ -66,9 +66,9 @@ Then
 \end{aligned}\]*
 
 > *Proof.*
-This follows straightforwardly from the definition of addition and multiplication in $\RR[X]$.
+This follows straightforwardly from the definition of addition and multiplication in $\AA[X]$.
 
-Note that when $\RR$ has [zero divisors](./rings.md#zero-divisors-and-integral-domains), then one might have $\deg(pq) < \deg(p) + \deg(q)$ if the leading terms of $p$ and $q$ are $a X^n$ and $b X^m$ with $ab=0$.
+Note that when $\AA$ has [zero divisors](./rings.md#zero-divisors-and-integral-domains), then one might have $\deg(pq) < \deg(p) + \deg(q)$ if the leading terms of $p$ and $q$ are $a X^n$ and $b X^m$ with $ab=0$.
 
 When the coefficients are in an integral domain, we have additional properties.
 
@@ -77,15 +77,15 @@ When the coefficients are in an integral domain, we have additional properties.
 Then*
 - *$\DD[X]$ is an integral domain;*
 - *for any polynomials $p,q \in \DD[X]$, $\deg(pq) = \deg(p) + \deg(q)$;*
-- *the units of $\RR[X]$ are the constant polynomials $p(X) = u$ for $u \in \RR^*$.*
+- *the units of $\DD[X]$ are the constant polynomials $p(X) = u$ for $u \in \DD^*$.*
 
 > *Proof.*
 Let $p$ and $q$ be two non-zero polynomials in $\DD[X]$.
 If $p$ has leading term $a X^n$ and $q$ has leading term $b X^m$ with $a \neq 0$ and $b \neq 0$, then $pq$ has leading term $ab X^{n+m}$ with $ab \neq 0$ since $\DD$ is an integral domain.
 Hence, $pq$ is not the zero polynomial.
 This also shows that $\deg(pq) = \deg(p) + \deg(q)$.
-Clearly, for any unit $u \in \RR^*$, the constant polynomial $p(X) = u$ is a unit with inverse the constant polynomial $u^{-1}$.
-Conversely, if polynomials $p$ and $q$ are such that $pq = 1$, then (by the second point) necessarily $\deg(p) = \deg(q) = 0$, i.e., $p$ and $q$ are constant polynomials, and by definition these constants are units of $\RR$.
+Clearly, for any unit $u \in \DD^*$, the constant polynomial $p(X) = u$ is a unit with inverse the constant polynomial $u^{-1}$.
+Conversely, if polynomials $p$ and $q$ are such that $pq = 1$, then (by the second point) necessarily $\deg(p) = \deg(q) = 0$, i.e., $p$ and $q$ are constant polynomials, and by definition these constants are units of $\DD$.
 
 ## Divisibility in Polynomial Rings
 
@@ -94,7 +94,7 @@ We restate these definitions here for convenience.
 
 In all the following, we restrict ourselves to the case where coefficients are in an integral domain $\DD$.
 
-Given two polynomials $a$ and $b$ in $\DD[X]$, we say that $b$ ***divides*** $a$, or that $b$ is a ***factor*** of $a$, or that $a$ is a ***multiple*** of $b$, denoted $b \divides a$, if there exists a polynomial $q \in \RR[X]$ such that $a(X) = q(X)b(X)$.
+Given two polynomials $a$ and $b$ in $\DD[X]$, we say that $b$ ***divides*** $a$, or that $b$ is a ***factor*** of $a$, or that $a$ is a ***multiple*** of $b$, denoted $b \divides a$, if there exists a polynomial $q \in \DD[X]$ such that $a = qb$.
 
 {{prop}}{prop:degree_divisor}
 *Let $\DD$ be an integral domain and $a \in \DD[X]$ be a non-zero polynomial.
@@ -161,40 +161,40 @@ This is a contradiction and hence we must have $(q,r) = (q',r')$.
 
 
 
-| $\RR$ | impl./equ. | $\RR[X]$      | see |
+| $\AA$ | impl./equ. | $\AA[X]$      | see |
 |:-----:|:----------:|:-------------:|:---:|
-| ID    | $\iff$     | ID            | {{ref: prop:pol_ring_over_id}} |
+| integral domain | $\iff$     | integral domain | {{ref: prop:pol_ring_over_id}} |
 | UFD   | $\iff$     | UFD           |     |
 | PID/Euclidean | $\implies$ | UFD           |     |
 | field | $\iff$     | PID/Euclidean |     |
 
 ## Polynomial Evaluation and Roots
 
-Let $\RR$ be a commutative ring.
-Given a polynomial $p(X) = \sum_i a_i X^i$ in $\RR[X]$ and an element $u \in \RR$, the ***evaluation*** of $p(X)$ at $u$, written $p(u)$, is $\sum_i a_i u^i$.
-The function from $\FF$ to $\FF$ mapping $u$ to $p(u)$ is called the ***polynomial function*** associated with $p$.
+Let $\AA$ be a commutative ring.
+Given a polynomial $p(X) = \sum_i a_i X^i$ in $\AA[X]$ and an element $u \in \AA$, the ***evaluation*** of $p(X)$ at $u$, written $p(u)$, is $\sum_i a_i u^i$.
+The function from $\AA$ to $\AA$ mapping $u$ to $p(u)$ is called the ***polynomial function*** associated with $p$.
 
 In general, there is not a one-to-one correspondence between polynomials and polynomial functions.
-For example, over a finite commutative ring $\RR = \{r_1,\dots,r_n\}$, the polynomial
+For example, over a finite commutative ring $\AA = \{x_1,\dots,x_n\}$, the polynomial
 \[
- p(X) = (X-r_1) \cdots (X-r_n)
+ p(X) = (X-x_1) \cdots (X-x_n)
 \]
-evaluates to 0 at every element $r_i \in \RR$ but $p$ is clearly different from the constant polynomial 0.
+evaluates to 0 at every element $x_i \in \AA$ but $p$ is clearly different from the constant polynomial 0.
 Hence, this gives an example where two different polynomials yield the same polynomial function.
 
-As wee will see below, if $\RR$ is an infinite integral domain, though, there is a one-to-one correspondence between polynomials and polynomial functions.
+As wee will see below, if $\AA$ is an infinite integral domain, though, there is a one-to-one correspondence between polynomials and polynomial functions.
 
 We say that $u$ is a ***root*** of $p(X)$ if $p(u) = 0$.
 The following result gives an important sufficient and necessary condition for a ring element to be a root of a polynomial.
 
 {{thm}}{thm:factor}[Factor Theorem]
-*Let $\RR$ be a UCR, $p \in \RR[X]$ be a polynomial and $u \in \RR$ be a ring element.
+*Let $\AA$ be a UCR, $p \in \AA[X]$ be a polynomial and $u \in \AA$ be a ring element.
 Then $u$ is a root of $p(X)$ if and only if $X-u$ divides $p(X)$.*
 
 The Factor Theorem is actually a special case of the following result.
 
 {{thm}}{thm:polynomial_remainder}[Polynomial Remainder Theorem]
-*Let $\RR$ be a UCR, $p \in \RR[X]$ be a polynomial and $u,v \in \RR$ be ring elements.
+*Let $\AA$ be a UCR, $p \in \AA[X]$ be a polynomial and $u,v \in \AA$ be ring elements.
 Then $p(u) = v$ if and only if $X-u$ divides $p(X)-v$.*
 
 > *Proof.*
