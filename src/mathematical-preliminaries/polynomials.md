@@ -57,18 +57,25 @@ If the leading coefficient is 1 then the polynomial is said to be ***monic***.
 
 We will often drop the indeterminate from the notation, simply writing "polynomial $p$", keeping it mostly when writing the polynomial coefficients explicitly as in $p(X) = \sum_{i=0}^n a_i X^i$.
 
-{{prop}}
+{{prop}}{prop:properties_of_degree}
 *Let $\AA$ be a ring and let $p$ and $q$ be two polynomials in $\AA[X]$.
 Then
 \[\begin{aligned}
  & \deg(p+q) \le \max \left\{ \deg(p), \deg(q) \right\} \\
  & \deg(pq) \le \deg(p) + \deg(q).
-\end{aligned}\]*
+\end{aligned}\]
+Moreover, if the leading coefficient of either $p$ or $q$ is not a zero divisor, then
+\[
+ \deg(pq) = \deg(p) + \deg(q).
+\]*
 
 > *Proof.*
-This follows straightforwardly from the definition of addition and multiplication in $\AA[X]$.
+The first two inequalities follow straightforwardly from the definition of addition and multiplication in $\AA[X]$.
+For the last part of the proposition, assume that $p$ has leading term $a X^n$ and $q$ has leading term $b X^m$ with $a \neq 0$ and $b \neq 0$.
+Then $pq$ has leading term $ab X^{n+m}$ with $ab \neq 0$ as otherwise $a$ and $b$ would be zero divisors.
+Hence, $\deg(pq) = n+m = \deg(p) + \deg(q)$.
 
-Note that when $\AA$ has [zero divisors](./rings.md#zero-divisors-and-integral-domains), then one might have $\deg(pq) < \deg(p) + \deg(q)$ if the leading terms of $p$ and $q$ are $a X^n$ and $b X^m$ with $ab=0$.
+On the other hand, when $\AA$ has [zero divisors](./rings.md#zero-divisors-and-integral-domains), then one might have $\deg(pq) < \deg(p) + \deg(q)$ if the leading terms of $p$ and $q$ are $a X^n$ and $b X^m$ with $ab=0$.
 
 When the coefficients are in an integral domain, we have additional properties.
 
@@ -92,49 +99,51 @@ Conversely, if polynomials $p$ and $q$ are such that $pq = 1$, then (by the seco
 All definitions regarding divisibility that we gave for general rings apply to polynomial rings.
 We restate these definitions here for convenience.
 
-In all the following, we restrict ourselves to the case where coefficients are in an integral domain $\DD$.
-
-Given two polynomials $a$ and $b$ in $\DD[X]$, we say that $b$ ***divides*** $a$, or that $b$ is a ***factor*** of $a$, or that $a$ is a ***multiple*** of $b$, denoted $b \divides a$, if there exists a polynomial $q \in \DD[X]$ such that $a = qb$.
+Let $\AA$ be a UCR.
+Given two polynomials $a$ and $b$ in $\AA[X]$, we say that $b$ ***divides*** $a$, or that $b$ is a ***factor*** of $a$, or that $a$ is a ***multiple*** of $b$, denoted $b \divides a$, if there exists a polynomial $q \in \AA[X]$ such that $a = qb$.
 
 {{prop}}{prop:degree_divisor}
-*Let $\DD$ be an integral domain and $a \in \DD[X]$ be a non-zero polynomial.
-Then for every $b \in \DD[X]$, $b \divides a \Rightarrow \deg(b) \le \deg(a)$.*
+*Let $\AA$ be a UCR and $a \in \AA[X]$ be a non-zero polynomial.
+Then for every $b \in \DD[X]$ such that the leading coefficient of $b$ is not a zero divisor,
+\[
+ b \divides a \Rightarrow \deg(b) \le \deg(a).
+\]
+In particular, this always holds when $\AA$ is an integral domain.*
 
 > *Proof.*
 Let $b$ be a polynomial dividing $a$.
-By definition, there exists $q \in \DD[X]$ such that $a = qb$.
-Since $\DD$ is an integral domain, by {{ref: prop:pol_ring_over_id}},
+By definition, there exists $q \in \AA[X]$ such that $a = qb$.
+Since the leading coefficient of $b$ is not a zero divisor, by {{ref: prop:properties_of_degree}},
 \[
  \deg(a) = \deg(q) + \deg(b).
 \]
 Note that $q$ cannot be the zero polynomial as this would imply $a = 0$, hence $\deg(q) \ge 0$ and thus $\deg(a) \ge \deg(b)$.
 
-It is easy to see that this proposition does not hold when the coefficient ring has zero divisors: for example, over $\ZZ_4$,
+It is easy to see that this proposition does not hold when the leading coefficient of $b$ is a zero divisor: for example, over $\ZZ_4$,
 \[
  (2X^2+1)(2X^2+1) = 1
 \]
 and hence $2X^2+1 \divides 1$.
 
 Two polynomials $a$ and $b$ are said to be ***associates*** if $a \divides b$ and $b \divides a$.
-By {{ref: prop:associates}}, over an integral domain, $a$ and $b$ are associates if and only if there exists $u \in \DD^*$ such that $a(X) = u b(X)$.
+By {{ref: prop:associates}}, over an integral domain $\DD$, $a,b \in \DD[X]$ are associates if and only if there exists $u \in \DD^*$ such that $a(X) = u b(X)$.
 
-In general, $\DD[X]$ might not be [Euclidean](./rings.md#euclidean-domains) (as we will see shortly, this holds if and only if $\DD$ is a field).
+In general, $\AA[X]$ might not be [Euclidean](./rings.md#euclidean-domains) (as we will see shortly, this holds if and only if $\AA$ is a field).
 However, one can perform division with remainder for polynomials as soon as the leading coefficient of the divisor is a unit.
 
 {{prop}}{prop:polynomial_division}
-*Let $\DD$ be an integral domain.
-Then for every polynomials $a,b \in \DD[X]$ such that the leading coefficient of $b$ is in $\DD^*$, there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.
-If $\DD$ is only a UCR, existence of $q$ and $r$ holds but not necessarily uniqueness.*
+*Let $\AA$ be an integral domain.
+Then for every polynomials $a,b \in \AA[X]$ such that the leading coefficient of $b$ is in $\AA^*$, there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.*
 
 > *Proof.*
-Consider the set of all polynomials of the form $a-cb$ for $c \in \DD[X]$:
+Consider the set of all polynomials of the form $a-cb$ for $c \in \AA[X]$:
 \[
- S \defeq \{a-cb \mid c \in \DD[X]\}.
+ S \defeq \{a-cb \mid c \in \AA[X]\}.
 \]
 Let $r$ be a polynomial of minimal degree in $S$ and $q$ be such that $r=a-qb$.
 Let us show that $\deg(r) < \deg(b)$.
 Indeed, assume that this does not hold.
-Let $u X^n$ and $v X^m$ be the leading terms of $b$ and $r$ respectively, with $m \ge n$ and $u \in \DD^*$.
+Let $u X^n$ and $v X^m$ be the leading terms of $b$ and $r$ respectively, with $m \ge n$ and $u \in \AA^*$.
 Consider the polynomial $r'$ defined as
 \[
 r'(X) \defeq r(X) - vu^{-1}X^{m-n} b(X).
@@ -142,22 +151,25 @@ r'(X) \defeq r(X) - vu^{-1}X^{m-n} b(X).
 Then $r' \in S$.
 Since the leading terms of $r(X)$ and $vu^{-1}X^{m-n} b(X)$ are both $v X^m$, they cancel and the leading term of $r'$ has degree at most $m-1$, so that $\deg(r') < \deg(r)$, contradicting the assumption that $r$ has minimal degree in $S$.
 Hence, $\deg(r) < \deg(b)$, which proves existence of a suitable pair $(q,r)$.
-> Note that we did not use the fact that $\DD$ does not have zero divisors, meaning existence also holds when $\DD$ is only a UCR.
 >
 > Let us show uniqueness.
-Assume that there exists pairs of polynomials $(q,r) \neq (q',r')$ such that $a=qb+r$, $a=q'b+r'$, $\deg(r) < \deg(b)$, and $\deg(r') < \deg(b)$.
-Then $(q-q')b = r'-r$.
-If $r=r'$ then, since $\DD[X]$ is an integral domain and $b$ is non-zero, $q=q'$, contradicting the assumption that $(q,r) \neq (q',r')$.
-Hence, we assume that $r \neq r'$.
-Then, since $\DD$ is an integral domain and $b$ divides the non-zero polynomial $r-r'$, by {{ref: prop:degree_divisor}},
+Assume that there exists two pairs of polynomials $(q,r) \neq (q',r')$ such that $a=qb+r$, $a=q'b+r'$, $\deg(r) < \deg(b)$, and $\deg(r') < \deg(b)$.
+Then
 \[
- \deg(b) \le \deg(r'-r).
+ (q-q')b = r'-r.
 \]
-On the other hand,
+Assume that $q \neq q'$.
+Note that the leading coefficient of $b$ is a unit and hence, by {{ref: prop:unit_not_zero_divisor}}, is not a zero divisor.
+Hence, by {{ref: prop:properties_of_degree}},
+\[
+ \deg(r'-r) = \deg((q-q')b) = \deg(q-q') + \deg(b) \ge \deg(b),
+\]
+where the last inequality holds because $q-q' \neq 0$.
+On the other hand, by {{ref: prop:properties_of_degree}},
 \[
 \deg(r-r') \le \max \{\deg(r),\deg(r')\} < \deg(b).
 \]
-This is a contradiction and hence we must have $(q,r) = (q',r')$.
+This is a contradiction and hence we must have $q = q'$ and hence $r = r'$, proving uniqueness.
 
 
 
