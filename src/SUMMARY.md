@@ -6,20 +6,27 @@
 
 - [Groups](mathematical-preliminaries/groups.md)
 - [Rings]()
-- [Fields]()
 - [Polynomials](mathematical-preliminaries/polynomials.md)
+- [Fields]()
 - [Fast Fourier Transform]()
 - [Elliptic Curves](mathematical-preliminaries/elliptic-curves.md)
 - [Pairings](mathematical-preliminaries/pairings.md)
-- [Languages and Complexity]()
 
 # Cryptographic Notions
 
 - [Games, Models, and Assumptions](cryptographic-notions/games-models-and-assumptions.md)
+- [Signatures: Generalities]()
+- [Schnorr Signatures]()
+- [ECDSA Signatures]()
 - [BLS Signatures](cryptographic-notions/bls-signatures.md)
 - [Commitment Schemes](cryptographic-notions/commitment-schemes.md)
 - [Polynomial Commitment Schemes](cryptographic-notions/polynomial-commitment-schemes.md)
-- [Zero-Knowledge Proof Systems]()
+
+# Proof Systems
+
+- [Languages and Complexity]()
+- [Interactive Proofs]()
+- [Zero-Knowledge Proofs]()
 - [Proofs of Knowledge]()
 
 # ZK Hack Puzzles
