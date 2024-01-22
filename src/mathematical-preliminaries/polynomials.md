@@ -198,12 +198,25 @@ The Factor Theorem is actually a special case of the following result.
 Then $p(u) = v$ if and only if $X-u$ divides $p(X)-v$.*
 
 > *Proof.*
-The *if* direction is straightforward.
-Let us prove the *only if* direction.
-Since the leading coefficient of $X-u$ is a unit, by {{ref: prop:polynomial_division}}, there exists polynomials $q$ and $r$ such that $p(X) = (X-u) q(X) + r(X)$ with $\deg(r) < \deg(X-u) =1$.
+Assume that $X-u$ divides $p(X)-v$.
+Then there exists $q \in \AA[X]$ such that
+\[
+ p(X)-v = q(X)(X-u).
+\]
+Evaluating the two sides of this equality at $u$ yields $p(u)-v=0$, i.e., $p(u) = v$.
+>
+> Conversely, assume that $p(u) = v$.
+Since the leading coefficient of $X-u$ is a unit, by {{ref: prop:polynomial_division}}, there exists polynomials $q$ and $r$ such that
+\[
+ p(X) = (X-u) q(X) + r(X)
+\]
+where
+\[
+ \deg(r) < \deg(X-u) = 1.
+\]
 Hence, the polynomial $r$ must be a constant.
 Evaluating the polynomial equality at $u$, we obtain that $r = p(u)$.
-Hence, if $p(u) = v$ then $p(X)-v = (X-u)q(X)$, which exactly means that $X-u$ divides $p(X)-v$.
+Hence, $p(X)-v = (X-u)q(X)$, which exactly means that $X-u$ divides $p(X)-v$.
 
 Note that the statement "$X-u$ divides $p(X)-v$" is equivalent to the statement "$v$ is the remainder of the division of $p(X)$ by $X-u$", hence the name of the theorem.
 
@@ -215,7 +228,28 @@ The factor theorem (which holds over any UCR) generalizes to multiple roots natu
 Then $u_1,\dots,u_n$ are roots of $p$ if and only if $\prod_{i=1}^n (X-u_i)$ divides $p$.*
 
 > *Proof.*
-The *if* direction is straightforward.
+Assume that $\prod_{i=1}^n (X-u_i)$ divides $p$.
+Then there exists $q \in \DD[X]$ such that
+\[
+ p(X) = q(X) \prod_{i=1}^n (X-u_i)
+\]
+which implies that $p(u_1) = \dots = p(u_n) = 0$.
+>
+> We will prove the converse by induction on $n$.
+> The case $n=1$ is simply the {{tref: thm:factor}}.
+Assume that the implication holds for $n-1$ and let us prove that it holds for $n$.
+Let $p \in \DD[X]$ and $u_1,\dots,u_n$ be distinct roots of $p$.
+Since $u_n$ is in particular a root of $p$, by the {{tref: thm:factor}}, there exists $q \in \DD[X]$ such that
+\[
+ p(X) = (X-u_n)q(X).
+\]
+Moreover, for every $i \in \{1,\dots,n-1\}$,
+\[
+ p(u_i) = (u_i-u_n)q(u_i) = 0,
+\]
+which implies that $q(u_i) = 0$ since $u_i$ and $u_n$ are distinct and $\DD$ has no zero divisors.
+Hence, $u_1,\dots,u_{n-1}$ are roots of $q$, which by the induction hypothesis implies that $\prod_{i=1}^{n-1} (X-u_i)$ divides $q$.
+Since $p(X) = (X-u_n)q(X)$, $\prod_{i=1}^n (X-u_i)$ divides $p$.
 
 This has an important consequence regarding the maximal number of roots of a polynomial.
 
@@ -224,9 +258,9 @@ This has an important consequence regarding the maximal number of roots of a pol
 Then $p$ has at most $d$ distinct roots in $\DD$.*
 
 > *Proof.*
-This follows easily from the Generalized Factor Theorem.
+This follows easily from the {{tref: thm:generalized_factor}}.
 Indeed, assume that $p$ has degree $d$ and has $n > d$ roots.
-Let $u_i,\dots,u_n$ denote the roots of $p$.
+Let $u_1,\dots,u_n$ denote the roots of $p$.
 Then $\prod_{i=1}^n (X-u_i)$ divides $p$, a contradiction with {{ref: prop:degree_divisor}} as a polynomial of degree $n$ cannot divide a non-zero polynomial of degree $d < n$.
 >
 > Let us prove the proposition directly by induction on $d$.
@@ -239,14 +273,22 @@ Then, by the {{tref: thm:factor}}, $p(X) = (X-u) q(X)$ for some polynomial $q$, 
 If $u'$ is a root of $p$ distinct from $u$, then $(u'-u) q(u') = 0$ which implies that $q(u') = 0$ since $u'-u \neq 0$ and $\DD$ has no zero divisors.
 Since $q$ has at most $d-1$ distinct roots by the induction hypothesis, $p$ has at most $d$ distinct roots.
 
+This proposition allows us to reconsider the relation between polynomials and polynomial functions.
+
 {{prop}}
 *Let $\DD$ be an integral domain and $p \in \DD[X]$ be a polynomial such that for every $u \in \DD$, $p(u) = 0$.
 If $\DD$ is infinite, then $p$ is the zero polynomial.*
 
 > *Proof.*
+Assume that $p$ is not the zero polynomial and let $d$ be the degree of $p$.
+Then, by {{tref: prop:number_roots}}, $p$ has at most $d$ distinct roots in $\DD$, a contradiction with the assumption that $p(u) = 0$ for every $u \in \DD$ since $\DD$ is infinite.
+Hence, $p$ must be the zero polynomial.
 
-Hence, over an infinite integral domain, there is actually a one-to-one mapping between polynomials and polynomial functions.
+Hence, over an infinite integral domain, if $p$ and $q$ are two polynomials such that $p(x) = q(x)$ for every $x \in \DD$, then $p = q$.
+In other words, there is a one-to-one mapping between polynomials and polynomial functions.
 However, not every function from $\DD$ to $\DD$ is a polynomial function: for example, the function $f$ such that $f(0) = 1$ and $f(u) =0$ for $u \neq 0$ is not a polynomial since it has infinitely many roots yet it cannot be the function corresponding to the zero polynomial.
+
+We can in fact be more precise with the following proposition.
 
 {{prop}}
 *Let $\DD$ be an integral domain.
@@ -361,7 +403,7 @@ For $n=1$, one exactly recovers the {{tref: thm:polynomial_remainder}} since for
 
 ### Computational Aspects
 
-[Newton's method](https://en.wikipedia.org/wiki/Newton_polynomial) and [Neville's algorithm](https://en.wikipedia.org/wiki/Neville%27s_algorithm) have quadratic complexity, 
+[Newton's method](https://en.wikipedia.org/wiki/Newton_polynomial) and [Neville's algorithm](https://en.wikipedia.org/wiki/Neville%27s_algorithm) have quadratic complexity.
 
 #### The Barycentric Formula
 
