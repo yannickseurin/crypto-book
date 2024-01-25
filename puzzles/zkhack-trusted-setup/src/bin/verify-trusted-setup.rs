@@ -12,7 +12,7 @@ fn main() {
 
     // ANCHOR: check
     // --snip--
-    
+
     // check that G1 and G2 are not in the correct group
     if _ts1[0].is_on_curve() {
         println!("G1 is on the curve.");
@@ -38,7 +38,7 @@ fn main() {
         println!("G2 is not in the correct subgroup.");
     }
     // ANCHOR_END: check
-        
+
     // printing points to copy-paste them in sage script
     println!("G1 = {}", _ts1[0]);
     println!("s * G1 = {}", _ts1[1]);

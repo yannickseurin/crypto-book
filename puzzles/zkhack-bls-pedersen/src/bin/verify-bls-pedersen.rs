@@ -20,10 +20,10 @@ fn main() {
     for (m, sig) in ms.iter().zip(sigs.iter()) {
         verify(pk, m, *sig);
     }
-    
+
     // ANCHOR: write
     // --snip--
-    
+
     let m = b"your_username";
 
     let mut data_file = File::create("sage/data.sage").unwrap();
@@ -50,7 +50,7 @@ fn main() {
 
     // ANCHOR: read
     // --snip--
-    
+
     // read solution in coeffs.txt and cast these strings (one per line) into scalar field Fr elements
     let mut coeffs = Vec::new();
     for line in fs::read_to_string("sage/coeffs.txt").unwrap().lines() {
@@ -59,27 +59,26 @@ fn main() {
         coeffs.push(c);
     }
     // ANCHOR_END: read
-    
+
     // ANCHOR: forge
     // --snip--
-    
+
     // compute forgery using affine coordinates
     let mut aff_forge = G1Affine::zero();
     for (c, sig) in coeffs.iter().zip(sigs.iter()) {
         aff_forge = aff_forge + sig.mul(*c).into();
     }
-    
+
     // compute forgery using projective coordinates
     let mut proj_forge = G1Projective::zero();
     for (c, sig) in coeffs.iter().zip(sigs.iter()) {
         proj_forge += sig.mul(*c);
     }
-    
+
     // compute forgery using multi-scalar multiplication
-    let coeffs: Vec<<Fr as PrimeField>::BigInt> = 
-        coeffs.iter().map(|c| (*c).into_repr()).collect();
+    let coeffs: Vec<<Fr as PrimeField>::BigInt> = coeffs.iter().map(|c| (*c).into_repr()).collect();
     let msm_forge = VariableBaseMSM::multi_scalar_mul(&sigs, &coeffs);
-        
+
     /* Your solution here! */
 
     verify(pk, m, aff_forge);
