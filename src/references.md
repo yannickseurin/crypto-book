@@ -2,6 +2,8 @@
 
 <a id="ABR01">**[ABR01]**</a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. [*DHIES: An encryption scheme based on the Diffie-Hellman Problem*](https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf). Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).
 
+<a id="ANT+20">**[ANT+20]**</a> Diego F. Aranha, Felipe Rodrigues Novaes, Akira Takahashi, Mehdi Tibouchi, and Yuval Yarom. [*LadderLeak: Breaking ECDSA with Less than One Bit of Nonce Leakage*](https://eprint.iacr.org/2020/615.pdf). In proceedings of ACM CCS 2020.
+
 <a id="BB04">**[BB04]**</a> Dan Boneh and Xavier Boyen. [*Efficient Selective-ID Secure Identity Based Encryption Without Random Oracles*](https://eprint.iacr.org/2004/172.pdf). In proceedings of EUROCRYPT 2004.
 
 <a id="BB08">**[BB08]**</a> Dan Boneh and Xavier Boyen. [*Short Signatures Without Random Oracles and the SDH Assumption in Bilinear Groups*](https://crypto.stanford.edu/~dabo/pubs/papers/bbsigs.pdf). In Journal of Cryptology, 2008.
@@ -17,6 +19,8 @@
 <a id="BF03">**[BF03]**</a> Dan Boneh and Matthew K. Franklin. [*Identity-Based Encryption from the Weil Pairing*](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf). In SIAM Journal on Computing, 2003.
 
 <a id="BGLS03">**[BGLS03]**</a> Dan Boneh, Craig Gentry, Ben Lynn, and Hovav Shacham. [*Aggregate and Verifiably Encrypted Signatures from Bilinear Maps*](https://crypto.stanford.edu/~dabo/pubs/papers/aggreg.pdf). In proceedings of EUROCRYPT 2003.
+
+<a id="BH19">**[BH19]**</a> Joachim Breitner and Nadia Heninger. [*Biased Nonce Sense: Lattice Attacks Against Weak ECDSA Signatures in Cryptocurrencies*](https://eprint.iacr.org/2019/023.pdf). In proceedings of FC 2019.
 
 <a id="BL22">**[BL22]**</a> Renas Bacho and Julian Loss. [*On the Adaptive Security of the Threshold BLS Signature Scheme*](https://eprint.iacr.org/2022/534.pdf). In proceedings of ACM CCS 2022.
 
@@ -37,6 +41,8 @@
 <a id="CA89">**[CA89]**</a> David Chaum and Hans Van Antwerpen. [*Undeniable Signatures*](https://chaum.com/wp-content/uploads/2022/01/Chaum-Antwerpen-1990-Chapter-Undeniable-Signatures.pdf). In proceedings of CRYPTO 1989.
 
 <a id="CF13">**[CF13]**</a> Dario Catalano and Dario Fiore. [*Vector Commitments and Their Applications*](https://eprint.iacr.org/2011/495.pdf). In proceedings of PKC 2013.
+
+<a id="CGGM00">**[CGGM00]**</a> Ran Canetti, Oded Goldreich, Shafi Goldwasser, and Silvio Micali. [*Resettable Zero-Knowledge*](https://eprint.iacr.org/1999/022). In proceedings of STOC 2000.
 
 <a id="Che10">**[Che10]**</a> Jung Hee Cheon. [*Discrete Logarithm Problems with Auxiliary Inputs*](https://link.springer.com/content/pdf/10.1007/s00145-009-9047-0.pdf). In Journal of Cryptology, 2010.
 
