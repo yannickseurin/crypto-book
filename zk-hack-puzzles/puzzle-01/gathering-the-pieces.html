@@ -228,9 +228,9 @@ Trying to write this vector yields an array of <code>true</code> and <code>false
 </span><span class="boring">    for (m, sig) in ms.iter().zip(sigs.iter()) {
 </span><span class="boring">        verify(pk, m, *sig);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span>    // --snip--
-    
+
     let m = b&quot;your_username&quot;;
 
     let mut data_file = File::create(&quot;sage/data.sage&quot;).unwrap();
@@ -255,7 +255,7 @@ Trying to write this vector yields an array of <code>true</code> and <code>false
     data_file.write_all(line.as_bytes()).unwrap();
 <span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // read solution in coeffs.txt and cast these strings (one per line) into scalar field Fr elements
 </span><span class="boring">    let mut coeffs = Vec::new();
 </span><span class="boring">    for line in fs::read_to_string(&quot;sage/coeffs.txt&quot;).unwrap().lines() {
@@ -263,26 +263,25 @@ Trying to write this vector yields an array of <code>true</code> and <code>false
 </span><span class="boring">        let c: Fr = line.parse().unwrap();
 </span><span class="boring">        coeffs.push(c);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using affine coordinates
 </span><span class="boring">    let mut aff_forge = G1Affine::zero();
 </span><span class="boring">    for (c, sig) in coeffs.iter().zip(sigs.iter()) {
 </span><span class="boring">        aff_forge = aff_forge + sig.mul(*c).into();
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using projective coordinates
 </span><span class="boring">    let mut proj_forge = G1Projective::zero();
 </span><span class="boring">    for (c, sig) in coeffs.iter().zip(sigs.iter()) {
 </span><span class="boring">        proj_forge += sig.mul(*c);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using multi-scalar multiplication
-</span><span class="boring">    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = 
-</span><span class="boring">        coeffs.iter().map(|c| (*c).into_repr()).collect();
+</span><span class="boring">    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = coeffs.iter().map(|c| (*c).into_repr()).collect();
 </span><span class="boring">    let msm_forge = VariableBaseMSM::multi_scalar_mul(&amp;sigs, &amp;coeffs);
-</span><span class="boring">        
+</span><span class="boring">
 </span><span class="boring">    /* Your solution here! */
 </span><span class="boring">
 </span><span class="boring">    verify(pk, m, aff_forge);
@@ -337,9 +336,9 @@ A simpler solution uses the fact that the <code>PrimeField</code> trait has supe
 </span><span class="boring">    for (m, sig) in ms.iter().zip(sigs.iter()) {
 </span><span class="boring">        verify(pk, m, *sig);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    let m = b&quot;your_username&quot;;
 </span><span class="boring">
 </span><span class="boring">    let mut data_file = File::create(&quot;sage/data.sage&quot;).unwrap();
@@ -364,7 +363,7 @@ A simpler solution uses the fact that the <code>PrimeField</code> trait has supe
 </span><span class="boring">    data_file.write_all(line.as_bytes()).unwrap();
 </span><span class="boring">
 </span>    // --snip--
-    
+
     // read solution in coeffs.txt and cast these strings (one per line) into scalar field Fr elements
     let mut coeffs = Vec::new();
     for line in fs::read_to_string(&quot;sage/coeffs.txt&quot;).unwrap().lines() {
@@ -372,26 +371,25 @@ A simpler solution uses the fact that the <code>PrimeField</code> trait has supe
         let c: Fr = line.parse().unwrap();
         coeffs.push(c);
     }
-<span class="boring">    
+<span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using affine coordinates
 </span><span class="boring">    let mut aff_forge = G1Affine::zero();
 </span><span class="boring">    for (c, sig) in coeffs.iter().zip(sigs.iter()) {
 </span><span class="boring">        aff_forge = aff_forge + sig.mul(*c).into();
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using projective coordinates
 </span><span class="boring">    let mut proj_forge = G1Projective::zero();
 </span><span class="boring">    for (c, sig) in coeffs.iter().zip(sigs.iter()) {
 </span><span class="boring">        proj_forge += sig.mul(*c);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // compute forgery using multi-scalar multiplication
-</span><span class="boring">    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = 
-</span><span class="boring">        coeffs.iter().map(|c| (*c).into_repr()).collect();
+</span><span class="boring">    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = coeffs.iter().map(|c| (*c).into_repr()).collect();
 </span><span class="boring">    let msm_forge = VariableBaseMSM::multi_scalar_mul(&amp;sigs, &amp;coeffs);
-</span><span class="boring">        
+</span><span class="boring">
 </span><span class="boring">    /* Your solution here! */
 </span><span class="boring">
 </span><span class="boring">    verify(pk, m, aff_forge);
@@ -430,9 +428,9 @@ Note that the <code>+=</code> operator does not work for affine representation.<
 </span><span class="boring">    for (m, sig) in ms.iter().zip(sigs.iter()) {
 </span><span class="boring">        verify(pk, m, *sig);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    let m = b&quot;your_username&quot;;
 </span><span class="boring">
 </span><span class="boring">    let mut data_file = File::create(&quot;sage/data.sage&quot;).unwrap();
@@ -457,7 +455,7 @@ Note that the <code>+=</code> operator does not work for affine representation.<
 </span><span class="boring">    data_file.write_all(line.as_bytes()).unwrap();
 </span><span class="boring">
 </span><span class="boring">    // --snip--
-</span><span class="boring">    
+</span><span class="boring">
 </span><span class="boring">    // read solution in coeffs.txt and cast these strings (one per line) into scalar field Fr elements
 </span><span class="boring">    let mut coeffs = Vec::new();
 </span><span class="boring">    for line in fs::read_to_string(&quot;sage/coeffs.txt&quot;).unwrap().lines() {
@@ -465,26 +463,25 @@ Note that the <code>+=</code> operator does not work for affine representation.<
 </span><span class="boring">        let c: Fr = line.parse().unwrap();
 </span><span class="boring">        coeffs.push(c);
 </span><span class="boring">    }
-</span><span class="boring">    
+</span><span class="boring">
 </span>    // --snip--
-    
+
     // compute forgery using affine coordinates
     let mut aff_forge = G1Affine::zero();
     for (c, sig) in coeffs.iter().zip(sigs.iter()) {
         aff_forge = aff_forge + sig.mul(*c).into();
     }
-    
+
     // compute forgery using projective coordinates
     let mut proj_forge = G1Projective::zero();
     for (c, sig) in coeffs.iter().zip(sigs.iter()) {
         proj_forge += sig.mul(*c);
     }
-    
+
     // compute forgery using multi-scalar multiplication
-    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = 
-        coeffs.iter().map(|c| (*c).into_repr()).collect();
+    let coeffs: Vec&lt;&lt;Fr as PrimeField&gt;::BigInt&gt; = coeffs.iter().map(|c| (*c).into_repr()).collect();
     let msm_forge = VariableBaseMSM::multi_scalar_mul(&amp;sigs, &amp;coeffs);
-        
+
     /* Your solution here! */
 
     verify(pk, m, aff_forge);

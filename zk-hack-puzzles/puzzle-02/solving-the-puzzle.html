@@ -195,7 +195,7 @@ Fortunately, the arkworks library has methods for that:</p>
 </span><span class="boring">    let (_ts1, _ts2) = puzzle_data();
 </span><span class="boring">
 </span>    // --snip--
-    
+
     // check that G1 and G2 are not in the correct group
     if _ts1[0].is_on_curve() {
         println!(&quot;G1 is on the curve.&quot;);
@@ -220,7 +220,7 @@ Fortunately, the arkworks library has methods for that:</p>
     } else {
         println!(&quot;G2 is not in the correct subgroup.&quot;);
     }
-<span class="boring">        
+<span class="boring">
 </span><span class="boring">    // printing points to copy-paste them in sage script
 </span><span class="boring">    println!(&quot;G1 = {}&quot;, _ts1[0]);
 </span><span class="boring">    println!(&quot;s * G1 = {}&quot;, _ts1[1]);
