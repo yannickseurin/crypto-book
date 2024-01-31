@@ -2,15 +2,23 @@
 
 <a id="ABR01">**[ABR01]**</a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. [*DHIES: An encryption scheme based on the Diffie-Hellman Problem*](https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf). Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).
 
+<a id="AHG23">**[AHG23]**</a> Diego F. Aranha, Youssef El Housni, and Aurore Guillevic. [*A survey of elliptic curves for proof systems*](https://eprint.iacr.org/2022/586.pdf). In Designs, Codes and Cryptography, 2023.
+
 <a id="ANT+20">**[ANT+20]**</a> Diego F. Aranha, Felipe Rodrigues Novaes, Akira Takahashi, Mehdi Tibouchi, and Yuval Yarom. [*LadderLeak: Breaking ECDSA with Less than One Bit of Nonce Leakage*](https://eprint.iacr.org/2020/615.pdf). In proceedings of ACM CCS 2020.
 
 <a id="BB04">**[BB04]**</a> Dan Boneh and Xavier Boyen. [*Efficient Selective-ID Secure Identity Based Encryption Without Random Oracles*](https://eprint.iacr.org/2004/172.pdf). In proceedings of EUROCRYPT 2004.
 
 <a id="BB08">**[BB08]**</a> Dan Boneh and Xavier Boyen. [*Short Signatures Without Random Oracles and the SDH Assumption in Bilinear Groups*](https://crypto.stanford.edu/~dabo/pubs/papers/bbsigs.pdf). In Journal of Cryptology, 2008.
 
+<a id="BCCT13">**[BCCT13]**</a> Nir Bitansky, Ran Canetti, Alessandro Chiesa, and Eran Tromer. [*Recursive Composition and Bootstrapping for SNARKs and Proof-Carrying Data*](https://eprint.iacr.org/2012/095.pdf). In proceedings of STOC 2013.
+
+<a id="BCG+14">**[BCG+14]**</a> Eli Ben-Sasson, Alessandro Chiesa, Christina Garman, Matthew Green, Ian Miers, Eran Tromer, and Madars Virza. [*Zerocash: Decentralized Anonymous Payments from Bitcoin*](http://zerocash-project.org/media/pdf/zerocash-extended-20140518.pdf). In proceedings of IEEE SP 2014.
+
 <a id="BCI+10">**[BCI+10]**</a> Eric Brier, Jean-Sébastien Coron, Thomas Icart, David Madore, Hugues Randriam, and Mehdi Tibouchi. [*Efficient Indifferentiable Hashing into Ordinary Elliptic Curves*](https://eprint.iacr.org/2009/340.pdf). In proceedings of CRYPTO 2010.
 
 <a id="BCM+15">**[BCM+15]**</a> Paulo S. L. M. Barreto, Craig Costello, Rafael Misoczki, Michael Naehrig, Geovandro C. C. F. Pereira, and Gustavo Zanon. [*Subgroup Security in Pairing-Based Cryptography*](https://eprint.iacr.org/2015/247.pdf). In proceedings of Latincrypt 2015.
+
+<a id="BCTV14">**[BCTV14]**</a> Eli Ben-Sasson, Alessandro Chiesa, Eran Tromer, and Madars Virza. [*Scalable Zero Knowledge via Cycles of Elliptic Curves*](https://eprint.iacr.org/2014/595.pdf). In proceedings of CRYPTO 2014.
 
 <a id="BDFG20">**[BDFG20]**</a> Dan Boneh, Justin Drake, Ben Fisch, and Ariel Gabizon. [*Efficient polynomial commitment schemes for multiple points and polynomials*](https://eprint.iacr.org/2020/081.pdf). IACR ePrint report 2020/081, 2020.
 
@@ -55,6 +63,8 @@
 <a id="DMWG23">**[DMWG23]**</a> Quang Dao, Jim Miller, Opal Wright, and Paul Grubbs. [*Weak Fiat-Shamir Attacks on Modern Proof Systems*](https://eprint.iacr.org/2023/691.pdf). In proceedings of IEEE SP 2023.
 
 <a id="FKL18">**[FKL18]**</a> Georg Fuchsbauer, Eike Kiltz, and Julian Loss. [*The Algebraic Group Model and its Applications*](https://eprint.iacr.org/2017/620.pdf). In proceedings of CRYPTO 2018.
+
+<a id="GKR+21">**[GKR+21]**</a> Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, and Markus Schofnegger. [*Poseidon: A New Hash Function for Zero-Knowledge Proof Systems*](https://eprint.iacr.org/2019/458.pdf). In proceedings of USENIX Security 2021.
 
 <a id="GPS08">**[GPS08]**</a> Steven D. Galbraith, Kenneth G. Paterson, and Nigel P. Smart. [*Pairings for cryptographers*](https://eprint.iacr.org/2006/165.pdf). In Discrete Applied Mathematics, 2008.
 

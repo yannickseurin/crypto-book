@@ -53,5 +53,9 @@
 - [Puzzle 9: Zero-Sum Game]()
 - [Puzzle 10: Power Corrupts]()
 - [Puzzle 11: Bigger is Better]()
+- [Puzzle 12: Gamma Ray](zk-hack-puzzles/puzzle-12/intro.md)
+    - [Code Analysis](zk-hack-puzzles/puzzle-12/code-analysis.md)
+    - [Understanding the Spending Circuit](zk-hack-puzzles/puzzle-12/understanding-the-spending-circuit.md)
+    - [Solving the Puzzle](zk-hack-puzzles/puzzle-12/solving-the-puzzle.md)
 
 [References](references.md)
