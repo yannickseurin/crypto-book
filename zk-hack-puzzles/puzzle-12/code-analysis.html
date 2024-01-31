@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Code Analysis - Crypto Book (Work in Progress)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././assets/custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Mathematical Preliminaries</li><li class="chapter-item "><a href="../../mathematical-preliminaries/groups.html"><strong aria-hidden="true">1.</strong> Groups</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Rings</div></li><li class="chapter-item "><a href="../../mathematical-preliminaries/polynomials.html"><strong aria-hidden="true">3.</strong> Polynomials</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Fields</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> Fast Fourier Transform</div></li><li class="chapter-item "><a href="../../mathematical-preliminaries/elliptic-curves.html"><strong aria-hidden="true">6.</strong> Elliptic Curves</a></li><li class="chapter-item "><a href="../../mathematical-preliminaries/pairings.html"><strong aria-hidden="true">7.</strong> Pairings</a></li><li class="chapter-item affix "><li class="part-title">Cryptographic Notions</li><li class="chapter-item "><a href="../../cryptographic-notions/games-models-and-assumptions.html"><strong aria-hidden="true">8.</strong> Games, Models, and Assumptions</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Signatures: Generalities</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Schnorr Signatures</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> ECDSA Signatures</div></li><li class="chapter-item "><a href="../../cryptographic-notions/bls-signatures.html"><strong aria-hidden="true">12.</strong> BLS Signatures</a></li><li class="chapter-item "><a href="../../cryptographic-notions/commitment-schemes.html"><strong aria-hidden="true">13.</strong> Commitment Schemes</a></li><li class="chapter-item "><a href="../../cryptographic-notions/polynomial-commitment-schemes.html"><strong aria-hidden="true">14.</strong> Polynomial Commitment Schemes</a></li><li class="chapter-item affix "><li class="part-title">Proof Systems</li><li class="chapter-item "><div><strong aria-hidden="true">15.</strong> Languages and Complexity</div></li><li class="chapter-item "><div><strong aria-hidden="true">16.</strong> Interactive Proofs</div></li><li class="chapter-item "><div><strong aria-hidden="true">17.</strong> Zero-Knowledge Proofs</div></li><li class="chapter-item "><div><strong aria-hidden="true">18.</strong> Proofs of Knowledge</div></li><li class="chapter-item affix "><li class="part-title">ZK Hack Puzzles</li><li class="chapter-item "><a href="../../zk-hack-puzzles/before-starting.html"><strong aria-hidden="true">19.</strong> Before Starting</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/intro.html"><strong aria-hidden="true">20.</strong> Puzzle 1: Let's Hash it Out</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/initial-inspection.html"><strong aria-hidden="true">20.1.</strong> Initial Inspection</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/exploring-the-arkworks-libraries.html"><strong aria-hidden="true">20.2.</strong> Exploring the arkworks Libraries</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/understanding-the-hash-to-curve-function.html"><strong aria-hidden="true">20.3.</strong> Understanding the hash-to-curve Function</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-01/gathering-the-pieces.html"><strong aria-hidden="true">20.4.</strong> Gathering the Pieces</a></li></ol></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-02/intro.html"><strong aria-hidden="true">21.</strong> Puzzle 2: Group Dynamics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-02/initial-inspection.html"><strong aria-hidden="true">21.1.</strong> Initial Inspection</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-02/small-subgroup-attacks.html"><strong aria-hidden="true">21.2.</strong> Small Subgroup Attacks</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-02/solving-the-puzzle.html"><strong aria-hidden="true">21.3.</strong> Solving the Puzzle</a></li></ol></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-03/intro.html"><strong aria-hidden="true">22.</strong> Puzzle 3: Double Trouble</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-03/initial-inspection.html"><strong aria-hidden="true">22.1.</strong> Initial Inspection</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-03/exploring-the-code.html"><strong aria-hidden="true">22.2.</strong> Exploring the Code</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-03/solving-the-puzzle.html"><strong aria-hidden="true">22.3.</strong> Solving the Puzzle</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">23.</strong> Puzzle 4: Hidden in Plain Sight</div></li><li class="chapter-item "><div><strong aria-hidden="true">24.</strong> Puzzle 5: To be Adaptive is to be Strong</div></li><li class="chapter-item "><div><strong aria-hidden="true">25.</strong> Puzzle 6: Soundness of Music</div></li><li class="chapter-item "><div><strong aria-hidden="true">26.</strong> Puzzle 7: There’s something in the AIR</div></li><li class="chapter-item "><div><strong aria-hidden="true">27.</strong> Puzzle 8: Can you turn up the heat?</div></li><li class="chapter-item "><div><strong aria-hidden="true">28.</strong> Puzzle 9: Zero-Sum Game</div></li><li class="chapter-item "><div><strong aria-hidden="true">29.</strong> Puzzle 10: Power Corrupts</div></li><li class="chapter-item "><div><strong aria-hidden="true">30.</strong> Puzzle 11: Bigger is Better</div></li><li class="chapter-item expanded "><a href="../../zk-hack-puzzles/puzzle-12/intro.html"><strong aria-hidden="true">31.</strong> Puzzle 12: Gamma Ray</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../zk-hack-puzzles/puzzle-12/code-analysis.html" class="active"><strong aria-hidden="true">31.1.</strong> Code Analysis</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-12/understanding-the-spending-circuit.html"><strong aria-hidden="true">31.2.</strong> Understanding the Spending Circuit</a></li><li class="chapter-item "><a href="../../zk-hack-puzzles/puzzle-12/solving-the-puzzle.html"><strong aria-hidden="true">31.3.</strong> Solving the Puzzle</a></li></ol></li><li class="chapter-item "><a href="../../references.html">References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Crypto Book (Work in Progress)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yannickseurin/crypto-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h2 id="code-analysis"><a class="header" href="#code-analysis">Code Analysis</a></h2>
+<p>The package directory is organized as follows:</p>
+<pre><code class="language-text">puzzle-gamma-ray
+├── Cargo.toml
+├── leaked_secret.bin
+├── leaves.bin
+├── proof_keys.bin
+└── src
+    ├── main.rs
+    └── poseidon_parameters.rs
+</code></pre>
+<p>Files <em>leaked_secret.bin</em>, <em>leaves.bin</em>, and <em>proof_keys.bin</em> contain raw data that will be used to initialize variables, as we will see.</p>
+<p>The <em>main.rs</em> file brings a lot of items from various arkworks crates into scope, notably for MNT4-753 and MNT6-753 curves, Groth16 proofs, R1CS arithmetization, etc.
+We will come back to this shortly.</p>
+<p>The first thing the <code>main</code> function does is to define a number of variables for the puzzle, in particular:</p>
+<ul>
+<li>a proving key and a verification key for the Groth16 [<a href="../../../references.html#Gro16">Gro16</a>] proof system over the MNT4-753 curve:</li>
+</ul>
+<pre><code class="language-rust">    let (pk, vk): (
+        &lt;Groth16&lt;MNT4_753&gt; as SNARK&lt;MNT4BigFr&gt;&gt;::ProvingKey,
+        &lt;Groth16&lt;MNT4_753&gt; as SNARK&lt;MNT4BigFr&gt;&gt;::VerifyingKey,
+    ) = from_file(&quot;./proof_keys.bin&quot;);
+</code></pre>
+<ul>
+<li>a &quot;leaked secret&quot; of type <code>MNT4BigFr</code> (the scalar field of the MNT4-753 curve) used by Alice to spend one of her coins:</li>
+</ul>
+<pre><code class="language-rust">    let leaked_secret: MNT4BigFr = from_file(&quot;./leaked_secret.bin&quot;);</code></pre>
+<ul>
+<li>a Merkle tree, with leaf <code>leaf</code> at index <code>i = 2</code> playing a special role:</li>
+</ul>
+<pre><code class="language-rust">    let leaves: Vec&lt;Vec&lt;MNT4BigFr&gt;&gt; = from_file(&quot;./leaves.bin&quot;);
+    // ...
+    let leaf_crh_params = poseidon_parameters::poseidon_parameters();
+    let i = 2;
+    let two_to_one_crh_params = leaf_crh_params.clone();
+    // ...
+    let tree = MntMerkleTree::new(
+        &amp;leaf_crh_params,
+        &amp;two_to_one_crh_params,
+        leaves.iter().map(|x| x.as_slice()),
+    )
+    .unwrap();
+    let root = tree.root();
+    let leaf = &amp;leaves[i];
+</code></pre>
+<p>The hash function used to build the Merkle tree is the SNARK-friendly Poseidon hash function [<a href="../../../references.html#GKR+21">GKR+21</a>] with parameters specified in the <em>poseidon_parameters.rs</em> file.
+In particular, the underlying field is also the scalar field <code>MNT4BigFr</code> of the MNT4-753 curve.
+One can also print the leaves of the Merkle tree:</p>
+<pre><code class="language-rust"><span class="boring">use ark_ec::AffineRepr;
+</span><span class="boring">use ark_ff::PrimeField;
+</span><span class="boring">use ark_mnt4_753::{Fr as MNT4BigFr, MNT4_753};
+</span><span class="boring">use ark_mnt6_753::G1Affine;
+</span><span class="boring">use ark_mnt6_753::{constraints::G1Var, Fr as MNT6BigFr};
+</span><span class="boring">
+</span><span class="boring">use ark_crypto_primitives::merkle_tree::{Config, MerkleTree, Path};
+</span><span class="boring">use ark_crypto_primitives::{crh::TwoToOneCRHScheme, snark::SNARK};
+</span><span class="boring">use ark_groth16::Groth16;
+</span><span class="boring">use ark_r1cs_std::fields::fp::FpVar;
+</span><span class="boring">use ark_r1cs_std::prelude::*;
+</span><span class="boring">use ark_relations::r1cs::{ConstraintSynthesizer, ConstraintSystemRef, SynthesisError};
+</span><span class="boring">use ark_serialize::{CanonicalDeserialize, Read};
+</span><span class="boring">
+</span><span class="boring">use prompt::{puzzle, welcome};
+</span><span class="boring">
+</span><span class="boring">use std::fs::File;
+</span><span class="boring">use std::io::Cursor;
+</span><span class="boring">
+</span><span class="boring">pub mod poseidon_parameters;
+</span><span class="boring">
+</span><span class="boring">type ConstraintF = MNT4BigFr;
+</span><span class="boring">
+</span><span class="boring">use ark_crypto_primitives::{
+</span><span class="boring">    crh::{poseidon, *},
+</span><span class="boring">    merkle_tree::constraints::*,
+</span><span class="boring">    merkle_tree::*,
+</span><span class="boring">};
+</span><span class="boring">use ark_std::rand::SeedableRng;
+</span><span class="boring">
+</span><span class="boring">type LeafH = poseidon::CRH&lt;ConstraintF&gt;;
+</span><span class="boring">type LeafHG = poseidon::constraints::CRHGadget&lt;ConstraintF&gt;;
+</span><span class="boring">
+</span><span class="boring">type CompressH = poseidon::TwoToOneCRH&lt;ConstraintF&gt;;
+</span><span class="boring">type CompressHG = poseidon::constraints::TwoToOneCRHGadget&lt;ConstraintF&gt;;
+</span><span class="boring">
+</span><span class="boring">type LeafVar = [FpVar&lt;ConstraintF&gt;];
+</span><span class="boring">struct MntMerkleTreeParamsVar;
+</span><span class="boring">impl ConfigGadget&lt;MntMerkleTreeParams, ConstraintF&gt; for MntMerkleTreeParamsVar {
+</span><span class="boring">    type Leaf = LeafVar;
+</span><span class="boring">    type LeafDigest = &lt;LeafHG as CRHSchemeGadget&lt;LeafH, ConstraintF&gt;&gt;::OutputVar;
+</span><span class="boring">    type LeafInnerConverter = IdentityDigestConverter&lt;FpVar&lt;ConstraintF&gt;&gt;;
+</span><span class="boring">    type InnerDigest = &lt;CompressHG as TwoToOneCRHSchemeGadget&lt;CompressH, ConstraintF&gt;&gt;::OutputVar;
+</span><span class="boring">    type LeafHash = LeafHG;
+</span><span class="boring">    type TwoToOneHash = CompressHG;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">type MntMerkleTree = MerkleTree&lt;MntMerkleTreeParams&gt;;
+</span><span class="boring">
+</span><span class="boring">struct MntMerkleTreeParams;
+</span><span class="boring">
+</span><span class="boring">impl Config for MntMerkleTreeParams {
+</span><span class="boring">    type Leaf = [ConstraintF];
+</span><span class="boring">
+</span><span class="boring">    type LeafDigest = &lt;LeafH as CRHScheme&gt;::Output;
+</span><span class="boring">    type LeafInnerDigestConverter = IdentityDigestConverter&lt;ConstraintF&gt;;
+</span><span class="boring">    type InnerDigest = &lt;CompressH as TwoToOneCRHScheme&gt;::Output;
+</span><span class="boring">
+</span><span class="boring">    type LeafHash = LeafH;
+</span><span class="boring">    type TwoToOneHash = CompressH;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">#[derive(Clone)]
+</span><span class="boring">struct SpendCircuit {
+</span><span class="boring">    pub leaf_params: &lt;LeafH as CRHScheme&gt;::Parameters,
+</span><span class="boring">    pub two_to_one_params: &lt;LeafH as CRHScheme&gt;::Parameters,
+</span><span class="boring">    pub root: &lt;CompressH as TwoToOneCRHScheme&gt;::Output,
+</span><span class="boring">    pub proof: Path&lt;MntMerkleTreeParams&gt;,
+</span><span class="boring">    pub secret: ConstraintF,
+</span><span class="boring">    pub nullifier: ConstraintF,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl ConstraintSynthesizer&lt;ConstraintF&gt; for SpendCircuit {
+</span><span class="boring">    fn generate_constraints(
+</span><span class="boring">        self,
+</span><span class="boring">        cs: ConstraintSystemRef&lt;ConstraintF&gt;,
+</span><span class="boring">    ) -&gt; Result&lt;(), SynthesisError&gt; {
+</span><span class="boring">        // Allocate Merkle Tree Root
+</span><span class="boring">        let root = &lt;LeafHG as CRHSchemeGadget&lt;LeafH, _&gt;&gt;::OutputVar::new_input(
+</span><span class="boring">            ark_relations::ns!(cs, &quot;new_digest&quot;),
+</span><span class="boring">            || Ok(self.root),
+</span><span class="boring">        )?;
+</span><span class="boring">
+</span><span class="boring">        // Allocate Parameters for CRH
+</span><span class="boring">        let leaf_crh_params_var =
+</span><span class="boring">            &lt;LeafHG as CRHSchemeGadget&lt;LeafH, _&gt;&gt;::ParametersVar::new_constant(
+</span><span class="boring">                ark_relations::ns!(cs, &quot;leaf_crh_parameter&quot;),
+</span><span class="boring">                &amp;self.leaf_params,
+</span><span class="boring">            )?;
+</span><span class="boring">        let two_to_one_crh_params_var =
+</span><span class="boring">            &lt;CompressHG as TwoToOneCRHSchemeGadget&lt;CompressH, _&gt;&gt;::ParametersVar::new_constant(
+</span><span class="boring">                ark_relations::ns!(cs, &quot;two_to_one_crh_parameter&quot;),
+</span><span class="boring">                &amp;self.two_to_one_params,
+</span><span class="boring">            )?;
+</span><span class="boring">
+</span><span class="boring">        let secret = FpVar::new_witness(ark_relations::ns!(cs, &quot;secret&quot;), || Ok(self.secret))?;
+</span><span class="boring">        let secret_bits = secret.to_bits_le()?;
+</span><span class="boring">        Boolean::enforce_smaller_or_equal_than_le(&amp;secret_bits, MNT6BigFr::MODULUS)?;
+</span><span class="boring">
+</span><span class="boring">        let nullifier = &lt;LeafHG as CRHSchemeGadget&lt;LeafH, _&gt;&gt;::OutputVar::new_input(
+</span><span class="boring">            ark_relations::ns!(cs, &quot;nullifier&quot;),
+</span><span class="boring">            || Ok(self.nullifier),
+</span><span class="boring">        )?;
+</span><span class="boring">
+</span><span class="boring">        let nullifier_in_circuit =
+</span><span class="boring">            &lt;LeafHG as CRHSchemeGadget&lt;LeafH, _&gt;&gt;::evaluate(&amp;leaf_crh_params_var, &amp;[secret])?;
+</span><span class="boring">        nullifier_in_circuit.enforce_equal(&amp;nullifier)?;
+</span><span class="boring">
+</span><span class="boring">        let base = G1Var::new_constant(ark_relations::ns!(cs, &quot;base&quot;), G1Affine::generator())?;
+</span><span class="boring">        let pk = base.scalar_mul_le(secret_bits.iter())?.to_affine()?;
+</span><span class="boring">
+</span><span class="boring">        // Allocate Leaf
+</span><span class="boring">        let leaf_g: Vec&lt;_&gt; = vec![pk.x];
+</span><span class="boring">
+</span><span class="boring">        // Allocate Merkle Tree Path
+</span><span class="boring">        let cw: PathVar&lt;MntMerkleTreeParams, ConstraintF, MntMerkleTreeParamsVar&gt; =
+</span><span class="boring">            PathVar::new_witness(ark_relations::ns!(cs, &quot;new_witness&quot;), || Ok(&amp;self.proof))?;
+</span><span class="boring">
+</span><span class="boring">        cw.verify_membership(
+</span><span class="boring">            &amp;leaf_crh_params_var,
+</span><span class="boring">            &amp;two_to_one_crh_params_var,
+</span><span class="boring">            &amp;root,
+</span><span class="boring">            &amp;leaf_g,
+</span><span class="boring">        )?
+</span><span class="boring">        .enforce_equal(&amp;Boolean::constant(true))?;
+</span><span class="boring">
+</span><span class="boring">        Ok(())
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn from_file&lt;T: CanonicalDeserialize&gt;(path: &amp;str) -&gt; T {
+</span><span class="boring">    let mut file = File::open(path).unwrap();
+</span><span class="boring">    let mut buffer = Vec::new();
+</span><span class="boring">    file.read_to_end(&amp;mut buffer).unwrap();
+</span><span class="boring">    T::deserialize_uncompressed_unchecked(Cursor::new(&amp;buffer)).unwrap()
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    welcome();
+</span><span class="boring">    puzzle(PUZZLE_DESCRIPTION);
+</span><span class="boring">
+</span><span class="boring">    let rng = &amp;mut ark_std::rand::rngs::StdRng::seed_from_u64(0u64);
+</span><span class="boring">
+</span><span class="boring">    let leaves: Vec&lt;Vec&lt;MNT4BigFr&gt;&gt; = from_file(&quot;./leaves.bin&quot;);
+</span><span class="boring">    let leaked_secret: MNT4BigFr = from_file(&quot;./leaked_secret.bin&quot;);
+</span><span class="boring">    let (pk, vk): (
+</span><span class="boring">        &lt;Groth16&lt;MNT4_753&gt; as SNARK&lt;MNT4BigFr&gt;&gt;::ProvingKey,
+</span><span class="boring">        &lt;Groth16&lt;MNT4_753&gt; as SNARK&lt;MNT4BigFr&gt;&gt;::VerifyingKey,
+</span><span class="boring">    ) = from_file(&quot;./proof_keys.bin&quot;);
+</span><span class="boring">
+</span><span class="boring">    let leaf_crh_params = poseidon_parameters::poseidon_parameters();
+</span><span class="boring">    let i = 2;
+</span><span class="boring">    let two_to_one_crh_params = leaf_crh_params.clone();
+</span><span class="boring">
+</span><span class="boring">    let nullifier = &lt;LeafH as CRHScheme&gt;::evaluate(&amp;leaf_crh_params, vec![leaked_secret]).unwrap();
+</span><span class="boring">
+</span><span class="boring">    let tree = MntMerkleTree::new(
+</span><span class="boring">        &amp;leaf_crh_params,
+</span><span class="boring">        &amp;two_to_one_crh_params,
+</span><span class="boring">        leaves.iter().map(|x| x.as_slice()),
+</span><span class="boring">    )
+</span><span class="boring">    .unwrap();
+</span><span class="boring">    let root = tree.root();
+</span><span class="boring">    let leaf = &amp;leaves[i];
+</span><span class="boring">
+</span><span class="boring">    let tree_proof = tree.generate_proof(i).unwrap();
+</span><span class="boring">    assert!(tree_proof
+</span><span class="boring">        .verify(
+</span><span class="boring">            &amp;leaf_crh_params,
+</span><span class="boring">            &amp;two_to_one_crh_params,
+</span><span class="boring">            &amp;root,
+</span><span class="boring">            leaf.as_slice()
+</span><span class="boring">        )
+</span><span class="boring">        .unwrap());
+</span><span class="boring">
+</span><span class="boring">    let c = SpendCircuit {
+</span><span class="boring">        leaf_params: leaf_crh_params.clone(),
+</span><span class="boring">        two_to_one_params: two_to_one_crh_params.clone(),
+</span><span class="boring">        root: root.clone(),
+</span><span class="boring">        proof: tree_proof.clone(),
+</span><span class="boring">        nullifier: nullifier.clone(),
+</span><span class="boring">        secret: leaked_secret.clone(),
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    let proof = Groth16::&lt;MNT4_753&gt;::prove(&amp;pk, c.clone(), rng).unwrap();
+</span><span class="boring">
+</span>    // --snip--
+
+    for (i, leaf) in leaves.iter().enumerate() {
+        for (j, p) in leaf.iter().enumerate() {
+            println!(&quot;leaves[{}][{}]: {}&quot;, i, j, p);
+        }
+    }
+    println!(&quot;&quot;);
+<span class="boring">
+</span><span class="boring">    assert!(Groth16::&lt;MNT4_753&gt;::verify(&amp;vk, &amp;vec![root, nullifier], &amp;proof).unwrap());
+</span><span class="boring">
+</span><span class="boring">    // --snip--
+</span><span class="boring">
+</span><span class="boring">    /* Enter your solution here */
+</span><span class="boring">
+</span><span class="boring">    // cast leaked_secret as big integer...
+</span><span class="boring">    let s: num_bigint::BigUint = leaked_secret.into();
+</span><span class="boring">    // ... and then as an element of MNT6BigFr
+</span><span class="boring">    let s_as_mnt6bigfr = MNT6BigFr::from_le_bytes_mod_order(&amp;s.to_bytes_le());
+</span><span class="boring">    // take the opposite and cast it again as a big integer...
+</span><span class="boring">    let secret_hack_as_bigint: num_bigint::BigUint = (-s_as_mnt6bigfr).into();
+</span><span class="boring">    // and finally cast it back to an element of MNT4BigFr
+</span><span class="boring">    let secret_hack = MNT4BigFr::from_le_bytes_mod_order(&amp;secret_hack_as_bigint.to_bytes_le());
+</span><span class="boring">    // compute the corresponding nullifier
+</span><span class="boring">    let nullifier_hack =
+</span><span class="boring">        &lt;LeafH as CRHScheme&gt;::evaluate(&amp;leaf_crh_params, vec![secret_hack]).unwrap();
+</span><span class="boring">    println!(&quot;nullifier_hack: {}&quot;, nullifier_hack);
+</span><span class="boring">    println!(&quot;secret_hack: {}&quot;, secret_hack_as_bigint);
+</span><span class="boring">
+</span><span class="boring">    /* End of solution */
+</span><span class="boring">
+</span><span class="boring">    assert_ne!(nullifier, nullifier_hack);
+</span><span class="boring">
+</span><span class="boring">    let c2 = SpendCircuit {
+</span><span class="boring">        leaf_params: leaf_crh_params.clone(),
+</span><span class="boring">        two_to_one_params: two_to_one_crh_params.clone(),
+</span><span class="boring">        root: root.clone(),
+</span><span class="boring">        proof: tree_proof.clone(),
+</span><span class="boring">        nullifier: nullifier_hack.clone(),
+</span><span class="boring">        secret: secret_hack.clone(),
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    let proof = Groth16::&lt;MNT4_753&gt;::prove(&amp;pk, c2.clone(), rng).unwrap();
+</span><span class="boring">
+</span><span class="boring">    assert!(Groth16::&lt;MNT4_753&gt;::verify(&amp;vk, &amp;vec![root, nullifier_hack], &amp;proof).unwrap());
+</span><span class="boring">
+</span><span class="boring">    println!(&quot;Puzzle solved!&quot;);
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">const PUZZLE_DESCRIPTION: &amp;str = r&quot;
+</span><span class="boring">Bob was deeply inspired by the Zcash design [1] for private transactions [2] and had some pretty cool ideas on how to adapt it for his requirements. He was also inspired by the Mina design for the lightest blockchain and wanted to combine the two. In order to achieve that, Bob used the MNT7653 cycle of curves to enable efficient infinite recursion, and used elliptic curve public keys to authorize spends. He released a first version of the system to the world and Alice soon announced she was able to double spend by creating two different nullifiers for the same key... 
+</span><span class="boring">
+</span><span class="boring">[1] https://zips.z.cash/protocol/protocol.pdf
+</span><span class="boring">&quot;;</span></code></pre>
+<p>There are four leaves, each consisting of a single <code>MNT4BigFr</code> element.
+At this point it's not clear what these leaves represent but we will clarify this in a moment.</p>
+<p>Then, a Merkle proof (a proof that a specific leaf contains a specific element) is computed for the leaf at index <code>i = 2</code>:</p>
+<pre><code class="language-rust">    let tree_proof = tree.generate_proof(i).unwrap();</code></pre>
+<p>If you're unfamiliar with how ZCash works, the state of the chain is encoded in a Merkle tree where each leaf represents a coin. Attached to this leaf is a public key and a <em>nullifier</em> (originally called <em>coin serial number</em> in the ZeroCash paper [<a href="../../../references.html#BCG+14">BCG+14</a>]) whose role is to prevent double spends: when a coin is spent, the corresponding nullifier is revealed and recorded and the protocol later ensures that any transaction using the same nullifier (and hence trying to spend the same coin) is invalid.
+Note in particular that leaves of the Merkle tree do not represent UTXOs but rather all coins that ever existed, spent or unspent.
+For more details about how nullifiers work, <a href="https://electriccoin.co/blog/zcash-private-transactions/">this blog post</a> by Ariel Gabizon explains it very well.</p>
+<p>Here, we can see that the nullifier is computed as the hash of the secret allowing to spend a coin:</p>
+<pre><code class="language-rust">    let nullifier = &lt;LeafH as CRHScheme&gt;::evaluate(&amp;leaf_crh_params, vec![leaked_secret]).unwrap();</code></pre>
+<p>In order to spend the coin represented by leaf at index <code>i = 2</code>, Alice needs to provide a Groth16 proof that her transaction is valid:</p>
+<pre><code class="language-rust">    let c = SpendCircuit {
+        leaf_params: leaf_crh_params.clone(),
+        two_to_one_params: two_to_one_crh_params.clone(),
+        root: root.clone(),
+        proof: tree_proof.clone(),
+        nullifier: nullifier.clone(),
+        secret: leaked_secret.clone(),
+    };
+
+    let proof = Groth16::&lt;MNT4_753&gt;::prove(&amp;pk, c.clone(), rng).unwrap();
+
+    assert!(Groth16::&lt;MNT4_753&gt;::verify(&amp;vk, &amp;vec![root, nullifier], &amp;proof).unwrap());</code></pre>
+<p>We will get into what <code>SpendCircuit</code> is shortly, but before that, let's take a look at the part where we need to work to solve the puzzle:</p>
+<pre><code class="language-rust">    /* Enter your solution here */
+
+    let nullifier_hack = MNT4BigFr::from(0);
+    let secret_hack = MNT4BigFr::from(0);
+
+    /* End of solution */
+
+    assert_ne!(nullifier, nullifier_hack);
+
+    let c2 = SpendCircuit {
+        leaf_params: leaf_crh_params.clone(),
+        two_to_one_params: two_to_one_crh_params.clone(),
+        root: root.clone(),
+        proof: tree_proof.clone(),
+        nullifier: nullifier_hack.clone(),
+        secret: secret_hack.clone(),
+    };
+
+    let proof = Groth16::&lt;MNT4_753&gt;::prove(&amp;pk, c2.clone(), rng).unwrap();
+
+    assert!(Groth16::&lt;MNT4_753&gt;::verify(&amp;vk, &amp;vec![root, nullifier_hack], &amp;proof).unwrap());</code></pre>
+<p>As we can see, we must find another nullifier <code>nullifier_hack</code> (different from <code>nullifier</code>) and another secret <code>secret_hack</code> allowing to spend the same coin again (this is the same coin because the second Groth16 proof uses the same Merkle root <code>root</code> and the same Merkle proof <code>tree_proof</code> as the first Groth16 proof).</p>
+<p>Next, let us unravel what the spending circuit does.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../zk-hack-puzzles/puzzle-12/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../zk-hack-puzzles/puzzle-12/understanding-the-spending-circuit.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../zk-hack-puzzles/puzzle-12/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../zk-hack-puzzles/puzzle-12/understanding-the-spending-circuit.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../.././assets/mermaid.min.js"></script>
+        <script src="../.././assets/mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
