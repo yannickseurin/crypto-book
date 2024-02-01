@@ -71,7 +71,7 @@ Then, a Merkle proof (a proof that a specific leaf contains a specific element) 
     let tree_proof = tree.generate_proof(i).unwrap();
 ```
 
-If you're unfamiliar with how ZCash works, the state of the chain is encoded in a Merkle tree where each leaf represents a coin. Attached to this leaf is a public key and a *nullifier* (originally called *coin serial number* in the ZeroCash paper [[BCG+14](../../../references.md#BCG+14)]) whose role is to prevent double spends: when a coin is spent, the corresponding nullifier is revealed and recorded and the protocol later ensures that any transaction using the same nullifier (and hence trying to spend the same coin) is invalid.
+If you're unfamiliar with how ZCash works, the state of the chain is encoded in a Merkle tree where each leaf represents a coin. Attached to this leaf is a public key and a *nullifier* (originally called *coin serial number* in the ZeroCash paper [[BCG+14](../../references.md#BCG+14)]) whose role is to prevent double spends: when a coin is spent, the corresponding nullifier is revealed and recorded and the protocol later ensures that any transaction using the same nullifier (and hence trying to spend the same coin) is invalid.
 Note in particular that leaves of the Merkle tree do not represent UTXOs but rather all coins that ever existed, spent or unspent.
 For more details about how nullifiers work, [this blog post](https://electriccoin.co/blog/zcash-private-transactions/) by Ariel Gabizon explains it very well.
 

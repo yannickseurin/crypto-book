@@ -233,7 +233,7 @@ These two observations can be checked directly with
 
 (For this, one needs to derive the `PartialEq` trait for structures `CommitKey` and `Instance`).
 
-As we explained in the section about [Pedersen commitments](/cryptographic-notions/commitment-schemes.md#pedersen-commitments), the knowledge of discrete log relations between the group elements in the commitment key constitutes a trapdoor allowing to break the binding property of the commitment scheme.
+As we explained in the section about [Pedersen commitments](../../cryptographic-notions/commitment-schemes.md#pedersen-commitments), the knowledge of discrete log relations between the group elements in the commitment key constitutes a trapdoor allowing to break the binding property of the commitment scheme.
 However, this does not seem like a promising avenue to solve the puzzle.
 On the one hand, this trapdoor does not allow to break the hiding property of the commitment scheme, which is what we would need to recover $\bfa$.
 On the other hand, function `sample` does things correctly by sampling uniformly random and independent group elements using a pseudorandom number generator seeded with NUMS string "zkHack IPA puzzle for 2021-10-26".
