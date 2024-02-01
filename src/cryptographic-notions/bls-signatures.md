@@ -3,6 +3,7 @@
 > **Related puzzles:** [Puzzle 1](../zk-hack-puzzles/puzzle-01/intro.md)
 >
 > **TODO:**
+> - add details about hashing into groups
 > - write a more rigorous game-based proof for BLS
 > - write the security proof for aggregate BLS signatures
 
@@ -81,7 +82,7 @@ The public parameters consist of the tuple
 \]
 otherwise it returns 0 (invalid signature).
 
-A good way to think of BLS signatures is as follows: given a message $m$ with corresponding point $H(m)$ in $\GG_1$, the signature of $m$ is the point $S$ such that the discrete logarithm of $S$ in base $H(m)$ is equal to the discrete logarithm of $X$ in base $G_2$ (that is, the secret key $x$).
+A good way to think about BLS signatures is as follows: given a message $m$ with corresponding point $H(m)$ in $\GG_1$, the signature of $m$ is the point $S$ such that the discrete logarithm of $S$ in base $H(m)$ is equal to the discrete logarithm of $X$ in base $G_2$ (that is, the secret key $x$).
 This is reminiscent of the Chaum-Antwerpen undeniable signature scheme [[CA89](../references.md#CA89)].
 Checking discrete logarithm equality is exactly what the pairing $e$ enables to do efficiently.
 
@@ -321,7 +322,7 @@ In particular, if $t \ge 2$ users collide (or if a single malicious user control
  X_0 + \cdots + X_{t-1} = 0.
 \]
 Then, in the PoP-based variant of the scheme where Eq. {{eqref: simple_agg_verif}} is used for verification, $S=0$ is a valid signature for any message $m$: the scheme is not message binding.
-Note that checking that $S \neq 0$ in the verification algorithm does not thwart the attack as $S$ can be further aggregated with other valid signatures $S_t, \dots, S_{n-1}$ for arbitrary public key/message pairs $(X_t, m_t), \dots, (X_{n-1}, m_{n-1})$, resulting in an aggregate signature $S' \neq 0$ which still does not bound signers $0,\dots t-1$ to a specific message.
+Note that checking that $S \neq 0$ in the verification algorithm does not thwart the attack as $S$ can be further aggregated with other valid signatures $S_t, \dots, S_{n-1}$ for arbitrary public key/message pairs $(X_t, m_t)$, $\dots$, $(X_{n-1}, m_{n-1})$, resulting in an aggregate signature $S' \neq 0$ which still does not bound signers $0,\dots t-1$ to a specific message.
 
 ## Further Topics to Cover
 

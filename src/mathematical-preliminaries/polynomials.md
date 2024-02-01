@@ -132,8 +132,8 @@ In general, $\AA[X]$ might not be [Euclidean](./rings.md#euclidean-domains) (as 
 However, one can perform division with remainder for polynomials as soon as the leading coefficient of the divisor is a unit.
 
 {{prop}}{prop:polynomial_division}
-*Let $\AA$ be an integral domain.
-Then for every polynomials $a,b \in \AA[X]$ such that the leading coefficient of $b$ is in $\AA^*$, there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.*
+*Let $\AA$ be a UCR.
+Then for every polynomials $a,b \in \AA[X]$ such that the leading coefficient of $b$ is in $\AA^*$ (i.e., a unit), there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.*
 
 > *Proof.*
 Consider the set of all polynomials of the form $a-cb$ for $c \in \AA[X]$:
