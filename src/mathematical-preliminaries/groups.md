@@ -758,12 +758,12 @@ The generalization can be proved by induction on $r$.
 Then there exists an element of $\GG$ of order $\lcm(n_1,n_2)$.*
 
 > *Proof.*
-Let $p_1^{e_1} \cdots p_r^{e_r}$ be the prime factor decomposition of $\lcm(n_1,n_2)$.
-For each $i \in \{1,\dots,r\}$, $p_i^{r_i}$ divides either $n_1$ or $n_2$.
+Let $p_1^{r_1} \cdots p_t^{r_t}$ be the prime factor decomposition of $\lcm(n_1,n_2)$.
+For each $i \in \{1,\dots,t\}$, $p_i^{r_i}$ divides either $n_1$ or $n_2$.
 Say it divides $n_1$ (the reasoning is similar if it divides $n_2$).
 Then, by {{ref: prop:order_of_gk}}, $a_1^{n_1/p_i^{r_i}}$ has order $n_1/\gcd(n_1,n_1/p_i^{r_i}) = p_i^{r_i}$.
-Hence, for each $i \in \{1,\dots,r\}$, there exists an element $b_i$ of order $p_i^{r_i}$.
-By {{ref: prop:order_of_product}}, $b_1 \cdots b_r$ has order $p_1^{e_1} \cdots p_r^{e_r} = \lcm(n_1,n_2)$.
+Hence, for each $i \in \{1,\dots,t\}$, there exists an element $b_i$ of order $p_i^{r_i}$.
+By {{ref: prop:order_of_product}}, $b_1 \cdots b_r$ has order $p_1^{r_1} \cdots p_t^{r_t} = \lcm(n_1,n_2)$.
 
 {{prop}}{prop:exists_element_order_exponent}
 *Let $\GG$ be an abelian group of finite exponent $m$.
