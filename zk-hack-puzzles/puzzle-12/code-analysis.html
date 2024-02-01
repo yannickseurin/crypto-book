@@ -194,7 +194,7 @@
 We will come back to this shortly.</p>
 <p>The first thing the <code>main</code> function does is to define a number of variables for the puzzle, in particular:</p>
 <ul>
-<li>a proving key and a verification key for the Groth16 [<a href="../../../references.html#Gro16">Gro16</a>] proof system over the MNT4-753 curve:</li>
+<li>a proving key and a verification key for the Groth16 [<a href="../../references.html#Gro16">Gro16</a>] proof system over the MNT4-753 curve:</li>
 </ul>
 <pre><code class="language-rust">    let (pk, vk): (
         &lt;Groth16&lt;MNT4_753&gt; as SNARK&lt;MNT4BigFr&gt;&gt;::ProvingKey,
@@ -223,7 +223,7 @@ We will come back to this shortly.</p>
     let root = tree.root();
     let leaf = &amp;leaves[i];
 </code></pre>
-<p>The hash function used to build the Merkle tree is the SNARK-friendly Poseidon hash function [<a href="../../../references.html#GKR+21">GKR+21</a>] with parameters specified in the <em>poseidon_parameters.rs</em> file.
+<p>The hash function used to build the Merkle tree is the SNARK-friendly Poseidon hash function [<a href="../../references.html#GKR+21">GKR+21</a>] with parameters specified in the <em>poseidon_parameters.rs</em> file.
 In particular, the underlying field is also the scalar field <code>MNT4BigFr</code> of the MNT4-753 curve.
 One can also print the leaves of the Merkle tree:</p>
 <pre><code class="language-rust"><span class="boring">use ark_ec::AffineRepr;
