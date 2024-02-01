@@ -58,4 +58,4 @@ Online phase for a given public vector `b` (can be repeated for different `b`s):
 
 This puzzle is about a zero-knowledge poof system allowing to prove some kind of inner-product relation between committed values.
 The puzzle instruction asks us to retrieve the witness of some instance and hence to break the zero-knowledge property of the scheme.
-It is recommended to read the chapters about [commitments](/cryptographic-notions/commitment-schemes.md) and [zero-knowledge proofs](/cryptographic-notions/zero-knowledge-proof-systems.md) before starting.
+It is recommended to read the chapters about [commitments](../../cryptographic-notions/commitment-schemes.md) and [zero-knowledge proofs](../../proof-systems/zero-knowledge-proofs.md) before starting.

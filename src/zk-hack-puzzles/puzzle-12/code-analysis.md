@@ -20,7 +20,7 @@ We will come back to this shortly.
 
 The first thing the `main` function does is to define a number of variables for the puzzle, in particular:
 
-- a proving key and a verification key for the Groth16 [[Gro16](../../../references.md#Gro16)] proof system over the MNT4-753 curve:
+- a proving key and a verification key for the Groth16 [[Gro16](../../references.md#Gro16)] proof system over the MNT4-753 curve:
 
 ```rust
     let (pk, vk): (
@@ -54,7 +54,7 @@ The first thing the `main` function does is to define a number of variables for 
 
 ```
 
-The hash function used to build the Merkle tree is the SNARK-friendly Poseidon hash function [[GKR+21](../../../references.md#GKR+21)] with parameters specified in the *poseidon_parameters.rs* file.
+The hash function used to build the Merkle tree is the SNARK-friendly Poseidon hash function [[GKR+21](../../references.md#GKR+21)] with parameters specified in the *poseidon_parameters.rs* file.
 In particular, the underlying field is also the scalar field `MNT4BigFr` of the MNT4-753 curve.
 One can also print the leaves of the Merkle tree:
 

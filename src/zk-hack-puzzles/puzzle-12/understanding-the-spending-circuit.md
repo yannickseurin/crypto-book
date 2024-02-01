@@ -100,8 +100,8 @@ Yet we saw previously that leaves of the Merkle tree were defined as elements of
 In fact, this is fine because MNT4-753 and MNT6-753 form a "cycle of curves", meaning the scalar field of one is the base field of the other.
 If $\FF_{q_4}$ and $\FF_{r_4}$ denote respectively the base field and the scalar field of MNT4-753 and $\FF_{q_6}$ and $\FF_{r_6}$ denote the base field and the scalar field of MNT6-753, then forming a cycle means that $q_6 = r_4$ and $q_4 = r_6$.
 
-Cycles of curves were proposed in [[BCTV14](../../../references.md#BCTV14)] to solve the "field mismatch" problem when composing SNARKs recursively [[BCCT13](../../../references.md#BCCT13)].
-For more background, see for example [[AHG23](../../../references.md#AHG23)].
+Cycles of curves were proposed in [[BCTV14](../../references.md#BCTV14)] to solve the "field mismatch" problem when composing SNARKs recursively [[BCCT13](../../references.md#BCCT13)].
+For more background, see for example [[AHG23](../../references.md#AHG23)].
 
 This concludes our inspection of the spending circuit.
 In short, to spend a coin, Alice must compute a Groth16 proof of satisfiability of the spending circuit using the secret key corresponding to the ($x$-coordinate of the) public key of the leaf representing the coin, a valid Merkle proof for this public key, and the corresponding nullifier, i.e., the hash of the secret.

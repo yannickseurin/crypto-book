@@ -7,11 +7,11 @@ In the context of discrete-log based signatures such as Schnorr or ECDSA signatu
 Vulnerable implementations lead, for example, to [the jailbreaking of Sony's Play Station 3](https://fahrplan.events.ccc.de/congress/2010/Fahrplan/events/4087.en.html) and [the theft of some bitcoins from Android wallets](https://arstechnica.com/information-technology/2013/08/google-confirms-critical-android-crypto-flaw-used-in-5700-bitcoin-heist/).
 Even if nonces are not repeated, seemingly small biases in nonce randomness [[BH19](../../references.md#BH19)] or partial information leakage (typically through side channels) [[ANT+20](../../references.md#ANT+20)] can be sufficient to retrieve the private key.
 
-For the proof system of this puzzle, note how the [proof that the system is extractable](../initial-inspection.md#proof-of-knowledge) exploits the fact that from two accepting transcripts with the same commitments $(C_r,C_1,C_2)$ but different challenges $\gamma$, one can compute a witness $(\bfa, \alpha)$.
+For the proof system of this puzzle, note how the [proof that the system is extractable](initial-inspection.md#proof-of-knowledge) exploits the fact that from two accepting transcripts with the same commitments $(C_r,C_1,C_2)$ but different challenges $\gamma$, one can compute a witness $(\bfa, \alpha)$.
 This property, which is used in the security proof in a "positive" sense, can actually give rise to a real attack in case a prover reuses the same randomness $(\rho, \tau, \nu)$ (and hence the same commitments) in two runs of the (interactive) protocol with different challenges.
 Here, because the Fiat-Shamir transform is used and the challenge is actually computed by hashing the commitment key, the instance, and the commitments, this would actually result in the same challenge and hence exactly the same transcript!
 (If you think of the corresponding attack for Schnorr signatures, the challenges are different if the victim signs *different* messages while reusing the same nonce.)
-However, one can check that the attack would work if the same randomness was reused for two different instances $(C_a, \bfb)$ and $(C_a, \bfb')$: the challenges obtained via Fiat-Shamir would be different (because $\bfb \neq \bfb'$) but the reasoning of the [extractability proof](../initial-inspection.md#proof-of-knowledge) still applies.
+However, one can check that the attack would work if the same randomness was reused for two different instances $(C_a, \bfb)$ and $(C_a, \bfb')$: the challenges obtained via Fiat-Shamir would be different (because $\bfb \neq \bfb'$) but the reasoning of the [extractability proof](initial-inspection.md#proof-of-knowledge) still applies.
 
 Ca we apply this attack here?
 Let us display the commitments in the two proofs:
@@ -88,4 +88,4 @@ Here is the code computing $\bfa$ and $\alpha$ and checking that they yield the 
 
 The lesson of this puzzle is that one should never try to optimize a Sigma protocol (or any kind of ZK proof) by compromising on the quality of the randomness used by the prover.
 It is not enough for commitments in different runs of a sigma protocol to be different, they must be computed using independent and fresh randomness in each run.
-In case the prover does not have access to a reliable source of randomness, one can use proof systems satisfying the stronger *resettable zero-knowledge* notion [[CGGM00](../../../references.md#CGGM00)].
+In case the prover does not have access to a reliable source of randomness, one can use proof systems satisfying the stronger *resettable zero-knowledge* notion [[CGGM00](../../references.md#CGGM00)].
