@@ -523,7 +523,7 @@ These two observations can be checked directly with</p>
 </span><span class="boring">    println!(&quot;Puzzle solved!&quot;);
 </span><span class="boring">}</span></code></pre>
 <p>(For this, one needs to derive the <code>PartialEq</code> trait for structures <code>CommitKey</code> and <code>Instance</code>).</p>
-<p>As we explained in the section about <a href="/cryptographic-notions/commitment-schemes.html#pedersen-commitments">Pedersen commitments</a>, the knowledge of discrete log relations between the group elements in the commitment key constitutes a trapdoor allowing to break the binding property of the commitment scheme.
+<p>As we explained in the section about <a href="../../cryptographic-notions/commitment-schemes.html#pedersen-commitments">Pedersen commitments</a>, the knowledge of discrete log relations between the group elements in the commitment key constitutes a trapdoor allowing to break the binding property of the commitment scheme.
 However, this does not seem like a promising avenue to solve the puzzle.
 On the one hand, this trapdoor does not allow to break the hiding property of the commitment scheme, which is what we would need to recover <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord mathbf">a</span><span class="mord">.</span></span></span></span>
 On the other hand, function <code>sample</code> does things correctly by sampling uniformly random and independent group elements using a pseudorandom number generator seeded with NUMS string &quot;zkHack IPA puzzle for 2021-10-26&quot;.</p>
