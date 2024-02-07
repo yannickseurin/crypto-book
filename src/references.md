@@ -2,6 +2,8 @@
 
 <a id="ABR01">**[ABR01]**</a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. [*DHIES: An encryption scheme based on the Diffie-Hellman Problem*](https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf). Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).
 
+<a id="ADR02">**[ADR02]**</a> Jee Hea An, Yevgeniy Dodis, and Tal Rabin. [*On the Security of Joint Signature and Encryption*](https://eprint.iacr.org/2002/046.pdf). In proceedings of EUROCRYPT 2002.
+
 <a id="AHG23">**[AHG23]**</a> Diego F. Aranha, Youssef El Housni, and Aurore Guillevic. [*A survey of elliptic curves for proof systems*](https://eprint.iacr.org/2022/586.pdf). In Designs, Codes and Cryptography, 2023.
 
 <a id="ANT+20">**[ANT+20]**</a> Diego F. Aranha, Felipe Rodrigues Novaes, Akira Takahashi, Mehdi Tibouchi, and Yuval Yarom. [*LadderLeak: Breaking ECDSA with Less than One Bit of Nonce Leakage*](https://eprint.iacr.org/2020/615.pdf). In proceedings of ACM CCS 2020.
@@ -89,6 +91,8 @@
 <a id="Lip10">**[Lip10]**</a> Helger Lipmaa. [*Progression-Free Sets and Sublinear Pairing-Based Non-Interactive Zero-Knowledge Arguments*](https://eprint.iacr.org/2011/009.pdf). In proceedings of TCC 2012.
 
 <a id="LL97">**[LL97]**</a> Chae Hoon Lim and Pil Joong Lee. [*A Key Recovery Attack on Discrete Log-based Schemes Using a Prime Order Subgroup*](https://link.springer.com/content/pdf/10.1007/BFb0052240.pdf). In proceedings of CRYPTO 1997.
+
+<a id="LQ04">**[LQ04]**</a> Benoît Libert and Jean-Jacques Quisquater. [*Efficient Signcryption with Key Privacy from Gap Diffie-Hellman Groups*](https://iacr.org/archive/pkc2004/29470185/29470185.pdf). In proceedings of PKC 2004.
 
 <a id="MOV91">**[MOV91]**</a> Alfred Menezes, Tatsuaki Okamoto, and Scott A. Vanstone. [*Reducing Elliptic Curve Logarithms to Logarithms in a Finite Field*](https://dl.acm.org/doi/pdf/10.1145/103418.103434). In proceedings of STOC 1991.
 
