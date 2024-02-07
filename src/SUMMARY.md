@@ -57,7 +57,7 @@
     - [Code Analysis](zk-hack-puzzles/puzzle-12/code-analysis.md)
     - [Understanding the Spending Circuit](zk-hack-puzzles/puzzle-12/understanding-the-spending-circuit.md)
     - [Solving the Puzzle](zk-hack-puzzles/puzzle-12/solving-the-puzzle.md)
-- [Puzzle 13: Supervillain]()
+- [Puzzle 13: Supervillain](zk-hack-puzzles/puzzle-13/puzzle-13.md)
 - [Puzzle 14: Chaos Theory](zk-hack-puzzles/puzzle-14/puzzle-14.md)
 
 [References](references.md)
