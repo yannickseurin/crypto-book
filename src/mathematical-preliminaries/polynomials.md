@@ -1,4 +1,4 @@
-> **Chapter status:** 👷 in progress 👷
+> **Chapter status:** &nbsp; 👷 &nbsp; in progress &nbsp; 👷
 >
 > **TODO:**
 

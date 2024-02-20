@@ -73,7 +73,7 @@ Defining security properties for PC schemes is rather subtle.
 Almost every paper about PC schemes define slightly different sets of security properties depending on the specific application being targeted.
 Here, we focus on the security properties proposed in the seminal paper about PC schemes [[KZG10a](../references.md#KZG10a)], which are also the simplest ones.
 
-First, a PC scheme should be hiding and binding [in the standard sense when seen as a commitment](./commitment-schemes.html#security) to the tuple of coefficients $(a_0, \dots, a_d) \in \FF^{d+1}$ defining the polynomial $p$.
+First, a PC scheme should be hiding and binding [in the standard sense when seen as a commitment](./commitment-schemes.md#security) to the tuple of coefficients $(a_0, \dots, a_d) \in \FF^{d+1}$ defining the polynomial $p$.
 Let us the recall the corresponding games, that we call POLY-HIDING and POLY-BINDING for clarity:
 
 \[
@@ -370,7 +370,7 @@ $\bdv$ runs in time $t$ (where $t$ is the running time of $\adv$) plus the time 
 
 The only thing that a commitment $C$ commits to, information-theoretically speaking, is the value $p(\tau)$.
 Hence, the DL-KZG scheme is certainly not statistically poly-binding: an adversary able to compute $\tau$ from the public parameters can very easily decommit any commitment $C = cG_1$ to any polynomial $p$ such that $p(\tau)=c$.
-However, for an adversary unable to compute $\tau$ from the public parameters, which is an instance of what we call the [$(d,1)$-co-DL problem](./games-models-and-assumptions.html#qq-co-discrete-logarithm-qq-co-dl), there is only a negligible chance that it can find two polynomials $p$ and $q$ such that $p(\tau) G_1 = q(\tau) G_1 = C$.
+However, for an adversary unable to compute $\tau$ from the public parameters, which is an instance of what we call the [$(d,1)$-co-DL problem](./games-models-and-assumptions.md#q1q2-co-discrete-logarithm-q1q2-co-dl), there is only a negligible chance that it can find two polynomials $p$ and $q$ such that $p(\tau) G_1 = q(\tau) G_1 = C$.
 More formally, we have the following result.
 
 {{thm}}

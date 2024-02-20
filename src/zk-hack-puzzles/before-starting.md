@@ -15,7 +15,6 @@ This is a fun way to learn about advanced cryptographic schemes such as BLS sign
 There are many great write-ups already available for every puzzle.
 The goal of this walk-through is to give an in-depth analysis of the cryptography underlying each puzzle.
 
-Needless to say, all the solutions given here are only one of the many ways to solve the puzzles.
 We encourage the reader to regularly pause and try to come with its own solution!
 
 The full code of the solutions is available at <https://github.com/yannickseurin/crypto-book/tree/main/puzzles>.
@@ -51,5 +50,5 @@ Understanding the organization of the project's code requires some basic knowled
 
 - Paths to files are given relatively to the puzzle directory.
 - Most Rust snippets have an eyeball icon which will toggle the visibility of hidden lines.
-- The puzzles are based on version 0.3 of the `arkworks` libraries, but version 0.4 has been released meanwhile with a handful of breaking changes; we will strive to indicate those affecting the relevant part of the crates.
+- Puzzles 1 to 11 are based on version 0.3 of the `arkworks` libraries, but version 0.4 has been released meanwhile with a handful of breaking changes (puzzle 12 and beyond use version 0.4); we will strive to indicate those affecting the relevant part of the crates.
 - We often switch between mathematical notation and Rust variables. We write $v \cong$ `var` or `var` $\cong v$ to identify the mathematical variable $v$ and the Rust variable `var`.

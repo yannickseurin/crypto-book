@@ -1,4 +1,4 @@
-> **Chapter status:** ✅ in good shape ✅
+> **Chapter status:** &nbsp; ✅ &nbsp; in good shape &nbsp; ✅
 >
 > **TODO:** some proofs missing
 
@@ -201,7 +201,7 @@ Hence, Lagrange theorem states that
  |\GG| = [\GG:\HH] |\HH|.
 \]
 
-## Normal Subgroups and Quotient Groups
+## Normal Subgroups
 
 Having defined an equivalence relation associated with a subgroup, one may ask whether the set of right (or left) cosets can be equipped with a group structure.
 This is where the notion of normal subgroup comes into play.
@@ -223,6 +223,8 @@ For abelian groups, the situation is pretty simple.
 > *Proof.*
 If $\GG$ is abelian and $\HH$ is a subgroup of $\GG$, then for any $h \in \HH$, $ghg^{-1} = gg^{-1}h = h$ and hence $g \HH g^{-1} = \HH$.
 By {{ref: prop:normal_subgroup_crit}}, this implies that $\HH$ is normal.
+
+## Quotient Groups
 
 Let $\GG$ be a group and let $\sim$ be an equivalence relation on $\GG$.
 We say that $\sim$ is *compatible with the group structure of $\GG$* if $a \sim b$ and $c \sim d$ implies $ac \sim bd$.
