@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../.././assets/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h2 id="code-analysis"><a class="header" href="#code-analysis">Code Analysis</a></h2>
 <p>The package directory is organized as follows:</p>
 <pre><code class="language-text">puzzle-gamma-ray
@@ -513,6 +515,10 @@ For more details about how nullifiers work, <a href="https://electriccoin.co/blo
 <p>As we can see, we must find another nullifier <code>nullifier_hack</code> (different from <code>nullifier</code>) and another secret <code>secret_hack</code> allowing to spend the same coin again (this is the same coin because the second Groth16 proof uses the same Merkle root <code>root</code> and the same Merkle proof <code>tree_proof</code> as the first Groth16 proof).</p>
 <p>Next, let us unravel what the spending circuit does.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -561,6 +567,7 @@ For more details about how nullifiers work, <a href="https://electriccoin.co/blo
         <!-- Custom JS scripts -->
         <script src="../.././assets/mermaid.min.js"></script>
         <script src="../.././assets/mermaid-init.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
 
 
     </div>

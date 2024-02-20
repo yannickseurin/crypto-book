@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../.././assets/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="puzzle-3-double-trouble"><a class="header" href="#puzzle-3-double-trouble">Puzzle 3: Double Trouble</a></h1>
 <ul>
 <li><a href="https://zkhack.dev/events/puzzle3.html">puzzle page</a></li>
@@ -238,6 +240,10 @@ Online phase for a given public vector `b` (can be repeated for different `b`s):
 The puzzle instruction asks us to retrieve the witness of some instance and hence to break the zero-knowledge property of the scheme.
 It is recommended to read the chapters about <a href="../../cryptographic-notions/commitment-schemes.html">commitments</a> and <a href="../../proof-systems/zero-knowledge-proofs.html">zero-knowledge proofs</a> before starting.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -286,6 +292,7 @@ It is recommended to read the chapters about <a href="../../cryptographic-notion
         <!-- Custom JS scripts -->
         <script src="../.././assets/mermaid.min.js"></script>
         <script src="../.././assets/mermaid-init.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
 
 
     </div>

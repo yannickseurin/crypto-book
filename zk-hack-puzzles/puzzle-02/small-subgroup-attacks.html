@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../.././assets/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h2 id="small-subgroup-attacks"><a class="header" href="#small-subgroup-attacks">Small Subgroup Attacks</a></h2>
 <p>Actually, the puzzle webpage was giving us a hint by advising us to read a paper by Cremers and Jackson [<a href="../../references.html#CJ19">CJ19</a>] about so-called <em>small subgroup attacks</em>.
 Small subgroup attacks (more specifically, small subgroup <em>key recovery</em> attacks, as there are other flavors such as small subgroup <em>confinement</em> attacks that we won't touch here) have been proposed by Lim and Lee in 1997 [<a href="../../references.html#LL97">LL97</a>] and vulnerable implementations have been found in the wild [<a href="../../references.html#VAS+17">VAS+17</a>].</p>
@@ -237,6 +239,10 @@ If this "ghost" curve has a smooth order, computing <span class="katex"><span cl
 This is called an <em>invalid curve attack</em> and has affected for example some implementations of TLS [<a href="../../references.html#JSS15">JSS15</a>] and the Bluetooth protocol [<a href="../../references.html#BN19">BN19</a>].</p>
 <p>Let's now see how to apply all this to the puzzle.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -285,6 +291,7 @@ This is called an <em>invalid curve attack</em> and has affected for example som
         <!-- Custom JS scripts -->
         <script src="../.././assets/mermaid.min.js"></script>
         <script src="../.././assets/mermaid-init.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
 
 
     </div>

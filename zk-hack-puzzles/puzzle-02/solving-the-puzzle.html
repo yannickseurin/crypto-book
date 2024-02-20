@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../.././assets/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h2 id="solving-the-puzzle"><a class="header" href="#solving-the-puzzle">Solving the Puzzle</a></h2>
 <h3 id="subgroup-membership-checks"><a class="header" href="#subgroup-membership-checks">Subgroup Membership Checks</a></h3>
 <p>Now that we know about small subgroup attacks, a natural idea is to check whether <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> are in the "correct" subgroups, i.e., the subgroups of large prime order specified by the BLS12-381 parameters.
@@ -423,6 +425,10 @@ If you feel this is a step aside from the type safety philosophy of Rust, it is 
 }</code></pre>
 <p>and to implement a public constructor for it that will never return an <code>Unchecked</code> variant if there is a possibility that the corresponding point is not in the correct subgroup.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -471,6 +477,7 @@ If you feel this is a step aside from the type safety philosophy of Rust, it is 
         <!-- Custom JS scripts -->
         <script src="../.././assets/mermaid.min.js"></script>
         <script src="../.././assets/mermaid-init.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
 
 
     </div>

@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="./assets/custom.css">
+        <link rel="stylesheet" href="theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="references"><a class="header" href="#references">References</a></h1>
 <p><a id="ABR01"><strong>[ABR01]</strong></a> Michel Abdalla, Mihir Bellare, and Phillip Rogaway. <a href="https://web.cs.ucdavis.edu/~rogaway/papers/dhies.pdf"><em>DHIES: An encryption scheme based on the Diffie-Hellman Problem</em></a>. Manuscript, 2001 (preliminary version in the proceedings of CT-RSA 2001).</p>
 <p><a id="ADR02"><strong>[ADR02]</strong></a> Jee Hea An, Yevgeniy Dodis, and Tal Rabin. <a href="https://eprint.iacr.org/2002/046.pdf"><em>On the Security of Joint Signature and Encryption</em></a>. In proceedings of EUROCRYPT 2002.</p>
@@ -237,6 +239,10 @@
 <p><a id="VAS+17"><strong>[VAS+17]</strong></a> Luke Valenta, David Adrian, Antonio Sanso, Shaanan Cohney, Joshua Fried, Marcella Hastings, J. Alex Halderman, and Nadia Heninger. <a href="https://eprint.iacr.org/2016/995.pdf"><em>Measuring small subgroup attacks against Diffie-Hellman</em></a>. In proceedings of NDSS 2017.</p>
 <p><a id="WB19"><strong>[WB19]</strong></a> Riad S. Wahby and Dan Boneh. <a href="https://eprint.iacr.org/2019/403.pdf"><em>Fast and simple constant-time hashing to the BLS12-381 elliptic curve</em></a>. IACR ePrint report 2019/403, 2019.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -279,6 +285,7 @@
         <!-- Custom JS scripts -->
         <script src="./assets/mermaid.min.js"></script>
         <script src="./assets/mermaid-init.js"></script>
+        <script src="theme/pagetoc.js"></script>
 
 
     </div>

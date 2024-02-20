@@ -70,11 +70,12 @@
 \qh:q_{\mathrm{h}}
 \qs:q_{\mathrm{s}}
 
-\t:\;\;
+\t:\quad
 \pcreturn:\mathbf{return}\ 
 \pcfor:\mathbf{for}\ 
 \pcdo:\ \mathbf{do}
 \pcif:\mathbf{if}\ 
+\pcelse:\mathbf{else}
 \pcthen:\ \mathbf{then}
 \pcassert:\mathbf{assert}\ 
 \pclinecomment:{/\!\!/ \text{\scriptsize #1}}

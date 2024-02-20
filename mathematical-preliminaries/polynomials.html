@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href=".././assets/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,9 +178,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <blockquote>
-<p><strong>Chapter status:</strong> 👷 in progress 👷</p>
+<p><strong>Chapter status:</strong>   👷   in progress   👷</p>
 <p><strong>TODO:</strong></p>
 </blockquote>
 <h1 id="polynomials"><a class="header" href="#polynomials">Polynomials</a></h1>
@@ -531,6 +533,10 @@ Its formal derivative is simply
 <h3 id="applications"><a class="header" href="#applications">Applications</a></h3>
 <p>An important application of Lagrange interpolation is <a href="https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing">Shamir's secret sharing</a>.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -579,6 +585,7 @@ Its formal derivative is simply
         <!-- Custom JS scripts -->
         <script src=".././assets/mermaid.min.js"></script>
         <script src=".././assets/mermaid-init.js"></script>
+        <script src="../theme/pagetoc.js"></script>
 
 
     </div>

@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../.././assets/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h2 id="solving-the-puzzle"><a class="header" href="#solving-the-puzzle">Solving the Puzzle</a></h2>
 <p>Where are we left at after this code analysis?
 The proof system seems to be well designed, so presumably the problem is with the "proprietary prover" developed by Bob.
@@ -513,6 +515,10 @@ Similarly, from <span class="katex"><span class="katex-html" aria-hidden="true">
 It is not enough for commitments in different runs of a sigma protocol to be different, they must be computed using independent and fresh randomness in each run.
 In case the prover does not have access to a reliable source of randomness, one can use proof systems satisfying the stronger <em>resettable zero-knowledge</em> notion [<a href="../../references.html#CGGM00">CGGM00</a>].</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -561,6 +567,7 @@ In case the prover does not have access to a reliable source of randomness, one 
         <!-- Custom JS scripts -->
         <script src="../.././assets/mermaid.min.js"></script>
         <script src="../.././assets/mermaid-init.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
 
 
     </div>

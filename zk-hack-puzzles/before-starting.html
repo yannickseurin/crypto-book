@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href=".././assets/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="before-starting"><a class="header" href="#before-starting">Before Starting</a></h1>
 <pre><code>    ______ _   __  _   _            _
     |___  /| | / / | | | |          | |
@@ -190,8 +192,7 @@
 This is a fun way to learn about advanced cryptographic schemes such as BLS signatures, KZG polynomial commitments, proof systems and more, to improve its skills in Rust and Sage, and to delve into the <code>arkworks</code> libraries suite.</p>
 <p>There are many great write-ups already available for every puzzle.
 The goal of this walk-through is to give an in-depth analysis of the cryptography underlying each puzzle.</p>
-<p>Needless to say, all the solutions given here are only one of the many ways to solve the puzzles.
-We encourage the reader to regularly pause and try to come with its own solution!</p>
+<p>We encourage the reader to regularly pause and try to come with its own solution!</p>
 <p>The full code of the solutions is available at <a href="https://github.com/yannickseurin/crypto-book/tree/main/puzzles">https://github.com/yannickseurin/crypto-book/tree/main/puzzles</a>.</p>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>All puzzles use Rust and require some familiarity with this language.
@@ -215,10 +216,14 @@ Understanding the organization of the project's code requires some basic knowled
 <ul>
 <li>Paths to files are given relatively to the puzzle directory.</li>
 <li>Most Rust snippets have an eyeball icon which will toggle the visibility of hidden lines.</li>
-<li>The puzzles are based on version 0.3 of the <code>arkworks</code> libraries, but version 0.4 has been released meanwhile with a handful of breaking changes; we will strive to indicate those affecting the relevant part of the crates.</li>
+<li>Puzzles 1 to 11 are based on version 0.3 of the <code>arkworks</code> libraries, but version 0.4 has been released meanwhile with a handful of breaking changes (puzzle 12 and beyond use version 0.4); we will strive to indicate those affecting the relevant part of the crates.</li>
 <li>We often switch between mathematical notation and Rust variables. We write <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≅</span></span></span></span> <code>var</code> or <code>var</code> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> to identify the mathematical variable <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> and the Rust variable <code>var</code>.</li>
 </ul>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -267,6 +272,7 @@ Understanding the organization of the project's code requires some basic knowled
         <!-- Custom JS scripts -->
         <script src=".././assets/mermaid.min.js"></script>
         <script src=".././assets/mermaid-init.js"></script>
+        <script src="../theme/pagetoc.js"></script>
 
 
     </div>

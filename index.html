@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="./assets/custom.css">
+        <link rel="stylesheet" href="theme/pagetoc.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -177,7 +178,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+                        <div class="content-wrap">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>This book is an ongoing effort to gather some notes about cryptography with a focus on schemes which are relevant to <a href="https://dci.mit.edu/decentralizedweb">the decentralized web</a> such as multiparty signatures, zero-knowledge proofs, etc.</p>
 <p>For now it consists of the following parts:</p>
@@ -230,6 +232,10 @@
 </ul>
 <p>If you spot anything off, I'd be happy to get your feedback and acknowledge it here.</p>
 
+                        </div>
+                        <div class="sidetoc">
+                            <nav class="pagetoc"></nav>
+                        </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -272,6 +278,7 @@
         <!-- Custom JS scripts -->
         <script src="./assets/mermaid.min.js"></script>
         <script src="./assets/mermaid-init.js"></script>
+        <script src="theme/pagetoc.js"></script>
 
 
     </div>
