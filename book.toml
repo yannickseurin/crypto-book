@@ -8,7 +8,7 @@ title = "Crypto Book (Work in Progress)"
 [output.html]
 site-url = "/crypto-book/"
 no-section-label = false
-additional-css = ["./assets/custom.css", "theme/pagetoc.css"]
+additional-css = ["./assets/custom.css", "theme/pagetoc.css", "./assets/mdbook-admonish.css", "./assets/mdbook-admonish-custom.css"]
 additional-js = ["./assets/mermaid.min.js", "./assets/mermaid-init.js", "theme/pagetoc.js"]
 git-repository-url = "https://github.com/yannickseurin/crypto-book"
 default-theme = "rust"
@@ -43,3 +43,12 @@ prefix = true
 
 [preprocessor.footnote]
 after = ["numthm"]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[[preprocessor.admonish.custom]]
+directive = "proof"
+icon = "./assets/scroll.svg"
+color = "#0080ff"

@@ -11,7 +11,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install mdbook and preprocessors
-        run: cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-mermaid mdbook-mathpunc mdbook-numeq mdbook-numthm
+        run: cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-mermaid mdbook-mathpunc mdbook-numeq mdbook-numthm mdbook-admonish
+
+      - name: Generate css for mdbook-admonish
+        run: |
+          mdbook-admonish install --css-dir ./assets
+          mdbook-admonish generate-custom ./assets/mdbook-admonish-custom.css
 
       - name: Build html
         run: mdbook build

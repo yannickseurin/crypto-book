@@ -34,7 +34,7 @@ The use of determiner *the* for the identity element and the inverse of an eleme
 {{prop}}{prop:unique_identity_inverse}
 *Let $\GG$ be a group. Then $\GG$ has a unique identity element and every element $a \in \GG$ has a unique inverse.*
 
-> *Proof.*
+```admonish proof
 Assume that $\GG$ has two identity elements $e$ and $e$.
 Then $e \star e' = e$ (because $e'$ is an identity element) and $e \star e' = e'$ (because $e$ is an identity element), hence $e=e'$.
 Assume that some group element $a$ has two inverses $b$ and $b'$.
@@ -46,6 +46,7 @@ Then
    & = e \star b' \\
    & = b'.
 \end{aligned}\]
+```
 
 The group consisting of a single element $e$ such that $e \star e = e$ is called the ***trivial group***.
 
