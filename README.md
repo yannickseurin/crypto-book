@@ -11,6 +11,7 @@ The book is built with [mdBook](https://rust-lang.github.io/mdBook/) using the f
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
 - [mdbook-footnote](https://github.com/daviddrysdale/mdbook-footnote)
 - [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)
 - [mdbook-numthm](https://github.com/yannickseurin/mdbook-numthm)
 - [mdbook-numeq](https://github.com/yannickseurin/mdbook-numeq)
 - [mdbook-mathpunc](https://github.com/yannickseurin/mdbook-mathpunc)
@@ -29,10 +30,17 @@ Then install mdbook and the preprocessors with:
 
 ```shell
 cargo install mdbook
-cargo install mdbook-katex mdbook-toc mdbook-footnote mdbook-mermaid mdbook-numthm mdbook-numeq mdbook-mathpunc
+cargo install mdbook-katex mdbook-toc mdbook-footnote mdbook-mermaid mdbook-admonish mdbook-numthm mdbook-numeq mdbook-mathpunc
 ```
 
-Run
+Then run mdbook-admonish to install required CSS files:
+
+```shell
+mdbook-admonish install --css-dir ./assets
+mdbook-admonish generate-custom ./assets/mdbook-admonish-custom.css
+```
+
+Then run:
 
 ```shell
 mdbook serve --open
