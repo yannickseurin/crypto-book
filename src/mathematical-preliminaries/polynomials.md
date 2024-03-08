@@ -69,11 +69,12 @@ Moreover, if the leading coefficient of either $p$ or $q$ is not a zero divisor,
  \deg(pq) = \deg(p) + \deg(q).
 \]*
 
-> *Proof.*
+```admonish proof collapsible=true
 The first two inequalities follow straightforwardly from the definition of addition and multiplication in $\AA[X]$.
 For the last part of the proposition, assume that $p$ has leading term $a X^n$ and $q$ has leading term $b X^m$ with $a \neq 0$ and $b \neq 0$.
 Then $pq$ has leading term $ab X^{n+m}$ with $ab \neq 0$ as otherwise $a$ and $b$ would be zero divisors.
 Hence, $\deg(pq) = n+m = \deg(p) + \deg(q)$.
+```
 
 On the other hand, when $\AA$ has [zero divisors](./rings.md#zero-divisors-and-integral-domains), then one might have $\deg(pq) < \deg(p) + \deg(q)$ if the leading terms of $p$ and $q$ are $a X^n$ and $b X^m$ with $ab=0$.
 
@@ -86,13 +87,14 @@ Then*
 - *for any polynomials $p,q \in \DD[X]$, $\deg(pq) = \deg(p) + \deg(q)$;*
 - *the units of $\DD[X]$ are the constant polynomials $p(X) = u$ for $u \in \DD^*$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Let $p$ and $q$ be two non-zero polynomials in $\DD[X]$.
 If $p$ has leading term $a X^n$ and $q$ has leading term $b X^m$ with $a \neq 0$ and $b \neq 0$, then $pq$ has leading term $ab X^{n+m}$ with $ab \neq 0$ since $\DD$ is an integral domain.
 Hence, $pq$ is not the zero polynomial.
 This also shows that $\deg(pq) = \deg(p) + \deg(q)$.
 Clearly, for any unit $u \in \DD^*$, the constant polynomial $p(X) = u$ is a unit with inverse the constant polynomial $u^{-1}$.
 Conversely, if polynomials $p$ and $q$ are such that $pq = 1$, then (by the second point) necessarily $\deg(p) = \deg(q) = 0$, i.e., $p$ and $q$ are constant polynomials, and by definition these constants are units of $\DD$.
+```
 
 ## Divisibility in Polynomial Rings
 
@@ -110,7 +112,7 @@ Then for every $b \in \DD[X]$ such that the leading coefficient of $b$ is not a 
 \]
 In particular, this always holds when $\AA$ is an integral domain.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Let $b$ be a polynomial dividing $a$.
 By definition, there exists $q \in \AA[X]$ such that $a = qb$.
 Since the leading coefficient of $b$ is not a zero divisor, by {{ref: prop:properties_of_degree}},
@@ -118,6 +120,7 @@ Since the leading coefficient of $b$ is not a zero divisor, by {{ref: prop:prope
  \deg(a) = \deg(q) + \deg(b).
 \]
 Note that $q$ cannot be the zero polynomial as this would imply $a = 0$, hence $\deg(q) \ge 0$ and thus $\deg(a) \ge \deg(b)$.
+```
 
 It is easy to see that this proposition does not hold when the leading coefficient of $b$ is a zero divisor: for example, over $\ZZ_4$,
 \[
@@ -135,7 +138,7 @@ However, one can perform division with remainder for polynomials as soon as the 
 *Let $\AA$ be a UCR.
 Then for every polynomials $a,b \in \AA[X]$ such that the leading coefficient of $b$ is in $\AA^*$ (i.e., a unit), there exists unique polynomials $q$ and $r$ such that $a = bq+r$ and $\deg(r) < \deg(b)$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Consider the set of all polynomials of the form $a-cb$ for $c \in \AA[X]$:
 \[
  S \defeq \{a-cb \mid c \in \AA[X]\}.
@@ -146,13 +149,13 @@ Indeed, assume that this does not hold.
 Let $u X^n$ and $v X^m$ be the leading terms of $b$ and $r$ respectively, with $m \ge n$ and $u \in \AA^*$.
 Consider the polynomial $r'$ defined as
 \[
-r'(X) \defeq r(X) - vu^{-1}X^{m-n} b(X).
+ r'(X) \defeq r(X) - vu^{-1}X^{m-n} b(X).
 \]
 Then $r' \in S$.
 Since the leading terms of $r(X)$ and $vu^{-1}X^{m-n} b(X)$ are both $v X^m$, they cancel and the leading term of $r'$ has degree at most $m-1$, so that $\deg(r') < \deg(r)$, contradicting the assumption that $r$ has minimal degree in $S$.
 Hence, $\deg(r) < \deg(b)$, which proves existence of a suitable pair $(q,r)$.
->
-> Let us show uniqueness.
+
+Let us show uniqueness.
 Assume that there exists two pairs of polynomials $(q,r) \neq (q',r')$ such that $a=qb+r$, $a=q'b+r'$, $\deg(r) < \deg(b)$, and $\deg(r') < \deg(b)$.
 Then
 \[
@@ -170,7 +173,7 @@ On the other hand, by {{ref: prop:properties_of_degree}},
 \deg(r-r') \le \max \{\deg(r),\deg(r')\} < \deg(b).
 \]
 This is a contradiction and hence we must have $q = q'$ and hence $r = r'$, proving uniqueness.
-
+```
 
 
 | $\AA$ | impl./equ. | $\AA[X]$      | see |
@@ -199,25 +202,25 @@ As wee will see below, if $\AA$ is an infinite integral domain, though, there is
 We say that $u$ is a ***root*** of $p(X)$ if $p(u) = 0$.
 The following result gives an important sufficient and necessary condition for a ring element to be a root of a polynomial.
 
-{{thm}}{thm:factor}[Factor Theorem]
+{{thm}}{thm:factor}[factor theorem]
 *Let $\AA$ be a UCR, $p \in \AA[X]$ be a polynomial and $u \in \AA$ be a ring element.
 Then $u$ is a root of $p(X)$ if and only if $X-u$ divides $p(X)$.*
 
-The Factor Theorem is actually a special case of the following result.
+The factor theorem is actually a special case of the following result.
 
-{{thm}}{thm:polynomial_remainder}[Polynomial Remainder Theorem]
+{{thm}}{thm:polynomial_remainder}[polynomial remainder theorem]
 *Let $\AA$ be a UCR, $p \in \AA[X]$ be a polynomial and $u,v \in \AA$ be ring elements.
 Then $p(u) = v$ if and only if $X-u$ divides $p(X)-v$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Assume that $X-u$ divides $p(X)-v$.
 Then there exists $q \in \AA[X]$ such that
 \[
  p(X)-v = q(X)(X-u).
 \]
 Evaluating the two sides of this equality at $u$ yields $p(u)-v=0$, i.e., $p(u) = v$.
->
-> Conversely, assume that $p(u) = v$.
+
+Conversely, assume that $p(u) = v$.
 Since the leading coefficient of $X-u$ is a unit, by {{ref: prop:polynomial_division}}, there exists polynomials $q$ and $r$ such that
 \[
  p(X) = (X-u) q(X) + r(X)
@@ -229,26 +232,27 @@ where
 Hence, the polynomial $r$ must be a constant.
 Evaluating the polynomial equality at $u$, we obtain that $r = p(u)$.
 Hence, $p(X)-v = (X-u)q(X)$, which exactly means that $X-u$ divides $p(X)-v$.
+```
 
 Note that the statement "$X-u$ divides $p(X)-v$" is equivalent to the statement "$v$ is the remainder of the division of $p(X)$ by $X-u$", hence the name of the theorem.
 
 The factor theorem (which holds over any UCR) generalizes to multiple roots naturally, however only over *integral domains*.
-(We will see how the Polynomial Remainder Theorem generalizes to multiple evaluations [in a moment](#thm:generalized_polynomial_remainder).)
+(We will see how the polynomial remainder theorem generalizes to multiple evaluations [in a moment](#thm:generalized_polynomial_remainder).)
 
-{{thm}}{thm:generalized_factor}[Generalized Factor Theorem]
+{{thm}}{thm:generalized_factor}[generalized factor theorem]
 *Let $\DD$ be an integral domain, $p \in \DD[X]$ be a polynomial, and $u_1,\dots,u_n \in \DD$ be $n$ distinct ring elements.
 Then $u_1,\dots,u_n$ are roots of $p$ if and only if $\prod_{i=1}^n (X-u_i)$ divides $p$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Assume that $\prod_{i=1}^n (X-u_i)$ divides $p$.
 Then there exists $q \in \DD[X]$ such that
 \[
  p(X) = q(X) \prod_{i=1}^n (X-u_i)
 \]
 which implies that $p(u_1) = \dots = p(u_n) = 0$.
->
-> We will prove the converse by induction on $n$.
-> The case $n=1$ is simply the {{tref: thm:factor}}.
+
+We will prove the converse by induction on $n$.
+The case $n=1$ is simply the {{tref: thm:factor}}.
 Assume that the implication holds for $n-1$ and let us prove that it holds for $n$.
 Let $p \in \DD[X]$ and $u_1,\dots,u_n$ be distinct roots of $p$.
 Since $u_n$ is in particular a root of $p$, by the {{tref: thm:factor}}, there exists $q \in \DD[X]$ such that
@@ -262,6 +266,7 @@ Moreover, for every $i \in \{1,\dots,n-1\}$,
 which implies that $q(u_i) = 0$ since $u_i$ and $u_n$ are distinct and $\DD$ has no zero divisors.
 Hence, $u_1,\dots,u_{n-1}$ are roots of $q$, which by the induction hypothesis implies that $\prod_{i=1}^{n-1} (X-u_i)$ divides $q$.
 Since $p(X) = (X-u_n)q(X)$, $\prod_{i=1}^n (X-u_i)$ divides $p$.
+```
 
 This has an important consequence regarding the maximal number of roots of a polynomial.
 
@@ -269,13 +274,13 @@ This has an important consequence regarding the maximal number of roots of a pol
 *Let $\DD$ be an integral domain and let $p \in \DD[X]$ be a non-zero polynomial of degree $d$.
 Then $p$ has at most $d$ distinct roots in $\DD$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 This follows easily from the {{tref: thm:generalized_factor}}.
 Indeed, assume that $p$ has degree $d$ and has $n > d$ roots.
 Let $u_1,\dots,u_n$ denote the roots of $p$.
 Then $\prod_{i=1}^n (X-u_i)$ divides $p$, a contradiction with {{ref: prop:degree_divisor}} as a polynomial of degree $n$ cannot divide a non-zero polynomial of degree $d < n$.
->
-> Let us prove the proposition directly by induction on $d$.
+
+Let us prove the proposition directly by induction on $d$.
 The result clearly holds for $d=0$.
 Let $d \ge 1$ and assume that the result holds for degree $0, \dots, d-1$.
 Let $p \in \DD[X]$ be a polynomial of degree $d$.
@@ -284,6 +289,7 @@ Otherwise, assume that $p$ has a root $u \in \DD$.
 Then, by the {{tref: thm:factor}}, $p(X) = (X-u) q(X)$ for some polynomial $q$, where, by {{ref: prop:pol_ring_over_id}}, $q$ has degree $d-1$.
 If $u'$ is a root of $p$ distinct from $u$, then $(u'-u) q(u') = 0$ which implies that $q(u') = 0$ since $u'-u \neq 0$ and $\DD$ has no zero divisors.
 Since $q$ has at most $d-1$ distinct roots by the induction hypothesis, $p$ has at most $d$ distinct roots.
+```
 
 This proposition allows us to reconsider the relation between polynomials and polynomial functions.
 
@@ -291,10 +297,11 @@ This proposition allows us to reconsider the relation between polynomials and po
 *Let $\DD$ be an integral domain and $p \in \DD[X]$ be a polynomial such that for every $u \in \DD$, $p(u) = 0$.
 If $\DD$ is infinite, then $p$ is the zero polynomial.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Assume that $p$ is not the zero polynomial and let $d$ be the degree of $p$.
 Then, by {{tref: prop:number_roots}}, $p$ has at most $d$ distinct roots in $\DD$, a contradiction with the assumption that $p(u) = 0$ for every $u \in \DD$ since $\DD$ is infinite.
 Hence, $p$ must be the zero polynomial.
+```
 
 Hence, over an infinite integral domain, if $p$ and $q$ are two polynomials such that $p(x) = q(x)$ for every $x \in \DD$, then $p = q$.
 In other words, there is a one-to-one mapping between polynomials and polynomial functions.
@@ -318,7 +325,7 @@ See [here](https://math.stackexchange.com/questions/64035/can-a-nonzero-polynomi
 
 In all the following, a set $\cU = \{u_1, \dots, u_n\}$ of $n$ distinct field elements $u_i \in \FF$ will be called an ***evaluation domain*** (or simply ***domain***) of size $n$.
 
-{{thm}}{thm:lagrange_interpolation}[Lagrange Interpolation Theorem]
+{{thm}}{thm:lagrange_interpolation}[Lagrange interpolation theorem]
 *Let $\FF$ be a finite field and let
 \[
  \cE = \{(u_1, v_1), \dots, (u_n,v_n)\} \subset \FF^2
@@ -326,11 +333,11 @@ In all the following, a set $\cU = \{u_1, \dots, u_n\}$ of $n$ distinct field el
 be a set of $n$ pairs of field elements such that $u_i \neq u_j$ for $i \neq j$.
 Then there is a unique polynomial $\ell(X) \in \PR{}{n-1}$, called the Lagrange interpolation polynomial for $\cE$, such that $\ell(u_i) = v_i$ for every $i \in \{1, \dots, n\}$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Uniqueness is proved as follows: assume there exists two polynomials $p(X)$ and $q(X)$ interpolating the $n$ points.
 Then the polynomial $p(X)-q(X)$ has $n$ roots but has degree at most $n-1$, hence must be the 0 polynomial, which implies that $p(X) = q(X)$.
->
-> To establish existence, one introduces the *Lagrange basis* associated with the domain $\cU = \{u_1, \dots, u_n\}$.
+
+To establish existence, one introduces the *Lagrange basis* associated with the domain $\cU = \{u_1, \dots, u_n\}$.
 This is the tuple of polynomials $(\ell_1(X), \dots, \ell_n(X))$ of degree $n-1$ defined as
 \[
  \ell_j(X) \defeq \prod_{\substack{1 \le k \le n \\ k \neq j}} \frac{X-u_k}{u_j-u_k}.
@@ -348,6 +355,7 @@ Then the Lagrange interpolating polynomial for $\{(u_1, v_1), \dots, (u_n,v_n)\}
  \ell(X) \defeq \sum_{j=1}^n v_j \ell_j(X).
 \]
 This polynomial has degree at most $n-1$ and it is easy to see that $\ell(u_i) = v_i$ for every $i \in \{1,\dots,n\}$.
+```
 
 Note that the Lagrange basis $(\ell_1(X),\dots,\ell_n(X))$ associated with any domain $\cU = \{u_1, \dots, u_n\}$ is indeed a basis for the $\FF$-vector space $\PR{}{n-1}$ in the linear algebra sense.
 The coordinates of a polynomial $p \in \PR{}{n-1}$ in this basis are $(p(u_1), \dots, p(u_n))$.
@@ -397,19 +405,20 @@ Given an evaluation domain $\cU = \{u_1,\dots,u_n\}$, the ***vanishing polynomia
 \]
 It is such that $z_{\cU}(u) = 0$ for every $u \in \cU$, but it is not the Lagrange interpolation polynomial for $\{(u_1,0),\dots,(u_n,0)\}$ since it has degree $n$ (the Lagrange interpolation polynomial for $\{(u_1,0),\dots,(u_n,0)\}$ is actually the zero polynomial).
 
-{{thm}}{thm:generalized_polynomial_remainder}[Generalized Polynomial Remainder Theorem]
+{{thm}}{thm:generalized_polynomial_remainder}[generalized polynomial remainder theorem]
 *Let $p \in \FF[X]$ be a polynomial, $n \in \{1,\dots,\deg(p)\}$ be an integer, $u_1, \dots, u_n \in \FF$ be $n$ distinct field elements, and $v_1, \dots, v_n \in \FF$ be $n$ field elements (not necessarily distinct).
 Let $z(X)$ be the vanishing polynomial for $\{u_1, \dots, u_n\}$ and $\ell(X)$ be the Lagrange interpolation polynomial for $\{(u_1,v_1), \dots, (u_n,v_n)\}$.
 Then $p(u_i) = v_i$ for every $i \in \{1,\dots,n\}$ if and only if $z(X)$ divides $p(X) - \ell(X)$, or equivalently if and only if $\ell(X)$ is the remainder of the division of $p(X)$ by $z(X)$.*
 
-> *Proof.*
+```admonish proof collapsible=true
 Assume that $z(X)$ divides $p(X) - \ell(X)$, i.e., there exists $q \in \FF[X]$ such that $p(X) = q(X)z(X) + \ell(X)$.
 Evaluating this equality at $u_i$ and using $z(u_i) = 0$ and $\ell(u_i) = v_i$ implies that $p(u_i)= v_i$ for every $i \in \{1,\dots,n\}$.
->
-> Conversely, assume that $p(u_i) = v_i$ for every $i \in \{1,\dots,n\}$.
+
+Conversely, assume that $p(u_i) = v_i$ for every $i \in \{1,\dots,n\}$.
 Since $\FF[X]$ is Euclidean, there exists polynomials $q(X)$ and $r(X)$ such that $p(X) = q(X)z(X) + r(X)$ with $\deg(r) < \deg(z) = n$.
 Evaluating this equality at $u_i$, $i \in \{1,\dots,n\}$, yields $r(u_i) = p(u_i) = v_i$.
 Since $\deg(r) < n$, $r$ is necessarily the Lagrange interpolation polynomial for $\{(u_1,v_1), \dots, (u_n,v_n)\}$.
+```
 
 For $n=1$, one exactly recovers the {{tref: thm:polynomial_remainder}} since for a single point $(u,v)$ the vanishing polynomial is $X-u$ and the Lagrange interpolation polynomial is simply the constant polynomial $\ell(X) = v$.
 
