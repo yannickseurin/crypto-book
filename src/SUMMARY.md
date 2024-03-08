@@ -4,23 +4,23 @@
 
 # Mathematical Preliminaries
 
-- [Groups](mathematical-preliminaries/groups.md)
+- [Groups](mathematics/groups.md)
 - [Rings]()
-- [Polynomials](mathematical-preliminaries/polynomials.md)
+- [Polynomials](mathematics/polynomials.md)
 - [Fields]()
 - [Fast Fourier Transform]()
-- [Elliptic Curves](mathematical-preliminaries/elliptic-curves.md)
-- [Pairings](mathematical-preliminaries/pairings.md)
+- [Elliptic Curves](mathematics/elliptic-curves.md)
+- [Pairings](mathematics/pairings.md)
 
 # Cryptographic Notions
 
-- [Games, Models, and Assumptions](cryptographic-notions/games-models-and-assumptions.md)
+- [Games, Models, and Assumptions](cryptography/games-models-and-assumptions.md)
 - [Signatures: Generalities]()
 - [Schnorr Signatures]()
 - [ECDSA Signatures]()
-- [BLS Signatures](cryptographic-notions/bls-signatures.md)
-- [Commitment Schemes](cryptographic-notions/commitment-schemes.md)
-- [Polynomial Commitment Schemes](cryptographic-notions/polynomial-commitment-schemes.md)
+- [BLS Signatures](cryptography/bls-signatures.md)
+- [Commitment Schemes](cryptography/commitment-schemes.md)
+- [Polynomial Commitment Schemes](cryptography/polynomial-commitment-schemes.md)
 
 # Proof Systems
 
