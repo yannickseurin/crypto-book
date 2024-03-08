@@ -40,6 +40,11 @@ Here are a number of freely available textbooks to learn more (we will point to 
 | $\RR$ | real numbers |
 | $\CC$ | complex numbers |
 
+Note that all proofs throughout the book are collapsible:
+
+```admonish proof collapsible=true
+You can choose to display it or leave it hidden forever.
+```
 
 ## Acknowledgments
 
