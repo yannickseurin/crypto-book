@@ -2,7 +2,7 @@
 
 [Introduction](intro.md)
 
-# Mathematical Preliminaries
+# Mathematics
 
 - [Groups](mathematics/groups.md)
 - [Rings]()
@@ -12,7 +12,7 @@
 - [Elliptic Curves](mathematics/elliptic-curves.md)
 - [Pairings](mathematics/pairings.md)
 
-# Cryptographic Notions
+# Cryptography
 
 - [Games, Models, and Assumptions](cryptography/games-models-and-assumptions.md)
 - [Signatures: Generalities]()
