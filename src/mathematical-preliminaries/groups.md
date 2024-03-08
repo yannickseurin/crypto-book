@@ -37,6 +37,7 @@ The use of determiner *the* for the identity element and the inverse of an eleme
 ```admonish proof collapsible=true
 Assume that $\GG$ has two identity elements $e$ and $e$.
 Then $e \star e' = e$ (because $e'$ is an identity element) and $e \star e' = e'$ (because $e$ is an identity element), hence $e=e'$.
+
 Assume that some group element $a$ has two inverses $b$ and $b'$.
 Then
 \[\begin{aligned}
@@ -55,33 +56,71 @@ If the binary operation is commutative, i.e., for every $a,b \in \GG$, $a \star 
 If $\GG$ is finite, the number of elements of $\GG$ is called the ***order*** of $\GG$ and denoted $\abs{\GG}$.
 If $\GG$ is infinite, $\GG$ is said to have infinite order.
 
+```admonish remark
+A group consists of a set *and* a binary operation.
+Hence, strictly speaking, it is a pair $(\GG, \star)$, although one commonly speaks of "the group $\GG$", the binary operation being left implicit.
+```
+
+```admonish example
+- $\ZZ$, $\QQ$, $\RR$, and $\CC$ equipped with addition are (abelian) groups of infinite order.
+The identity element is $0$ and the inverse of $a$ is $-a$.
+- $\NN$ is not a group for addition since non-zero elements don't have an inverse in $\NN$.
+- $\QQ^* = \QQ \setm \{0\}$, $\RR^* = \R \setm \{0\}$, and $\CC^*= \CC \setm \{0\}$ equipped with multiplication are (abelian) groups of infinite order.
+The identity element is $1$ and the inverse of $a$ is $a^{-1}$.
+- Neither $\ZZ$ nor $\ZZ \setm \{0\}$ are groups for multiplication since no elements except $1$ and $-1$ have an inverse.
+- Given a set $S$ and two functions $f_1$ and $f_2$ from $S$ to $S$, define the composition of $f_1$ and $f_2$, denoted $f_2 \circ f_1$, as $f_2 \circ f_1(s) = f_2(f_1(s))$ for every $s \in S$.
+Then the set of all permutations (bijections) of a set $S$ of size $n$ is a group for the operation $\circ$ of finite order $n! = n(n-1) \cdots 2 \cdot 1$.
+The identity element is the identity function and the inverse of $\sigma$ is the inverse function $\sigma^{-1}$ mapping $t \in S$ to the unique $s \in S$ such that $\sigma(s) = t$.
+This group is non-abelian when $n \ge 3$.
+```
+
 ## Additive/Multiplicative Notation
 
 There are two standard notation types for the group operation:
 
-- ***additive***: the group operation is denoted $+$, the identity element is denoted $0$, and the inverse of $a$ is denoted $-a$; moreover, for $k \in \ZZ$ and $a \in \GG$, one defines
-\[
- ka \defeq
- \begin{cases}
-  0 & \text{if } k=0 \\
-  \underbrace{a + \cdots + a}_ {k \text{ terms}} & \text{if } k > 0 \\[3ex]
-  -((-k)a) & \text{if } k < 0;
- \end{cases}
-\]
-- ***multiplicative***: the group operation is denoted $*$ or $\cdot$, the identity element is denoted $1$, and the inverse of $a$ is denote $a^{-1}$; moreover, for $k \in \ZZ$ and $a \in \GG$, one defines
-\[
- a^k \defeq
- \begin{cases}
-  1 & \text{if } k=0 \\
-  \underbrace{a * \cdots * a}_ {k \text{ terms}} & \text{if } k > 0 \\[3ex]
-  (a^{-k})^{-1} & \text{if } k < 0.
- \end{cases}
-\]
+- ***additive***: the group operation is denoted $+$, the identity element is denoted $0$ (or $0_{\GG}$ if one wants to avoid confusion with *integer* $0$), and the inverse of $a$ is denoted $-a$;
+- ***multiplicative***: the group operation is denoted $\times$ or $\cdot$, the identity element is denoted $1$ (or $1_{\GG}$ if one wants to avoid confusion with *integer* $1$), and the inverse of $a$ is denote $a^{-1}$.
 
 In the case of multiplicative notation, the operation symbol might be omitted and the group law simply denoted by juxtaposition.
 By convention, for an "abstract" group, additive notation is restricted to abelian groups (meaning multiplicative notation is used either when the group is known to be non-abelian, or when the abelian/non-abelian character of the group is unspecified).
 
 *For the rest of this chapter, unless specified otherwise, the group operation will be denoted multiplicatively but the identity element will be denoted $e$ for clarity.*
+
+## Repeated Group Operation
+
+Give a group element $a \in \GG$, it is possible to apply the group operation repeatedly to $a$ itself, i.e., compute $a \star a \star \cdots \star a$.
+
+When the group operation is denoted additively, for $k \in \ZZ$, we define
+\[
+ ka \defeq
+ \begin{cases}
+  0_{\GG} & \text{if } k = 0 \\
+  \underbrace{a + \cdots + a}_ {k \text{ terms}} & \text{if } k > 0 \\[3ex]
+  \underbrace{(-a) + \cdots + (-a)}_ {-k \text{ terms}} & \text{if } k < 0.
+ \end{cases}
+\]
+This is usually called the ***scalar multiplication*** of $a$ by $k$.
+
+When the group operation is denoted multiplicatively, for $k \in \ZZ$, we define
+\[
+ a^k \defeq
+ \begin{cases}
+  1_{\GG} & \text{if } k = 0 \\
+  \underbrace{a \times \cdots \times a}_ {k \text{ terms}} & \text{if } k > 0 \\[3ex]
+  \underbrace{a^{-1} \times \cdots \times a^{-1}}_ {-k \text{ terms}} & \text{if } k < 0.
+ \end{cases}
+\]
+This is usually called the ***exponentiation*** of $a$ by $k$.
+
+{{prop}}
+*Let $\GG$ be a group denoted multiplicatively.
+Then for every $a \in \GG$ and every $k, \ell \in \ZZ$, one has*
+
+- *$a^{k+\ell} = a^k a^\ell$,*
+- *$a^{k \ell} = (a^k)^\ell = (a^\ell)^k$,*
+- *$(a^k)^{-1} = a^{-k}$.*
+
+*Moreover, if $\GG$ is abelian, then for every $a,b \in \GG$ and every $k \in \ZZ$, $(ab)^k = a^k b^k$.*
 
 ## Direct Product
 
@@ -109,8 +148,11 @@ The subset $\HH$ is a ***subgroup*** of $\GG$ if $\HH$ equipped with the binary 
 
 {{prop}}{prop:subgroup_crit}
 *Let $\GG$ be a group and $\HH$ be subset of $\GG$.
-Then $\HH$ is a subgroup of $\GG$ if and only if (i) $e \in \HH$, (ii) for every $a,b \in \HH$, $ab \in \HH$, and (iii) for every $a \in \HH$, $a^{-1} \in \HH$.*
+Then $\HH$ is a subgroup of $\GG$ if and only if the following three properties are satisfied:*
 
+- $e \in \HH$,
+- *for every $a,b \in \HH$, $ab \in \HH$,*
+- *for every $a \in \HH$, $a^{-1} \in \HH$.*
 
 The following proposition gives a slightly more compact subgroup criterion.
 
