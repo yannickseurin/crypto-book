@@ -79,12 +79,22 @@ Let us the recall the corresponding games, that we call POLY-HIDING and POLY-BIN
 \[
  \def\arraystretch{\myarraystretch}
  \boxed{
- \begin{array}{ll}
-  \text{\underline{Game POLY-HIDING:}} & \qquad \text{\underline{Oracle $\orcl{Commit}(p_0, p_1)$:}} \\
-  b \sample \bin & \qquad \pcassert (\deg(p_0) \le d) \wedge (\deg(p_1) \le d) \\
-  par \gets \setup(\secparam) & \qquad (C,D) \gets \commit(par,p_b) \\
-  b' \gets \adv^{\text{Commit}}(par) & \qquad \pcreturn C \\
-  \pcassert (b=b') &
+ \begin{array}{cc}
+  \begin{array}{l}
+   \text{\underline{Game POLY-HIDING:}} \\
+   b \sample \bin \\
+   par \gets \setup(\secparam) \\
+   b' \gets \adv^{\text{Commit}}(par) \\
+   \pcassert (b=b')
+  \end{array}
+  &
+  \begin{array}{l}
+   \text{\underline{Oracle $\orcl{Commit}(p_0, p_1)$:}} \\
+   \pcassert (\deg(p_0) \le d) \\
+   \pcassert (\deg(p_1) \le d) \\
+   (C,D) \gets \commit(par,p_b) \\
+   \pcreturn C
+  \end{array}
  \end{array}
  }
 \]
@@ -113,17 +123,27 @@ This is formalized by the following game:
 \[
  \def\arraystretch{\myarraystretch}
  \boxed{
- \begin{array}{ll}
-  \text{\underline{Game EVAL-HIDING:}} & \qquad \text{\underline{Oracle $\orcl{Prove}(u)$:}} \\
-  p(X) \sample \PR{}{d} & \qquad (v,\Pi) \gets \evalprove(par,p,D,u) \\
-  ctr \gets 0 & \qquad ctr \gets ctr + 1 \\
-  \cQ \gets \emptyset & \qquad \cQ \gets \cQ \cup \{u\} \\
-  par \gets \setup(\secparam) & \qquad \pcreturn (v,\Pi) \\
-  (C,D) \gets \commit(par,p) & \\
-  (u,v) \gets \adv^{\text{Prove}}(par,C) & \\
-  \pcassert (ctr \le d) & \\
-  \pcassert (u \notin \cQ) & \\
-  \pcassert (p(u) = v) &
+ \begin{array}{cc}
+  \begin{array}{l}
+   \text{\underline{Game EVAL-HIDING:}} \\
+   p(X) \sample \PR{}{d} \\
+   ctr \gets 0 \\
+   \cQ \gets \emptyset \\
+   par \gets \setup(\secparam) \\
+   (C,D) \gets \commit(par,p) \\
+   (u,v) \gets \adv^{\text{Prove}}(par,C) \\
+   \pcassert (ctr \le d) \\
+   \pcassert (u \notin \cQ) \\
+   \pcassert (p(u) = v)
+  \end{array}
+  &
+  \begin{array}{l}
+   \text{\underline{Oracle $\orcl{Prove}(u)$:}} \\
+   (v,\Pi) \gets \evalprove(par,p,D,u) \\
+   ctr \gets ctr + 1 \\
+   \cQ \gets \cQ \cup \{u\} \\
+   \pcreturn (v,\Pi) \\ \\ \\ \\ \\ \\
+  \end{array}
  \end{array}
  }
 \]
