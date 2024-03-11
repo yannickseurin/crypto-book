@@ -55,11 +55,21 @@ Let us formalize these two properties more precisely, starting with hiding, defi
  \def\arraystretch{\myarraystretch}
  \boxed{
  \begin{array}{ll}
-  \text{\underline{Game HIDING:}} & \qquad \text{\underline{Oracle $\orcl{Commit}(m_0, m_1)$:}} \\
-  b \sample \bin & \qquad \pcassert (m_0 \in \cM) \\
-  par \gets \setup(\secparam) & \qquad \pcassert (m_1 \in \cM) \\
-  b' \gets \adv^{\text{Commit}}(par) & \qquad (C,D) \gets \commit(par,m_b) \\
-  \pcassert (b=b') & \qquad \pcreturn C
+  \begin{array}{l}
+   \text{\underline{Game HIDING:}} \\
+   b \sample \bin \\
+   par \gets \setup(\secparam) \\
+   b' \gets \adv^{\text{Commit}}(par) \\
+   \pcassert (b=b')
+  \end{array}
+  &
+  \begin{array}{l}
+   \text{\underline{Oracle $\orcl{Commit}(m_0, m_1)$:}} \\
+   \pcassert (m_0 \in \cM) \\
+   \pcassert (m_1 \in \cM) \\
+   (C,D) \gets \commit(par,m_b) \\
+   \pcreturn C
+  \end{array}
  \end{array}
  }
 \]
@@ -128,15 +138,17 @@ Then:
 {{thm}}
 *The Pedersen commitment scheme is perfectly hiding, computationally binding under the discrete logarithm assumption, and homomorphic with respect to addition over $\ZZ_p$.*
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let us sketch the proof of each property:
-> - *perfectly hiding*: as $r$ is uniformly random in $\ZZ_p$, for any message $m$, $C$ is uniformly random in $\GG$ and hence does not reveal any information about $m$;
-> - *computationally binding*: assume an adversary can output two message/decommitment pairs $(m,r)$ and $(m',r')$ with $m \neq m'$ for the same commitment $C$; then
+
+- *perfectly hiding*: as $r$ is uniformly random in $\ZZ_p$, for any message $m$, $C$ is uniformly random in $\GG$ and hence does not reveal any information about $m$;
+- *computationally binding*: assume an adversary can output two message/decommitment pairs $(m,r)$ and $(m',r')$ with $m \neq m'$ for the same commitment $C$; then
 \[
  (m-m') G = (r'-r) H,
 \]
 which yields the discrete logarithm of $H$ in base $G$ (note that $m - m' \neq 0$ implies $r'-r \neq 0$ as $G$ and $H$ are generators of $\GG$);
-> - *additively homomorphic*: given two commitments $C_1 = m_1 G + r_1 H$ and $C_2 = m_2 G + r_2 H$, anyone can compute $C \defeq C_1 + C_2= (m_1 + m_2) G + (r_1+r_2) H$, and the committer can compute $r_1+r_2$ which is a valid decommitment for $C$ and message $m_1+m_2$.
+- *additively homomorphic*: given two commitments $C_1 = m_1 G + r_1 H$ and $C_2 = m_2 G + r_2 H$, anyone can compute $C \defeq C_1 + C_2= (m_1 + m_2) G + (r_1+r_2) H$, and the committer can compute $r_1+r_2$ which is a valid decommitment for $C$ and message $m_1+m_2$.
+```
 
 ### A Note About the Setup
 
@@ -201,10 +213,11 @@ If $\Pi$ is strongly binding, then the function family
 \]
 is collision-resistant.*
 
-> *Proof.*
+``` admonish proof collapsible=true
 Assume that $H$ is not collision-resistant and that there is an adversary which on input $par$ returns $(m,r) \neq (m',r')$ such that $H_{par}(m,r) = H_{par}(m',r')$.
 Let $C \defeq H_{par}(m,r) = H_{par}(m',r')$.
 Then $\verif(par,C,m,r) = \verif(par,C,m',r') = 1$, hence this adversary can be used to break strong binding of $\Pi$.
+```
 
 Note that the assumption that $\Pi$ is binding is not sufficient: it could be easy to find $(m,r) \neq (m',r')$ such that $\commit(par,m;r) = \commit(par,m';r')$ but with $m=m'$, which would break collision-resistance but not binding.
 
