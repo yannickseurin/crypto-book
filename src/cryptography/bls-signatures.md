@@ -44,14 +44,23 @@ This is formally captured by the following security game:
 \[
  \def\arraystretch{\myarraystretch}
  \boxed{
- \begin{array}{ll}
-  \text{\underline{Game EUF-CMA:}} & \qquad \text{\underline{Oracle $\orcl{Sign}(m)$:}} \\
-  par \gets \setup(\secparam) & \qquad \sigma \gets \sign(par,sk^*,m) \\
-  (sk^*,pk^*) \gets \keygen(par) & \qquad \cQ \gets \cQ \cup \{m\} \\
-  \cQ \defeq \emptyset & \qquad \pcreturn \sigma \\
-  (m^*, \sigma^*) \gets \adv^{\orcl{Sign}}(par,pk^*) & \\
-  \pcassert (m^* \notin \cQ) & \\
-  \pcassert (\verif( par,pk^*,m^*,\sigma^* )=1) &
+ \begin{array}{cc}
+  \begin{array}{l}
+   \text{\underline{Game EUF-CMA:}} \\
+   par \gets \setup(\secparam) \\
+   (sk^\ast,pk^\ast) \gets \keygen(par) \\
+   \cQ \defeq \emptyset \\
+   (m^\ast, \sigma^\ast) \gets \adv^{\orcl{Sign}}(par,pk^\ast) \\
+   \pcassert (m^\ast \notin \cQ) \\
+   \pcassert (\verif( par,pk^\ast,m^\ast,\sigma^\ast)=1)
+  \end{array}
+  &
+  \begin{array}{l}
+   \text{\underline{Oracle $\orcl{Sign}(m)$:}} \\
+   \sigma \gets \sign(par,sk^\ast,m) \\
+   \cQ \gets \cQ \cup \{m\} \\
+   \pcreturn \sigma \\ \\ \\ \\
+  \end{array}
  \end{array}
  }
 \]
