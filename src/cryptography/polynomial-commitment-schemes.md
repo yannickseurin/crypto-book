@@ -306,7 +306,7 @@ More precisely, for every adversary $\adv$ against the EVAL-HIDING game, there e
  \advantage{\adv}{eval-hiding}(\secpar) \le \advantage{\bdv}{dl}(\secpar) + \frac{1}{2^{2\secpar-1}}.
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the eval-hiding property of DL-KZG.
 Without loss of generality, we assume that $\adv$ makes exactly $d$ queries to the $\orcl{Prove}$ oracle.
 We simply denote EH the EVAL-HIDING game.
@@ -350,8 +350,8 @@ In such a case (i.e., when $E$ happens), $\bdv$ simply aborts.
 Conditioned on $E$ not happening, $p$ is sampled through the commitment evaluation $p(\tau) = c$ and the $d$ evaluations $\{(u_1,v_1),\dots,(u_d,v_d)\}$ corresponding to $\orcl{Prove}$ queries made by $\adv$, with $c$ and $v_1,\dots,v_d$ uniformly random and independent.
 By Lagrange interpolation, this is equivalent to drawing the $d+1$ coefficients of $p$ uniformly at random and hence the EVAL-HIDING game is perfectly simulated.
 If $\adv$ successfully returns a pair $(u,v)$ such that $p(u) = v$, then $\bdv$ can interpolate the $d$ evaluations corresponding to $\orcl{Prove}$ queries together with $(u,v)$ to recover polynomial $p$ and compute $p(\tau) = c$, which yields the solution to the DL challenge.
->
-> Let DL be the discrete logarithm game played with $\bdv$.
+
+Let DL be the discrete logarithm game played with $\bdv$.
 Then
 \[\begin{aligned}
  \advantage{\bdv}{dl}(\secpar) & = \pr{\text{DL} \rightarrow \pctrue} \\
@@ -365,6 +365,7 @@ Hence,
  \advantage{\adv}{eval-hiding}(\secpar) \le \advantage{\bdv}{dl}(\secpar) + \frac{1}{2^{2\secpar-1}}
 \]
 $\bdv$ runs in time $t$ (where $t$ is the running time of $\adv$) plus the time to interpolate $p$, which requires at most $O(d^2\log_2(r)) = O(\secpar d^2)$ operations.
+```
 
 ### Binding Security
 
@@ -381,7 +382,7 @@ More precisely, for any adversary $\adv$ against the poly-binding security of DL
  \advantage{\adv}{poly-binding}(\secpar) = \advantage{\bdv}{(*d*,1)-co-dl}(\secpar).
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the poly-binding security of DL-KZG for maximal degree $d$.
 We construct an algorithm $\bdv$ for the $(d,1)$-co-DL problem as follows.
 $\bdv$ gets pairing group parameters $(\GG_1,\GG_2,\GG_t,r,e)$ and an instance $(G_1, \tau G_1, \dots, \tau^d G_1, G_2, \tau G_2)$ of the $(d,1)$-co-DL problem.
@@ -397,6 +398,7 @@ Assume that $\adv$ is successful and returns a commitment $C$ and two distinct p
 This implies that $C = p(\tau) G_1 = p'(\tau) G_1$, hence $p(\tau) = p'(\tau)$ and $\tau$ is a root of the non-zero polynomial $(p-p')(X) \in \PR{r}{d}$.
 This polynomial can be factored in time $O(d^3 \log(r))$ with the [Cantor–Zassenhaus algorithm](https://en.wikipedia.org/wiki/Cantor%E2%80%93Zassenhaus_algorithm), which allows $\bdv$ to compute all its roots and find $\tau$.
 The success probability of $\bdv$ is the same as the one of $\adv$ and the running time of $\bdv$ is $t + O(\secpar d^3)$.
+```
 
 Eval-binding security relies on a stronger assumption, namely that the so-called [$(q_1,q_2)$-strong Diffie-Hellman](./games-models-and-assumptions.md#q1q2-strong-diffie-hellman-q1q2-sdh) ($(q_1,q_2)$-SDH) problem is hard.
 This problem is as follows: given
@@ -414,7 +416,7 @@ More precisely, for any adversary $\adv$ against the eval-binding security of DL
  \advantage{\adv}{eval-binding}(\secpar) = \advantage{\bdv}{*d*-sdh}(\secpar).
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the eval-binding security of the DL-KZG scheme for maximal degree $d$.
 We construct an adversary $\bdv$ for the $d$-SDH problem.
 $\bdv$ gets pairing group parameters $(\GG_1,\GG_2,\GG_t,r,e)$ and an instance $(G_1, \tau G_1, \dots, \tau^d G_1, G_2, \tau G_2)$ of the $d$-SDH problem.
@@ -448,6 +450,7 @@ The last equation implies that
 \]
 Hence, $\bdv$ returns $(-u,Y)$ which is a valid solution of the SDH instance.
 The success probability of $\bdv$ is the same as the one of $\adv$ and the running time of $\bdv$ is close to the one of $\adv$.
+```
 
 ## The Ped-KZG Scheme
 
@@ -458,7 +461,7 @@ It is possible the make the scheme poly-hiding by randomizing the $\commit$ algo
 Below we present the Ped-KZG scheme.
 The idea is to add to the basic DL-KZG commitment $C = p(\tau) G_1$ a commitment to another random and independent polynomial $\hat p(X)$ with respect to another generator $H_1$ of $\GG_1$.
 The commitment becomes $p(\tau) G_1 + \hat p(\tau) H_1$, which is very similar to a [Pedersen commitment](./commitment-schemes.md#pedersen-commitments), hence the name.
-This requires to extend the size of the public parameters and the evaluation proofs.
+This requires expanding the size of the public parameters and the evaluation proofs.
 The formal description follows.
 
 - The $\setup$ algorithm, on input the security parameter $\secparam$, runs
@@ -514,9 +517,10 @@ Thanks to the commitment randomization, poly-hiding and eval-hiding security bot
 {{thm}}
 *The Ped-KZG scheme is perfectly poly-hiding.*
 
-> *Proof.*
+``` admonish proof collapsible=true
 For any $\tau \in \FF_r$ and any polynomial $p \in \PR{r}{d}$, the commitment $C$ returned by the $\commit$ algorithm is uniformly random in $\GG_1$ due to the addition of the term $\hat p(\tau)$.
 Hence, the $\orcl{Commit}$ oracle in the POLY-HIDING game does not reveal any information about the hidden bit $b$.
+```
 
 {{thm}}
 *The Ped-KZG scheme is statistically eval-hiding.
@@ -525,7 +529,7 @@ More precisely, for any adversary $\adv$, one has*
  \advantage{\adv}{eval-hiding} \le \frac{1}{2^{2\secpar-1}}.
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ by a (computationally unbounded) adversary against the eval-hiding property of Ped-KZG.
 We can assume without loss of generality that $\adv$ is given $\tau$, the discrete logarithm $h$ of $H_1$ in base $G_1$, and the discrete logarithm $c = p(\tau) + h\hat p(\tau)$ of the challenge commitment $C$.
 Let $u_i_$, $i \in \{1,\dots,d\}$ be the queries of $\adv$ to oracle $\orcl{Prove}$ and $(v_i, (\hat v_i, \Pi_i))$ be the corresponding answers.
@@ -537,6 +541,7 @@ Hence, all in all the adversary is given $d$ evaluations of $p$ and $\hat p$ at 
 Note that $h \neq 0$ since $H_1$ is a generator of $\GG_1$.
 Hence, conditioned on $(u_i,v_i,\hat v_i)$ for $i \in \{1,\dots,d\}$ and $c$, the value of $p(\tau)$ is uniformly random and $\adv$ only has $d$ evaluations of $p$.
 This implies that the probability that $\adv$ guesses $p(u)$ correctly for $u \notin \{u_1,\dots,u_d\}$ is $1/\abs{\FF_r} \le 1/2^{2\secpar-1}$.
+```
 
 ### Binding Security
 
@@ -551,26 +556,27 @@ More precisely, for any adversary $\adv$ against the poly-binding security of Pe
  \advantage{\adv}{poly-binding}(\secpar) = 2 \cdot \advantage{\bdv}{(*d*,1)-co-dl}(\secpar).
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the poly-binding security of the Ped-KZG scheme for maximal degree $d$.
 We construct an algorithm $\bdv$ for the $(d,1)$-co-DL problem as follows.
 $\bdv$ gets pairing group parameters $(\GG_1,\GG_2,\GG_t,r,e)$ and an instance $(G_1, x G_1, \dots, x^d G_1, G_2, x G_2)$ of the $(d,1)$-co-DL problem.
 The goal of $\bdv$ is to compute $x$.
->
-> Adversary $\bdv$ randomly chooses between two indistinguishable ways to embed its instance into the parameters.
+
+Adversary $\bdv$ randomly chooses between two indistinguishable ways to embed its instance into the parameters.
 Namely, it draws $b \sample \bin$ and proceeds as follows depending on $b$:
-> - If $b=0$, then $\bdv$ draws $h \sample \FF_r \setm \{0\}$ and runs $\adv$ on public parameters
+
+- If $b=0$, then $\bdv$ draws $h \sample \FF_r \setm \{0\}$ and runs $\adv$ on public parameters
 \[
  par = (G_1, x G_1, \dots, x^d G_1, \alpha G_1, h (x G_1), \dots, h (x^d G_1), G_2, x G_2).
 \]
 This implicitly sets $\tau = x$ and $H_1 = h G_1$.
-> - If $b=1$, then $\bdv$ draws $\tau \sample \FF_r$ and runs $\adv$ on public parameters
+- If $b=1$, then $\bdv$ draws $\tau \sample \FF_r$ and runs $\adv$ on public parameters
 \[
  par = (G_1, \tau G_1, \dots, \tau^d G_1, x G_1, \tau (x G_1), \dots, \tau^d (x G_1), G_2, \tau G_2).
 \]
 This implicitly sets $H_1 = xG_1$.
->
-> Assume that $\adv$ is successful and returns a commitment $C$ and two distinct polynomials $p$ and $p'$ of degree at most $d$ together with corresponding decommitments $\hat p$ and $\hat p'$ such that
+
+Assume that $\adv$ is successful and returns a commitment $C$ and two distinct polynomials $p$ and $p'$ of degree at most $d$ together with corresponding decommitments $\hat p$ and $\hat p'$ such that
 \[
  \polyverif(par,C,p, \hat p) = \polyverif(par,C,p', \hat p') = 1.
 \]
@@ -582,13 +588,14 @@ and hence
 \[
  (p(\tau)-p'(\tau)) G_1 + (\hat p(\tau) - \hat p'(\tau)) H_1 = 0.
 \]
-> We can distinguish two cases:
-> - case $p(\tau) - p'(\tau) = 0$:
+We can distinguish two cases:
+
+- case $p(\tau) - p'(\tau) = 0$:
 If $b=1$ then $\bdv$ aborts.
 Otherwise, since $b=0$, we have $x=\tau$.
 Hence, $x$ is a root of the non-zero polynomial $(p-p')(X) \in \PR{r}{d}$.
 This polynomial can be factored in time $O(d^3 \log(r))$ with the [Cantor–Zassenhaus algorithm](https://en.wikipedia.org/wiki/Cantor%E2%80%93Zassenhaus_algorithm), which allows $\bdv$ to compute all its roots and find $x$.
-> - case $p(\tau) - p'(\tau) \neq 0$:
+- case $p(\tau) - p'(\tau) \neq 0$:
 If $b=0$ then $\bdv$ aborts.
 Otherwise, since $b=1$ then $H_1 = x G_1$.
 This implies that
@@ -600,12 +607,13 @@ Hence, $\bdv$ can compute
 \[
  x = \frac{p(\tau)-p'(\tau)}{\hat p'(\tau) - \hat p(\tau)}.
 \]
->
-> The view of $\adv$ is independent from $b$ and hence $\bdv$ aborts with probability $1/2$, so that
+
+The view of $\adv$ is independent from $b$ and hence $\bdv$ aborts with probability $1/2$, so that
 \[
  \advantage{\bdv}{(*d*,1)-co-dl}(\secpar) = \frac{1}{2} \advantage{\adv}{poly-binding}(\secpar).
 \]
 The running time of $\bdv$ is at most $t + O(\secpar d^3)$, which concludes the proof.
+```
 
 {{thm}}
 *Assume that the $d$-SDH problem is hard for $\pairingsetup$.
@@ -615,26 +623,27 @@ More precisely, for any adversary $\adv$ against the eval-binding security of Pe
  \advantage{\adv}{eval-binding}(\secpar) = 2 \cdot \advantage{\bdv}{*d*-sdh}(\secpar).
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the eval-binding security of the Ped-KZG scheme for maximal degree $d$.
 We construct an adversary $\bdv$ for the $d$-SDH problem.
 $\bdv$ gets pairing group parameters $(\GG_1,\GG_2,\GG_t,r,e)$ and an instance $(G_1, x G_1, \dots, x^d G_1, G_2, x G_2)$ of the $d$-SDH problem.
 The goal of $\bdv$ is to return a pair $(a,Y)$ such that $Y = \frac{1}{x+a} G_1$.
->
-> Adversary $\bdv$ randomly chooses between two indistinguishable ways to embed its instance into the parameters.
+
+Adversary $\bdv$ randomly chooses between two indistinguishable ways to embed its instance into the parameters.
 Namely, it draws $b \sample \bin$ and proceeds as follows depending on $b$:
-> - If $b=0$, then $\bdv$ draws $h \sample \FF_r \setm \{0\}$ and runs $\adv$ on public parameters
+
+- If $b=0$, then $\bdv$ draws $h \sample \FF_r \setm \{0\}$ and runs $\adv$ on public parameters
 \[
  par = (G_1, x G_1, \dots, x^d G_1, \alpha G_1, h (x G_1), \dots, h (x^d G_1), G_2, x G_2).
 \]
 This implicitly sets $\tau = x$ and $H_1 = h G_1$.
-> - If $b=1$, then $\bdv$ draws $\tau \sample \FF_r$ and runs $\adv$ on public parameters
+- If $b=1$, then $\bdv$ draws $\tau \sample \FF_r$ and runs $\adv$ on public parameters
 \[
  par = (G_1, \tau G_1, \dots, \tau^d G_1, x G_1, \tau (x G_1), \dots, \tau^d (x G_1), G_2, \tau G_2).
 \]
 This implicitly sets $H_1 = xG_1$.
->
-> Assume that $\adv$ is successful and returns a commitment $C$, a field element $u \in \FF_r$, and two valid value/proof pairs $(v,(w,\Pi))$ and $(v',(w',\Pi'))$ with $v \neq v'$.
+
+Assume that $\adv$ is successful and returns a commitment $C$, a field element $u \in \FF_r$, and two valid value/proof pairs $(v,(w,\Pi))$ and $(v',(w',\Pi'))$ with $v \neq v'$.
 Then $\bdv$ proceeds as follows.
 First, it checks whether $u = \tau$ (e.g., by checking whether $u G_1$ is equal to the second group element of the parameters $par$).
 If this is the case, then $\bdv$ simply picks an arbitrary element $a \in \FF_r \setm \{-\tau\}$ and returns $(a,\frac{1}{\tau+a}G_1)$.
@@ -650,9 +659,10 @@ Combining these two equations, we get
  e\left(\frac{v'-v}{\tau-u} G_1 + \frac{w'-w}{\tau-u}H_1, G_2\right) & = e(\Pi-\Pi',G_2),
 \end{aligned}\]
 where we used that $u \neq \tau$.
->
-> We can now distinguish two cases:
-> - case $\Pi \neq \Pi'$: If $b=1$ then $\bdv$ aborts.
+
+We can now distinguish two cases:
+
+- case $\Pi \neq \Pi'$: If $b=1$ then $\bdv$ aborts.
 Otherwise, since $b=0$, we have $\tau = x$ and $\bdv$ knows the value $h$ such that $H_1 = hG_1$.
 The equation above yields
 \[
@@ -668,7 +678,7 @@ which implies that
  Y \defeq \frac{1}{v'-v+h(w'-w)}(\Pi-\Pi') = \frac{1}{(x-u)}G_1
 \]
 Thus, $\bdv$ can return $(-u,Y)$ as solution to the $d$-SDH instance.
-> - case $\Pi = \Pi'$: If $b=0$ then $\bdv$ aborts.
+- case $\Pi = \Pi'$: If $b=0$ then $\bdv$ aborts.
 Otherwise, since $b=1$; we have $H_1 = x G_1$ and the equation above yields
 \[
  e\left(\frac{v'-v + x(w'-w)}{\tau-u} G_1, G_2\right) = e(0,G_2),
@@ -676,12 +686,13 @@ Otherwise, since $b=1$; we have $H_1 = x G_1$ and the equation above yields
 which implies $(v'-v) + x(w'-w) = 0$.
 We cannot have $w=w'$ as this would imply $v = v'$ whereas $v \neq v'$ when $\adv$ is successful.
 Hence, $\bdv$ can compute $x = (v'-v)(w'-w)^{-1}$, choose an arbitrary $a \in \FF_r \setm \{-x\}$, and return $(a, \frac{1}{x+a}G_1)$ as solution to the SDH instance.
->
-> The view of $\adv$ is independent from $b$ and hence $\bdv$ aborts with probability $1/2$, so that
+
+The view of $\adv$ is independent from $b$ and hence $\bdv$ aborts with probability $1/2$, so that
 \[
  \advantage{\bdv}{*d*-sdh}(\secpar) = \frac{1}{2} \advantage{\adv}{eval-binding}(\secpar).
 \]
 The running time of $\bdv$ is similar to the running time of $\adv$, which concludes the proof.
+```
 
 ## Discussion
 
@@ -878,7 +889,7 @@ More precisely, for any adversary $\adv$ against the multi-binding security of D
  \advantage{\adv}{multi-binding}(\secpar) = \advantage{\bdv}{*(d,N)*-bsdh}(\secpar).
 \]
 
-> *Proof.*
+``` admonish proof collapsible=true
 Let $\adv$ be an adversary against the multi-binding security of the DL-KZG scheme for maximal degree $d$.
 We construct an adversary $\bdv$ for the $(d,N)$-BSDH problem.
 $\bdv$ gets pairing group parameters $(\GG_1,\GG_2,\GG_t,r,e)$ and an instance
@@ -894,8 +905,8 @@ Adversary $\bdv$ runs $\adv$ on input parameters
 Assume that $\adv$ returns a commitment $C$, a tuple $(u,v,v') \in \FF_r^3$, and two valid multi-evaluations/proof pairs $(\cE,\Pi)$ and $(\cE',\Pi')$ such that $v \neq v'$, $(u,v) \in \cE$, and $(u,v') \in \cE'$.
 If $u = \tau$ (which $\bdv$ can verify by checking whether $u G_1$ is equal to the second group element of the parameters $par$), then $\bdv$ simply picks an arbitrary element $a \in \FF_r \setm \{-\tau\}$ and returns $(a,e(G_1,G_2)^{\frac{1}{\tau+a}})$ as solution to the $d$-BSDH instance.
 From now on, we assume that $u \neq \tau$.
->
-> Let $\cU$, resp. $\cU'$ be the evaluation domain corresponding to $\cE$, resp. $\cE'$.
+
+Let $\cU$, resp. $\cU'$ be the evaluation domain corresponding to $\cE$, resp. $\cE'$.
 Let also $z$, resp. $z'$ be the vanishing polynomial for $\cU$, resp. $\cU'$ and $\ell$, resp. $\ell'$ be the Lagrange interpolation polynomial for $\cE$, resp. $\cE'$.
 Validity of the two proofs imply that
 \[\begin{aligned}
@@ -922,6 +933,7 @@ Injecting this in the previous equation, we get
 \end{aligned}\]
 where for the last equality we used that $\tau-u \neq 0$ and $v'-v \neq 0$.
 Hence, $\bdv$ can return $(-u,Y)$, where $Y$ is the right-hand side of the last equation, as solution to the $(d,N)$-BSDH instance.
+```
 
 As a sanity check, observe that for a single evaluation ($n=1$), one has $q(X) = q'(X) = 1$ and $q''(X) = 0$, in which case the last equation simplifies to
 \[
