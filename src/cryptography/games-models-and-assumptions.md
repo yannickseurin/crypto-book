@@ -17,7 +17,7 @@ It also gives a list of cryptographic assumptions relevant for this book (see al
 
 In all the following, we consider functions from $\NN$ to $\RR^+ = \{x \in \RR \mid x \ge 0\}$ and we let $\secpar$ denote the variable.
 
-A function $f$ is said to be *negligible* if $f \in \secpar^{-\omega(1)}$ or equivalently if
+A function $f$ is said to be ***negligible*** if $f \in \secpar^{-\omega(1)}$ or equivalently if
 \[
  \forall k \in \NN, \exists n \in \NN, \forall \secpar \ge n, f(\secpar) \le \secpar^{-c}.
 \]
@@ -115,7 +115,7 @@ If $X$ reduces to $Y$ and $Y$ reduces to $X$, we say that $X$ and $Y$ are *equiv
 *Assume that $X$ reduces to $Y$.
 Then $X$ being hard implies $Y$ being hard.*
 
-> *Proof.*
+``` admonish proof collapsible=true
 Contraposing, assume that $Y$ is not hard, which by definition means that there exists a ppt algorithm $\adv$ such that
 \[
  \advantage{\adv}{Y}(\secpar) \neq \negl(\secpar).
@@ -127,6 +127,7 @@ Moreover, by definition of a reduction,
  \advantage{\bdv^{\adv}}{X}(\secpar) \neq \negl(\secpar).
 \]
 Hence, $X$ is not hard.
+```
 
 Thus, $X \leqq Y$ can be read as "$X$ is not harder than $Y$" or $Y$ is at least as hard as $X$".
 
