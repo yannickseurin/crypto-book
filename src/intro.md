@@ -4,8 +4,8 @@ This book is an ongoing effort to gather some notes about cryptography with a fo
 
 For now it consists of the following parts:
 
-- ***Mathematical Preliminaries***:
-- ***Cryptographic Notions***:
+- ***Mathematics***:
+- ***Cryptography***:
 - ***Proof Systems***:
 - ***ZK Hack Puzzles Walk-through***:
 
