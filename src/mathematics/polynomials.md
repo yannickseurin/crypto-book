@@ -175,6 +175,7 @@ On the other hand, by {{ref: prop:properties_of_degree}},
 This is a contradiction and hence we must have $q = q'$ and hence $r = r'$, proving uniqueness.
 ```
 
+## Ring vs. Polynomial Ring: Summary
 
 | $\AA$ | impl./equ. | $\AA[X]$      | see |
 |:-----:|:----------:|:-------------:|:---:|
