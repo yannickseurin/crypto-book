@@ -18,6 +18,10 @@ A commitment scheme involves two parties, a *committer* (or prover) and a *verif
 It allows the committer to send to the verifier a commitment $C$ to some secret value $m$ and later on to open this commitment to reveal $m$.
 The commitment $C$ should not reveal any information about the message $m$ (hiding property) and the committer should not be able to open a commitment in two distinct ways (binding property).
 
+For a physical analogy, imagine the committer as writing the message $m$ on a piece of paper and placing it in an opaque, unbreakable, locked box which he sends to the verifier.
+At this point, the verifier cannot learn anything about the message and the committer cannot modify the message.
+Later, when the committer wants to open the commitment, he sends the key opening the box to the verifier to reveal the message.
+
 ### Syntax
 
 More formally, a commitment scheme consists of three algorithms (the exact syntax can vary slightly in the literature):
@@ -27,7 +31,7 @@ More formally, a commitment scheme consists of three algorithms (the exact synta
 - a deterministic verification algorithm $\verif$ which on input parameters $par$, a commitment $C$, a message $m \in \cM$, and a decommitment $D$, return 1 if the decommitment is valid for $(par,C,m)$ and 0 otherwise.
 
 Quite often, the decommitment $D$ simply consists of the random coins $r$ used by the commitment algorithm, and the verification algorithm simply recomputes the commitment given $m$ and $r$ and compares with $C$.
-When this is the case, overloading the notation, we will let $\commit(par, m; r)$ denote the function explicitly taking the random coins $r$ of the commitment algorithm as input and returning the commitment $C$ (letting the decommitment $D = r$ implicit in that case).
+When this is the case, we say that the commitment scheme has *canonical verification* and, overloading the notation, we let $\commit(par, m; r)$ denote the function explicitly taking the random coins $r$ of the commitment algorithm as input and returning the commitment $C$ (letting the decommitment $D = r$ implicit in that case).
 
 Note that what we just defined here is the syntax for a *non-interactive* commitment scheme, where the $\setup$ algorithm is run once and for all and committing consists of a single message sent by the prover to the verifier.
 There exists more complex commitment schemes where committing requires some interaction between the prover and the verifier.
