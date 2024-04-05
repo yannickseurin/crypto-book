@@ -336,7 +336,7 @@ Then there is a unique polynomial $\ell(X) \in \PR{}{n-1}$, called the Lagrange 
 
 ```admonish proof collapsible=true
 Uniqueness is proved as follows: assume there exists two polynomials $p(X)$ and $q(X)$ interpolating the $n$ points.
-Then the polynomial $p(X)-q(X)$ has $n$ roots but has degree at most $n-1$, hence must be the 0 polynomial, which implies that $p(X) = q(X)$.
+Then the polynomial $p(X)-q(X)$ has $n$ roots but has degree at most $n-1$, hence by {{ref: prop:number_roots}} it must be the zero polynomial, which implies that $p(X) = q(X)$.
 
 To establish existence, one introduces the *Lagrange basis* associated with the domain $\cU = \{u_1, \dots, u_n\}$.
 This is the tuple of polynomials $(\ell_1(X), \dots, \ell_n(X))$ of degree $n-1$ defined as

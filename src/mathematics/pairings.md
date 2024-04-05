@@ -45,7 +45,7 @@ However, for being useful from a cryptographic point of view, we need the discre
 (In the example above, while it may be hard in $\GG_t$, it is certainly not in $\GG_1$ and $\GG_2$.)
 This is where elliptic curves come to the rescue.
 
-Some more vocabulary: A pairing is said *symmetric* when $G_1 = G_2$ and *asymmetric* when $G_1 \neq G_2$.
+Some more vocabulary: A pairing is said *symmetric* when $\GG_1 = \GG_2$ and *asymmetric* when $\GG_1 \neq \GG_2$.
 As we will see, both types can be constructed from elliptic curves.
 Historically, the first proposed constructions were symmetric, but nowadays the asymmetric type prevails for efficiency reasons.
 It is an open problem to construct a pairing such that $\GG_1 = \GG_2 = \GG_t = \GG$ and the discrete logarithm problem is (conjectured) hard in $\GG$.
