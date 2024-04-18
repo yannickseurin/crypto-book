@@ -45,6 +45,7 @@
 \bin:\{0,1\}
 \str:\bin^*
 \defeq:\coloneqq
+\quotient:#1/\!\!\sim
 \parse:\twoheadleftarrow
 \abs:\left|#1\right|
 \setm:\!\setminus\!
