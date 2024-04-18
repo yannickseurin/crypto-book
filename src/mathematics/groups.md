@@ -4,6 +4,9 @@
 
 # Groups
 
+We cover the elementary theory of groups, one of the most fundamental algebraic structure consisting of a set with a binary operation satisfying associativity, the existence of an identity element, and the existence of an inverse for every element of the set.
+We focus in particular on abelian (commutative) groups and cyclic groups, which are of particular relevance for cryptography.
+
 ## Contents
 
 <!-- toc -->
@@ -62,10 +65,10 @@ Hence, strictly speaking, it is a pair $(\GG, \star)$, although one commonly spe
 ```
 
 ```admonish example
-- $\ZZ$, $\QQ$, $\RR$, and $\CC$ equipped with addition are (abelian) groups of infinite order.
+- $\ZZ$, $\QQ$, $\RR$, and $\CC$ equipped with addition are abelian groups of infinite order.
 The identity element is $0$ and the inverse of $a$ is $-a$.
 - $\NN$ is not a group for addition since non-zero elements don't have an inverse in $\NN$.
-- $\QQ^* = \QQ \setm \{0\}$, $\RR^* = \R \setm \{0\}$, and $\CC^*= \CC \setm \{0\}$ equipped with multiplication are (abelian) groups of infinite order.
+- $\QQ^* = \QQ \setm \{0\}$, $\RR^* = \R \setm \{0\}$, and $\CC^*= \CC \setm \{0\}$ equipped with multiplication are abelian groups of infinite order.
 The identity element is $1$ and the inverse of $a$ is $a^{-1}$.
 - Neither $\ZZ$ nor $\ZZ \setm \{0\}$ are groups for multiplication since no elements except $1$ and $-1$ have an inverse.
 - Given a set $S$ and two functions $f_1$ and $f_2$ from $S$ to $S$, define the composition of $f_1$ and $f_2$, denoted $f_2 \circ f_1$, as $f_2 \circ f_1(s) = f_2(f_1(s))$ for every $s \in S$.
@@ -153,6 +156,12 @@ Then $\HH$ is a subgroup of $\GG$ if and only if the following three properties 
 - $e \in \HH$,
 - *for every $a,b \in \HH$, $ab \in \HH$,*
 - *for every $a \in \HH$, $a^{-1} \in \HH$.*
+
+```admonish remark
+The condition $e \in \HH$ can be replaced by the condition that $\HH$ is non-empty.
+Clearly, $e \in \HH \implies \HH \neq \emptyset$.
+Conversely, if the second and third conditions are met, then $\HH \neq \emptyset$ implies that there is some $a \in \HH$, which by the third condition implies that $a^{-1} \in \HH$, which by the second condition implies that $aa^{-1} = e \in \HH$.
+```
 
 The following proposition gives a slightly more compact subgroup criterion.
 
@@ -279,7 +288,7 @@ Let us see now how normal subgroups allow us to construct quotient groups.
 
 Let $\GG$ be a group and let $\sim$ be an equivalence relation on $\GG$.
 We say that $\sim$ is *compatible with the group structure of $\GG$* if $a \sim b$ and $c \sim d$ implies $ac \sim bd$.
-If $\sim$ is compatible with the group structure of $\GG$, then one can equip the quotient set $\GG/\!\!\sim$ (the set of all equivalence classes) with a binary operation defined as $[a][b] = [ab]$, where $[a]$ denotes the equivalence class of $a \in \GG$.
+If $\sim$ is compatible with the group structure of $\GG$, then one can equip the quotient set $\quotient{\GG}$ (the set of all equivalence classes) with a binary operation defined as $[a][b] = [ab]$, where $[a]$ denotes the equivalence class of $a \in \GG$.
 This is well defined as compatibility of $\sim$ with the group structure ensures that this binary operation does not depend on the specific representatives $a$ and $b$ of each equivalence class.
 The following proposition states that normal subgroups completely characterize the equivalence relations $\sim$ which are compatible with the group structure of $\GG$.
 
@@ -329,7 +338,7 @@ Hence $a \sim b \Leftrightarrow ab^{-1} \sim e \Leftrightarrow ab^{-1} \in \HH$,
 ```
 
 Let $\HH$ be a normal subgroup of $\GG$ and let $\sim$ be the equivalence relation defined by $a \sim b \Leftrightarrow ab^{-1} \in \HH$.
-Then the quotient set $\GG/\!\!\sim$ equipped with the binary operation defined by $[a][b] = [ab]$ is a group (as shown in the proposition below) called the ***quotient group*** associated with $\HH$ and denoted $\GG/\HH$.
+Then the quotient set $\quotient{\GG}$ equipped with the binary operation defined by $[a][b] = [ab]$ is a group (as shown in the proposition below) called the ***quotient group*** associated with $\HH$ and denoted $\GG/\HH$.
 Note that the order of $\GG/\HH$ is $[\GG:\HH]$, the index of $\HH$.
 
 {{prop}}
