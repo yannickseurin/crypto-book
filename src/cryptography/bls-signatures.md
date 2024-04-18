@@ -17,55 +17,9 @@ It is possible to implement BLS (signatures) on BLS (curves).
 
 <!-- toc -->
 
-## Signature Schemes: Definitions
-
-We briefly recall standard definitions for signature schemes.
-
-A signature scheme consists of four algorithms:
-
-- a $\setup$ algorithm which takes as input the security parameter $\secparam$ and returns public parameters $par$;
-- a key generation algorithm $\keygen$ which takes as input parameters $par$ and returns a secret key $sk$ and a public key $pk$;
-- a signature algorithm $\sign$ which takes as input parameters $par$, a secret key $sk$, and a message $m$ and returns a signature $\sigma$;
-- a verification algorithm $\verif$ which takes as input parameters $par$, a public key $pk$, a message $m$, and a signature $\sigma$ and returns 1 if the signature is valid for the pair $(pk,m)$ and 0 otherwise.
-
-The scheme is correct if for every security parameter $\secpar$ and every message $m$, the following game capturing the nominal execution of algorithms returns true with probability 1:
-
-\[\boxed{\begin{aligned}
- & par \gets \setup(\secparam) \\
- & (sk,pk) \gets \keygen(par) \\
- & \sigma \gets \sign(par,sk,m) \\
- & b \gets \verif(par,pk,m,\sigma) \\
- & \pcassert (b=1)
-\end{aligned}}\]
-
-The standard security notion for a signature scheme is *existential unforgeability against chosen message attacks* (EUF-CMA): no polynomial-time adversary, being given a target public key $pk^*$ and having access to a signature oracle for the corresponding secret key $sk^*$, should be able to compute a valid signature for a message it has not queried to the signature oracle, except with negligible probability.
-This is formally captured by the following security game:
-
-\[
- \def\arraystretch{\myarraystretch}
- \boxed{
- \begin{array}{cc}
-  \begin{array}{l}
-   \text{\underline{Game EUF-CMA:}} \\
-   par \gets \setup(\secparam) \\
-   (sk^\ast,pk^\ast) \gets \keygen(par) \\
-   \cQ \defeq \emptyset \\
-   (m^\ast, \sigma^\ast) \gets \adv^{\orcl{Sign}}(par,pk^\ast) \\
-   \pcassert (m^\ast \notin \cQ) \\
-   \pcassert (\verif( par,pk^\ast,m^\ast,\sigma^\ast)=1)
-  \end{array}
-  &
-  \begin{array}{l}
-   \text{\underline{Oracle $\orcl{Sign}(m)$:}} \\
-   \sigma \gets \sign(par,sk^\ast,m) \\
-   \cQ \gets \cQ \cup \{m\} \\
-   \pcreturn \sigma \\ \\ \\ \\
-  \end{array}
- \end{array}
- }
-\]
-
 ## Description of BLS
+
+For the general syntax and the EUF-CMA security definition, refer to the [corresponding chapter](signatures-generalities.md).
 
 Let $\pairingsetup$ be a [pairing group setup algorithm](./games-models-and-assumptions.md#group-setup-algorithms).
 The BLS signature scheme is defined as follows:
