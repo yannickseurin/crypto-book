@@ -52,3 +52,9 @@ assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 directive = "proof"
 icon = "./assets/scroll.svg"
 color = "#ffd700"
+
+[[preprocessor.admonish.custom]]
+directive = "jump"
+icon = "./assets/jump.svg"
+color = "#66cdaa"
+title = "Jumping ahead"
