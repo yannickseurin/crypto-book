@@ -4,10 +4,15 @@
 
 # Mathematics
 
+- [Sets]()
+- [Integers]()
+- [Basic Arithmetic](mathematics/basic-arithmetic.md)
+- [Modular Arithmetic]()
 - [Groups](mathematics/groups.md)
 - [Rings]()
 - [Polynomials](mathematics/polynomials.md)
 - [Fields]()
+- [Algorithms]()
 - [Fast Fourier Transform]()
 - [Elliptic Curves](mathematics/elliptic-curves.md)
 - [Pairings](mathematics/pairings.md)
@@ -15,7 +20,7 @@
 # Cryptography
 
 - [Games, Models, and Assumptions](cryptography/games-models-and-assumptions.md)
-- [Signatures: Generalities]()
+- [Signatures: Generalities](cryptography/signatures-generalities.md)
 - [Schnorr Signatures]()
 - [ECDSA Signatures]()
 - [BLS Signatures](cryptography/bls-signatures.md)
